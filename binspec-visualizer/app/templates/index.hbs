@@ -2,7 +2,9 @@
   <div class="grid grid-cols-2 gap-4">
     <div class="flex flex-col items-stretch">
       <h2 class="mb-2 text-lg font-medium text-white">Structure</h2>
-      <div class="w-full rounded-md border border-zinc-700/60 flex-grow"></div>
+      <div class="w-full rounded-md border border-zinc-700/60 flex-grow">
+        <DataSegmentTree @dataSegments={{this.sampleSQLiteDataSegments}} />
+      </div>
     </div>
     <div class="flex flex-col items-stretch">
       <h2 class="mb-2 text-lg font-medium text-white">Raw</h2>

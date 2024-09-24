@@ -1,4 +1,6 @@
 import Controller from '@ember/controller';
+import { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import { DataSegmentCollection } from 'binspec-visualizer/lib/data-segment-collection';
 
 export default class IndexController extends Controller {
   get sampleData(): Uint8Array {
@@ -76,6 +78,16 @@ export default class IndexController extends Controller {
       0x00,
       0x00,
       0x00, // Reserved for expansion (20 bytes)
+    ]);
+  }
+
+  get sampleSQLiteDataSegments(): DataSegmentCollection {
+    return new DataSegmentCollection([
+      new DataSegment({
+        startBitIndex: 0,
+        endBitIndex: 8 * 10, // 10 bytes
+        children: [],
+      }),
     ]);
   }
 }
