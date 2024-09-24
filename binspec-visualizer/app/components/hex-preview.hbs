@@ -1,0 +1,16 @@
+<div class="flex flex-wrap p-2">
+  {{#each this.bytePreviews as |bytePreview|}}
+    <div
+      class="flex p-1 items-center justify-center rounded-sm border border-transparent hover:bg-zinc-700/60 hover:border-zinc-700"
+    >
+      <div>
+        <div class="font-mono text-zinc-100 text-lg">
+          {{bytePreview.hexString}}
+        </div>
+        <div class="font-mono text-zinc-400 text-[0.6em] text-right">
+          &nbsp;{{bytePreview.asciiString}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

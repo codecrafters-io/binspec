@@ -18,5 +18,26 @@ module.exports = function (defaults) {
     staticModifiers: true,
     staticComponents: true,
     staticEmberSource: true,
+    packagerOptions: {
+      webpackConfig: {
+        module: {
+          rules: [
+            {
+              test: /\.css$/i,
+              use: [
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    postcssOptions: {
+                      config: 'postcss.config.js',
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
   });
 };
