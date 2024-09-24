@@ -81,13 +81,41 @@ export default class IndexController extends Controller {
     ]);
   }
 
-  get sampleSQLiteDataSegments(): DataSegmentCollection {
-    return new DataSegmentCollection([
+  get sampleSQLiteDataSegments(): DataSegment[] {
+    return [
       new DataSegment({
         startBitIndex: 0,
-        endBitIndex: 8 * 10, // 10 bytes
-        children: [],
+        endBitIndex: 100 * 8, // 100 bytes
+        children: [
+          new DataSegment({
+            startBitIndex: 0,
+            endBitIndex: 16 * 8, // 16 bytes
+            children: [],
+            title: 'Header string',
+            explanationMarkdown:
+              'The header string is the first part of the database file header. It contains the string "SQLite format 3" (encoded as UTF-8) followed by a null byte (`0x00`).',
+          }),
+          new DataSegment({
+            startBitIndex: 16 * 8, // 16th byte
+            endBitIndex: 18 * 8, // (2 bytes)
+            children: [],
+            title: 'Page size',
+            explanationMarkdown:
+              'The page size is a 2-byte integer that specifies the size of each page in the database. This value must be a power of 2 and must be between 512 and 32768 inclusive. If the value is 1, then the page size is 65536 bytes.',
+          }),
+          new DataSegment({
+            startBitIndex: 18 * 8, // 18th byte
+            endBitIndex: 19 * 8, // (1 byte)
+            children: [],
+            title: 'File format write version',
+            explanationMarkdown:
+              'The file format write version is intended to allow for enhancements of the file format in future versions of SQLite. In current versions of SQLite, this value is 1 for rollback journalling modes and 2 for WAL journalling mode.',
+          }),
+        ],
+        title: 'Database file header',
+        explanationMarkdown:
+          'The database file header is the first part of the SQLite database file. It is 100 bytes long and contains metadata about the database, such as the page size.',
       }),
-    ]);
+    ];
   }
 }

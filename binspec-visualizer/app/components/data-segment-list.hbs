@@ -1,0 +1,9 @@
+<div class="flex flex-col">
+  {{#each @segments as |segment segmentIndex|}}
+    <DataSegmentListItem @segment={{segment}} @isExpanded={{false}} />
+
+    {{#if (not-eq segmentIndex (sub @segments.length 1))}}
+      <div class="h-px w-full bg-zinc-700/60 my-4" />
+    {{/if}}
+  {{/each}}
+</div>
