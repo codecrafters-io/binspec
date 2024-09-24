@@ -1,45 +1,29 @@
 import Component from '@glimmer/component';
+import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import { BytePreview } from 'binspec-visualizer/lib/byte-preview';
 
 type Signature = {
   Args: {
     data: Uint8Array;
+    highlightedSegment?: DataSegment;
   };
 
   Element: HTMLDivElement;
 };
 
-class BytePreview {
-  public rawValue: number;
-
-  constructor(rawValue: number) {
-    if (rawValue < 0 || rawValue > 255) {
-      throw new Error('Raw value must be between 0 and 255');
-    }
-
-    this.rawValue = rawValue;
-  }
-
-  get asciiString(): string {
-    if (this.rawValue === 32) {
-      return '.';
-    }
-
-    return this.rawValue >= 32 && this.rawValue <= 126
-      ? String.fromCharCode(this.rawValue)
-      : '.';
-  }
-
-  get hexString(): string {
-    return this.rawValue.toString(16).padStart(2, '0');
-  }
-}
-
 export default class HexPreview extends Component<Signature> {
   get bytePreviews(): BytePreview[] {
     const bytePreviews: BytePreview[] = [];
 
-    for (const byte of this.args.data) {
-      bytePreviews.push(new BytePreview(byte));
+    for (const [index, byte] of this.args.data.entries()) {
+      if (
+        this.args.highlightedSegment &&
+        this.args.highlightedSegment.containsByteIndex(index)
+      ) {
+        bytePreviews.push(new BytePreview(byte, this.args.highlightedSegment));
+      } else {
+        bytePreviews.push(new BytePreview(byte));
+      }
     }
 
     return bytePreviews;

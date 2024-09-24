@@ -35,4 +35,14 @@ export class DataSegment {
       this.title ?? `Byte ${this.startBitIndex / 8} - ${this.endBitIndex / 8}`
     );
   }
+
+  containsByteIndex(byteIndex: number): boolean {
+    const byteStartBitIndex = byteIndex * 8;
+    const byteEndBitIndex = byteStartBitIndex + 7;
+
+    return (
+      byteStartBitIndex >= this.startBitIndex &&
+      byteEndBitIndex <= this.endBitIndex
+    );
+  }
 }

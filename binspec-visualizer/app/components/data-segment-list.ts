@@ -4,6 +4,7 @@ import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
 type Signature = {
   Args: {
     segments: DataSegment[];
+    highlightedSegment?: DataSegment;
   };
 };
 

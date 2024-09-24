@@ -1,10 +1,13 @@
 import Controller from '@ember/controller';
 import { DataSegment } from 'binspec-visualizer/lib/data-segment';
-import { DataSegmentCollection } from 'binspec-visualizer/lib/data-segment-collection';
 
 export default class IndexController extends Controller {
   get sampleData(): Uint8Array {
     return this.sampleSQLiteHeader;
+  }
+
+  get highlightedSegment(): DataSegment {
+    return this.sampleSQLiteDataSegments[0]!.children[0]!;
   }
 
   get sampleSQLiteHeader(): Uint8Array {
