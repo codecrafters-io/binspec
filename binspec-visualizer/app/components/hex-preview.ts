@@ -20,6 +20,10 @@ class BytePreview {
   }
 
   get asciiString(): string {
+    if (this.rawValue === 32) {
+      return '.';
+    }
+
     return this.rawValue >= 32 && this.rawValue <= 126
       ? String.fromCharCode(this.rawValue)
       : '.';
