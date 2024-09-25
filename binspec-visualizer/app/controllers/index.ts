@@ -20,11 +20,13 @@ export default class IndexController extends Controller {
 
   @action
   handleSegmentMouseEnter(segment: DataSegment) {
+    console.log('handleSegmentMouseEnter', segment);
     this.hoveredSegment = segment;
   }
 
   @action
   handleSegmentMouseLeave(segment: DataSegment) {
+    console.log('handleSegmentMouseLeave', segment);
     if (this.hoveredSegment?.equals(segment)) {
       this.hoveredSegment = undefined;
     }

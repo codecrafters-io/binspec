@@ -3,14 +3,20 @@ import type { DataSegment } from './data-segment';
 export class BytePreview {
   public rawValue: number;
   public highlightedSegment?: DataSegment;
+  public hoveredSegment?: DataSegment;
 
-  constructor(rawValue: number, highlightedSegment?: DataSegment) {
+  constructor(
+    rawValue: number,
+    highlightedSegment?: DataSegment,
+    hoveredSegment?: DataSegment,
+  ) {
     if (rawValue < 0 || rawValue > 255) {
       throw new Error('Raw value must be between 0 and 255');
     }
 
     this.rawValue = rawValue;
     this.highlightedSegment = highlightedSegment;
+    this.hoveredSegment = hoveredSegment;
   }
 
   get asciiString(): string {

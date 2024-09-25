@@ -6,6 +6,7 @@ type Signature = {
   Args: {
     data: Uint8Array;
     highlightedSegment?: DataSegment;
+    hoveredSegment?: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
   };
 
@@ -17,14 +18,18 @@ export default class HexPreview extends Component<Signature> {
     const bytePreviews: BytePreview[] = [];
 
     for (const [index, byte] of this.args.data.entries()) {
-      if (
-        this.args.highlightedSegment &&
-        this.args.highlightedSegment.containsByteIndex(index)
-      ) {
-        bytePreviews.push(new BytePreview(byte, this.args.highlightedSegment));
-      } else {
-        bytePreviews.push(new BytePreview(byte));
-      }
+      const highlightedSegment =
+        this.args.highlightedSegment?.containsByteIndex(index)
+          ? this.args.highlightedSegment
+          : undefined;
+
+      const hoveredSegment = this.args.hoveredSegment?.containsByteIndex(index)
+        ? this.args.hoveredSegment
+        : undefined;
+
+      bytePreviews.push(
+        new BytePreview(byte, highlightedSegment, hoveredSegment),
+      );
     }
 
     return bytePreviews;

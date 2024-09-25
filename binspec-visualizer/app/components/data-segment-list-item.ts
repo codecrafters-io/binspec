@@ -21,7 +21,12 @@ export default class DataSegmentListItem extends Component<Signature> {
   }
 
   get isHoveredSegment(): boolean {
-    return this.args.hoveredSegment?.equals(this.args.segment) ?? false;
+    console.log(
+      'isHoveredSegment',
+      this.args.hoveredSegment?.equals(this.args.segment),
+    );
+
+    return this.args.hoveredSegment?.equals(this.args.segment) || false;
   }
 }
 

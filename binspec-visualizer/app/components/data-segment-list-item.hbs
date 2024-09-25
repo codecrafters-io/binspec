@@ -1,6 +1,9 @@
 <div class="flex flex-col items-stretch" ...attributes>
   <div
-    class="cursor-pointer {{if this.isHoveredSegment 'bg-zinc-700/60' ''}}"
+    class="cursor-pointer
+      {{if this.isHoveredSegment 'bg-zinc-700/60'}}
+      {{if this.isHighlightedSegment 'bg-zinc-700/60'}}
+      "
     role="button"
     {{on "click" (fn @onSegmentSelect @segment)}}
     {{on "mouseenter" (fn @onSegmentMouseEnter @segment)}}

@@ -6,6 +6,7 @@
         <DataSegmentList
           @segments={{this.sampleSegments}}
           @highlightedSegment={{this.highlightedSegment}}
+          @hoveredSegment={{this.hoveredSegment}}
           @onSegmentSelect={{this.handleSegmentSelected}}
           @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
           @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
@@ -18,6 +19,7 @@
         <HexPreview
           @data={{this.sampleData}}
           @highlightedSegment={{this.highlightedSegment}}
+          @hoveredSegment={{this.hoveredSegment}}
           @onSegmentSelect={{this.handleSegmentSelected}}
         />
       </div>
