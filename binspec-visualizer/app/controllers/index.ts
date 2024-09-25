@@ -36,8 +36,11 @@ export default class IndexController extends Controller {
   }
 
   @action
-  handleSegmentSelected(segment: DataSegment) {
-    console.log('segment selected', segment);
+  handleSegmentSelected(section: 'structure' | 'raw', segment: DataSegment) {
     this.highlightedSegment = segment;
+
+    if (section === 'structure') {
+      this.hoverState.clear();
+    }
   }
 }
