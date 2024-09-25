@@ -101,19 +101,69 @@ export default class SampleSQLiteData {
           }),
           new DataSegment({
             startBitIndex: 18 * 8, // 18th byte
-            endBitIndex: 19 * 8, // (1 byte)
-            children: [],
-            title: 'File format write version',
+            endBitIndex: 20 * 8, // (2 bytes)
+            children: [
+              new DataSegment({
+                startBitIndex: 18 * 8, // 18th byte
+                endBitIndex: 19 * 8, // (1 byte)
+                children: [],
+                title: 'File format write version',
+                explanationMarkdown:
+                  'The file format write version is intended to allow for enhancements of the file format in future versions of SQLite. In current versions of SQLite, this value is 1 for rollback journalling modes and 2 for WAL journalling mode.',
+              }),
+              new DataSegment({
+                startBitIndex: 19 * 8, // 19th byte
+                endBitIndex: 20 * 8, // (1 byte)
+                children: [],
+                title: 'File format read version',
+                explanationMarkdown:
+                  'The file format read version is intended to allow for enhancements of the file format in future versions of SQLite. In current versions of SQLite, this value is 1 for rollback journalling modes and 2 for WAL journalling mode.',
+              }),
+            ],
+            title: 'File format versions',
             explanationMarkdown:
-              'The file format write version is intended to allow for enhancements of the file format in future versions of SQLite. In current versions of SQLite, this value is 1 for rollback journalling modes and 2 for WAL journalling mode.',
+              'The file format versions allow for enhancements of the file format in future versions of SQLite. If a version of SQLite coded to the current file format specification encounters a database file where the read version is 1 or 2 but the write version is greater than 2, then the database file must be treated as read-only. If a database file with a read version greater than 2 is encountered, then that database cannot be read or written.',
           }),
           new DataSegment({
-            startBitIndex: 19 * 8, // 19th byte
-            endBitIndex: 20 * 8, // (1 byte)
+            startBitIndex: 20 * 8, // 20th byte
+            endBitIndex: 21 * 8, // (1 byte)
             children: [],
-            title: 'File format read version',
+            title: 'Reserved space size',
             explanationMarkdown:
-              'The file format read version is intended to allow for enhancements of the file format in future versions of SQLite. In current versions of SQLite, this value is 1 for rollback journalling modes and 2 for WAL journalling mode.',
+              'This is a 1-byte integer that specifies the size of the reserved space at the end of this page. The reserved space is used by certain extensions.',
+          }),
+          new DataSegment({
+            startBitIndex: 21 * 8, // 21st byte
+            endBitIndex: 24 * 8, // (3 bytes)
+            children: [
+              new DataSegment({
+                startBitIndex: 21 * 8, // 21st byte
+                endBitIndex: 22 * 8, // (1 byte)
+                children: [],
+                title: 'Maximum embedded payload fraction',
+                explanationMarkdown:
+                  'This value must be 64. It was initially intended to be a tunable parameter that could be used to modify the storage format of the b-tree algorithm. However, that functionality is currently not supported, so this value is always fixed.',
+              }),
+              new DataSegment({
+                startBitIndex: 22 * 8, // 22nd byte
+                endBitIndex: 23 * 8, // (1 byte)
+                children: [],
+                title: 'Minimum embedded payload fraction',
+                explanationMarkdown:
+                  'This value must be 32. It was initially intended to be a tunable parameter that could be used to modify the storage format of the b-tree algorithm. However, that functionality is currently not supported, so this value is always fixed.',
+              }),
+              new DataSegment({
+                startBitIndex: 23 * 8, // 23rd byte
+                endBitIndex: 24 * 8, // (1 byte)
+                children: [],
+                title: 'Leaf payload fraction',
+                explanationMarkdown:
+                  'This value must be 32. It was initially intended to be a tunable parameter that could be used to modify the storage format of the b-tree algorithm. However, that functionality is currently not supported, so this value is always fixed.',
+              }),
+            ],
+            title: 'Payload fractions',
+            explanationMarkdown:
+              'These values were originally intended to be tunable parameters that could be used to modify the storage format of the b-tree algorithm. However, that functionality is currently not supported, so these values are always fixed.',
           }),
         ],
         title: 'Database file header',
