@@ -28,6 +28,14 @@ export default class DataSegmentListItem extends Component<Signature> {
 
     return this.args.hoveredSegment?.equals(this.args.segment) || false;
   }
+
+  get titleTextColorClasses(): string {
+    if (this.isHighlightedSegment) {
+      return 'text-yellow-300';
+    } else {
+      return 'text-white';
+    }
+  }
 }
 
 declare module '@glint/environment-ember-loose/registry' {

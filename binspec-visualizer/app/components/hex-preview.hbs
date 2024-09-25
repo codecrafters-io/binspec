@@ -1,5 +1,6 @@
 <div class="flex flex-wrap p-2">
   {{#each this.bytePreviewParamsList as |bytePreviewParams|}}
+    {{! template-lint-disable require-presentational-children }}
     <HexPreview::BytePreview
       @index={{bytePreviewParams.byteIndex}}
       @rawValue={{bytePreviewParams.rawValue}}
@@ -19,6 +20,27 @@
         (fn this.handleBytePreviewMouseLeave bytePreviewParams.leafSegment)
       }}
       role="button"
-    />
+    >
+      {{#if
+        (eq this.segmentForTooltip.startByteIndex bytePreviewParams.byteIndex)
+      }}
+        <EmberPopover
+          @isShown={{true}}
+          @event="none"
+          @tooltipClass="bg-zinc-800 border-zinc-600/80 text-white px-4 py-3 max-w-[300px]"
+          @effect="none"
+        >
+          <div class="mb-3 border-b border-zinc-700/40 pb-1 font-medium text-white">
+            {{this.segmentForTooltip.titleForDisplay}}
+          </div>
+
+          {{#if this.segmentForTooltip.explanationMarkdown}}
+            <div class="prose prose-invert prose-sm">
+              {{markdown-to-html this.segmentForTooltip.explanationMarkdown}}
+            </div>
+          {{/if}}
+        </EmberPopover>
+      {{/if}}
+    </HexPreview::BytePreview>
   {{/each}}
 </div>

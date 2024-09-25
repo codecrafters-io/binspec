@@ -5,3 +5,19 @@
 body {
   @apply bg-zinc-800;
 }
+
+.ember-popover[x-placement^="right"] .ember-popover-arrow {
+  @apply border-r-zinc-600/80;
+}
+
+.ember-popover[x-placement^="top"] .ember-popover-arrow {
+  @apply border-t-zinc-600/80;
+}
+
+.ember-popover[x-placement^="left"] .ember-popover-arrow {
+  @apply border-l-zinc-600/80;
+}
+
+.ember-popover[x-placement^="bottom"] .ember-popover-arrow {
+  @apply border-b-zinc-600/80;
+}

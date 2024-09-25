@@ -2,7 +2,7 @@
   {{#each @segments as |segment segmentIndex|}}
     <DataSegmentListItem
       @segment={{segment}}
-      @isExpanded={{false}}
+      @isExpanded={{segment-eq segment @highlightedSegment}}
       @highlightedSegment={{@highlightedSegment}}
       @hoveredSegment={{@hoveredSegment}}
       @onSegmentSelect={{@onSegmentSelect}}

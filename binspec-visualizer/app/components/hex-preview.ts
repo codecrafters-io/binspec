@@ -38,6 +38,10 @@ export default class HexPreview extends Component<Signature> {
     });
   }
 
+  get segmentForTooltip(): DataSegment | undefined {
+    return this.args.hoveredSegment;
+  }
+
   @action
   handleBytePreviewClick(segment: DataSegment | undefined) {
     if (segment) {

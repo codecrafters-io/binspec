@@ -8,5 +8,25 @@ declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry
     extends PageTitle,
       EmberTruthHelpersRegistry,
-      EmberMathHelpersRegistry {}
+      EmberMathHelpersRegistry {
+    EmberTooltip: ComponentLike<{
+      Args: {
+        Named: {
+          text?: string;
+          side?: 'top' | 'bottom' | 'left' | 'right';
+          delay?: number;
+          duration?: number;
+        };
+      };
+      Blocks: { default?: [] };
+    }>;
+    EmberPopover: ComponentLike<{
+      Args: {
+        Named: {
+          side?: 'top' | 'bottom' | 'left' | 'right';
+        };
+      };
+      Blocks: { default?: [] };
+    }>;
+  }
 }
