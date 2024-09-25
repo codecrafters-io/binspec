@@ -1,39 +1,10 @@
 <div class="flex flex-wrap p-2">
-  {{#each this.bytePreviews as |bytePreview|}}
-    <div
-      class="flex px-2 py-1 items-center justify-center border border-transparent
-        {{if
-          bytePreview.highlightedSegment
-          'bg-zinc-700/60'
-          (if bytePreview.hoveredSegment 'bg-zinc-700/60' '')
-        }}"
-    >
-      <div>
-        <div
-          class="font-mono text-lg
-            {{if
-              bytePreview.highlightedSegment
-              'text-yellow-300'
-              (if bytePreview.hoveredSegment 'text-zinc-400' 'text-zinc-500/40')
-            }}
-            "
-        >
-          {{bytePreview.hexString}}
-        </div>
-        <div
-          class="font-mono
-            {{if
-              bytePreview.highlightedSegment
-              'text-yellow-500'
-              (if
-                bytePreview.hoveredSegment 'text-zinc-400/40' 'text-zinc-500/40'
-              )
-            }}
-            text-[0.6em] text-right"
-        >
-          &nbsp;{{bytePreview.asciiString}}
-        </div>
-      </div>
-    </div>
+  {{#each this.bytes as |byte index|}}
+    <HexPreview::BytePreview
+      @index={{index}}
+      @rawValue={{byte}}
+      @highlightedSegment={{@highlightedSegment}}
+      @hoveredSegment={{@hoveredSegment}}
+    />
   {{/each}}
 </div>
