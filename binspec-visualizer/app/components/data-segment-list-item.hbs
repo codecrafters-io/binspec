@@ -4,7 +4,6 @@
       {{if this.isHoveredSegment 'bg-zinc-700/60'}}
       {{if this.isHighlightedSegment 'bg-zinc-700/60'}}
       "
-    role="button"
     {{on "mouseenter" (fn @onSegmentMouseEnter @segment)}}
     {{on "mouseleave" (fn @onSegmentMouseLeave @segment)}}
   >
