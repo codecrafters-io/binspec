@@ -5,12 +5,18 @@ type Signature = {
   Args: {
     isExpanded: boolean;
     segment: DataSegment;
+    highlightedSegment?: DataSegment;
+    onSelectSegment: (segment: DataSegment) => void;
   };
 
   Element: HTMLDivElement;
 };
 
-export default class DataSegmentListItem extends Component<Signature> {}
+export default class DataSegmentListItem extends Component<Signature> {
+  get isHighlightedSegment(): boolean {
+    return this.args.highlightedSegment?.equals(this.args.segment) ?? false;
+  }
+}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

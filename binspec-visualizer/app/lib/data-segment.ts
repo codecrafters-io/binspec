@@ -30,6 +30,13 @@ export class DataSegment {
     }
   }
 
+  equals(other: DataSegment): boolean {
+    return (
+      this.startBitIndex === other.startBitIndex &&
+      this.endBitIndex === other.endBitIndex
+    );
+  }
+
   get titleForDisplay(): string {
     return (
       this.title ?? `Byte ${this.startBitIndex / 8} - ${this.endBitIndex / 8}`

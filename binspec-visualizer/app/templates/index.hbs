@@ -4,15 +4,20 @@
       <h2 class="mb-2 text-lg font-medium text-white">Structure</h2>
       <div class="w-full rounded-md border border-zinc-700/60 flex-grow p-4">
         <DataSegmentList
-          @segments={{this.sampleSQLiteDataSegments}}
+          @segments={{this.sampleSegments}}
           @highlightedSegment={{this.highlightedSegment}}
+          @onSelectSegment={{this.handleSegmentSelected}}
         />
       </div>
     </div>
     <div class="flex flex-col items-stretch">
       <h2 class="mb-2 text-lg font-medium text-white">Raw</h2>
       <div class="w-full rounded-md border border-zinc-700/60 flex-grow">
-        <HexPreview @data={{this.sampleData}} @highlightedSegment={{this.highlightedSegment}} />
+        <HexPreview
+          @data={{this.sampleData}}
+          @highlightedSegment={{this.highlightedSegment}}
+          @onSelectSegment={{this.handleSegmentSelected}}
+        />
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ type Signature = {
   Args: {
     segments: DataSegment[];
     highlightedSegment?: DataSegment;
+    onSelectSegment: (segment: DataSegment) => void;
   };
 };
 
