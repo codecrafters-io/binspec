@@ -39,6 +39,8 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
+        './postcss.config.js',
+        './tailwind.config.js',
       ],
       env: {
         browser: false,
