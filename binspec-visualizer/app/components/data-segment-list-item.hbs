@@ -5,32 +5,36 @@
       {{if this.isHighlightedSegment 'bg-zinc-700/60'}}
       "
     role="button"
-    {{on "click" (fn @onSegmentSelect @segment)}}
     {{on "mouseenter" (fn @onSegmentMouseEnter @segment)}}
     {{on "mouseleave" (fn @onSegmentMouseLeave @segment)}}
   >
-    <div class="text-lg font-medium {{this.titleTextColorClasses}}">
-      {{@segment.titleForDisplay}}
+    <div role="button" {{on "click" (fn @onSegmentSelect @segment)}}>
+      <div class="text-lg font-medium {{this.titleTextColorClasses}}">
+        {{@segment.titleForDisplay}}
+      </div>
+
+      {{#if @segment.explanationMarkdown}}
+        <div class="prose prose-invert prose-sm mt-2">
+          {{markdown-to-html @segment.explanationMarkdown}}
+        </div>
+      {{/if}}
     </div>
 
-    <div class="prose prose-invert prose-sm mt-2">
-      {{markdown-to-html @segment.explanationMarkdown}}
-    </div>
+    {{#if (segment-eq @segment @highlightedSegment)}}
+      <HexPreview
+        class="mt-4"
+        @section="structure"
+        @data={{@data}}
+        @startByteIndex={{@segment.startByteIndex}}
+        @endByteIndex={{@segment.endByteIndex}}
+        @segments={{@segment.children}}
+        @highlightedSegment={{@highlightedSegment}}
+        @onSegmentSelect={{@onSegmentSelect}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      />
+    {{/if}}
   </div>
-
-  {{#if (segment-eq @segment @highlightedSegment)}}
-    <HexPreview
-      @section="structure"
-      @data={{@data}}
-      @startByteIndex={{@segment.startByteIndex}}
-      @endByteIndex={{@segment.endByteIndex}}
-      @segments={{@segment.children}}
-      @highlightedSegment={{undefined}}
-      @onSegmentSelect={{@onSegmentSelect}}
-      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-    />
-  {{/if}}
 
   {{#if @segment.children}}
     <div class="pl-4 flex flex-col gap-4 py-4">

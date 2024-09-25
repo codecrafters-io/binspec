@@ -22,6 +22,11 @@ export default class IndexController extends Controller {
 
   @action
   handleSegmentMouseEnter(section: 'structure' | 'raw', segment: DataSegment) {
+    // Don't hover if the segment is already highlighted in the structure section
+    if (section === 'structure' && this.highlightedSegment?.equals(segment)) {
+      return;
+    }
+
     this.hoverState.setSegment(segment, section);
   }
 
@@ -32,6 +37,7 @@ export default class IndexController extends Controller {
 
   @action
   handleSegmentSelected(segment: DataSegment) {
+    console.log('segment selected', segment);
     this.highlightedSegment = segment;
   }
 }
