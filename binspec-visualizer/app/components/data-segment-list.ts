@@ -5,7 +5,10 @@ type Signature = {
   Args: {
     segments: DataSegment[];
     highlightedSegment?: DataSegment;
+    hoveredSegment?: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
+    onSegmentMouseEnter: (segment: DataSegment) => void;
+    onSegmentMouseLeave: (segment: DataSegment) => void;
   };
 };
 

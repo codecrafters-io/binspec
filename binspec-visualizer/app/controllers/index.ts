@@ -8,12 +8,26 @@ export default class IndexController extends Controller {
   @tracked highlightedSegment?: DataSegment =
     this.sampleSegments[0]!.children[0];
 
+  @tracked hoveredSegment?: DataSegment;
+
   get sampleData(): Uint8Array {
     return SampleSQLiteData.data;
   }
 
   get sampleSegments(): DataSegment[] {
     return SampleSQLiteData.segments;
+  }
+
+  @action
+  handleSegmentMouseEnter(segment: DataSegment) {
+    this.hoveredSegment = segment;
+  }
+
+  @action
+  handleSegmentMouseLeave(segment: DataSegment) {
+    if (this.hoveredSegment?.equals(segment)) {
+      this.hoveredSegment = undefined;
+    }
   }
 
   @action
