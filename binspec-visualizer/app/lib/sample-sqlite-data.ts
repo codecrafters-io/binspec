@@ -81,11 +81,11 @@ export default class SampleSQLiteData {
     return [
       new DataSegment({
         startBitIndex: 0,
-        endBitIndex: 100 * 8, // 100 bytes
+        endBitIndex: this.data.length * 8 - 1, // 100 bytes
         children: [
           new DataSegment({
             startBitIndex: 0,
-            endBitIndex: 16 * 8, // 16 bytes
+            endBitIndex: 16 * 8 - 1, // 16 bytes
             children: [],
             title: 'Header string',
             explanationMarkdown:
@@ -93,7 +93,7 @@ export default class SampleSQLiteData {
           }),
           new DataSegment({
             startBitIndex: 16 * 8, // 16th byte
-            endBitIndex: 18 * 8, // (2 bytes)
+            endBitIndex: 18 * 8 - 1, // (2 bytes)
             children: [],
             title: 'Page size',
             explanationMarkdown:
@@ -101,11 +101,11 @@ export default class SampleSQLiteData {
           }),
           new DataSegment({
             startBitIndex: 18 * 8, // 18th byte
-            endBitIndex: 20 * 8, // (2 bytes)
+            endBitIndex: 20 * 8 - 1, // (2 bytes)
             children: [
               new DataSegment({
                 startBitIndex: 18 * 8, // 18th byte
-                endBitIndex: 19 * 8, // (1 byte)
+                endBitIndex: 19 * 8 - 1, // (1 byte)
                 children: [],
                 title: 'File format write version',
                 explanationMarkdown:
@@ -113,7 +113,7 @@ export default class SampleSQLiteData {
               }),
               new DataSegment({
                 startBitIndex: 19 * 8, // 19th byte
-                endBitIndex: 20 * 8, // (1 byte)
+                endBitIndex: 20 * 8 - 1, // (1 byte)
                 children: [],
                 title: 'File format read version',
                 explanationMarkdown:
@@ -126,7 +126,7 @@ export default class SampleSQLiteData {
           }),
           new DataSegment({
             startBitIndex: 20 * 8, // 20th byte
-            endBitIndex: 21 * 8, // (1 byte)
+            endBitIndex: 21 * 8 - 1, // (1 byte)
             children: [],
             title: 'Reserved space size',
             explanationMarkdown:
@@ -134,11 +134,11 @@ export default class SampleSQLiteData {
           }),
           new DataSegment({
             startBitIndex: 21 * 8, // 21st byte
-            endBitIndex: 24 * 8, // (3 bytes)
+            endBitIndex: 24 * 8 - 1, // (3 bytes)
             children: [
               new DataSegment({
                 startBitIndex: 21 * 8, // 21st byte
-                endBitIndex: 22 * 8, // (1 byte)
+                endBitIndex: 22 * 8 - 1, // (1 byte)
                 children: [],
                 title: 'Maximum embedded payload fraction',
                 explanationMarkdown:
@@ -146,7 +146,7 @@ export default class SampleSQLiteData {
               }),
               new DataSegment({
                 startBitIndex: 22 * 8, // 22nd byte
-                endBitIndex: 23 * 8, // (1 byte)
+                endBitIndex: 23 * 8 - 1, // (1 byte)
                 children: [],
                 title: 'Minimum embedded payload fraction',
                 explanationMarkdown:
@@ -154,7 +154,7 @@ export default class SampleSQLiteData {
               }),
               new DataSegment({
                 startBitIndex: 23 * 8, // 23rd byte
-                endBitIndex: 24 * 8, // (1 byte)
+                endBitIndex: 24 * 8 - 1, // (1 byte)
                 children: [],
                 title: 'Leaf payload fraction',
                 explanationMarkdown:

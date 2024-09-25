@@ -3,12 +3,14 @@ import { action } from '@ember/object';
 import { DataSegment } from 'binspec-visualizer/lib/data-segment';
 import { tracked } from '@glimmer/tracking';
 import SampleSQLiteData from 'binspec-visualizer/lib/sample-sqlite-data';
+import { service } from '@ember/service';
+import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 export default class IndexController extends Controller {
   @tracked highlightedSegment?: DataSegment =
     this.sampleSegments[0]!.children[0];
 
-  @tracked hoveredSegment?: DataSegment;
+  @service declare hoverState: HoverStateService;
 
   get sampleData(): Uint8Array {
     return SampleSQLiteData.data;
@@ -19,15 +21,13 @@ export default class IndexController extends Controller {
   }
 
   @action
-  handleSegmentMouseEnter(segment: DataSegment) {
-    this.hoveredSegment = segment;
+  handleSegmentMouseEnter(section: 'structure' | 'raw', segment: DataSegment) {
+    this.hoverState.setSegment(segment, section);
   }
 
   @action
-  handleSegmentMouseLeave(segment: DataSegment) {
-    if (this.hoveredSegment?.equals(segment)) {
-      this.hoveredSegment = undefined;
-    }
+  handleSegmentMouseLeave() {
+    this.hoverState.clear();
   }
 
   @action

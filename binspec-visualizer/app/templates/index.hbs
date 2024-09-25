@@ -1,28 +1,32 @@
 <div class="container mx-auto py-8 flex gap-4 min-h-0">
   <div class="w-full flex flex-col items-stretch min-h-0">
     <h2 class="mb-2 text-lg font-medium text-white">Structure</h2>
-    <div class="w-full rounded-md border border-zinc-700/60 flex-grow p-2 overflow-auto">
+    <div
+      class="w-full rounded-md border border-zinc-700/60 flex-grow p-2 overflow-auto"
+    >
       <DataSegmentList
+        @data={{this.sampleData}}
         @segments={{this.sampleSegments}}
         @highlightedSegment={{this.highlightedSegment}}
-        @hoveredSegment={{this.hoveredSegment}}
         @onSegmentSelect={{this.handleSegmentSelected}}
-        @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-        @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+        @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "structure"}}
+        @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "structure"}}
       />
     </div>
   </div>
   <div class="w-full flex flex-col items-stretch min-h-0">
     <h2 class="mb-2 text-lg font-medium text-white">Raw</h2>
-    <div class="w-full rounded-md border border-zinc-700/60 flex-grow overflow-auto">
+    <div
+      class="w-full rounded-md border border-zinc-700/60 flex-grow overflow-auto"
+    >
       <HexPreview
+        @section="raw"
         @data={{this.sampleData}}
         @segments={{this.sampleSegments}}
         @highlightedSegment={{this.highlightedSegment}}
-        @hoveredSegment={{this.hoveredSegment}}
         @onSegmentSelect={{this.handleSegmentSelected}}
-        @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-        @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+        @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
+        @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
       />
     </div>
   </div>

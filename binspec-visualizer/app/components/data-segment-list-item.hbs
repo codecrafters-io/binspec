@@ -18,14 +18,28 @@
     </div>
   </div>
 
+  {{#if (segment-eq @segment @highlightedSegment)}}
+    <HexPreview
+      @section="structure"
+      @data={{@data}}
+      @startByteIndex={{@segment.startByteIndex}}
+      @endByteIndex={{@segment.endByteIndex}}
+      @segments={{@segment.children}}
+      @highlightedSegment={{undefined}}
+      @onSegmentSelect={{@onSegmentSelect}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+    />
+  {{/if}}
+
   {{#if @segment.children}}
     <div class="pl-4 flex flex-col gap-4 py-4">
       {{#each @segment.children as |child|}}
         <DataSegmentListItem
+          @data={{@data}}
           @segment={{child}}
           @isExpanded={{segment-eq child @highlightedSegment}}
           @highlightedSegment={{@highlightedSegment}}
-          @hoveredSegment={{@hoveredSegment}}
           @onSegmentSelect={{@onSegmentSelect}}
           @onSegmentMouseEnter={{@onSegmentMouseEnter}}
           @onSegmentMouseLeave={{@onSegmentMouseLeave}}

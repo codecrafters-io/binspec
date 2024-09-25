@@ -1,12 +1,13 @@
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
     index: number;
     rawValue: number;
     highlightedSegment?: DataSegment;
-    hoveredSegment?: DataSegment;
     leafSegment?: DataSegment;
   };
 
@@ -18,6 +19,8 @@ type Signature = {
 };
 
 export default class BytePreview extends Component<Signature> {
+  @service declare hoverState: HoverStateService;
+
   get asciiString(): string {
     if (this.args.rawValue === 32) {
       return '.';
@@ -39,9 +42,7 @@ export default class BytePreview extends Component<Signature> {
   }
 
   get isInHoveredSegment(): boolean {
-    return (
-      this.args.hoveredSegment?.containsByteIndex(this.args.index) ?? false
-    );
+    return this.hoverState.segment?.containsByteIndex(this.args.index) ?? false;
   }
 
   get backgroundColorClasses(): string {
@@ -58,9 +59,9 @@ export default class BytePreview extends Component<Signature> {
     if (this.isInHighlightedSegment) {
       return 'text-yellow-500';
     } else if (this.isInHoveredSegment) {
-      return 'text-zinc-400/40';
+      return 'text-zinc-400';
     } else {
-      return 'text-zinc-500/40';
+      return 'text-zinc-500/60';
     }
   }
 
@@ -68,9 +69,9 @@ export default class BytePreview extends Component<Signature> {
     if (this.isInHighlightedSegment) {
       return 'text-yellow-300';
     } else if (this.isInHoveredSegment) {
-      return 'text-zinc-400';
+      return 'text-zinc-300';
     } else {
-      return 'text-zinc-500/40';
+      return 'text-zinc-500/80';
     }
   }
 }

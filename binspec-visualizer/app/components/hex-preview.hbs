@@ -1,36 +1,32 @@
 <div class="flex flex-wrap p-2">
-  {{#each this.bytePreviewParamsList as |bytePreviewParams|}}
+  {{#each this.bytePreviewParamsList as |params|}}
     {{! template-lint-disable require-presentational-children }}
     <HexPreview::BytePreview
-      @index={{bytePreviewParams.byteIndex}}
-      @rawValue={{bytePreviewParams.rawValue}}
+      @index={{params.byteIndex}}
+      @rawValue={{params.rawValue}}
       @highlightedSegment={{@highlightedSegment}}
-      @hoveredSegment={{@hoveredSegment}}
-      @leafSegment={{bytePreviewParams.leafSegment}}
-      {{on
-        "click"
-        (fn this.handleBytePreviewClick bytePreviewParams.leafSegment)
-      }}
+      @leafSegment={{params.leafSegment}}
+      {{on "click" (fn this.handleBytePreviewClick params.leafSegment)}}
       {{on
         "mouseenter"
-        (fn this.handleBytePreviewMouseEnter bytePreviewParams.leafSegment)
+        (fn this.handleBytePreviewMouseEnter params.leafSegment)
       }}
       {{on
         "mouseleave"
-        (fn this.handleBytePreviewMouseLeave bytePreviewParams.leafSegment)
+        (fn this.handleBytePreviewMouseLeave params.leafSegment)
       }}
       role="button"
     >
-      {{#if
-        (eq this.segmentForTooltip.startByteIndex bytePreviewParams.byteIndex)
-      }}
+      {{#if (eq this.segmentForTooltip.startByteIndex params.byteIndex)}}
         <EmberPopover
           @isShown={{true}}
           @event="none"
           @tooltipClass="bg-zinc-800 border-zinc-600/80 text-white px-4 py-3 max-w-[300px]"
           @effect="none"
         >
-          <div class="mb-3 border-b border-zinc-700/40 pb-1 font-medium text-white">
+          <div
+            class="mb-3 border-b border-zinc-700/40 pb-1 font-medium text-white"
+          >
             {{this.segmentForTooltip.titleForDisplay}}
           </div>
 

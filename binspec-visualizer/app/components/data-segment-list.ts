@@ -3,9 +3,9 @@ import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
 
 type Signature = {
   Args: {
+    data: Uint8Array;
     segments: DataSegment[];
     highlightedSegment?: DataSegment;
-    hoveredSegment?: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
     onSegmentMouseEnter: (segment: DataSegment) => void;
     onSegmentMouseLeave: (segment: DataSegment) => void;

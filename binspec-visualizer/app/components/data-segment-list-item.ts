@@ -1,12 +1,14 @@
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
+    data: Uint8Array;
     isExpanded: boolean;
     segment: DataSegment;
     highlightedSegment?: DataSegment;
-    hoveredSegment?: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
     onSegmentMouseEnter: (segment: DataSegment) => void;
     onSegmentMouseLeave: (segment: DataSegment) => void;
@@ -16,17 +18,14 @@ type Signature = {
 };
 
 export default class DataSegmentListItem extends Component<Signature> {
+  @service declare hoverState: HoverStateService;
+
   get isHighlightedSegment(): boolean {
     return this.args.highlightedSegment?.equals(this.args.segment) ?? false;
   }
 
   get isHoveredSegment(): boolean {
-    console.log(
-      'isHoveredSegment',
-      this.args.hoveredSegment?.equals(this.args.segment),
-    );
-
-    return this.args.hoveredSegment?.equals(this.args.segment) || false;
+    return this.hoverState.segment?.equals(this.args.segment) ?? false;
   }
 
   get titleTextColorClasses(): string {

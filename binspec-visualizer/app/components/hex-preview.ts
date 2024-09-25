@@ -1,16 +1,20 @@
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
     data: Uint8Array;
-    segments: DataSegment[];
+    endByteIndex?: number; // defaults to data.length
     highlightedSegment?: DataSegment;
-    hoveredSegment?: DataSegment;
-    onSegmentSelect: (segment: DataSegment) => void;
     onSegmentMouseEnter: (segment: DataSegment) => void;
     onSegmentMouseLeave: (segment: DataSegment) => void;
+    onSegmentSelect: (segment: DataSegment) => void;
+    section: 'structure' | 'raw';
+    segments: DataSegment[];
+    startByteIndex?: number; // defaults to 0
   };
 
   Element: HTMLDivElement;
@@ -23,23 +27,42 @@ type BytePreviewParams = {
 };
 
 export default class HexPreview extends Component<Signature> {
+  @service declare hoverState: HoverStateService;
+
   get bytePreviewParamsList(): BytePreviewParams[] {
-    return Array.from(this.args.data).map((byte, index) => {
-      return {
-        byteIndex: index,
-        rawValue: byte,
-        leafSegment: this.args.segments
-          .flatMap((segment) => segment.leafSegments)
-          .find(
-            (segment) =>
-              segment.children.length === 0 && segment.containsByteIndex(index),
-          ),
-      };
-    });
+    const startByteIndex = this.args.startByteIndex ?? 0;
+    const endByteIndex = this.args.endByteIndex ?? this.args.data.length - 1;
+
+    const result = [];
+
+    for (let i = startByteIndex; i <= endByteIndex; i++) {
+      const leafSegment = this.args.segments
+        .flatMap((segment) => segment.leafSegments)
+        .find(
+          (segment) =>
+            segment.children.length === 0 && segment.containsByteIndex(i),
+        );
+
+      result.push({
+        byteIndex: i,
+        rawValue: this.args.data[i]!,
+        leafSegment: leafSegment,
+      });
+    }
+
+    return result;
   }
 
   get segmentForTooltip(): DataSegment | undefined {
-    return this.args.hoveredSegment;
+    if (this.args.section === 'structure') {
+      return undefined; // Don't show for structure now
+    }
+
+    if (this.hoverState.initiatedFromSection === this.args.section) {
+      return this.hoverState.segment;
+    }
+
+    return undefined;
   }
 
   @action
