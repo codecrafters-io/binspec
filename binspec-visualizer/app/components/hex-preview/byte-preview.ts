@@ -46,7 +46,9 @@ export default class BytePreview extends Component<Signature> {
   }
 
   get backgroundColorClasses(): string {
-    if (this.isInHoveredSegment) {
+    if (this.isInHighlightedSegment && this.isInHoveredSegment) {
+      return 'bg-blue-400/30';
+    } else if (this.isInHoveredSegment) {
       return 'bg-blue-400/15';
     } else if (this.isInHighlightedSegment) {
       return 'bg-zinc-700/60';

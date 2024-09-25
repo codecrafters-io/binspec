@@ -7,6 +7,14 @@ export default class HoverStateService extends Service {
   @tracked initiatedFromSection?: 'structure' | 'raw';
 
   setSegment(segment: DataSegment, initiatedFromSection: 'structure' | 'raw') {
+    // Force no update
+    if (
+      this.segment?.equals(segment) &&
+      this.initiatedFromSection === initiatedFromSection
+    ) {
+      return;
+    }
+
     this.segment = segment;
     this.initiatedFromSection = initiatedFromSection;
   }

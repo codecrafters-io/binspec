@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import { DataSegment } from 'binspec-visualizer/lib/data-segment';
 import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
@@ -29,6 +29,10 @@ type BytePreviewParams = {
 export default class HexPreview extends Component<Signature> {
   @service declare hoverState: HoverStateService;
 
+  get leafSegments(): DataSegment[] {
+    return this.args.segments.flatMap((segment) => segment.leafSegments);
+  }
+
   get bytePreviewParamsList(): BytePreviewParams[] {
     const startByteIndex = this.args.startByteIndex ?? 0;
     const endByteIndex = this.args.endByteIndex ?? this.args.data.length - 1;
@@ -36,17 +40,10 @@ export default class HexPreview extends Component<Signature> {
     const result = [];
 
     for (let i = startByteIndex; i <= endByteIndex; i++) {
-      const leafSegment = this.args.segments
-        .flatMap((segment) => segment.leafSegments)
-        .find(
-          (segment) =>
-            segment.children.length === 0 && segment.containsByteIndex(i),
-        );
-
       result.push({
         byteIndex: i,
         rawValue: this.args.data[i]!,
-        leafSegment: leafSegment,
+        leafSegment: this.leafSegmentForByteIndex(i),
       });
     }
 
@@ -54,35 +51,91 @@ export default class HexPreview extends Component<Signature> {
   }
 
   get segmentForTooltip(): DataSegment | undefined {
-    if (this.args.section === 'structure') {
+    if (!this.hoverState.segment) {
+      return undefined;
+    }
+
+    if (
+      this.args.section === 'structure' ||
+      this.hoverState.initiatedFromSection === 'structure'
+    ) {
       return undefined; // Don't show for structure now
     }
 
-    if (this.hoverState.initiatedFromSection === this.args.section) {
+    if (this.hoverState.segment.title) {
       return this.hoverState.segment;
+    }
+
+    if (this.args.highlightedSegment?.contains(this.hoverState.segment)) {
+      return this.args.highlightedSegment;
     }
 
     return undefined;
   }
 
+  leafSegmentForByteIndex(byteIndex: number): DataSegment | undefined {
+    return this.leafSegments.find((segment) =>
+      segment.containsByteIndex(byteIndex),
+    );
+  }
+
+  hoverableSegmentForByteIndex(byteIndex: number): DataSegment | undefined {
+    const highlightedSegment = this.args.highlightedSegment;
+
+    // If there's no highlighted segment, we'll use the root segments
+    if (!highlightedSegment) {
+      return this.args.segments.find((segment) =>
+        segment.containsByteIndex(byteIndex),
+      );
+    }
+
+    // If the highlighted segment contains the byte index, we'll use its children
+    // Otherwise, we'll try to find a sibling segment
+    return highlightedSegment.findChildOrSiblingOrAncestorContainingByteIndex(
+      byteIndex,
+    );
+  }
+
   @action
-  handleBytePreviewClick(segment: DataSegment | undefined) {
+  handleBytePreviewClick(byteIndex: number) {
+    const segment = this.hoverableSegmentForByteIndex(byteIndex);
+
     if (segment) {
       this.args.onSegmentSelect(segment);
     }
   }
 
   @action
-  handleBytePreviewMouseEnter(segment: DataSegment | undefined) {
+  handleBytePreviewMouseEnter(byteIndex: number) {
+    const segment = this.hoverableSegmentForByteIndex(byteIndex);
+
     if (segment) {
       this.args.onSegmentMouseEnter(segment);
+    } else {
+      this.args.onSegmentMouseEnter(
+        new DataSegment({
+          startBitIndex: byteIndex * 8,
+          endBitIndex: byteIndex * 8 + 7,
+          children: [],
+        }),
+      );
     }
   }
 
   @action
-  handleBytePreviewMouseLeave(segment: DataSegment | undefined) {
+  handleBytePreviewMouseLeave(byteIndex: number) {
+    const segment = this.hoverableSegmentForByteIndex(byteIndex);
+
     if (segment) {
       this.args.onSegmentMouseLeave(segment);
+    } else {
+      this.args.onSegmentMouseLeave(
+        new DataSegment({
+          startBitIndex: byteIndex * 8,
+          endBitIndex: byteIndex * 8 + 7,
+          children: [],
+        }),
+      );
     }
   }
 }

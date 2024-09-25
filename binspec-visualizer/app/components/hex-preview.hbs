@@ -6,15 +6,9 @@
       @rawValue={{params.rawValue}}
       @highlightedSegment={{@highlightedSegment}}
       @leafSegment={{params.leafSegment}}
-      {{on "click" (fn this.handleBytePreviewClick params.leafSegment)}}
-      {{on
-        "mouseenter"
-        (fn this.handleBytePreviewMouseEnter params.leafSegment)
-      }}
-      {{on
-        "mouseleave"
-        (fn this.handleBytePreviewMouseLeave params.leafSegment)
-      }}
+      {{on "click" (fn this.handleBytePreviewClick params.byteIndex)}}
+      {{on "mouseenter" (fn this.handleBytePreviewMouseEnter params.byteIndex)}}
+      {{on "mouseleave" (fn this.handleBytePreviewMouseLeave params.byteIndex)}}
       role="button"
     >
       {{#if (eq this.segmentForTooltip.startByteIndex params.byteIndex)}}
