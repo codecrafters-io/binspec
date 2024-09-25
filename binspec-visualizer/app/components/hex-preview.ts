@@ -6,7 +6,7 @@ type Signature = {
   Args: {
     data: Uint8Array;
     highlightedSegment?: DataSegment;
-    onSelectSegment: (segment: DataSegment) => void;
+    onSegmentSelect: (segment: DataSegment) => void;
   };
 
   Element: HTMLDivElement;

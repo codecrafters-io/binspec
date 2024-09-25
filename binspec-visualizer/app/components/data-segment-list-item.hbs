@@ -2,7 +2,7 @@
   <div
     class="cursor-pointer hover:bg-zinc-700/60"
     role="button"
-    {{on "click" (fn @onSelectSegment @segment)}}
+    {{on "click" (fn @onSegmentSelect @segment)}}
   >
     <h2
       class="mb-2 text-lg font-medium
@@ -27,7 +27,7 @@
           @segment={{child}}
           @isExpanded={{false}}
           @highlightedSegment={{@highlightedSegment}}
-          @onSelectSegment={{@onSelectSegment}}
+          @onSegmentSelect={{@onSegmentSelect}}
         />
       {{/each}}
     </div>

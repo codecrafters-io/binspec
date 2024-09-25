@@ -6,7 +6,7 @@ type Signature = {
     isExpanded: boolean;
     segment: DataSegment;
     highlightedSegment?: DataSegment;
-    onSelectSegment: (segment: DataSegment) => void;
+    onSegmentSelect: (segment: DataSegment) => void;
   };
 
   Element: HTMLDivElement;
