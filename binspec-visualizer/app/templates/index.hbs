@@ -1,28 +1,26 @@
-<div class="container mx-auto py-8 flex flex-grow items-stretch">
-  <div class="grid grid-cols-2 gap-4">
-    <div class="flex flex-col items-stretch">
-      <h2 class="mb-2 text-lg font-medium text-white">Structure</h2>
-      <div class="w-full rounded-md border border-zinc-700/60 flex-grow p-2">
-        <DataSegmentList
-          @segments={{this.sampleSegments}}
-          @highlightedSegment={{this.highlightedSegment}}
-          @hoveredSegment={{this.hoveredSegment}}
-          @onSegmentSelect={{this.handleSegmentSelected}}
-          @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-          @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
-        />
-      </div>
+<div class="container mx-auto py-8 flex gap-4 min-h-0">
+  <div class="w-full flex flex-col items-stretch min-h-0">
+    <h2 class="mb-2 text-lg font-medium text-white">Structure</h2>
+    <div class="w-full rounded-md border border-zinc-700/60 flex-grow p-2 overflow-auto">
+      <DataSegmentList
+        @segments={{this.sampleSegments}}
+        @highlightedSegment={{this.highlightedSegment}}
+        @hoveredSegment={{this.hoveredSegment}}
+        @onSegmentSelect={{this.handleSegmentSelected}}
+        @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+        @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+      />
     </div>
-    <div class="flex flex-col items-stretch">
-      <h2 class="mb-2 text-lg font-medium text-white">Raw</h2>
-      <div class="w-full rounded-md border border-zinc-700/60 flex-grow">
-        <HexPreview
-          @data={{this.sampleData}}
-          @highlightedSegment={{this.highlightedSegment}}
-          @hoveredSegment={{this.hoveredSegment}}
-          @onSegmentSelect={{this.handleSegmentSelected}}
-        />
-      </div>
+  </div>
+  <div class="w-full flex flex-col items-stretch min-h-0">
+    <h2 class="mb-2 text-lg font-medium text-white">Raw</h2>
+    <div class="w-full rounded-md border border-zinc-700/60 flex-grow overflow-auto">
+      <HexPreview
+        @data={{this.sampleData}}
+        @highlightedSegment={{this.highlightedSegment}}
+        @hoveredSegment={{this.hoveredSegment}}
+        @onSegmentSelect={{this.handleSegmentSelected}}
+      />
     </div>
   </div>
 </div>
