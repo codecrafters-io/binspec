@@ -7,6 +7,7 @@ type Signature = {
     rawValue: number;
     highlightedSegment?: DataSegment;
     hoveredSegment?: DataSegment;
+    leafSegment?: DataSegment;
   };
 
   Element: HTMLDivElement;

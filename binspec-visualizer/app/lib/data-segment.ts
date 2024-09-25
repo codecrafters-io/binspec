@@ -37,6 +37,14 @@ export class DataSegment {
     );
   }
 
+  get leafSegments(): DataSegment[] {
+    if (this.children.length === 0) {
+      return [this];
+    }
+
+    return this.children.flatMap((child) => child.leafSegments);
+  }
+
   get titleForDisplay(): string {
     return (
       this.title ?? `Byte ${this.startBitIndex / 8} - ${this.endBitIndex / 8}`

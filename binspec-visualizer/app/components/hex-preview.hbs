@@ -1,10 +1,24 @@
 <div class="flex flex-wrap p-2">
-  {{#each this.bytes as |byte index|}}
+  {{#each this.bytePreviewParamsList as |bytePreviewParams|}}
     <HexPreview::BytePreview
-      @index={{index}}
-      @rawValue={{byte}}
+      @index={{bytePreviewParams.byteIndex}}
+      @rawValue={{bytePreviewParams.rawValue}}
       @highlightedSegment={{@highlightedSegment}}
       @hoveredSegment={{@hoveredSegment}}
+      @leafSegment={{bytePreviewParams.leafSegment}}
+      {{on
+        "click"
+        (fn this.handleBytePreviewClick bytePreviewParams.leafSegment)
+      }}
+      {{on
+        "mouseenter"
+        (fn this.handleBytePreviewMouseEnter bytePreviewParams.leafSegment)
+      }}
+      {{on
+        "mouseleave"
+        (fn this.handleBytePreviewMouseLeave bytePreviewParams.leafSegment)
+      }}
+      role="button"
     />
   {{/each}}
 </div>
