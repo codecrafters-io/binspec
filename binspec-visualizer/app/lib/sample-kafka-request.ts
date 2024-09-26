@@ -97,21 +97,31 @@ export default class SampleKafkaRequest {
                 explanationMarkdown:
                   'The Correlation ID is a 4-byte integer used to correlate requests and responses between client and server. Here, it is 0x00000007 (7).',
               }),
-              // Client ID Length
-              new DataSegment({
-                startBitIndex: 96,
-                endBitIndex: 111,
-                title: 'Client ID Length',
-                explanationMarkdown:
-                  'The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0009 (9).',
-              }),
               // Client ID
               new DataSegment({
-                startBitIndex: 112,
+                startBitIndex: 96,
                 endBitIndex: 183,
                 title: 'Client ID',
                 explanationMarkdown:
-                  'The Client ID is a variable-length string identifying the client. In this case, it is "kafka-cli" encoded in UTF-8.',
+                  'The Client ID consists of a 2-byte length field followed by the actual Client ID string.',
+                children: [
+                  // Client ID Length
+                  new DataSegment({
+                    startBitIndex: 96,
+                    endBitIndex: 111,
+                    title: 'Client ID Length',
+                    explanationMarkdown:
+                      'The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0009 (9).',
+                  }),
+                  // Client ID String
+                  new DataSegment({
+                    startBitIndex: 112,
+                    endBitIndex: 183,
+                    title: 'Client ID String',
+                    explanationMarkdown:
+                      'The Client ID is a variable-length string identifying the client. In this case, it is "kafka-cli" encoded in UTF-8.',
+                  }),
+                ],
               }),
             ],
           }),
