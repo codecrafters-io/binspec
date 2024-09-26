@@ -141,37 +141,57 @@ export default class SampleKafkaRequest {
                 explanationMarkdown:
                   'An empty tagged field array, represented by a single byte of value 0x00.',
               }),
-              // Client ID Length (Compact String)
-              new DataSegment({
-                startBitIndex: 192,
-                endBitIndex: 199,
-                title: 'Client ID Length (Compact String)',
-                explanationMarkdown:
-                  'The length of the Client ID compact string, represented as a single byte. Here, it is 0x0A (10).',
-              }),
               // Client ID
               new DataSegment({
-                startBitIndex: 200,
+                startBitIndex: 192,
                 endBitIndex: 271,
                 title: 'Client ID',
                 explanationMarkdown:
-                  'The Client ID in the body, represented as a compact string. In this case, it is "kafka-cli" encoded in UTF-8.',
-              }),
-              // Client Software Version Length (Compact String)
-              new DataSegment({
-                startBitIndex: 272,
-                endBitIndex: 279,
-                title: 'Client Software Version Length (Compact String)',
-                explanationMarkdown:
-                  'The length of the Client Software Version compact string, represented as a single byte. Here, it is 0x04 (4).',
+                  'The Client ID in the body, represented as a compact string.',
+                children: [
+                  // Client ID Length (Compact String)
+                  new DataSegment({
+                    startBitIndex: 192,
+                    endBitIndex: 199,
+                    title: 'Client ID Length',
+                    explanationMarkdown:
+                      'The length of the Client ID compact string, represented as a single byte. Here, it is 0x0A (10).',
+                  }),
+                  // Client ID String
+                  new DataSegment({
+                    startBitIndex: 200,
+                    endBitIndex: 271,
+                    title: 'Client ID String',
+                    explanationMarkdown:
+                      'The actual Client ID string. In this case, it is "kafka-cli" encoded in UTF-8.',
+                  }),
+                ],
               }),
               // Client Software Version
               new DataSegment({
-                startBitIndex: 280,
+                startBitIndex: 272,
                 endBitIndex: 303,
                 title: 'Client Software Version',
                 explanationMarkdown:
-                  'The Client Software Version, represented as a compact string. In this case, it is "0.1" encoded in UTF-8.',
+                  'The Client Software Version, represented as a compact string.',
+                children: [
+                  // Client Software Version Length (Compact String)
+                  new DataSegment({
+                    startBitIndex: 272,
+                    endBitIndex: 279,
+                    title: 'Length',
+                    explanationMarkdown:
+                      'The length of the Client Software Version compact string, represented as a single byte. Here, it is 0x04 (4).',
+                  }),
+                  // Client Software Version String
+                  new DataSegment({
+                    startBitIndex: 280,
+                    endBitIndex: 303,
+                    title: 'Version String',
+                    explanationMarkdown:
+                      'The actual Client Software Version string. In this case, it is "0.1" encoded in UTF-8.',
+                  }),
+                ],
               }),
               // Empty tagged field array
               new DataSegment({
