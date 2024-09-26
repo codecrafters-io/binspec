@@ -30,6 +30,23 @@ export class DataSegment {
     }
   }
 
+  get ancestors(): DataSegment[] {
+    const ancestors: DataSegment[] = [];
+
+    let currentParent = this.parent;
+
+    while (currentParent) {
+      ancestors.push(currentParent);
+      currentParent = currentParent.parent;
+    }
+
+    return ancestors;
+  }
+
+  get ancestorsReversed(): DataSegment[] {
+    return this.ancestors.reverse();
+  }
+
   contains(other: DataSegment): boolean {
     return (
       this.startBitIndex <= other.startBitIndex &&
