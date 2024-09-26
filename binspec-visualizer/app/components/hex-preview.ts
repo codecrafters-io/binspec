@@ -50,17 +50,6 @@ export default class HexPreview extends Component<Signature> {
     return result;
   }
 
-  get popperOptions() {
-    console.log(document.getElementById('raw-container'));
-    return {
-      modifiers: {
-        preventOverflow: {
-          boundariesElement: document.getElementById('raw-container')!,
-        },
-      },
-    };
-  }
-
   get segmentForTooltip(): DataSegment | undefined {
     if (!this.hoverState.segment) {
       return undefined;
