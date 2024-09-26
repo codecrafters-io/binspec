@@ -19,7 +19,7 @@
     <div
       class="rounded-md border border-zinc-700/60 flex-grow overflow-auto p-2"
       id="raw-container"
-      {{click-outside (fn this.handleClickOutside)}}
+      {{click-outside this.handleClickOutside}}
     >
       <HexPreview
         @section="raw"
@@ -30,6 +30,18 @@
         @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
         @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
       />
+
+      {{#if this.highlightedSegment}}
+        <div class="rounded-md border border-zinc-700/60 p-2 w-full mt-2">
+          <DataSegmentDetails
+            @data={{this.sampleData}}
+            @segment={{this.highlightedSegment}}
+            @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
+            @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
+            @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
+          />
+        </div>
+      {{/if}}
     </div>
   </div>
 </div>
