@@ -11,25 +11,10 @@
       {{on "mouseleave" (fn this.handleBytePreviewMouseLeave params.byteIndex)}}
       role="button"
     >
-      {{#if (eq this.segmentForTooltip.startByteIndex params.byteIndex)}}
-        <EmberPopover
-          @isShown={{true}}
-          @event="none"
-          @tooltipClass="bg-zinc-800 border-zinc-600/80 text-white px-4 py-3 max-w-[300px]"
-          @effect="none"
-        >
-          <div
-            class="mb-3 border-b border-zinc-700/40 pb-1 font-medium text-white"
-          >
-            {{this.segmentForTooltip.titleForDisplay}}
-          </div>
-
-          {{#if this.segmentForTooltip.explanationMarkdown}}
-            <div class="prose prose-invert prose-sm">
-              {{markdown-to-html this.segmentForTooltip.explanationMarkdown}}
-            </div>
-          {{/if}}
-        </EmberPopover>
+      {{#if this.segmentForTooltip}}
+        {{#if (eq this.segmentForTooltip.startByteIndex params.byteIndex)}}
+          <HexPreview::SegmentTooltip @segment={{this.segmentForTooltip}} />
+        {{/if}}
       {{/if}}
     </HexPreview::BytePreview>
   {{/each}}
