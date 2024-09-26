@@ -1,5 +1,5 @@
-<div class="grid grid-cols-16" ...attributes>
-  {{#each this.byteLines as |line lineIndex|}}
+<div class="grid grid-cols-16 w-[640px]" ...attributes>
+  {{#each this.byteLines as |line|}}
     {{#each line.items as |item|}}
       {{! template-lint-disable require-presentational-children }}
       <HexPreview::BytePreview
