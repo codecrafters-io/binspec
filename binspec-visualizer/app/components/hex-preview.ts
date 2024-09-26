@@ -6,6 +6,7 @@ import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
+    byteIndexForInterstitial?: number;
     data: Uint8Array;
     endByteIndex?: number; // defaults to data.length
     highlightedSegment?: DataSegment;
@@ -18,9 +19,19 @@ type Signature = {
   };
 
   Element: HTMLDivElement;
+
+  Blocks: {
+    interstitial?: [];
+  };
 };
 
-type BytePreviewParams = {
+type ByteLine = {
+  items: ByteLineItem[];
+  startByteIndex: number;
+  endByteIndex: number;
+};
+
+type ByteLineItem = {
   byteIndex: number;
   rawValue: number;
   leafSegment?: DataSegment;
@@ -33,21 +44,35 @@ export default class HexPreview extends Component<Signature> {
     return this.args.segments.flatMap((segment) => segment.leafSegments);
   }
 
-  get bytePreviewParamsList(): BytePreviewParams[] {
+  get byteLines(): ByteLine[] {
     const startByteIndex = this.args.startByteIndex ?? 0;
     const endByteIndex = this.args.endByteIndex ?? this.args.data.length - 1;
 
-    const result = [];
+    const lines: ByteLine[] = [];
+    let currentLineItems: ByteLineItem[] = [];
 
     for (let i = startByteIndex; i <= endByteIndex; i++) {
-      result.push({
+      const item: ByteLineItem = {
         byteIndex: i,
         rawValue: this.args.data[i]!,
         leafSegment: this.leafSegmentForByteIndex(i),
-      });
+      };
+
+      currentLineItems.push(item);
+
+      if (currentLineItems.length === 16 || i === endByteIndex) {
+        lines.push({
+          items: currentLineItems,
+          startByteIndex: currentLineItems[0]?.byteIndex || 0,
+          endByteIndex:
+            currentLineItems[currentLineItems.length - 1]?.byteIndex || 0,
+        });
+
+        currentLineItems = [];
+      }
     }
 
-    return result;
+    return lines;
   }
 
   get segmentForTooltip(): DataSegment | undefined {

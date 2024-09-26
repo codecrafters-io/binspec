@@ -23,15 +23,30 @@
     >
       <HexPreview
         @section="raw"
+        @byteIndexForInterstitial={{if this.highlightedSegment this.highlightedSegment.startByteIndex 0}}
         @data={{this.sampleData}}
         @segments={{this.sampleSegments}}
         @highlightedSegment={{this.highlightedSegment}}
         @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
         @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
         @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
-      />
+      >
+        <:interstitial>
+          {{#if this.highlightedSegment}}
+            <div class="rounded-md border border-zinc-700/60 p-3 w-full my-2">
+              <DataSegmentDetails
+                @data={{this.sampleData}}
+                @segment={{this.highlightedSegment}}
+                @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
+                @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
+                @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
+              />
+            </div>
+          {{/if}}
+        </:interstitial>
+      </HexPreview>
 
-      {{#if this.highlightedSegment}}
+      {{!-- {{#if this.highlightedSegment}}
         <div class="rounded-md border border-zinc-700/60 p-3 w-full mt-2">
           <DataSegmentDetails
             @data={{this.sampleData}}
@@ -41,7 +56,7 @@
             @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
           />
         </div>
-      {{/if}}
+      {{/if}} --}}
     </div>
   </div>
 </div>
