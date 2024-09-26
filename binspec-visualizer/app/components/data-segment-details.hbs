@@ -13,12 +13,6 @@
     {{@segment.titleForDisplay}}
   </div>
 
-  {{#if @segment.explanationMarkdown}}
-    <div class="prose prose-invert prose-sm mt-2">
-      {{markdown-to-html @segment.explanationMarkdown}}
-    </div>
-  {{/if}}
-
   {{#if (gt @segment.children.length 0)}}
     <DataSegmentDetails::Children
       class="mt-2"
@@ -27,5 +21,11 @@
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
       @onSegmentMouseLeave={{@onSegmentMouseLeave}}
     />
+  {{/if}}
+
+  {{#if @segment.explanationMarkdown}}
+    <div class="prose prose-invert prose-sm mt-2">
+      {{markdown-to-html @segment.explanationMarkdown}}
+    </div>
   {{/if}}
 </div>
