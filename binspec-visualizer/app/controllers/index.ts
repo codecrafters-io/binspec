@@ -22,6 +22,7 @@ export default class IndexController extends Controller {
 
   @action
   handleClickOutside() {
+    console.log('click outside triggered');
     this.hoverState.clear();
     this.highlightedSegment = undefined;
   }
@@ -43,6 +44,7 @@ export default class IndexController extends Controller {
 
   @action
   handleSegmentSelected(section: 'structure' | 'raw', segment: DataSegment) {
+    console.log('setting segment', segment.titleForDisplay);
     this.highlightedSegment = segment;
     this.hoverState.clear();
   }

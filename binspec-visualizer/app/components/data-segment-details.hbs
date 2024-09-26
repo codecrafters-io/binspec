@@ -8,4 +8,29 @@
       {{markdown-to-html @segment.explanationMarkdown}}
     </div>
   {{/if}}
+
+  {{#if (gt @segment.children.length 0)}}
+    <div class="mt-2">
+      <span class="text-sm text-gray-100">
+        Contains:
+      </span>
+
+      {{#each @segment.children as |child|}}
+        <span
+          class="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset
+            {{if
+              (segment-eq child this.hoveredSegment)
+              'ring-blue-400/20 bg-blue-400/10 text-blue-400'
+              'ring-gray-400/20 bg-gray-400/10 text-gray-400'
+            }}"
+          role="button"
+          {{on "click" (fn @onSegmentSelect child)}}
+          {{on "mouseenter" (fn @onSegmentMouseEnter child)}}
+          {{on "mouseleave" (fn @onSegmentMouseLeave child)}}
+        >
+          {{child.titleForDisplay}}
+        </span>
+      {{/each}}
+    </div>
+  {{/if}}
 </div>

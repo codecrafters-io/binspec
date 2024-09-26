@@ -1,5 +1,7 @@
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
+import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
@@ -12,6 +14,12 @@ type Signature = {
 };
 
 export default class DataSegmentDetails extends Component<Signature> {
+  @service declare hoverState: HoverStateService;
+
+  get hoveredSegment(): DataSegment | undefined {
+    return this.hoverState.segment;
+  }
+
   get titleTextColorClasses(): string {
     return 'text-yellow-300';
   }

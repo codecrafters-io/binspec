@@ -91,10 +91,6 @@ export default class HexPreview extends Component<Signature> {
       return this.hoverState.segment;
     }
 
-    if (this.args.highlightedSegment?.contains(this.hoverState.segment)) {
-      return this.args.highlightedSegment;
-    }
-
     return undefined;
   }
 

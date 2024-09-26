@@ -16,14 +16,22 @@
   </div> --}}
   <div class="flex flex-col items-center min-h-0 justify-stretch">
     <h2 class="mb-4 text-2xl font-medium text-white">SQLite File Format</h2>
+    {{!-- <div class="text-white">
+      Selected:
+      {{this.highlightedSegment.titleForDisplay}}
+    </div> --}}
     <div
       class="rounded-md border border-zinc-700/60 flex-grow overflow-auto p-2"
       id="raw-container"
-      {{click-outside this.handleClickOutside}}
+      {{!-- {{click-outside this.handleClickOutside}} --}}
     >
       <HexPreview
         @section="raw"
-        @byteIndexForInterstitial={{if this.highlightedSegment this.highlightedSegment.startByteIndex 0}}
+        @byteIndexForInterstitial={{if
+          this.highlightedSegment
+          this.highlightedSegment.startByteIndex
+          0
+        }}
         @data={{this.sampleData}}
         @segments={{this.sampleSegments}}
         @highlightedSegment={{this.highlightedSegment}}
@@ -37,9 +45,15 @@
               <DataSegmentDetails
                 @data={{this.sampleData}}
                 @segment={{this.highlightedSegment}}
-                @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
-                @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
-                @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
+                @onSegmentSelect={{fn this.handleSegmentSelected "structure"}}
+                @onSegmentMouseEnter={{fn
+                  this.handleSegmentMouseEnter
+                  "structure"
+                }}
+                @onSegmentMouseLeave={{fn
+                  this.handleSegmentMouseLeave
+                  "structure"
+                }}
               />
             </div>
           {{/if}}
