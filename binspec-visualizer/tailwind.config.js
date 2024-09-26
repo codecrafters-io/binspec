@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./app/**/*.{gjs,gts,hbs,html,js,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        16: 'repeat(16, minmax(0, 1fr))',
+      },
+    },
   },
   safelist: {
     greedy: [/ember-tooltip/, /ember-popover/],
