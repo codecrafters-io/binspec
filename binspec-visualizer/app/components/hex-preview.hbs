@@ -1,5 +1,6 @@
 <div class="grid grid-cols-16" ...attributes>
   {{#each this.bytePreviewParamsList as |params|}}
+    {{! template-lint-disable require-presentational-children }}
     <HexPreview::BytePreview
       @index={{params.byteIndex}}
       @rawValue={{params.rawValue}}
