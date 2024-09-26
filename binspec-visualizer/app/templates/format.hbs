@@ -1,0 +1,47 @@
+<div class="container mx-auto py-8 gap-4 min-h-0 flex-grow flex justify-center">
+  <div class="flex flex-col items-center min-h-0 justify-stretch">
+    <h2 class="mb-4 text-2xl font-medium text-white">
+      {{@model.format.name}}
+    </h2>
+    <div
+      class="rounded-md border border-zinc-700/60 flex-grow overflow-auto p-2"
+      id="raw-container"
+      {{!-- {{click-outside this.handleClickOutside}} --}}
+    >
+      <HexPreview
+        @section="raw"
+        @byteIndexForInterstitial={{if
+          this.highlightedSegment
+          this.highlightedSegment.startByteIndex
+          0
+        }}
+        @data={{this.data}}
+        @segments={{this.segments}}
+        @highlightedSegment={{this.highlightedSegment}}
+        @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
+        @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
+        @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
+      >
+        <:interstitial>
+          {{#if this.highlightedSegment}}
+            <div class="rounded-md border border-zinc-700/60 p-3 w-full my-2">
+              <DataSegmentDetails
+                @data={{this.data}}
+                @segment={{this.highlightedSegment}}
+                @onSegmentSelect={{fn this.handleSegmentSelected "structure"}}
+                @onSegmentMouseEnter={{fn
+                  this.handleSegmentMouseEnter
+                  "structure"
+                }}
+                @onSegmentMouseLeave={{fn
+                  this.handleSegmentMouseLeave
+                  "structure"
+                }}
+              />
+            </div>
+          {{/if}}
+        </:interstitial>
+      </HexPreview>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { DataSegment } from 'binspec-visualizer/lib/data-segment';
 
-export default class SampleSQLiteData {
+export default class SampleSQLiteDatabase {
   static get data(): Uint8Array {
     return new Uint8Array([
       0x53, // 'S': Magic header string

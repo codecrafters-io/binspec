@@ -15,17 +15,17 @@ export class DataSegment {
   }: {
     startBitIndex: number;
     endBitIndex: number;
-    children: DataSegment[];
+    children?: DataSegment[];
     explanationMarkdown?: string;
     title?: string;
   }) {
     this.startBitIndex = startBitIndex;
     this.endBitIndex = endBitIndex;
     this.explanationMarkdown = explanationMarkdown;
-    this.children = children;
+    this.children = children ?? [];
     this.title = title;
 
-    for (const child of children) {
+    for (const child of this.children) {
       child.parent = this;
     }
   }

@@ -1,76 +1,16 @@
 <div class="container mx-auto py-8 gap-4 min-h-0 flex-grow flex justify-center">
-  {{!-- <div class="w-1/3 flex flex-col items-stretch min-h-0">
-    <h2 class="mb-2 text-lg font-medium text-white">Structure</h2>
-    <div
-      class="w-full rounded-md border border-zinc-700/60 flex-grow p-2 overflow-auto"
-    >
-      <DataSegmentList
-        @data={{this.sampleData}}
-        @segments={{this.sampleSegments}}
-        @highlightedSegment={{this.highlightedSegment}}
-        @onSegmentSelect={{fn this.handleSegmentSelected "structure"}}
-        @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "structure"}}
-        @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "structure"}}
-      />
-    </div>
-  </div> --}}
-  <div class="flex flex-col items-center min-h-0 justify-stretch">
-    <h2 class="mb-4 text-2xl font-medium text-white">SQLite File Format</h2>
-    {{!-- <div class="text-white">
-      Selected:
-      {{this.highlightedSegment.titleForDisplay}}
-    </div> --}}
-    <div
-      class="rounded-md border border-zinc-700/60 flex-grow overflow-auto p-2"
-      id="raw-container"
-      {{!-- {{click-outside this.handleClickOutside}} --}}
-    >
-      <HexPreview
-        @section="raw"
-        @byteIndexForInterstitial={{if
-          this.highlightedSegment
-          this.highlightedSegment.startByteIndex
-          0
-        }}
-        @data={{this.sampleData}}
-        @segments={{this.sampleSegments}}
-        @highlightedSegment={{this.highlightedSegment}}
-        @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
-        @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
-        @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
-      >
-        <:interstitial>
-          {{#if this.highlightedSegment}}
-            <div class="rounded-md border border-zinc-700/60 p-3 w-full my-2">
-              <DataSegmentDetails
-                @data={{this.sampleData}}
-                @segment={{this.highlightedSegment}}
-                @onSegmentSelect={{fn this.handleSegmentSelected "structure"}}
-                @onSegmentMouseEnter={{fn
-                  this.handleSegmentMouseEnter
-                  "structure"
-                }}
-                @onSegmentMouseLeave={{fn
-                  this.handleSegmentMouseLeave
-                  "structure"
-                }}
-              />
-            </div>
-          {{/if}}
-        </:interstitial>
-      </HexPreview>
-
-      {{!-- {{#if this.highlightedSegment}}
-        <div class="rounded-md border border-zinc-700/60 p-3 w-full mt-2">
-          <DataSegmentDetails
-            @data={{this.sampleData}}
-            @segment={{this.highlightedSegment}}
-            @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
-            @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
-            @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
-          />
-        </div>
-      {{/if}} --}}
+  <div class="flex flex-col items-center min-h-0 justify-stretch py-32">
+    <div class="prose prose-invert">
+      <ul>
+        {{#each this.formats as |format|}}
+          <li>
+            <LinkTo
+              @route="format"
+              @model={{format.slug}}
+            >{{format.name}}</LinkTo>
+          </li>
+        {{/each}}
+      </ul>
     </div>
   </div>
 </div>
