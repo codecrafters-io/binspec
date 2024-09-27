@@ -145,7 +145,11 @@ export default class HexPreview extends Component<Signature> {
       highlightedSegment.findChildOrSiblingOrAncestorContainingByteIndex(
         byteIndex,
       ) ||
-      this.args.segments.find((segment) => segment.containsByteIndex(byteIndex))
+      this.args.segments.find(
+        (segment) =>
+          segment.containsByteIndex(byteIndex) &&
+          !segment.equals(highlightedSegment),
+      )
     );
   }
 
