@@ -4,6 +4,11 @@ import Component from '@glimmer/component';
 import { DataSegment } from 'binspec-visualizer/lib/data-segment';
 import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
+type TooltipParams = {
+  segment: DataSegment;
+  byteIndex: number;
+};
+
 type Signature = {
   Args: {
     byteIndexForInterstitial?: number;
@@ -92,6 +97,21 @@ export default class HexPreview extends Component<Signature> {
     }
 
     return undefined;
+  }
+
+  get tooltipParams(): TooltipParams | undefined {
+    const segmentForTooltip = this.segmentForTooltip;
+
+    if (!segmentForTooltip) {
+      return undefined;
+    }
+
+    return {
+      segment: segmentForTooltip,
+      byteIndex: Math.floor(
+        (segmentForTooltip.startByteIndex + segmentForTooltip.endByteIndex) / 2,
+      ),
+    };
   }
 
   leafSegmentForByteIndex(byteIndex: number): DataSegment | undefined {

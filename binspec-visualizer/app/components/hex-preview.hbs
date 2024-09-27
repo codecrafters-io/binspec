@@ -12,10 +12,8 @@
         {{on "mouseleave" (fn this.handleBytePreviewMouseLeave item.byteIndex)}}
         role="button"
       >
-        {{#if this.segmentForTooltip}}
-          {{#if (eq this.segmentForTooltip.startByteIndex item.byteIndex)}}
-            <HexPreview::SegmentTooltip @segment={{this.segmentForTooltip}} />
-          {{/if}}
+        {{#if (eq this.tooltipParams.byteIndex item.byteIndex)}}
+          <HexPreview::SegmentTooltip @segment={{this.tooltipParams.segment}} />
         {{/if}}
       </HexPreview::BytePreview>
     {{/each}}

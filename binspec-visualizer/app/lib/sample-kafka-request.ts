@@ -62,9 +62,9 @@ export default class SampleKafkaRequest {
       new DataSegment({
         startBitIndex: 32,
         endBitIndex: 183,
-        title: 'Request Header v2',
+        title: 'Request Header (v2)',
         explanationMarkdown:
-          'The Request Header v2 includes the API key, API version, correlation ID, and client ID.',
+          'The Request Header includes the API key, API version, correlation ID, and client ID.',
         children: [
           // API Key
           new DataSegment({
