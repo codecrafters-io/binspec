@@ -9,6 +9,7 @@ type Signature = {
     segment: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
     onSegmentMouseEnter: (
+      section: NonNullable<HoverStateService['initiatedFromSection']>,
       segment: DataSegment,
       byteIndex?: number,
       event?: MouseEvent,

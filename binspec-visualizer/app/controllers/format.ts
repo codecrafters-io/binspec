@@ -30,12 +30,12 @@ export default class FormatController extends Controller {
 
   @action
   handleSegmentMouseEnter(
-    section: 'structure' | 'raw',
+    section: NonNullable<HoverStateService['initiatedFromSection']>,
     segment: DataSegment,
     byteIndex?: number,
   ) {
-    // Don't hover if the segment is already highlighted in the structure section
-    if (section === 'structure' && this.highlightedSegment?.equals(segment)) {
+    // Don't hover if the segment is already highlighted (TODO: See if we want to filter this?)
+    if (this.highlightedSegment?.equals(segment)) {
       return;
     }
 
@@ -52,8 +52,7 @@ export default class FormatController extends Controller {
   }
 
   @action
-  handleSegmentSelected(section: 'structure' | 'raw', segment: DataSegment) {
-    console.log('setting segment', segment.titleForDisplay);
+  handleSegmentSelected(segment: DataSegment) {
     this.highlightedSegment = segment;
     this.hoverState.clear();
   }

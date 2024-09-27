@@ -17,13 +17,14 @@ type Signature = {
     endByteIndex?: number; // defaults to data.length
     highlightedSegment?: DataSegment;
     onSegmentMouseEnter: (
+      section: NonNullable<HoverStateService['initiatedFromSection']>,
       segment: DataSegment,
       byteIndex?: number,
       event?: MouseEvent,
     ) => void;
     onSegmentMouseLeave: () => void;
     onSegmentSelect: (segment: DataSegment) => void;
-    section: 'structure' | 'raw';
+    section: NonNullable<HoverStateService['initiatedFromSection']>;
     segments: DataSegment[];
     startByteIndex?: number; // defaults to 0
   };
@@ -91,11 +92,8 @@ export default class HexPreview extends Component<Signature> {
       return undefined;
     }
 
-    if (
-      this.args.section === 'structure' ||
-      this.hoverState.initiatedFromSection === 'structure'
-    ) {
-      return undefined; // Don't show for structure now
+    if (this.args.section !== this.hoverState.initiatedFromSection) {
+      return undefined;
     }
 
     if (this.hoverState.segment.title) {
@@ -167,9 +165,10 @@ export default class HexPreview extends Component<Signature> {
     const segment = this.hoverableSegmentForByteIndex(byteIndex);
 
     if (segment) {
-      this.args.onSegmentMouseEnter(segment, byteIndex);
+      this.args.onSegmentMouseEnter(this.args.section, segment, byteIndex);
     } else {
       this.args.onSegmentMouseEnter(
+        this.args.section,
         new DataSegment({
           startBitIndex: byteIndex * 8,
           endBitIndex: byteIndex * 8 + 7,

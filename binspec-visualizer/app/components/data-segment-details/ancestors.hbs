@@ -34,8 +34,8 @@
           'text-zinc-400 border-zinc-400/20'
         }}"
       {{on "click" (fn @onSegmentSelect ancestor)}}
-      {{on "mouseenter" (fn @onSegmentMouseEnter ancestor undefined)}}
-      {{on "mouseleave" (fn @onSegmentMouseLeave ancestor)}}
+      {{on "mouseenter" (fn @onSegmentMouseEnter "other" ancestor undefined)}}
+      {{on "mouseleave" (fn @onSegmentMouseLeave "other" ancestor)}}
     >
       {{ancestor.titleForDisplay}}
     </div>

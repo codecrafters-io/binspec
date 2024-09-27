@@ -8,14 +8,17 @@ import type { EmberRunTimer } from '@ember/runloop/types';
 export default class HoverStateService extends Service {
   @tracked segment?: DataSegment;
   @tracked byteIndex?: number;
-  @tracked initiatedFromSection?: 'structure' | 'raw';
+  @tracked initiatedFromSection?:
+    | 'root-hexdump'
+    | 'segment-details-hexdump'
+    | 'other';
 
   clearTask?: EmberRunTimer;
 
   setValues(
     segment: DataSegment,
     byteIndex: number,
-    initiatedFromSection: 'structure' | 'raw',
+    initiatedFromSection: 'root-hexdump' | 'segment-details-hexdump' | 'other',
   ) {
     if (this.clearTask) {
       cancel(this.clearTask);

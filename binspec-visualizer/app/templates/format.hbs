@@ -10,7 +10,7 @@
     >
       <HexPreview
         class="w-[640px]"
-        @section="raw"
+        @section="root-hexdump"
         @byteIndexForInterstitial={{if
           this.highlightedSegment
           this.highlightedSegment.endByteIndex
@@ -19,9 +19,9 @@
         @data={{this.data}}
         @segments={{this.segments}}
         @highlightedSegment={{this.highlightedSegment}}
-        @onSegmentSelect={{fn this.handleSegmentSelected "raw"}}
-        @onSegmentMouseEnter={{fn this.handleSegmentMouseEnter "raw"}}
-        @onSegmentMouseLeave={{fn this.handleSegmentMouseLeave "raw"}}
+        @onSegmentSelect={{this.handleSegmentSelected}}
+        @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+        @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
       >
         <:interstitial>
           {{#if this.highlightedSegment}}
@@ -29,15 +29,9 @@
               <DataSegmentDetails
                 @data={{this.data}}
                 @segment={{this.highlightedSegment}}
-                @onSegmentSelect={{fn this.handleSegmentSelected "structure"}}
-                @onSegmentMouseEnter={{fn
-                  this.handleSegmentMouseEnter
-                  "structure"
-                }}
-                @onSegmentMouseLeave={{fn
-                  this.handleSegmentMouseLeave
-                  "structure"
-                }}
+                @onSegmentSelect={{this.handleSegmentSelected}}
+                @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+                @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
               />
             </div>
           {{/if}}

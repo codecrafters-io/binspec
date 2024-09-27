@@ -4,7 +4,7 @@
       {{if this.isHoveredSegment 'bg-zinc-700/60'}}
       {{if this.isHighlightedSegment 'bg-zinc-700/60'}}
       "
-    {{on "mouseenter" (fn @onSegmentMouseEnter @segment undefined)}}
+    {{on "mouseenter" (fn @onSegmentMouseEnter "other" @segment undefined)}}
     {{on "mouseleave" @onSegmentMouseLeave}}
   >
     <div role="button" {{on "click" (fn @onSegmentSelect @segment)}}>
@@ -22,7 +22,7 @@
     {{#if (segment-eq @segment @highlightedSegment)}}
       <HexPreview
         class="mt-4"
-        @section="structure"
+        @section="other"
         @data={{@data}}
         @startByteIndex={{@segment.startByteIndex}}
         @endByteIndex={{@segment.endByteIndex}}
