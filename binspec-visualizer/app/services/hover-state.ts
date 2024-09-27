@@ -24,7 +24,8 @@ export default class HoverStateService extends Service {
     // Force no update
     if (
       this.segment?.equals(segment) &&
-      this.initiatedFromSection === initiatedFromSection
+      this.initiatedFromSection === initiatedFromSection &&
+      this.byteIndex === byteIndex
     ) {
       return;
     }
