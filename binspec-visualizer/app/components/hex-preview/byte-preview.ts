@@ -8,7 +8,6 @@ type Signature = {
     index: number;
     rawValue: number;
     highlightedSegment?: DataSegment;
-    leafSegment?: DataSegment;
   };
 
   Element: HTMLDivElement;

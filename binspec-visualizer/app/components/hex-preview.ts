@@ -45,7 +45,7 @@ type ByteLine = {
 type ByteLineItem = {
   byteIndex: number;
   rawValue: number;
-  leafSegment?: DataSegment;
+  isClickable: boolean;
 };
 
 export default class HexPreview extends Component<Signature> {
@@ -73,7 +73,7 @@ export default class HexPreview extends Component<Signature> {
         itemsInLine.push({
           byteIndex: i,
           rawValue: this.args.data[i]!,
-          leafSegment: this.leafSegmentForByteIndex(i),
+          isClickable: !!this.hoverableSegmentForByteIndex(i),
         });
       }
 
@@ -146,13 +146,14 @@ export default class HexPreview extends Component<Signature> {
       this.args.segments.find(
         (segment) =>
           segment.containsByteIndex(byteIndex) &&
-          !segment.equals(highlightedSegment),
+          !segment.contains(highlightedSegment),
       )
     );
   }
 
   @action
   handleBytePreviewClick(byteIndex: number) {
+    console.log('handleBytePreviewClick', byteIndex);
     const segment = this.hoverableSegmentForByteIndex(byteIndex);
 
     if (segment) {
@@ -162,6 +163,7 @@ export default class HexPreview extends Component<Signature> {
 
   @action
   handleBytePreviewMouseEnter(byteIndex: number) {
+    console.log('handleBytePreviewMouseEnter', byteIndex);
     const segment = this.hoverableSegmentForByteIndex(byteIndex);
 
     if (segment) {

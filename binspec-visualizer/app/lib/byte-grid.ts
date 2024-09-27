@@ -41,13 +41,8 @@ export class ByteGrid {
   ): CaretPosition | undefined {
     let rangeStartIndex = startIndex;
     let rangeEndIndex = endIndex;
-    console.log(
-      `startIndex: ${startIndex}, endIndex: ${endIndex}, hoverIndex: ${hoverIndex}`,
-    );
-
     if (hoverIndex !== undefined) {
       const line = this.lineForByteIndex(hoverIndex);
-      console.log('line', line);
 
       const clamp = (value: number, min: number, max: number) => {
         return Math.min(Math.max(value, min), max);
@@ -58,10 +53,6 @@ export class ByteGrid {
         rangeEndIndex = clamp(line.endByteIndex, startIndex, endIndex);
       }
     }
-
-    console.log(
-      `rangeStartIndex: ${rangeStartIndex}, rangeEndIndex: ${rangeEndIndex}`,
-    );
 
     return {
       byteIndex: Math.floor((rangeStartIndex + rangeEndIndex) / 2),

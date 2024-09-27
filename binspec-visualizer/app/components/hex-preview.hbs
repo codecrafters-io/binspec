@@ -1,16 +1,15 @@
 <div class="grid grid-cols-16" ...attributes>
-  {{#each this.byteLines as |line|}}
-    {{#each line.items as |item|}}
+  {{#each this.byteLines key="index" as |line|}}
+    {{#each line.items key="index" as |item|}}
       {{! template-lint-disable require-presentational-children }}
       <HexPreview::BytePreview
         @index={{item.byteIndex}}
         @rawValue={{item.rawValue}}
         @highlightedSegment={{@highlightedSegment}}
-        @leafSegment={{item.leafSegment}}
         {{on "click" (fn this.handleBytePreviewClick item.byteIndex)}}
         {{on "mouseenter" (fn this.handleBytePreviewMouseEnter item.byteIndex)}}
         {{on "mouseleave" (fn this.handleBytePreviewMouseLeave item.byteIndex)}}
-        role="button"
+        role={{if item.isClickable "button" "presentation"}}
       >
         {{#if (eq this.tooltipParams.byteIndex item.byteIndex)}}
           {{#if this.tooltipParams.segment}}
