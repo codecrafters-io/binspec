@@ -114,9 +114,12 @@ export default class HexPreview extends Component<Signature> {
 
     return {
       segment: tooltipSegment,
-      byteIndex: Math.floor(
-        (tooltipSegment.startByteIndex + tooltipSegment.endByteIndex) / 2,
-      ),
+      byteIndex:
+        this.byteGrid.caretPositionForByteIndexRange(
+          tooltipSegment.startByteIndex,
+          tooltipSegment.endByteIndex,
+          this.hoverState.byteIndex,
+        )?.byteIndex || tooltipSegment.startByteIndex,
     };
   }
 
