@@ -5,11 +5,12 @@
   ...attributes
 >
   <div>
-    <div class="font-mono text-lg {{this.hexTextColorClasses}}">
+    <div class="font-mono text-base sm:text-lg {{this.hexTextColorClasses}}">
       {{this.hexString}}
     </div>
     <div
-      class="font-mono text-[0.6em] text-center {{this.asciiTextColorClasses}}"
+      class="font-mono text-[0.5em] sm:text-[0.6em] text-center
+        {{this.asciiTextColorClasses}}"
     >
       {{this.asciiString}}
     </div>

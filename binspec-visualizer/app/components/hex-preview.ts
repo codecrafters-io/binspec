@@ -50,6 +50,7 @@ type ByteLineItem = {
 
 export default class HexPreview extends Component<Signature> {
   @service declare hoverState: HoverStateService;
+  @service declare screen: Screen;
 
   get leafSegments(): DataSegment[] {
     return this.args.segments.flatMap((segment) => segment.leafSegments);
@@ -57,7 +58,7 @@ export default class HexPreview extends Component<Signature> {
 
   get byteGrid(): ByteGrid {
     return new ByteGrid({
-      rowWidth: 16,
+      rowWidth: this.rowWidth,
       startByteIndex: this.args.startByteIndex ?? 0,
       endByteIndex: this.args.endByteIndex ?? this.args.data.length - 1,
     });
@@ -85,6 +86,34 @@ export default class HexPreview extends Component<Signature> {
     }
 
     return lines;
+  }
+
+  get containerClasses(): string {
+    if (this.rowWidth === 16) {
+      return 'grid-cols-16 w-full max-w-[640px]';
+    } else if (this.rowWidth === 8) {
+      return 'grid-cols-8 w-full max-w-[400px]';
+    } else {
+      throw new Error(`Invalid row width: ${this.rowWidth}`);
+    }
+  }
+
+  get interstitialContainerClasses(): string {
+    if (this.rowWidth === 16) {
+      return 'col-span-16';
+    } else if (this.rowWidth === 8) {
+      return 'col-span-8';
+    } else {
+      throw new Error(`Invalid row width: ${this.rowWidth}`);
+    }
+  }
+
+  get rowWidth(): 16 | 8 {
+    if (this.screen.width < 640) {
+      return 8;
+    }
+
+    return 16;
   }
 
   get tooltipSegment(): DataSegment | undefined {

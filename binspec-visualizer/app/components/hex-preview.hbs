@@ -1,4 +1,4 @@
-<div class="grid grid-cols-16" ...attributes>
+<div class="grid {{this.containerClasses}}" ...attributes>
   {{#each this.byteLines key="index" as |line|}}
     {{#each line.items key="index" as |item|}}
       {{! template-lint-disable require-presentational-children }}
@@ -28,7 +28,7 @@
         (gte @byteIndexForInterstitial line.startByteIndex)
       )
     }}
-      <div class="inline-flex col-span-16">
+      <div class="inline-flex {{this.interstitialContainerClasses}}">
         {{yield to="interstitial"}}
       </div>
     {{/if}}
