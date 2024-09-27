@@ -82,7 +82,7 @@ export default class HexPreview extends Component<Signature> {
     return lines;
   }
 
-  get segmentForTooltip(): DataSegment | undefined {
+  get tooltipSegment(): DataSegment | undefined {
     if (!this.hoverState.segment) {
       return undefined;
     }
@@ -102,16 +102,16 @@ export default class HexPreview extends Component<Signature> {
   }
 
   get tooltipParams(): TooltipParams | undefined {
-    const segmentForTooltip = this.segmentForTooltip;
+    const tooltipSegment = this.tooltipSegment;
 
-    if (!segmentForTooltip) {
+    if (!tooltipSegment) {
       return undefined;
     }
 
     return {
-      segment: segmentForTooltip,
+      segment: tooltipSegment,
       byteIndex: Math.floor(
-        (segmentForTooltip.startByteIndex + segmentForTooltip.endByteIndex) / 2,
+        (tooltipSegment.startByteIndex + tooltipSegment.endByteIndex) / 2,
       ),
     };
   }
