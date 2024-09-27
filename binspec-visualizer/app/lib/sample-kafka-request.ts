@@ -75,7 +75,7 @@ In this case, the value is 0x23 (35 in decimal) indicating that the rest of the 
             endBitIndex: 47,
             title: 'API Key',
             explanationMarkdown:
-              'The API key is a 2-byte integer that identifies the API Key that this request is for.\n\n Here it is 0x12 (18), which corresponds to GetAPIVersions.',
+              'The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x12 (18), which corresponds to GetAPIVersions.',
           }),
           // API Version
           new DataSegment({
