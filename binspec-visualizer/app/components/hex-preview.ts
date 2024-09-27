@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { ByteGrid } from 'binspec-visualizer/lib/byte-grid';
 import { DataSegment } from 'binspec-visualizer/lib/data-segment';
 import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
@@ -49,32 +50,33 @@ export default class HexPreview extends Component<Signature> {
     return this.args.segments.flatMap((segment) => segment.leafSegments);
   }
 
+  get byteGrid(): ByteGrid {
+    return new ByteGrid({
+      rowWidth: 16,
+      startByteIndex: this.args.startByteIndex ?? 0,
+      endByteIndex: this.args.endByteIndex ?? this.args.data.length - 1,
+    });
+  }
+
   get byteLines(): ByteLine[] {
-    const startByteIndex = this.args.startByteIndex ?? 0;
-    const endByteIndex = this.args.endByteIndex ?? this.args.data.length - 1;
-
     const lines: ByteLine[] = [];
-    let currentLineItems: ByteLineItem[] = [];
 
-    for (let i = startByteIndex; i <= endByteIndex; i++) {
-      const item: ByteLineItem = {
-        byteIndex: i,
-        rawValue: this.args.data[i]!,
-        leafSegment: this.leafSegmentForByteIndex(i),
-      };
+    for (const line of this.byteGrid.lines) {
+      const itemsInLine: ByteLineItem[] = [];
 
-      currentLineItems.push(item);
-
-      if (currentLineItems.length === 16 || i === endByteIndex) {
-        lines.push({
-          items: currentLineItems,
-          startByteIndex: currentLineItems[0]?.byteIndex || 0,
-          endByteIndex:
-            currentLineItems[currentLineItems.length - 1]?.byteIndex || 0,
+      for (let i = line.startByteIndex; i <= line.endByteIndex; i++) {
+        itemsInLine.push({
+          byteIndex: i,
+          rawValue: this.args.data[i]!,
+          leafSegment: this.leafSegmentForByteIndex(i),
         });
-
-        currentLineItems = [];
       }
+
+      lines.push({
+        items: itemsInLine,
+        startByteIndex: line.startByteIndex,
+        endByteIndex: line.endByteIndex,
+      });
     }
 
     return lines;
