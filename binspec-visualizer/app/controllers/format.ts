@@ -29,13 +29,21 @@ export default class FormatController extends Controller {
   }
 
   @action
-  handleSegmentMouseEnter(section: 'structure' | 'raw', segment: DataSegment) {
+  handleSegmentMouseEnter(
+    section: 'structure' | 'raw',
+    segment: DataSegment,
+    byteIndex?: number,
+  ) {
     // Don't hover if the segment is already highlighted in the structure section
     if (section === 'structure' && this.highlightedSegment?.equals(segment)) {
       return;
     }
 
-    this.hoverState.setSegment(segment, section);
+    this.hoverState.setValues(
+      segment,
+      byteIndex ?? segment.startByteIndex,
+      section,
+    );
   }
 
   @action

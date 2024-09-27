@@ -7,8 +7,12 @@ type Signature = {
     segments: DataSegment[];
     highlightedSegment?: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
-    onSegmentMouseEnter: (segment: DataSegment) => void;
-    onSegmentMouseLeave: (segment: DataSegment) => void;
+    onSegmentMouseEnter: (
+      segment: DataSegment,
+      byteIndex?: number,
+      event?: MouseEvent,
+    ) => void;
+    onSegmentMouseLeave: () => void;
   };
 };
 

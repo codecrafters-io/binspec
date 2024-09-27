@@ -13,8 +13,8 @@
         }}"
       role="button"
       {{on "click" (fn @onSegmentSelect child)}}
-      {{on "mouseenter" (fn @onSegmentMouseEnter child)}}
-      {{on "mouseleave" (fn @onSegmentMouseLeave child)}}
+      {{on "mouseenter" (fn @onSegmentMouseEnter child undefined)}}
+      {{on "mouseleave" @onSegmentMouseLeave}}
     >
       {{child.titleForDisplay}}
     </span>

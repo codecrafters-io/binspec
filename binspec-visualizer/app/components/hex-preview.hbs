@@ -13,7 +13,11 @@
         role="button"
       >
         {{#if (eq this.tooltipParams.byteIndex item.byteIndex)}}
-          <HexPreview::SegmentTooltip @segment={{this.tooltipParams.segment}} />
+          {{#if this.tooltipParams.segment}}
+            <HexPreview::SegmentTooltip
+              @segment={{this.tooltipParams.segment}}
+            />
+          {{/if}}
         {{/if}}
       </HexPreview::BytePreview>
     {{/each}}

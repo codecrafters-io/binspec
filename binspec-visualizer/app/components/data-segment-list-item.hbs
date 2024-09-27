@@ -4,8 +4,8 @@
       {{if this.isHoveredSegment 'bg-zinc-700/60'}}
       {{if this.isHighlightedSegment 'bg-zinc-700/60'}}
       "
-    {{on "mouseenter" (fn @onSegmentMouseEnter @segment)}}
-    {{on "mouseleave" (fn @onSegmentMouseLeave @segment)}}
+    {{on "mouseenter" (fn @onSegmentMouseEnter @segment undefined)}}
+    {{on "mouseleave" @onSegmentMouseLeave}}
   >
     <div role="button" {{on "click" (fn @onSegmentSelect @segment)}}>
       <div class="text-lg font-medium {{this.titleTextColorClasses}}">

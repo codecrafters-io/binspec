@@ -16,8 +16,12 @@ type Signature = {
     data: Uint8Array;
     endByteIndex?: number; // defaults to data.length
     highlightedSegment?: DataSegment;
-    onSegmentMouseEnter: (segment: DataSegment) => void;
-    onSegmentMouseLeave: (segment: DataSegment) => void;
+    onSegmentMouseEnter: (
+      segment: DataSegment,
+      byteIndex?: number,
+      event?: MouseEvent,
+    ) => void;
+    onSegmentMouseLeave: () => void;
     onSegmentSelect: (segment: DataSegment) => void;
     section: 'structure' | 'raw';
     segments: DataSegment[];
@@ -156,7 +160,7 @@ export default class HexPreview extends Component<Signature> {
     const segment = this.hoverableSegmentForByteIndex(byteIndex);
 
     if (segment) {
-      this.args.onSegmentMouseEnter(segment);
+      this.args.onSegmentMouseEnter(segment, byteIndex);
     } else {
       this.args.onSegmentMouseEnter(
         new DataSegment({
@@ -164,25 +168,14 @@ export default class HexPreview extends Component<Signature> {
           endBitIndex: byteIndex * 8 + 7,
           children: [],
         }),
+        byteIndex,
       );
     }
   }
 
   @action
-  handleBytePreviewMouseLeave(byteIndex: number) {
-    const segment = this.hoverableSegmentForByteIndex(byteIndex);
-
-    if (segment) {
-      this.args.onSegmentMouseLeave(segment);
-    } else {
-      this.args.onSegmentMouseLeave(
-        new DataSegment({
-          startBitIndex: byteIndex * 8,
-          endBitIndex: byteIndex * 8 + 7,
-          children: [],
-        }),
-      );
-    }
+  handleBytePreviewMouseLeave() {
+    this.args.onSegmentMouseLeave();
   }
 }
 
