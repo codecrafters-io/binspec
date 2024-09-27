@@ -9,8 +9,7 @@ import type { ModelType } from 'binspec-visualizer/routes/format';
 export default class FormatController extends Controller {
   declare model: ModelType;
 
-  @tracked highlightedSegment?: DataSegment =
-    this.model.format.segments[0]!.children[0];
+  @tracked highlightedSegment?: DataSegment = this.model.format.segments[0]!;
 
   @service declare hoverState: HoverStateService;
 

@@ -112,8 +112,11 @@ export default class HexPreview extends Component<Signature> {
 
     // If the highlighted segment contains the byte index, we'll use its children
     // Otherwise, we'll try to find a sibling segment
-    return highlightedSegment.findChildOrSiblingOrAncestorContainingByteIndex(
-      byteIndex,
+    return (
+      highlightedSegment.findChildOrSiblingOrAncestorContainingByteIndex(
+        byteIndex,
+      ) ||
+      this.args.segments.find((segment) => segment.containsByteIndex(byteIndex))
     );
   }
 
