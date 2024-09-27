@@ -54,17 +54,20 @@ export default class SampleKafkaRequest {
       new DataSegment({
         startBitIndex: 0,
         endBitIndex: 31,
-        title: 'Message Length',
-        explanationMarkdown:
-          'The message length is a 4-byte integer indicating the size of the message, excluding the length itself.',
+        title: 'Message Size',
+        explanationMarkdown: `
+Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.
+
+In this case, the value is 0x23 (35 in decimal) indicating that the rest of the message is 35 bytes long.
+        `,
       }),
       // Request Header v2
       new DataSegment({
-        startBitIndex: 32,
-        endBitIndex: 183,
+        startBitIndex: 4 * 8,
+        endBitIndex: 191,
         title: 'Request Header (v2)',
         explanationMarkdown:
-          'The Request Header includes the API key, API version, correlation ID, and client ID.',
+          'The Request Header structure is common across all Kafka requests. It contains information on the API Key this request is for, the version of that API, and more.',
         children: [
           // API Key
           new DataSegment({
@@ -72,7 +75,7 @@ export default class SampleKafkaRequest {
             endBitIndex: 47,
             title: 'API Key',
             explanationMarkdown:
-              'The API key is a 2-byte integer that identifies the API being invoked. Here it is 0x0012 (18), which corresponds to GetAPIVersions.',
+              'The API key is a 2-byte integer that identifies the API Key that this request is for.\n\n Here it is 0x12 (18), which corresponds to GetAPIVersions.',
           }),
           // API Version
           new DataSegment({
@@ -80,7 +83,7 @@ export default class SampleKafkaRequest {
             endBitIndex: 63,
             title: 'API Version',
             explanationMarkdown:
-              'The API version is a 2-byte integer indicating the version of the API being used. Here, it is 0x0004 (4).',
+              'The API version is a 2-byte integer indicating the version of the API being used.\n\n Here, it is 0x04 (4) which corresponds to v4 of the APIVersions API.',
           }),
           // Correlation ID
           new DataSegment({
@@ -88,7 +91,7 @@ export default class SampleKafkaRequest {
             endBitIndex: 95,
             title: 'Correlation ID',
             explanationMarkdown:
-              'The Correlation ID is a 4-byte integer used to correlate requests and responses between client and server. Here, it is 0x00000007 (7).',
+              'The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x07 (7).',
           }),
           // Client ID
           new DataSegment({
@@ -96,13 +99,13 @@ export default class SampleKafkaRequest {
             endBitIndex: 183,
             title: 'Client ID',
             explanationMarkdown:
-              'The Client ID consists of a 2-byte length field followed by the actual Client ID string.',
+              'The Client ID is a string identifying the client.\n\nHere, the value is "kafka-cli".',
             children: [
               // Client ID Length
               new DataSegment({
                 startBitIndex: 96,
                 endBitIndex: 111,
-                title: 'Client ID Length',
+                title: 'Length',
                 explanationMarkdown:
                   'The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0009 (9).',
               }),
@@ -110,30 +113,30 @@ export default class SampleKafkaRequest {
               new DataSegment({
                 startBitIndex: 112,
                 endBitIndex: 183,
-                title: 'Client ID String',
+                title: 'Contents',
                 explanationMarkdown:
                   'The Client ID is a variable-length string identifying the client. In this case, it is "kafka-cli" encoded in UTF-8.',
               }),
             ],
           }),
-        ],
-      }),
-      // Body
-      new DataSegment({
-        startBitIndex: 184,
-        endBitIndex: this.data.length * 8 - 1,
-        title: 'Request Body',
-        explanationMarkdown:
-          'The request body contains the specific data for the request.',
-        children: [
           // Empty tagged field array
           new DataSegment({
             startBitIndex: 184,
             endBitIndex: 191,
-            title: 'Empty Tagged Field Array',
+            title: 'Tag buffer',
             explanationMarkdown:
               'An empty tagged field array, represented by a single byte of value 0x00.',
           }),
+        ],
+      }),
+      // Body
+      new DataSegment({
+        startBitIndex: 192,
+        endBitIndex: this.data.length * 8 - 1,
+        title: 'APIVersions Request Body (v4)',
+        explanationMarkdown:
+          'The request body contains fields specific to the APIVersions request.',
+        children: [
           // Client ID
           new DataSegment({
             startBitIndex: 192,
@@ -146,7 +149,7 @@ export default class SampleKafkaRequest {
               new DataSegment({
                 startBitIndex: 192,
                 endBitIndex: 199,
-                title: 'Client ID Length',
+                title: 'Length',
                 explanationMarkdown:
                   'The length of the Client ID compact string, represented as a single byte. Here, it is 0x0A (10).',
               }),
@@ -154,7 +157,7 @@ export default class SampleKafkaRequest {
               new DataSegment({
                 startBitIndex: 200,
                 endBitIndex: 271,
-                title: 'Client ID String',
+                title: 'Contents',
                 explanationMarkdown:
                   'The actual Client ID string. In this case, it is "kafka-cli" encoded in UTF-8.',
               }),
@@ -180,7 +183,7 @@ export default class SampleKafkaRequest {
               new DataSegment({
                 startBitIndex: 280,
                 endBitIndex: 303,
-                title: 'Version String',
+                title: 'Contents',
                 explanationMarkdown:
                   'The actual Client Software Version string. In this case, it is "0.1" encoded in UTF-8.',
               }),
@@ -190,7 +193,7 @@ export default class SampleKafkaRequest {
           new DataSegment({
             startBitIndex: 304,
             endBitIndex: this.data.length * 8 - 1,
-            title: 'Empty Tagged Field Array',
+            title: 'Tag buffer',
             explanationMarkdown:
               'An empty tagged field array, represented by a single byte of value 0x00.',
           }),
