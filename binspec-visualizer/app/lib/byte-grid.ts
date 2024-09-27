@@ -5,7 +5,7 @@ type ByteGridLine = {
 
 type CaretPosition = {
   byteIndex: number;
-  side: 'left' | 'right' | 'middle';
+  alignment: 'start' | 'end' | 'middle';
 };
 
 export class ByteGrid {
@@ -41,19 +41,31 @@ export class ByteGrid {
   ): CaretPosition | undefined {
     let rangeStartIndex = startIndex;
     let rangeEndIndex = endIndex;
+    console.log(
+      `startIndex: ${startIndex}, endIndex: ${endIndex}, hoverIndex: ${hoverIndex}`,
+    );
 
-    if (hoverIndex) {
+    if (hoverIndex !== undefined) {
       const line = this.lineForByteIndex(hoverIndex);
+      console.log('line', line);
+
+      const clamp = (value: number, min: number, max: number) => {
+        return Math.min(Math.max(value, min), max);
+      };
 
       if (line) {
-        rangeStartIndex = Math.min(line.startByteIndex, startIndex);
-        rangeEndIndex = Math.max(line.endByteIndex, endIndex);
+        rangeStartIndex = clamp(line.startByteIndex, startIndex, endIndex);
+        rangeEndIndex = clamp(line.endByteIndex, startIndex, endIndex);
       }
     }
 
+    console.log(
+      `rangeStartIndex: ${rangeStartIndex}, rangeEndIndex: ${rangeEndIndex}`,
+    );
+
     return {
       byteIndex: Math.floor((rangeStartIndex + rangeEndIndex) / 2),
-      side: (rangeStartIndex + rangeEndIndex) % 2 === 0 ? 'middle' : 'right',
+      alignment: (rangeStartIndex + rangeEndIndex) % 2 === 0 ? 'middle' : 'end',
     };
   }
 
