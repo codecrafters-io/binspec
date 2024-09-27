@@ -28,4 +28,17 @@
       {{markdown-to-html @segment.explanationMarkdown}}
     </div>
   {{/if}}
+
+  <HexPreview
+    class="mt-2 w-full"
+    @data={{@data}}
+    @endByteIndex={{@segment.endByteIndex}}
+    @highlightedSegment={{@segment}}
+    @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+    @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+    @onSegmentSelect={{@onSegmentSelect}}
+    @section="structure"
+    @segments={{array @segment}}
+    @startByteIndex={{@segment.startByteIndex}}
+  />
 </div>
