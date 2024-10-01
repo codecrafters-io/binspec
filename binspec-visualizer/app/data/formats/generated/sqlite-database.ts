@@ -94,6 +94,14 @@ const generated: GeneratedData = {
     0,
     0,
     0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
     0
   ],
   "segments": [
@@ -215,6 +223,16 @@ const generated: GeneratedData = {
       "title": "Reserved space",
       "length_in_bytes": 20,
       "explanation_markdown": "This is a 20-byte space reserved for future expansion.\n"
+    },
+    {
+      "title": "Version-valid-for number",
+      "length_in_bytes": 4,
+      "explanation_markdown": "This is a 4-byte big-endian integer that represents the version-valid-for number.\n"
+    },
+    {
+      "title": "SQLite version number",
+      "length_in_bytes": 4,
+      "explanation_markdown": "This is a 4-byte big-endian integer that represents the SQLite version number.\n"
     }
   ]
 }
