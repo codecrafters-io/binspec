@@ -59,7 +59,6 @@ const generated: GeneratedData = {
     },
     {
       "title": "Response Header (v1)",
-      "length_in_bytes": 5,
       "explanation_markdown": "The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.\n",
       "children": [
         {
@@ -76,7 +75,6 @@ const generated: GeneratedData = {
     },
     {
       "title": "DescribeTopicPartitions Response Body (v0)",
-      "length_in_bytes": 32,
       "explanation_markdown": "The response body contains fields specific to the DescribeTopicPartitions response.\n",
       "children": [
         {
@@ -86,7 +84,6 @@ const generated: GeneratedData = {
         },
         {
           "title": "Topics Array",
-          "length_in_bytes": 30,
           "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
@@ -96,7 +93,6 @@ const generated: GeneratedData = {
             },
             {
               "title": "Topics",
-              "length_in_bytes": 29,
               "explanation_markdown": "A single topic in the array.\n",
               "children": [
                 {

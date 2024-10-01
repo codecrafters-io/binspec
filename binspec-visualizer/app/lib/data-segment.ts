@@ -97,6 +97,10 @@ export class DataSegment {
     return this.children.flatMap((child) => child.leafSegments);
   }
 
+  get lengthInBits(): number {
+    return this.endBitIndex - this.startBitIndex + 1;
+  }
+
   get startByteIndex(): number {
     return Math.floor(this.startBitIndex / 8);
   }

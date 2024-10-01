@@ -76,7 +76,6 @@ segments:
 
       In this case, the value is 0x29 (41 in decimal) indicating that the rest of the message is 41 bytes long.
   - title: Response Header (v1)
-    length_in_bytes: 5
     explanation_markdown: |
       The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.
     children:
@@ -91,7 +90,6 @@ segments:
         explanation_markdown: |
           An empty tagged field array, represented by a single byte of value 0x00.
   - title: DescribeTopicPartitions Response Body (v0)
-    length_in_bytes: 32
     explanation_markdown: |
       The response body contains fields specific to the DescribeTopicPartitions response.
     children:
@@ -102,7 +100,6 @@ segments:
 
           Here, it is 0x00000000 (0 in decimal), indicating no throttling.
       - title: Topics Array
-        length_in_bytes: 30
         explanation_markdown: |
           An array of topics described in the response.
 
@@ -113,7 +110,6 @@ segments:
             explanation_markdown: |
               The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
           - title: Topics
-            length_in_bytes: 29
             explanation_markdown: |
               A single topic in the array.
             children:
