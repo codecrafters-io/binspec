@@ -105,7 +105,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1 (2 - 1)\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
               "title": "Topic",
