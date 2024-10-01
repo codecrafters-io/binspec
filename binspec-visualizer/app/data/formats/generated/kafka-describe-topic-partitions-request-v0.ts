@@ -16,7 +16,6 @@ const generated: GeneratedData = {
     0,
     0,
     0,
-    0,
     7,
     0,
     9,
@@ -101,22 +100,22 @@ const generated: GeneratedData = {
         {
           "title": "Topics Array",
           "length_in_bytes": 6,
-          "explanation_markdown": "An array of topics to describe.\n",
+          "explanation_markdown": "An array of topics to describe.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array, represented as a single byte. Here, it is 0x02 (2).\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1 (2 - 1)\n"
             },
             {
               "title": "Topic",
               "length_in_bytes": 5,
-              "explanation_markdown": "A single topic in the array.\n",
+              "explanation_markdown": "A single topic in the array.\n\nThis topic is encoded as a `COMPACT_STRING`, which starts with a varint corresponding to the length of the string + 1, followed by the string itself encoded in UTF-8.\n",
               "children": [
                 {
                   "title": "Topic Name Length",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "The length of the topic name, represented as a single byte. Here, it is 0x04 (4).\n"
+                  "explanation_markdown": "The length of the topic name + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.\n"
                 },
                 {
                   "title": "Topic Name",

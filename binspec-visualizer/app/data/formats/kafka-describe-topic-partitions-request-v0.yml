@@ -9,8 +9,7 @@ data:
   - 0x4b
   - 0x00 # API version (2 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
-  - 0x00
-  - 0x00
+  - 0x00 # Correlation ID (4 bytes, 0x07 in hex, 7 in decimal)
   - 0x00
   - 0x00
   - 0x07
@@ -96,20 +95,24 @@ segments:
         length_in_bytes: 6
         explanation_markdown: |
           An array of topics to describe.
+
+          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
         children:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array, represented as a single byte. Here, it is 0x02 (2).
+              The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1 (2 - 1)
           - title: Topic
             length_in_bytes: 5
             explanation_markdown: |
               A single topic in the array.
+
+              This topic is encoded as a `COMPACT_STRING`, which starts with a varint corresponding to the length of the string + 1, followed by the string itself encoded in UTF-8.
             children:
               - title: Topic Name Length
                 length_in_bytes: 1
                 explanation_markdown: |
-                  The length of the topic name, represented as a single byte. Here, it is 0x04 (4).
+                  The length of the topic name + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.
               - title: Topic Name
                 length_in_bytes: 3
                 explanation_markdown: |
