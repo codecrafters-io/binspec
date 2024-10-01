@@ -1,7 +1,7 @@
 import { DataSegment } from './data-segment';
 
 interface GeneratedDataSegment {
-  name: string;
+  title: string;
   length_in_bytes: number;
   explanation_markdown: string;
   children?: GeneratedDataSegment[];
@@ -23,8 +23,9 @@ function dataSegmentsFromGeneratedDataSegment(
   for (const generatedSegment of generatedSegments) {
     segments.push(
       new DataSegment({
+        title: generatedSegment.title,
         startBitIndex: currentBitIndex,
-        endBitIndex: currentBitIndex + generatedSegment.length_in_bytes * 8,
+        endBitIndex: currentBitIndex + generatedSegment.length_in_bytes * 8 - 1,
         explanationMarkdown: generatedSegment.explanation_markdown,
         children: dataSegmentsFromGeneratedDataSegment(
           generatedSegment.children ?? [],
@@ -32,6 +33,8 @@ function dataSegmentsFromGeneratedDataSegment(
         ),
       }),
     );
+
+    currentBitIndex += generatedSegment.length_in_bytes * 8;
   }
 
   return segments;
