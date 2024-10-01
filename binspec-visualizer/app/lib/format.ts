@@ -21,16 +21,20 @@ function dataSegmentsFromGeneratedDataSegment(
   const segments = [];
 
   for (const generatedSegment of generatedSegments) {
+    const children = generatedSegment.children
+      ? dataSegmentsFromGeneratedDataSegment(
+          generatedSegment.children,
+          currentBitIndex,
+        )
+      : [];
+
     segments.push(
       new DataSegment({
         title: generatedSegment.title,
         startBitIndex: currentBitIndex,
         endBitIndex: currentBitIndex + generatedSegment.length_in_bytes * 8 - 1,
         explanationMarkdown: generatedSegment.explanation_markdown,
-        children: dataSegmentsFromGeneratedDataSegment(
-          generatedSegment.children ?? [],
-          currentBitIndex,
-        ),
+        children: children,
       }),
     );
 
