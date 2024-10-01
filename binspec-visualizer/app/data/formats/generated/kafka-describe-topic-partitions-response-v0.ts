@@ -138,7 +138,7 @@ const generated: GeneratedData = {
                   "explanation_markdown": "A 4-byte integer representing the authorized operations for this topic.\n\nHere, it is 0x00000df8 (3576 in decimal).\n"
                 },
                 {
-                  "title": "Topic Tag Buffer",
+                  "title": "Tag Buffer",
                   "length_in_bytes": 1,
                   "explanation_markdown": "An empty tagged field array for the topic, represented by a single byte of value 0x00.\n"
                 }
