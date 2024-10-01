@@ -1,0 +1,41 @@
+name: Kafka Describe Topic Partitions Request (v0)
+slug: kafka-describe-topic-partitions-request-v0
+data:
+  - 0x00 # Message length (4 bytes, 0x20 in hex, 32 in decimal)
+  - 0x00
+  - 0x00
+  - 0x20
+  - 0x00 # API key (2 bytes, 0x4b in hex, 75 in decimal => DescribeTopicPartitions)
+  - 0x4b
+  - 0x00 # API version (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x07
+  - 0x00 # Client ID length (INT16, 2 bytes, 0x09 in hex, 9 in decimal)
+  - 0x09
+  - 0x6b # k: Client ID (variable length, "kafka-cli" in UTF-8)
+  - 0x61 # a
+  - 0x66 # f
+  - 0x6b # k
+  - 0x61 # a
+  - 0x2d # -
+  - 0x63 # c
+  - 0x6c # l
+  - 0x69 # i
+  - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x02 # Topics array length (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x04 # Topic name length (1 byte, 0x04 in hex, 4 in decimal)
+  - 0x66 # f (Topic name ("foo" in UTF-8))
+  - 0x6f # o
+  - 0x6f # o
+  - 0x00 # Empty TAG_BUFFER for topic (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Response partition limit (4 bytes, 0x64 in hex, 100 in decimal)
+  - 0x00
+  - 0x00
+  - 0x64
+  - 0xff # Cursor: Null (1 byte, 0xff in hex)
+  - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
+children: []
