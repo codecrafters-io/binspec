@@ -53,5 +53,11 @@ module.exports = {
       files: ['tests/**/*-test.{js,ts}'],
       extends: ['plugin:qunit/recommended'],
     },
+    {
+      files: ['app/data/formats/generated/*.ts'],
+      rules: {
+        'prettier/prettier': 'off',
+      },
+    },
   ],
 };
