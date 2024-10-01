@@ -1,6 +1,7 @@
 import Format from './format';
 import generatedSQLiteDatabase from 'binspec-visualizer/data/formats/generated/sqlite-database';
 import kafkaApiVersionsRequestV4 from 'binspec-visualizer/data/formats/generated/kafka-api-versions-request-v4';
+import kafkaDescribeTopicPartitionsRequestV0 from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-request-v0';
 
 export default class FormatRegistry {
   static getBySlug(slug: string): Format | undefined {
@@ -11,6 +12,7 @@ export default class FormatRegistry {
     return [
       Format.fromGeneratedData(generatedSQLiteDatabase),
       Format.fromGeneratedData(kafkaApiVersionsRequestV4),
+      Format.fromGeneratedData(kafkaDescribeTopicPartitionsRequestV0),
     ];
   }
 }

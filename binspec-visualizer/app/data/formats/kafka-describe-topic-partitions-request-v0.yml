@@ -38,4 +38,99 @@ data:
   - 0x64
   - 0xff # Cursor: Null (1 byte, 0xff in hex)
   - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
-children: []
+segments:
+  - title: Message Size
+    length_in_bytes: 4
+    explanation_markdown: |
+      Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.
+
+      In this case, the value is 0x20 (32 in decimal) indicating that the rest of the message is 32 bytes long.
+  - title: Request Header (v2)
+    length_in_bytes: 20
+    explanation_markdown: |
+      The Request Header structure is common across all Kafka requests. It contains information on the API Key this request is for, the version of that API, and more.
+    children:
+      - title: API Key
+        length_in_bytes: 2
+        explanation_markdown: |
+          The API key is a 2-byte integer that identifies the API Key that this request is for.
+
+          Here it is 0x4b (75), which corresponds to DescribeTopicPartitions.
+      - title: API Version
+        length_in_bytes: 2
+        explanation_markdown: |
+          The API version is a 2-byte integer indicating the version of the API being used.
+
+          Here, it is 0x00 (0) which corresponds to v0 of the DescribeTopicPartitions API.
+      - title: Correlation ID
+        length_in_bytes: 4
+        explanation_markdown: |
+          The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.
+
+          Here, it is 0x07 (7).
+      - title: Client ID
+        length_in_bytes: 11
+        explanation_markdown: |
+          The Client ID is a string identifying the client.
+
+          Here, the value is "kafka-cli".
+        children:
+          - title: Length
+            length_in_bytes: 2
+            explanation_markdown: |
+              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0009 (9).
+          - title: Contents
+            length_in_bytes: 9
+            explanation_markdown: |
+              The Client ID is a variable-length string identifying the client. In this case, it is "kafka-cli" encoded in UTF-8.
+      - title: Tag buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          An empty tagged field array, represented by a single byte of value 0x00.
+  - title: DescribeTopicPartitions Request Body (v0)
+    length_in_bytes: 12
+    explanation_markdown: |
+      The request body contains fields specific to the DescribeTopicPartitions request.
+    children:
+      - title: Topics Array
+        length_in_bytes: 6
+        explanation_markdown: |
+          An array of topics to describe.
+        children:
+          - title: Array Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              The length of the topics array, represented as a single byte. Here, it is 0x02 (2).
+          - title: Topic
+            length_in_bytes: 5
+            explanation_markdown: |
+              A single topic in the array.
+            children:
+              - title: Topic Name Length
+                length_in_bytes: 1
+                explanation_markdown: |
+                  The length of the topic name, represented as a single byte. Here, it is 0x04 (4).
+              - title: Topic Name
+                length_in_bytes: 3
+                explanation_markdown: |
+                  The actual topic name. In this case, it is "foo" encoded in UTF-8.
+              - title: Topic Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  An empty tagged field array for the topic, represented by a single byte of value 0x00.
+      - title: Response Partition Limit
+        length_in_bytes: 4
+        explanation_markdown: |
+          A 4-byte integer that limits the number of partitions to be returned in the response.
+
+          Here, it is 0x00000064 (100 in decimal).
+      - title: Cursor
+        length_in_bytes: 1
+        explanation_markdown: |
+          A nullable field that can be used for pagination.
+
+          Here, it is 0xff, indicating a null value.
+      - title: Tag Buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          An empty tagged field array, represented by a single byte of value 0x00.
