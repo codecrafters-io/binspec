@@ -1,5 +1,7 @@
-// GENERATED FILE - DO NOT EDIT DIRECTLY - RUN make generate_js_data_from_yaml INSTEAD
-export default {
+// GENERATED FILE - DO NOT EDIT DIRECTLY - RUN make generate_data_from_yaml INSTEAD
+import type { GeneratedData } from "binspec-visualizer/lib/format";
+
+const generated: GeneratedData = {
   "name": "SQLite Database File",
   "slug": "sqlite",
   "data": [
@@ -204,3 +206,5 @@ export default {
     }
   ]
 }
+
+export default generated;

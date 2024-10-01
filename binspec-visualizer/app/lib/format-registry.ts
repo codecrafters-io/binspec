@@ -1,6 +1,7 @@
 import Format from './format';
 import SampleKafkaRequest from './sample-kafka-request';
-import SampleSQLiteDatabase from './sample-sqlite-database';
+// import SampleSQLiteDatabase from './sample-sqlite-database';
+import generatedSQLiteDatabase from '../data/formats/generated/sqlite-database';
 
 export default class FormatRegistry {
   static getBySlug(slug: string): Format | undefined {
@@ -9,12 +10,7 @@ export default class FormatRegistry {
 
   static get formats(): Format[] {
     return [
-      new Format(
-        'SQLite Database File',
-        'sqlite',
-        SampleSQLiteDatabase.data,
-        SampleSQLiteDatabase.segments,
-      ),
+      Format.fromGeneratedData(generatedSQLiteDatabase),
       new Format(
         'Kafka APIVersions Request (v4)',
         'kafka-api-versions-request-v4',

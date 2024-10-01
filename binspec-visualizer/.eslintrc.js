@@ -54,7 +54,7 @@ module.exports = {
       extends: ['plugin:qunit/recommended'],
     },
     {
-      files: ['app/data/formats/generated/*.js'],
+      files: ['app/data/formats/generated/*.ts'],
       rules: {
         'prettier/prettier': 'off',
       },
