@@ -1,0 +1,57 @@
+// GENERATED FILE - DO NOT EDIT DIRECTLY - RUN make generate_data_from_yaml INSTEAD
+import type { GeneratedData } from "binspec-visualizer/lib/format";
+
+const generated: GeneratedData = {
+  "name": "Kafka Describe Topic Partitions Response (v0)",
+  "slug": "kafka-describe-topic-partitions-response-v0",
+  "data": [
+    0,
+    0,
+    0,
+    41,
+    0,
+    0,
+    0,
+    7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    3,
+    4,
+    102,
+    111,
+    111,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    13,
+    248,
+    0,
+    255,
+    0
+  ],
+  "segments": []
+}
+
+export default generated;
