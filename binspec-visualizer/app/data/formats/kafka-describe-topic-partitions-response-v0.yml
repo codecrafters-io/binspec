@@ -102,7 +102,7 @@ segments:
 
           Here, it is 0x00000000 (0 in decimal), indicating no throttling.
       - title: Topics Array
-        length_in_bytes: 26
+        length_in_bytes: 30
         explanation_markdown: |
           An array of topics described in the response.
 
@@ -112,8 +112,8 @@ segments:
             length_in_bytes: 1
             explanation_markdown: |
               The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
-          - title: Topic
-            length_in_bytes: 25
+          - title: Topics
+            length_in_bytes: 29
             explanation_markdown: |
               A single topic in the array.
             children:

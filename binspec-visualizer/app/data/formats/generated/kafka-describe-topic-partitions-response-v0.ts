@@ -86,7 +86,7 @@ const generated: GeneratedData = {
         },
         {
           "title": "Topics Array",
-          "length_in_bytes": 26,
+          "length_in_bytes": 30,
           "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
@@ -95,8 +95,8 @@ const generated: GeneratedData = {
               "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
-              "title": "Topic",
-              "length_in_bytes": 25,
+              "title": "Topics",
+              "length_in_bytes": 29,
               "explanation_markdown": "A single topic in the array.\n",
               "children": [
                 {
