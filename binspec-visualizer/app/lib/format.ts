@@ -21,20 +21,28 @@ function dataSegmentsFromGeneratedDataSegment(
   const segments = [];
 
   for (const generatedSegment of generatedSegments) {
+    const children = generatedSegment.children
+      ? dataSegmentsFromGeneratedDataSegment(
+          generatedSegment.children,
+          currentBitIndex,
+        )
+      : [];
+
+    const lengthInBits = generatedSegment.length_in_bytes
+      ? generatedSegment.length_in_bytes * 8
+      : children.reduce((acc, child) => acc + child.lengthInBits, 0);
+
     segments.push(
       new DataSegment({
         title: generatedSegment.title,
         startBitIndex: currentBitIndex,
-        endBitIndex: currentBitIndex + generatedSegment.length_in_bytes * 8 - 1,
+        endBitIndex: currentBitIndex + lengthInBits - 1,
         explanationMarkdown: generatedSegment.explanation_markdown,
-        children: dataSegmentsFromGeneratedDataSegment(
-          generatedSegment.children ?? [],
-          currentBitIndex,
-        ),
+        children: children,
       }),
     );
 
-    currentBitIndex += generatedSegment.length_in_bytes * 8;
+    currentBitIndex += lengthInBits;
   }
 
   return segments;
