@@ -1,5 +1,5 @@
-name: Kafka DescribeTopicPartitions Response (v0) - Unknown Topic
-slug: kafka-describe-topic-partitions-response-v0-unknown-topic
+name: Kafka DescribeTopicPartitions Response (v0)
+slug: kafka-describe-topic-partitions-response-v0
 
 # DescribeTopicPartitions Response (Version: 0) => throttle_time_ms [topics] next_cursor TAG_BUFFER
 #   throttle_time_ms => INT32
