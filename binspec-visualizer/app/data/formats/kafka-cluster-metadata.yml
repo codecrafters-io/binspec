@@ -1,7 +1,6 @@
 name: Kafka Cluster Metadata
 slug: kafka-cluster-metadata
 data:
-data:
   # RecordBatch[0]
   - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
   - 0x00
@@ -77,8 +76,8 @@ data:
   - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
   - 0x0c # Type (1 byte, 0x0c in hex, 12 in decimal)
   - 0x00 # Version (1 byte, 0x00 in hex, 0 in decimal)
-  - 0x11 # Name Length (1 byte, 0x11 in hex, 17 in decimal (as signed varint))
-  - 0x6d # Compact String (Length = 17 -1), parsed as "metadata.version"
+  - 0x11 # Name Length (1 byte, 0x11 in hex, 17 in decimal (as unsigned varint))
+  - 0x6d # Name (Compact String (Length = 17 - 1), parsed as "metadata.version")
   - 0x65
   - 0x74
   - 0x61
@@ -97,7 +96,6 @@ data:
   - 0x00 # Feature Level (2 bytes, 0x14 in hex, 20 in decimal)
   - 0x14
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
-  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
 
   # RecordBatch[1]
   - 0x00 # Base Offset (8 bytes, 0x02 in hex, 2 in decimal)
@@ -170,8 +168,31 @@ data:
   - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
   # As key length is -1, the key value is empty
   - 0x30 # Value Length (1 byte, 0x30 in hex, 24 in decimal (as signed varint))
-  - 01 02 00 04 73 61 7a 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 91 00
-  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+  # Payload: Topic Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x02 # Type (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Version (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x04 # Name Length (1 byte, 0x04 in hex, 4 in decimal (as unsigned varint))
+  - 0x73 # Topic Name (Compact String (Length = 4 - 1), parsed as "saz")
+  - 0x61
+  - 0x7a
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # Record[1]
   - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
@@ -183,8 +204,72 @@ data:
   # As key length is -1, the key value is empty
   - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
   - 0x01
-  - 01 03 01 00 00 00 01 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 91 02 00 00 00 01 02 00 00 00 01 01 01 00 00 00 01 00 00 00 00 00 00 00 00 02 10 00 00 00 00 00 40 00 80 00 00 00 00 00 00 01 00
-  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+  # Payload: Partition Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
+  - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01 
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x02 # Length of Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Length of In Sync Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # In Sync Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01 # Length of Removing Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x01 # Length of Adding Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x00 # Leader (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Leader Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Partition Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02 # Compact Array Length (1 byte, 0x02 in hex, 1 in decimal (parsed as an unsigned varint))
+  - 0x10 # Directory UUID (16 raw bytes, 10000000-0000-4000-8000-000000000001 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01 
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # Record[2]
   - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
@@ -196,7 +281,72 @@ data:
   # As key length is -1, the key value is empty
   - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
   - 0x01
-  - 01 03 01 00 00 00 00 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 91 02 00 00 00 01 02 00 00 00 01 01 01 00 00 00 01 00 00 00 00 00 00 00 00 02 10 00 00 00 00 00 40 00 80 00 00 00 00 00 00 01 00
+
+  # Payload: Partition Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
+  - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00 
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x02 # Length of Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Length of In Sync Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # In Sync Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01 # Length of Removing Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x01 # Length of Adding Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x00 # Leader (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Leader Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Partition Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02 # Compact Array Length (1 byte, 0x02 in hex, 1 in decimal (parsed as an unsigned varint))
+  - 0x10 # Directory UUID (16 raw bytes, 10000000-0000-4000-8000-000000000001 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01 
   - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
 
 # Use single-topic, double-partition for test data
