@@ -2,14 +2,14 @@ name: Kafka Cluster Metadata
 slug: kafka-cluster-metadata
 data:
   # RecordBatch[0]
-  - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00 # Base Offset (8 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
   - 0x00
   - 0x00
   - 0x00
   - 0x00
-  - 0x01
+  - 0x00
   - 0x00 # Batch Length (4 bytes, 0x4f in hex, 79 in decimal)
   - 0x00
   - 0x00
@@ -98,14 +98,14 @@ data:
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # RecordBatch[1]
-  - 0x00 # Base Offset (8 bytes, 0x02 in hex, 2 in decimal)
+  - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
   - 0x00
   - 0x00
   - 0x00
   - 0x00
   - 0x00
   - 0x00
-  - 0x00
+  - 0x01
   - 0x00 # Batch Length (4 bytes, 0xe4 in hex, 228 in decimal)
   - 0x00
   - 0x00
@@ -355,7 +355,7 @@ segments:
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
 
-      In this case, the record batch contains 3 records starting at base offset `0`.
+      In this case, the record batch contains 1 records starting at base offset `0`.
     children:
       - title: Base Offset
         length_in_bytes: 8
