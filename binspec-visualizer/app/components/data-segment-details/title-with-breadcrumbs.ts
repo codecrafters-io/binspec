@@ -1,5 +1,7 @@
+import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import type { DataSegment } from 'binspec-visualizer/lib/data-segment';
 import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
@@ -22,6 +24,8 @@ type Signature = {
 export default class TitleWithBreadcrumbsComponent extends Component<Signature> {
   @service declare hoverState: HoverStateService;
 
+  @tracked ancestorTreeTooltipIsOpen = false;
+
   get hoveredSegment(): DataSegment | undefined {
     return this.hoverState.segment;
   }
@@ -34,6 +38,11 @@ export default class TitleWithBreadcrumbsComponent extends Component<Signature> 
 
   get visibleAncestors(): DataSegment[] {
     return this.args.segment.ancestorsReversed;
+  }
+
+  @action
+  handleAncestorTreeToggleButtonClick() {
+    this.ancestorTreeTooltipIsOpen = !this.ancestorTreeTooltipIsOpen;
   }
 }
 

@@ -3,23 +3,18 @@
     {{! template-lint-disable require-presentational-children }}
     <div
       role="button"
-      class="border-b-2 font-medium text-base sm:text-lg
-        {{if
-          (segment-eq @segment.grandparent this.hoveredSegment)
-          'text-blue-400 border-blue-400/80'
-          'text-zinc-400 border-zinc-400/20'
-        }}"
-      {{on "click" (fn @onSegmentSelect @segment.grandparent)}}
-      {{on
-        "mouseenter"
-        (fn @onSegmentMouseEnter "other" @segment.grandparent undefined)
-      }}
-      {{on "mouseleave" (fn @onSegmentMouseLeave "other" @segment.grandparent)}}
+      class="border-b-2 font-medium text-base sm:text-lg hover:text-blue-400 hover:border-blue-400/80 text-zinc-400 border-zinc-400/20"
+      {{on "click" this.handleAncestorTreeToggleButtonClick}}
     >
       …
 
-      {{#if (segment-eq @segment.grandparent this.hoveredSegment)}}
-        <HexPreview::SegmentTooltip @segment={{@segment.grandparent}} />
+      {{#if this.ancestorTreeTooltipIsOpen}}
+        <SegmentAncestorsTooltip
+          @segment={{@segment}}
+          @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+          @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+          @onSegmentSelect={{@onSegmentSelect}}
+        />
       {{/if}}
     </div>
 
@@ -50,13 +45,18 @@
       {{on "click" (fn @onSegmentSelect @segment.parent)}}
       {{on
         "mouseenter"
-        (fn @onSegmentMouseEnter "other" @segment.parent undefined)
+        (fn @onSegmentMouseEnter "breadcrumb" @segment.parent undefined)
       }}
-      {{on "mouseleave" (fn @onSegmentMouseLeave "other" @segment.parent)}}
+      {{on "mouseleave" (fn @onSegmentMouseLeave "breadcrumb" @segment.parent)}}
     >
       {{@segment.parent.titleForDisplay}}
 
-      {{#if (segment-eq @segment.parent this.hoveredSegment)}}
+      {{#if
+        (and
+          (segment-eq @segment.parent this.hoveredSegment)
+          (eq this.hoverState.initiatedFromSection "breadcrumb")
+        )
+      }}
         <HexPreview::SegmentTooltip @segment={{@segment.parent}} />
       {{/if}}
     </div>

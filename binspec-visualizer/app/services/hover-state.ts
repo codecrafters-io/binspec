@@ -11,6 +11,7 @@ export default class HoverStateService extends Service {
   @tracked initiatedFromSection?:
     | 'root-hexdump'
     | 'segment-details-hexdump'
+    | 'breadcrumb'
     | 'other';
 
   clearTask?: EmberRunTimer;

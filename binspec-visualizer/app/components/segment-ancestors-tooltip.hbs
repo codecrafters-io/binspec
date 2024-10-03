@@ -1,0 +1,17 @@
+<EmberPopover
+  @isShown={{true}}
+  @side="bottom"
+  @event="none"
+  @tooltipClass="bg-zinc-800 border-zinc-600/80 text-white py-2 px-1 max-w-[360px]"
+  @effect="none"
+>
+  {{#each this.ancestorsAndSelf as |segment segmentIndex|}}
+    <SegmentAncestorsTooltipItem
+      @segment={{segment}}
+      @indentationLevel={{segmentIndex}}
+      {{on "mouseenter" (fn @onSegmentMouseEnter "other" segment undefined)}}
+      {{on "mouseleave" @onSegmentMouseLeave}}
+      {{on "click" (fn @onSegmentSelect segment)}}
+    />
+  {{/each}}
+</EmberPopover>

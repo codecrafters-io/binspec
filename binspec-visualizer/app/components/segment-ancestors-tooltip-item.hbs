@@ -1,0 +1,10 @@
+<div class="flex items-stretch w-full" ...attributes>
+  {{#each (range 0 @indentationLevel)}}
+    &nbsp;&nbsp;&nbsp;
+  {{/each}}
+
+  <div class="flex truncate pr-3 py-2 rounded hover:bg-zinc-600/40 flex-grow">
+    <span class="text-zinc-600 font-medium mx-1.5">—</span>
+    <span class="text-white font-medium">{{@segment.titleForDisplay}}</span>
+  </div>
+</div>
