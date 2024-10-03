@@ -31,6 +31,10 @@ export default class TitleWithBreadcrumbsComponent extends Component<Signature> 
       ? 'text-blue-400'
       : 'text-yellow-300';
   }
+
+  get visibleAncestors(): DataSegment[] {
+    return this.args.segment.ancestorsReversed;
+  }
 }
 
 declare module '@glint/environment-ember-loose/registry' {

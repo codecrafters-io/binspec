@@ -1,23 +1,25 @@
 <div class="flex items-center" ...attributes>
-  {{#each @segment.ancestorsReversed as |ancestor|}}
+  {{#if @segment.grandparent}}
     {{! template-lint-disable require-presentational-children }}
     <div
-      dir="rtl"
       role="button"
-      class="border-b-2 font-medium text-base sm:text-lg truncate flex-shrink max-w-[12em]
+      class="border-b-2 font-medium text-base sm:text-lg
         {{if
-          (segment-eq ancestor this.hoveredSegment)
+          (segment-eq @segment.grandparent this.hoveredSegment)
           'text-blue-400 border-blue-400/80'
           'text-zinc-400 border-zinc-400/20'
         }}"
-      {{on "click" (fn @onSegmentSelect ancestor)}}
-      {{on "mouseenter" (fn @onSegmentMouseEnter "other" ancestor undefined)}}
-      {{on "mouseleave" (fn @onSegmentMouseLeave "other" ancestor)}}
+      {{on "click" (fn @onSegmentSelect @segment.grandparent)}}
+      {{on
+        "mouseenter"
+        (fn @onSegmentMouseEnter "other" @segment.grandparent undefined)
+      }}
+      {{on "mouseleave" (fn @onSegmentMouseLeave "other" @segment.grandparent)}}
     >
-      {{ancestor.titleForDisplay}}
+      …
 
-      {{#if (segment-eq ancestor this.hoveredSegment)}}
-        <HexPreview::SegmentTooltip @segment={{ancestor}} />
+      {{#if (segment-eq @segment.grandparent this.hoveredSegment)}}
+        <HexPreview::SegmentTooltip @segment={{@segment.grandparent}} />
       {{/if}}
     </div>
 
@@ -33,7 +35,45 @@
         clip-rule="evenodd"
       />
     </svg>
-  {{/each}}
+  {{/if}}
+  {{#if @segment.parent}}
+    {{! template-lint-disable require-presentational-children }}
+    <div
+      dir="rtl"
+      role="button"
+      class="border-b-2 font-medium text-base sm:text-lg truncate flex-shrink max-w-[14em]
+        {{if
+          (segment-eq @segment.parent this.hoveredSegment)
+          'text-blue-400 border-blue-400/80'
+          'text-zinc-400 border-zinc-400/20'
+        }}"
+      {{on "click" (fn @onSegmentSelect @segment.parent)}}
+      {{on
+        "mouseenter"
+        (fn @onSegmentMouseEnter "other" @segment.parent undefined)
+      }}
+      {{on "mouseleave" (fn @onSegmentMouseLeave "other" @segment.parent)}}
+    >
+      {{@segment.parent.titleForDisplay}}
+
+      {{#if (segment-eq @segment.parent this.hoveredSegment)}}
+        <HexPreview::SegmentTooltip @segment={{@segment.parent}} />
+      {{/if}}
+    </div>
+
+    <svg
+      class="h-4 w-4 flex-shrink-0 text-zinc-400/40 mx-1"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  {{/if}}
 
   <div
     class="font-medium text-base sm:text-lg truncate

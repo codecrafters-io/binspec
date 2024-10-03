@@ -89,6 +89,10 @@ export class DataSegment {
     return undefined;
   }
 
+  get grandparent(): DataSegment | undefined {
+    return this.parent?.parent;
+  }
+
   get leafSegments(): DataSegment[] {
     if (this.children.length === 0) {
       return [this];
