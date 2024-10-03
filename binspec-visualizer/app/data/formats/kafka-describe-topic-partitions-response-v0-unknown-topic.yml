@@ -1,5 +1,5 @@
-name: Kafka Describe Topic Partitions Response (v0)
-slug: kafka-describe-topic-partitions-response-v0
+name: Kafka DescribeTopicPartitions Response (v0) - Unknown Topic
+slug: kafka-describe-topic-partitions-response-v0-unknown-topic
 
 # DescribeTopicPartitions Response (Version: 0) => throttle_time_ms [topics] next_cursor TAG_BUFFER
 #   throttle_time_ms => INT32
@@ -122,7 +122,7 @@ segments:
               - title: Topic Name
                 length_in_bytes: 4
                 explanation_markdown: |
-                  The topic name encoded as a `COMPACT_NULLABLE_STRING`.
+                  The topic name encoded as a `COMPACT_STRING`, which starts with a varint corresponding to the length of the string + 1, followed by the string itself encoded in UTF-8.
                 children:
                   - title: Length
                     length_in_bytes: 1
@@ -137,7 +137,7 @@ segments:
                 explanation_markdown: |
                   A 16-byte UUID representing the unique identifier for this topic.
 
-                  Here, it is all zeros (00000000-0000-0000-0000-000000000000), which typically indicates an unassigned or null UUID.
+                  Here, it is all zeros (00000000-0000-0000-0000-000000000000), which indicates an unassigned or null UUID.
               - title: Is Internal
                 length_in_bytes: 1
                 explanation_markdown: |
@@ -147,15 +147,32 @@ segments:
               - title: Partitions Array
                 length_in_bytes: 1
                 explanation_markdown: |
-                  An array of partitions for this topic.
+                  A `COMPACT_ARRAY` of partitions for this topic, which contains the length + 1 encoded as a varint, followed by the contents.
 
                   Here, the length is 0x01 (1), indicating an empty array.
               - title: Topic Authorized Operations
                 length_in_bytes: 4
                 explanation_markdown: |
-                  A 4-byte integer representing the authorized operations for this topic.
+                  A 4-byte integer (bitfield) representing the authorized operations for this topic.
 
-                  Here, it is 0x00000df8 (3576 in decimal).
+                  Here, the value is 0x00000df8, which is the following in binary:
+
+                  ```
+                  0000 1101 1111 1000
+                  ```
+
+                  This corresponds to the following operations:
+
+                  - READ (bit index 3 from the right)
+                  - WRITE (bit index 4 from the right)
+                  - CREATE (bit index 5 from the right)
+                  - DELETE (bit index 6 from the right)
+                  - ALTER (bit index 7 from the right)
+                  - DESCRIBE (bit index 8 from the right)
+                  - DESCRIBE_CONFIGS (bit index 10 from the right)
+                  - ALTER_CONFIGS (bit index 11 from the right)
+
+                  The full list of operations can be found [here](https://github.com/apache/kafka/blob/1962917436f463541f9bb63791b7ed55c23ce8c1/clients/src/main/java/org/apache/kafka/common/acl/AclOperation.java#L44).
               - title: Tag Buffer
                 length_in_bytes: 1
                 explanation_markdown: |
