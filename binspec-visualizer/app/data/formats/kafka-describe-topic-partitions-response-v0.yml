@@ -23,27 +23,27 @@ slug: kafka-describe-topic-partitions-response-v0-unknown-topic
 #     topic_name => COMPACT_STRING
 #     partition_index => INT32
 data:
-  - 0x00
+  - 0x00 # Message Length (4 bytes, 0x61 in hex, 97 in decimal)
   - 0x00
   - 0x00
   - 0x61
-  - 0x00
+  - 0x00 # Correlation ID (4 bytes, 0x07 in hex, 7 in decimal)
   - 0x00
   - 0x00
   - 0x07
+  - 0x00 # Empty tag buffer
+  - 0x00 # Throttle Time (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
   - 0x00
+  - 0x02 # Topics array length + 1 (varint, 0x02 in hex, 2 in decimal)
+  - 0x00 # Error code (2 bytes, 0x00 in hex, 0 in decimal => NO_ERROR)
   - 0x00
-  - 0x00
-  - 0x02
-  - 0x00
-  - 0x00
-  - 0x04
-  - 0x66
-  - 0x6f
-  - 0x6f
-  - 0xe3
+  - 0x04 # Topic name length + 1 (varint, 0x04 in hex, 4 in decimal)
+  - 0x66 # f
+  - 0x6f # o
+  - 0x6f # o
+  - 0xe3 # Topic ID (16 bytes, e392806d-b533-4810-ba03-0b43c49b60fc)
   - 0x92
   - 0x80
   - 0x6d
@@ -58,9 +58,9 @@ data:
   - 0xc4
   - 0x9b
   - 0x60
-  - 0xfc
-  - 0x00
-  - 0x03
+  - 0xfc # End of topic ID
+  - 0x00 # Is internal (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x03 # Length of partitions array + 1 (3, i.e. length is 2)
   - 0x00
   - 0x00
   - 0x00
