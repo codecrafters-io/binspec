@@ -1,6 +1,353 @@
 name: Kafka Cluster Metadata
 slug: kafka-cluster-metadata
-data: [] # Ryan
+data:
+  # RecordBatch[0]
+  - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Batch Length (4 bytes, 0x4f in hex, 79 in decimal)
+  - 0x00
+  - 0x00
+  - 0x4f
+  - 0x00 # Partition Leader Epoch (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x96 # CRC (4 bytes, 0x9654b1a5 in hex, -1772834395 in decimal)
+  - 0x54
+  - 0xb1
+  - 0xa5
+  - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
+  - 0x00
+  - 0x00
+  - 0x03
+  - 0x00 # Base Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5a
+  - 0xf8
+  - 0x18
+  - 0x00 # Max Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5a
+  - 0xf8
+  - 0x18
+  - 0xff # Producer ID (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff  
+  - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0x00 # Records Length (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+
+  # Record[0]
+  - 0x3a # Record Length (1 byte, 0x3a in hex, 29 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Offset Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x2e # Value Length (1 byte, 0x2e in hex, 23 in decimal (as signed varint))
+  - 01 0c 00 11 6d 65 74 61 64 61 74 61 2e 76 65 72 73 69 6f 6e 00 14 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # RecordBatch[1]
+  - 0x00 # Base Offset (8 bytes, 0x02 in hex, 2 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02
+  - 0x00 # Batch Length (4 bytes, 0x9a in hex, 154 in decimal)
+  - 0x00
+  - 0x00
+  - 0x9a
+  - 0x00 # Partition Leader Epoch (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x70 # CRC (4 bytes, 0x7031534e in hex, 1882280782 in decimal)
+  - 0x31
+  - 0x53
+  - 0x4e
+  - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Base Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0x00 # Max Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0xff # Producer ID (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff  
+  - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0x00 # Records Length (4 bytes, 0x02 in hex, 2 in decimal)
+  - 0x00
+  - 0x00
+  - 0x02
+
+  # Record[0]
+  - 0x3c # Record Length (1 byte, 0x3c in hex, 30 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Offset Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x30 # Value Length (1 byte, 0x30 in hex, 24 in decimal (as signed varint))
+  - 01 02 00 04 66 6f 6f 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 96 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # Record[1]
+  - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x02 # Offset Delta (1 byte, 0x02 in hex, 1 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+  - 01 03 01 00 00 00 00 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 96 02 00 00 00 01 02 00 00 00 01 01 01 00 00 00 01 00 00 00 00 00 00 00 00 02 10 00 00 00 00 00 40 00 80 00 00 00 00 00 00 01 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # RecordBatch[2]
+  - 0x00 # Base Offset (8 bytes, 0x04 in hex, 4 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x04
+  - 0x00 # Batch Length (4 bytes, 0x9a in hex, 154 in decimal)
+  - 0x00
+  - 0x00
+  - 0x9a
+  - 0x00 # Partition Leader Epoch (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
+  - 0xa8 # CRC (4 bytes, 0xa89709d7 in hex, -1466496553 in decimal)
+  - 0x97
+  - 0x09
+  - 0xd7
+  - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Base Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0x00 # Max Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0xff # Producer ID (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0x00 # Records Length (4 bytes, 0x02 in hex, 2 in decimal)
+  - 0x00
+  - 0x00
+  - 0x02
+
+  # Record[0]
+  - 0x3c # Record Length (1 byte, 0x3c in hex, 30 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Offset Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x30 # Value Length (1 byte, 0x30 in hex, 24 in decimal (as signed varint))
+  - 01 02 00 04 71 75 7a 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 97 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # Record[1]
+  - 0x90 # Record Length (1 byte, 0x90 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x02 # Offset Delta (1 byte, 0x02 in hex, 1 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+  - 01 03 01 00 00 00 00 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 97 02 00 00 00 01 02 00 00 00 01 01 01 00 00 00 01 00 00 00 00 00 00 00 00 02 10 00 00 00 00 00 40 00 80 00 00 00 00 00 00 01 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # RecordBatch[3]
+  - 0x00 # Base Offset (8 bytes, 0x04 in hex, 4 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x06
+  - 0x00 # Batch Length (4 bytes, 0xe4 in hex, 228 in decimal)
+  - 0x00
+  - 0x00
+  - 0xe4
+  - 0x00 # Partition Leader Epoch (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x6b # CRC (4 bytes, 0x6b0b99d4 in hex, 1795922388 in decimal)
+  - 0x0b
+  - 0x99
+  - 0xd4
+  - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Base Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0x00 # Max Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0xff # Producer ID (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0x00 # Records Length (4 bytes, 0x03 in hex, 3 in decimal)
+  - 0x00
+  - 0x00
+  - 0x03
+
+  # Record[0]
+  - 0x3c # Record Length (1 byte, 0x3c in hex, 30 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Offset Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x30 # Value Length (1 byte, 0x30 in hex, 24 in decimal (as signed varint))
+  - 01 02 00 04 73 61 7a 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 76 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # Record[1]
+  - 0x90 # Record Length (1 byte, 0x90 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x02 # Offset Delta (1 byte, 0x02 in hex, 1 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+  - 01 03 01 00 00 00 01 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 76 02 00 00 00 01 02 00 00 00 01 01 01 00 00 00 01 00 00 00 00 00 00 00 00 02 10 00 00 00 00 00 40 00 80 00 00 00 00 00 00 01 00
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
+  # Record[2]
+  - 0x90 # Record Length (1 byte, 0x90 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x04 # Offset Delta (1 byte, 0x04 in hex, 2 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+  - 01 03 01 00 00 00 00 00 00 00 00 00 00 40 00 80 00 00 00 00 00 00 76 02 00 00 00 01 02 00 00 00 01 01 01 00 00 00 01 00 00 00 00 00 00 00 00 02 10 00 00 00 00 00 40 00 80 00 00 00 00 00 00 01 00 
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
 
 # Use single-topic, double-partition for test data
 segments:
