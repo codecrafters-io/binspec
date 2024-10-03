@@ -2,7 +2,7 @@ import { DataSegment } from './data-segment';
 
 interface GeneratedDataSegment {
   title: string;
-  length_in_bytes: number;
+  length_in_bytes?: number;
   explanation_markdown: string;
   children?: GeneratedDataSegment[];
 }

@@ -2,6 +2,7 @@
   {{#each @segment.ancestorsReversed as |ancestor|}}
     {{! template-lint-disable require-presentational-children }}
     <div
+      dir="rtl"
       role="button"
       class="border-b-2 font-medium text-base sm:text-lg truncate flex-shrink max-w-[12em]
         {{if
