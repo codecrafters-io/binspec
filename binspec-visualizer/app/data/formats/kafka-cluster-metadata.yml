@@ -73,7 +73,30 @@ data:
   - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
   # As key length is -1, the key value is empty
   - 0x2e # Value Length (1 byte, 0x2e in hex, 23 in decimal (as signed varint))
-  - 01 0c 00 11 6d 65 74 61 64 61 74 61 2e 76 65 72 73 69 6f 6e 00 14 00
+  # Payload: Feature Level Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x0c # Type (1 byte, 0x0c in hex, 12 in decimal)
+  - 0x00 # Version (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x11 # Name Length (1 byte, 0x11 in hex, 17 in decimal (as signed varint))
+  - 0x6d # Compact String (Length = 17 -1), parsed as "metadata.version"
+  - 0x65
+  - 0x74
+  - 0x61
+  - 0x64
+  - 0x61
+  - 0x74
+  - 0x61
+  - 0x2e
+  - 0x76
+  - 0x65
+  - 0x72
+  - 0x73
+  - 0x69
+  - 0x6f
+  - 0x6e
+  - 0x00 # Feature Level (2 bytes, 0x14 in hex, 20 in decimal)
+  - 0x14
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
   - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
 
   # RecordBatch[1]
