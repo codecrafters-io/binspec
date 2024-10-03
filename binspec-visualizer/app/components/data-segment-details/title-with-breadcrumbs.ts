@@ -44,6 +44,11 @@ export default class TitleWithBreadcrumbsComponent extends Component<Signature> 
   handleAncestorTreeToggleButtonClick() {
     this.ancestorTreeTooltipIsOpen = !this.ancestorTreeTooltipIsOpen;
   }
+
+  @action
+  handleAncestorTreeTooltipClose() {
+    this.ancestorTreeTooltipIsOpen = false;
+  }
 }
 
 declare module '@glint/environment-ember-loose/registry' {
