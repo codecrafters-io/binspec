@@ -33,6 +33,7 @@ type Signature = {
 
   Blocks: {
     interstitial?: [];
+    lastBytePreview?: [];
   };
 };
 

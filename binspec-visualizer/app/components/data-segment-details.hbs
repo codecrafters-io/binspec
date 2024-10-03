@@ -25,7 +25,7 @@
   <HexPreview
     class="mt-2 w-full"
     @data={{@data}}
-    @endByteIndex={{@segment.endByteIndex}}
+    @endByteIndex={{this.previewEndByteIndex}}
     @highlightedSegment={{@segment}}
     @onSegmentMouseEnter={{@onSegmentMouseEnter}}
     @onSegmentMouseLeave={{@onSegmentMouseLeave}}
@@ -33,5 +33,13 @@
     @section="segment-details-hexdump"
     @segments={{array @segment}}
     @startByteIndex={{@segment.startByteIndex}}
-  />
+  >
+    <:lastBytePreview>
+      {{#if this.previewIsTruncated}}
+        <div class="flex items-center justify-center">
+          <span class="text-lg text-zinc-500">⋯</span>
+        </div>
+      {{/if}}
+    </:lastBytePreview>
+  </HexPreview>
 </div>

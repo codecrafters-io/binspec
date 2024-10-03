@@ -30,6 +30,17 @@ export default class DataSegmentDetails extends Component<Signature> {
   get titleTextColorClasses(): string {
     return 'text-yellow-300';
   }
+
+  get previewEndByteIndex(): number {
+    return Math.min(
+      this.args.segment.endByteIndex,
+      this.args.segment.startByteIndex + 14,
+    );
+  }
+
+  get previewIsTruncated(): boolean {
+    return this.args.segment.endByteIndex > this.previewEndByteIndex;
+  }
 }
 
 declare module '@glint/environment-ember-loose/registry' {
