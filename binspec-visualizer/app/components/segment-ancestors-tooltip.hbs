@@ -1,6 +1,6 @@
 <EmberPopover
   @isShown={{true}}
-  @side="bottom"
+  @side="bottom-start"
   @event="none"
   @tooltipClass="bg-zinc-800 border-zinc-600/80 text-white py-2 px-1 max-w-[360px]"
   @effect="none"
@@ -8,6 +8,7 @@
   {{#each this.ancestorsAndSelf as |segment segmentIndex|}}
     <SegmentAncestorsTooltipItem
       @segment={{segment}}
+      @highlightedSegment={{@highlightedSegment}}
       @indentationLevel={{segmentIndex}}
       {{on "mouseenter" (fn @onSegmentMouseEnter "other" segment undefined)}}
       {{on "mouseleave" @onSegmentMouseLeave}}
