@@ -168,7 +168,189 @@ segments:
           - title: Topics
             explanation_markdown: |
               A single topic in the array.
-            children: [] # TODO: Fill in
+            children:
+              - title: Error Code
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the error code for this topic.
+                  Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
+              - title: Topic Name
+                explanation_markdown: |
+                  The name of the topic, encoded as a COMPACT_STRING.
+                children:
+                  - title: String Length
+                    length_in_bytes: 1
+                    explanation_markdown: |
+                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.
+                  - title: String Content
+                    length_in_bytes: 3
+                    explanation_markdown: |
+                      The content of the string: "foo".
+              - title: Topic ID
+                length_in_bytes: 16
+                explanation_markdown: |
+                  A 16-byte UUID representing the unique identifier for this topic.
+                  Here, it is e392806d-b533-4810-ba03-0b43c49b60fc.
+              - title: Is Internal
+                length_in_bytes: 1
+                explanation_markdown: |
+                  A boolean indicating whether the topic is internal.
+                  Here, it is 0x00 (false).
+              - title: Partitions Array
+                explanation_markdown: |
+                  An array of partitions for this topic.
+                children:
+                  - title: Array Length
+                    length_in_bytes: 1
+                    explanation_markdown: |
+                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), meaning the array length is 2.
+                  - title: Partition 0
+                    explanation_markdown: |
+                      Information about the first partition.
+                    children:
+                      - title: Error Code
+                        length_in_bytes: 2
+                        explanation_markdown: |
+                          A 2-byte integer representing the error code for this partition.
+                          Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
+                      - title: Partition Index
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          A 4-byte integer representing the index of this partition.
+                          Here, it is 0x00000000 (0 in decimal).
+                      - title: Leader ID
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          A 4-byte integer representing the ID of the leader for this partition.
+                          Here, it is 0x00000001 (1 in decimal).
+                      - title: Leader Epoch
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          A 4-byte integer representing the epoch of the leader.
+                          Here, it is 0x00000000 (0 in decimal).
+                      - title: Replica Nodes
+                        explanation_markdown: |
+                          An array of replica node IDs for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                          - title: Replica Node
+                            length_in_bytes: 4
+                            explanation_markdown: |
+                              A 4-byte integer representing a replica node ID.
+                              Here, it is 0x00000001 (1 in decimal).
+                      - title: ISR Nodes
+                        explanation_markdown: |
+                          An array of in-sync replica node IDs for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                          - title: ISR Node
+                            length_in_bytes: 4
+                            explanation_markdown: |
+                              A 4-byte integer representing an in-sync replica node ID.
+                              Here, it is 0x00000001 (1 in decimal).
+                      - title: Eligible Leader Replicas
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          The count of eligible leader replicas + 1, encoded as a varint.
+                          Here, it is 0x01 (1), indicating 0 eligible leader replicas.
+                      - title: Last Known ELR
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          The count of last known eligible leader replicas + 1, encoded as a varint.
+                          Here, it is 0x01 (1), indicating 0 last known eligible leader replicas.
+                      - title: Offline Replicas
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          The count of offline replicas + 1, encoded as a varint.
+                          Here, it is 0x01 (1), indicating 0 offline replicas.
+                      - title: Tag Buffer
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          An empty tagged field array, represented by a single byte of value 0x00.
+                  - title: Partition 1
+                    explanation_markdown: |
+                      Information about the second partition.
+                    children:
+                      - title: Error Code
+                        length_in_bytes: 2
+                        explanation_markdown: |
+                          A 2-byte integer representing the error code for this partition.
+                          Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
+                      - title: Partition Index
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          A 4-byte integer representing the index of this partition.
+                          Here, it is 0x00000001 (1 in decimal).
+                      - title: Leader ID
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          A 4-byte integer representing the ID of the leader for this partition.
+                          Here, it is 0x00000001 (1 in decimal).
+                      - title: Leader Epoch
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          A 4-byte integer representing the epoch of the leader.
+                          Here, it is 0x00000000 (0 in decimal).
+                      - title: Replica Nodes
+                        explanation_markdown: |
+                          An array of replica node IDs for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                          - title: Replica Node
+                            length_in_bytes: 4
+                            explanation_markdown: |
+                              A 4-byte integer representing a replica node ID.
+                              Here, it is 0x00000001 (1 in decimal).
+                      - title: ISR Nodes
+                        explanation_markdown: |
+                          An array of in-sync replica node IDs for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                          - title: ISR Node
+                            length_in_bytes: 4
+                            explanation_markdown: |
+                              A 4-byte integer representing an in-sync replica node ID.
+                              Here, it is 0x00000001 (1 in decimal).
+                      - title: Eligible Leader Replicas
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          The count of eligible leader replicas + 1, encoded as a varint.
+                          Here, it is 0x01 (1), indicating 0 eligible leader replicas.
+                      - title: Last Known ELR
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          The count of last known eligible leader replicas + 1, encoded as a varint.
+                          Here, it is 0x01 (1), indicating 0 last known eligible leader replicas.
+                      - title: Offline Replicas
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          The count of offline replicas + 1, encoded as a varint.
+                          Here, it is 0x01 (1), indicating 0 offline replicas.
+                      - title: Tag Buffer
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          An empty tagged field array, represented by a single byte of value 0x00.
+              - title: Topic Authorized Operations
+                length_in_bytes: 4
+                explanation_markdown: |
+                  A 4-byte integer representing the authorized operations for this topic.
+                  Here, it is 0x00000df8.
+              - title: Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  An empty tagged field array, represented by a single byte of value 0x00.
       - title: Next Cursor
         length_in_bytes: 1
         explanation_markdown: |
