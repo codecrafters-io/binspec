@@ -1,0 +1,181 @@
+name: Kafka DescribeTopicPartitions Response (v0) - Unknown Topic
+slug: kafka-describe-topic-partitions-response-v0-unknown-topic
+
+# DescribeTopicPartitions Response (Version: 0) => throttle_time_ms [topics] next_cursor TAG_BUFFER
+#   throttle_time_ms => INT32
+#   topics => error_code name topic_id is_internal [partitions] topic_authorized_operations TAG_BUFFER
+#     error_code => INT16
+#     name => COMPACT_NULLABLE_STRING
+#     topic_id => UUID
+#     is_internal => BOOLEAN
+#     partitions => error_code partition_index leader_id leader_epoch [replica_nodes] [isr_nodes] [eligible_leader_replicas] [last_known_elr] [offline_replicas] TAG_BUFFER
+#       error_code => INT16
+#       partition_index => INT32
+#       leader_id => INT32
+#       leader_epoch => INT32
+#       replica_nodes => INT32
+#       isr_nodes => INT32
+#       eligible_leader_replicas => INT32
+#       last_known_elr => INT32
+#       offline_replicas => INT32
+#     topic_authorized_operations => INT32
+#   next_cursor => topic_name partition_index TAG_BUFFER
+#     topic_name => COMPACT_STRING
+#     partition_index => INT32
+data:
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x61
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x07
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02
+  - 0x00
+  - 0x00
+  - 0x04
+  - 0x66
+  - 0x6f
+  - 0x6f
+  - 0xe3
+  - 0x92
+  - 0x80
+  - 0x6d
+  - 0xb5
+  - 0x33
+  - 0x48
+  - 0x10
+  - 0xba
+  - 0x03
+  - 0x0b
+  - 0x43
+  - 0xc4
+  - 0x9b
+  - 0x60
+  - 0xfc
+  - 0x00
+  - 0x03
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01
+  - 0x01
+  - 0x01
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01
+  - 0x01
+  - 0x01
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x0d
+  - 0xf8
+  - 0x00
+  - 0xff
+  - 0x00
+segments:
+  - title: Message Size
+    length_in_bytes: 4
+    explanation_markdown: |
+      Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.
+
+      In this case, the value is 0x29 (41 in decimal) indicating that the rest of the message is 41 bytes long.
+  - title: Response Header (v1)
+    explanation_markdown: |
+      The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.
+    children:
+      - title: Correlation ID
+        length_in_bytes: 4
+        explanation_markdown: |
+          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+
+          Here, it is 0x07 (7).
+      - title: Tag buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          An empty tagged field array, represented by a single byte of value 0x00.
+  - title: DescribeTopicPartitions Response Body (v0)
+    explanation_markdown: |
+      The response body contains fields specific to the DescribeTopicPartitions response.
+    children:
+      - title: Throttle Time
+        length_in_bytes: 4
+        explanation_markdown: |
+          A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
+
+          Here, it is 0x00000000 (0 in decimal), indicating no throttling.
+      - title: Topics Array
+        explanation_markdown: |
+          An array of topics described in the response.
+
+          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
+        children:
+          - title: Array Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+          - title: Topics
+            explanation_markdown: |
+              A single topic in the array.
+            children: [] # TODO: Fill in
+      - title: Next Cursor
+        length_in_bytes: 1
+        explanation_markdown: |
+          A nullable field that can be used for pagination.
+
+          Here, it is 0xff, indicating a null value.
+      - title: Tag Buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          An empty tagged field array, represented by a single byte of value 0x00.
