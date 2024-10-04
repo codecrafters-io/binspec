@@ -514,12 +514,12 @@ const generated: GeneratedData = {
         {
           "title": "Partition Leader Epoch",
           "length_in_bytes": 4,
-          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This value is used to detect out of order writes.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
         },
         {
           "title": "Magic Byte",
           "length_in_bytes": 1,
-          "explanation_markdown": "Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
+          "explanation_markdown": "Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
         },
         {
           "title": "CRC",
