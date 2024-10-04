@@ -124,7 +124,7 @@ data:
   - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
   - 0x00
   - 0x00
-  - 0x01
+  - 0x02
   - 0x00 # Base Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
   - 0x00
   - 0x01
@@ -504,7 +504,7 @@ segments:
             explanation_markdown: |
               Value is a byte array indicating the value of the record.
 
-              In this case, the value is the payload of the Feature level record.
+              In this case, the value is the payload of the Feature level record type.
             children:
               - title: Frame Version
                 length_in_bytes: 1
@@ -567,7 +567,7 @@ segments:
         explanation_markdown: |
           Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.
 
-          In this case, the value is `0x0000004f`, which is `79` in decimal.
+          In this case, the value is `0x000000e4`, which is `228` in decimal.
       - title: Partition Leader Epoch
         length_in_bytes: 4
         explanation_markdown: |
@@ -586,7 +586,7 @@ segments:
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
           The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
 
-          In this case, the value is `0x9654b1a5`, which is `-1772834395` in decimal.
+          In this case, the value is `0xeb602a9d`, which is `-346019171` in decimal.
       - title: Attributes
         length_in_bytes: 2
         explanation_markdown: |
@@ -610,21 +610,21 @@ segments:
         explanation_markdown: |
           Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.
 
-          In this case, the value is `0x00000000`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.
+          In this case, the value is `0x00000002`, which is `2` in decimal, indicating that the last offset of this record batch is `2` higher than the base offset, so there are 3 records in the recordBatch.
       - title: Base Timestamp
         length_in_bytes: 8
         explanation_markdown: |
           Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.
 
-          In this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.
-          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.
-      - title: Max Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+          In this case, the value is `0x00000191e05b2d15`, which is `1726045957397` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.
+      - title: Max Timestamp
         length_in_bytes: 8
         explanation_markdown: |
           Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.
 
-          In this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.
-          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.
+          In this case, the value is `0x00000191e05b2d15`, which is `1726045957397` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.
       - title: Producer ID
         length_in_bytes: 8
         explanation_markdown: |
@@ -650,7 +650,7 @@ segments:
         explanation_markdown: |
           Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
 
-          In this case, the value is `0x00000001`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.
+          In this case, the value is `0x00000003`, which is `3` in decimal, indicating that there are 3 records in the recordBatch.
       - title: Record \#1
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
@@ -660,7 +660,7 @@ segments:
             explanation_markdown: |
               Length is a signed variable size integer indicating the length of the record, the length is calculated from the attributes field to the end of the record.
 
-              In this case, the value is `0x3a`, which is `29` in decimal after parsing.
+              In this case, the value is `0x3c`, which is `30` in decimal after parsing.
           - title: Attributes
             length_in_bytes: 1
             explanation_markdown: |
@@ -698,13 +698,13 @@ segments:
             explanation_markdown: |
               Value Length is a signed variable size integer indicating the length of the value of the record.
 
-              In this case, the value is `0x2e`, which is `23` in decimal after parsing.
+              In this case, the value is `0x30`, which is `24` in decimal after parsing.
           - title: Value (Feature Level Record)
-            length_in_bytes: 23
+            length_in_bytes: 24
             explanation_markdown: |
               Value is a byte array indicating the value of the record.
 
-              In this case, the value is the payload of the Feature level record.
+              In this case, the value is the payload of the Topic Record type.
             children:
               - title: Frame Version
                 length_in_bytes: 1
@@ -717,32 +717,31 @@ segments:
                 explanation_markdown: |
                   Type is a 1-byte big-endian integer indicating the type of the record.
 
-                  In this case, the value is `0x0c`, which is `12` in decimal, indicating that this is a Feature Level Record.
+                  In this case, the value is `0x02`, which is `2` in decimal, indicating that this is a Topic Record.
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
                   Version is a 1-byte big-endian integer indicating the version of the feature level record.
 
-                  In this case, the value is `0x01`, which is `1` in decimal.
+                  In this case, the value is `0x00`, which is `0` in decimal.
               - title: Name length
                 length_in_bytes: 1
                 explanation_markdown: |
                   Name length is a unsigned variable size integer indicating the length of the name. But, as name is a compact string, the length of the name is always length - 1.
 
-                  In this case, the value is `0x11`, which is `17` in decimal, indicating that the length of the name is `16`.
-              - title: Name
-                length_in_bytes: 16
+                  In this case, the value is `0x04`, which is `4` in decimal, indicating that the length of the name is `3`.
+              - title: Topic Name
+                length_in_bytes: 3
                 explanation_markdown: |
                   Name is a byte array parsed as a string indicating the name of the feature level record.
 
-                  In this case, after parsing `0x6d657461646174612e76657273696f6e` as a string, we get the value as `metadata.version`.
-              - title: Feature Level
-                length_in_bytes: 2
+                  In this case, after parsing `0x73617a` as a string, we get the value as `saz`.
+              - title: Topic UUID
+                length_in_bytes: 16
                 explanation_markdown: |
-                  Feature Level is a 2-byte big-endian integer indicating the level of the feature.
+                  Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.
 
-                  In this case, the value is `0x0014`, which is `20` in decimal.
-                  Indicating that, the `metadata.version` is at level `20`.
+                  In this case, the value is `0x00000000-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
