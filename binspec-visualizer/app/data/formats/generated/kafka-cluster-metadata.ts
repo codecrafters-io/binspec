@@ -360,7 +360,7 @@ const generated: GeneratedData = {
         {
           "title": "Magic Byte",
           "length_in_bytes": 1,
-          "explanation_markdown": "Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
+          "explanation_markdown": "Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
         },
         {
           "title": "CRC",
