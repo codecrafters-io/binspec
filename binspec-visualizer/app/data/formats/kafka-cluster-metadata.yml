@@ -52,7 +52,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff  
+  - 0xff
   - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
   - 0xff
   - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
@@ -148,7 +148,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff  
+  - 0xff
   - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
   - 0xff
   - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
@@ -211,7 +211,7 @@ data:
   - 0x00 # Partition ID (4 bytes, 0x01 in hex, 1 in decimal)
   - 0x00
   - 0x00
-  - 0x01 
+  - 0x01
   - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
   - 0x00
   - 0x00
@@ -268,7 +268,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 
+  - 0x01
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # Record[2]
@@ -289,7 +289,7 @@ data:
   - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
-  - 0x00 
+  - 0x00
   - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
   - 0x00
   - 0x00
@@ -346,15 +346,15 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 
-  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+  - 0x01
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal)
 
 segments:
-  - title: Record Batch #1
+  - title: "Record Batch #1"
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
 
-      In this case, the record batch contains 1 records starting at base offset `0`.
+      This is the first record batch in this file. It contains 1 record starting at base offset `0`.
     children:
       - title: Base Offset
         length_in_bytes: 8
@@ -362,7 +362,7 @@ segments:
           Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
 
           In this case, the value is `0x0000000000000000`, which is `0` in decimal, indicating that this is the first batch of records.
-      - title: Batch Length 
+      - title: Batch Length
         length_in_bytes: 4
         explanation_markdown: |
           Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.
@@ -380,7 +380,7 @@ segments:
           Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.
 
           In this case, the value is `0x02`, which is `2` in decimal.
-      - title: CRC 
+      - title: CRC
         length_in_bytes: 4
         explanation_markdown: |
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
@@ -492,7 +492,7 @@ segments:
             explanation_markdown: |
               Key is a byte array indicating the key of the record.
 
-              In this case, the key is null.      
+              In this case, the key is null.
           - title: Value Length
             length_in_bytes: 1
             explanation_markdown: |
@@ -562,7 +562,7 @@ segments:
           Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
 
           In this case, the value is `0x0000000000000001`, which is `1` in decimal, indicating that this is the second batch of records.
-      - title: Batch Length 
+      - title: Batch Length
         length_in_bytes: 4
         explanation_markdown: |
           Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.
@@ -580,7 +580,7 @@ segments:
           Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.
 
           In this case, the value is `0x02`, which is `2` in decimal.
-      - title: CRC 
+      - title: CRC
         length_in_bytes: 4
         explanation_markdown: |
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
@@ -692,7 +692,7 @@ segments:
             explanation_markdown: |
               Key is a byte array indicating the key of the record.
 
-              In this case, the key is null.      
+              In this case, the key is null.
           - title: Value Length
             length_in_bytes: 1
             explanation_markdown: |
@@ -790,7 +790,7 @@ segments:
             explanation_markdown: |
               Key is a byte array indicating the key of the record.
 
-              In this case, the key is null.      
+              In this case, the key is null.
           - title: Value Length
             length_in_bytes: 2
             explanation_markdown: |
@@ -951,7 +951,7 @@ segments:
             explanation_markdown: |
               Key is a byte array indicating the key of the record.
 
-              In this case, the key is null.      
+              In this case, the key is null.
           - title: Value Length
             length_in_bytes: 2
             explanation_markdown: |

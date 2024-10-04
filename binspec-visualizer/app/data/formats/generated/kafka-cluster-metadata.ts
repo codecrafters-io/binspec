@@ -335,8 +335,8 @@ const generated: GeneratedData = {
   ],
   "segments": [
     {
-      "title": "Record Batch",
-      "explanation_markdown": "A record batch is the on-disk format that Kafka uses to store multiple records.\n\nIn this case, the record batch contains 1 records starting at base offset `0`.\n",
+      "title": "Record Batch #1",
+      "explanation_markdown": "A record batch is the on-disk format that Kafka uses to store multiple records.\n\nThis is the first record batch in this file. It contains 1 record starting at base offset `0`.\n",
       "children": [
         {
           "title": "Base Offset",
@@ -435,7 +435,7 @@ const generated: GeneratedData = {
             {
               "title": "Key",
               "length_in_bytes": 0,
-              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.      \n"
+              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.\n"
             },
             {
               "title": "Value Length",
@@ -589,7 +589,7 @@ const generated: GeneratedData = {
             {
               "title": "Key",
               "length_in_bytes": 0,
-              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.      \n"
+              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.\n"
             },
             {
               "title": "Value Length",
@@ -672,7 +672,7 @@ const generated: GeneratedData = {
             {
               "title": "Key",
               "length_in_bytes": 0,
-              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.      \n"
+              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.\n"
             },
             {
               "title": "Value Length",
@@ -805,7 +805,7 @@ const generated: GeneratedData = {
             {
               "title": "Key",
               "length_in_bytes": 0,
-              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.      \n"
+              "explanation_markdown": "Key is a byte array indicating the key of the record.\n\nIn this case, the key is null.\n"
             },
             {
               "title": "Value Length",
@@ -900,7 +900,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Tagged Fields Count",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields."
+                  "explanation_markdown": "Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
                 }
               ]
             }
