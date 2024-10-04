@@ -167,6 +167,7 @@ export default class HexPreview extends Component<Signature> {
       );
     }
 
+    // If we're within a highlighted segment, we only allow hover if child segments exist.
     if (highlightedSegment.containsByteIndex(byteIndex)) {
       return highlightedSegment.children.find((child) =>
         child.containsByteIndex(byteIndex),
