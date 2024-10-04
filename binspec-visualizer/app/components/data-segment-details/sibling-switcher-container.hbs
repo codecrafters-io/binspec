@@ -1,0 +1,86 @@
+<div
+  class="inline-flex rounded items-stretch shadow-sm select-none"
+  ...attributes
+>
+  {{#if @segment.previousSibling}}
+    <div
+      role="button"
+      class="rounded-l border-r-0 flex items-center border border-zinc-300 dark:border-zinc-700 transition-colors duration-75 pl-1 pr-2 py-2 text-zinc-500 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700/60"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-4"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <span class="text-xs">back</span>
+    </div>
+  {{else}}
+    <div
+      class="rounded-l border-r-0 flex items-center border border-zinc-300 dark:border-zinc-700 transition-colors duration-75 pl-1 pr-2 py-2 text-zinc-500 bg-white dark:bg-zinc-800 cursor-not-allowed"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-4 opacity-30"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <span class="text-xs opacity-30">back</span>
+    </div>
+  {{/if}}
+
+  <div class="w-px bg-zinc-700"></div>
+
+  {{#if @segment.nextSibling}}
+    <div
+      role="button"
+      class="rounded-r border-l-0 flex items-center border border-zinc-300 dark:border-zinc-700 transition-colors duration-75 pr-1 pl-2 py-1.5 text-zinc-500 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700/60"
+    >
+      <span class="text-xs">next</span>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-4"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  {{else}}
+    <div
+      class="rounded-r border-l-0 flex items-center border border-zinc-300 dark:border-zinc-700 transition-colors duration-75 pr-1 pl-2 py-1.5 text-zinc-500 bg-white dark:bg-zinc-800 cursor-not-allowed"
+    >
+      <span class="text-xs opacity-30">next</span>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-4 opacity-30"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  {{/if}}
+</div>
