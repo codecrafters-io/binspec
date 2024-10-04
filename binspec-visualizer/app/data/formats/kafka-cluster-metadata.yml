@@ -611,7 +611,7 @@ segments:
               bit 7~15: unused
 
           In this case, the value is `0x00`, which is `0` in decimal.
-      - title: Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
+      - title: Last Offset Delta
         length_in_bytes: 4
         explanation_markdown: |
           Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.

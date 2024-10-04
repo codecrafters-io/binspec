@@ -523,7 +523,7 @@ const generated: GeneratedData = {
           "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
         },
         {
-          "title": "Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)",
+          "title": "Last Offset Delta",
           "length_in_bytes": 4,
           "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x02`, which is `2` in decimal, indicating that the last offset of this record batch is `2` higher than the base offset, so there are 3 records in the recordBatch.\n"
         },
