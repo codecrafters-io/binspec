@@ -19,7 +19,9 @@ export default class HoverStateService extends Service {
   setValues(
     segment: DataSegment,
     byteIndex: number,
-    initiatedFromSection: 'root-hexdump' | 'segment-details-hexdump' | 'other',
+    initiatedFromSection: NonNullable<
+      HoverStateService['initiatedFromSection']
+    >,
   ) {
     if (this.clearTask) {
       cancel(this.clearTask);
