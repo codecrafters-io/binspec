@@ -1,35 +1,1073 @@
 name: Kafka Cluster Metadata
 slug: kafka-cluster-metadata
-data: [] # Ryan
+data:
+  # RecordBatch[0]
+  - 0x00 # Base Offset (8 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Batch Length (4 bytes, 0x4f in hex, 79 in decimal)
+  - 0x00
+  - 0x00
+  - 0x4f
+  - 0x00 # Partition Leader Epoch (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x96 # CRC (4 bytes, 0x9654b1a5 in hex, -1772834395 in decimal)
+  - 0x54
+  - 0xb1
+  - 0xa5
+  - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Base Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5a
+  - 0xf8
+  - 0x18
+  - 0x00 # Max Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5a
+  - 0xf8
+  - 0x18
+  - 0xff # Producer ID (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff  
+  - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0x00 # Records Length (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
 
-# Use single-topic, double-partition for test data
+  # Record[0]
+  - 0x3a # Record Length (1 byte, 0x3a in hex, 29 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Offset Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x2e # Value Length (1 byte, 0x2e in hex, 23 in decimal (as signed varint))
+  # Payload: Feature Level Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x0c # Type (1 byte, 0x0c in hex, 12 in decimal)
+  - 0x00 # Version (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x11 # Name Length (1 byte, 0x11 in hex, 17 in decimal (as unsigned varint))
+  - 0x6d # Name (Compact String (Length = 17 - 1), parsed as "metadata.version")
+  - 0x65
+  - 0x74
+  - 0x61
+  - 0x64
+  - 0x61
+  - 0x74
+  - 0x61
+  - 0x2e
+  - 0x76
+  - 0x65
+  - 0x72
+  - 0x73
+  - 0x69
+  - 0x6f
+  - 0x6e
+  - 0x00 # Feature Level (2 bytes, 0x14 in hex, 20 in decimal)
+  - 0x14
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+
+  # RecordBatch[1]
+  - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Batch Length (4 bytes, 0xe4 in hex, 228 in decimal)
+  - 0x00
+  - 0x00
+  - 0xe4
+  - 0x00 # Partition Leader Epoch (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
+  - 0xeb # CRC (4 bytes, 0xeb602a9d in hex, -346019171 in decimal)
+  - 0x60
+  - 0x2a
+  - 0x9d
+  - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x02
+  - 0x00 # Base Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0x00 # Max Timestamp (8 bytes, 0x00000191e05b2d15 in hex, 1726045957397 in decimal)
+  - 0x00
+  - 0x01
+  - 0x91
+  - 0xe0
+  - 0x5b
+  - 0x2d
+  - 0x15
+  - 0xff # Producer ID (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff  
+  - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0x00 # Records Length (4 bytes, 0x03 in hex, 3 in decimal)
+  - 0x00
+  - 0x00
+  - 0x03
+
+  # Record[0]
+  - 0x3c # Record Length (1 byte, 0x3c in hex, 30 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Offset Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x30 # Value Length (1 byte, 0x30 in hex, 24 in decimal (as signed varint))
+  # Payload: Topic Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x02 # Type (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Version (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x04 # Name Length (1 byte, 0x04 in hex, 4 in decimal (as unsigned varint))
+  - 0x73 # Topic Name (Compact String (Length = 4 - 1), parsed as "saz")
+  - 0x61
+  - 0x7a
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+
+  # Record[1]
+  - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x02 # Offset Delta (1 byte, 0x02 in hex, 1 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+  # Payload: Partition Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
+  - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01 
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x02 # Length of Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Length of In Sync Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # In Sync Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01 # Length of Removing Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x01 # Length of Adding Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x00 # Leader (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Leader Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Partition Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02 # Compact Array Length (1 byte, 0x02 in hex, 1 in decimal (parsed as an unsigned varint))
+  - 0x10 # Directory UUID (16 raw bytes, 10000000-0000-4000-8000-000000000001 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01 
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+
+  # Record[2]
+  - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x04 # Offset Delta (1 byte, 0x04 in hex, 2 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+
+  # Payload: Partition Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
+  - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00 
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x02 # Length of Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Length of In Sync Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # In Sync Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01 # Length of Removing Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x01 # Length of Adding Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x00 # Leader (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Leader Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Partition Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02 # Compact Array Length (1 byte, 0x02 in hex, 1 in decimal (parsed as an unsigned varint))
+  - 0x10 # Directory UUID (16 raw bytes, 10000000-0000-4000-8000-000000000001 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01 
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+
 segments:
-  - title: Record Batch \#1
+  - title: Record Batch #1
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
 
-      In this case, the record batch contains 3 records starting at base offset `0`.
+      In this case, the record batch contains 1 records starting at base offset `0`.
     children:
       - title: Base Offset
         length_in_bytes: 8
-      # ...
+        explanation_markdown: |
+          Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
 
-      - title: Records
+          In this case, the value is `0x0000000000000000`, which is `0` in decimal, indicating that this is the first batch of records.
+      - title: Batch Length 
+        length_in_bytes: 4
+        explanation_markdown: |
+          Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.
+
+          In this case, the value is `0x0000004f`, which is `79` in decimal.
+      - title: Partition Leader Epoch
+        length_in_bytes: 4
+        explanation_markdown: |
+          Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.
+
+          In this case, the value is `0x00000001`, which is `1` in decimal.
+      - title: Magic Byte
+        length_in_bytes: 1
+        explanation_markdown: |
+          Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.
+
+          In this case, the value is `0x02`, which is `2` in decimal.
+      - title: CRC 
+        length_in_bytes: 4
+        explanation_markdown: |
+          CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
+          The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
+
+          In this case, the value is `0x9654b1a5`, which is `-1772834395` in decimal.
+      - title: Attributes
+        length_in_bytes: 2
+        explanation_markdown: |
+          Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.
+          Attributes is a bitmask of the following flags:
+              bit 0~2:
+                  0: no compression
+                  1: gzip
+                  2: snappy
+                  3: lz4
+                  4: zstd
+              bit 3: timestampType
+              bit 4: isTransactional (0 means not transactional)
+              bit 5: isControlBatch (0 means not a control batch)
+              bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
+              bit 7~15: unused
+
+          In this case, the value is `0x0000`, which is `0` in decimal.
+      - title: Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
+        length_in_bytes: 4
+        explanation_markdown: |
+          Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.
+
+          In this case, the value is `0x00000000`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.
+      - title: Base Timestamp
+        length_in_bytes: 8
+        explanation_markdown: |
+          Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.
+
+          In this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.
+      - title: Max Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+        length_in_bytes: 8
+        explanation_markdown: |
+          Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.
+
+          In this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.
+      - title: Producer ID
+        length_in_bytes: 8
+        explanation_markdown: |
+          Producer ID is a 8-byte big-endian integer indicating the ID of the producer that produced the records in this batch.
+
+          In this case, the value is `0xffffffffffffffff`, which is `-1` in decimal.
+          This is a special value that indicates that the producer ID is not set.
+      - title: Producer Epoch
+        length_in_bytes: 2
+        explanation_markdown: |
+          Producer Epoch is a 2-byte big-endian integer indicating the epoch of the producer that produced the records in this batch.
+
+          In this case, the value is `0xffff`, which is `-1` in decimal.
+          This is a special value that indicates that the producer epoch is not applicable.
+      - title: Base Sequence
+        length_in_bytes: 4
+        explanation_markdown: |
+          Base Sequence is a 4-byte big-endian integer indicating the sequence number of the first record in a batch. It is used to ensure the correct ordering and deduplication of messages produced by a Kafka producer.
+
+          In this case, the value is `0xffffffff`, which is `-1` in decimal.
+      - title: Records Length
+        length_in_bytes: 4
+        explanation_markdown: |
+          Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
+
+          In this case, the value is `0x00000001`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.
+      - title: Record #1
+        explanation_markdown: |
+          A record is the on-disk format that Kafka uses to store a single record.
         children:
-          - title: Count
-            length_in_bytes: 2
-          - title: Elements
-            children:
-              - title: Record 1
-                children:
-                  - title: Length
-                  # ...
-              - title: Record 2
-                # ...
-              - title: Record 3
+          - title: Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Length is a signed variable size integer indicating the length of the record, the length is calculated from the attributes field to the end of the record.
 
-  - title: Record Batch \#2
+              In this case, the value is `0x3a`, which is `29` in decimal after parsing.
+          - title: Attributes
+            length_in_bytes: 1
+            explanation_markdown: |
+              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Currently, this field is unused in the protocol.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Timestamp Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Timestamp Delta is a signed variable size integer indicating the difference between the timestamp of the record and the base timestamp of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Offset Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Offset Delta is a signed variable size integer indicating the difference between the offset of the record and the base offset of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Key Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Key Length is a signed variable size integer indicating the length of the key of the record.
+
+              In this case, the value is `0x01`, which is `-1` in decimal after parsing.
+              This is a special value that indicates that the key is null.
+          - title: Key
+            length_in_bytes: 0
+            explanation_markdown: |
+              Key is a byte array indicating the key of the record.
+
+              In this case, the key is null.      
+          - title: Value Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Value Length is a signed variable size integer indicating the length of the value of the record.
+
+              In this case, the value is `0x2e`, which is `23` in decimal after parsing.
+          - title: Value (Feature Level Record)
+            length_in_bytes: 23
+            explanation_markdown: |
+              Value is a byte array indicating the value of the record.
+
+              In this case, the value is the payload of the Feature level record type.
+            children:
+              - title: Frame Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Type
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Type is a 1-byte big-endian integer indicating the type of the record.
+
+                  In this case, the value is `0x0c`, which is `12` in decimal, indicating that this is a Feature Level Record.
+              - title: Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Name length
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Name length is a unsigned variable size integer indicating the length of the name. But, as name is a compact string, the length of the name is always length - 1.
+
+                  In this case, the value is `0x11`, which is `17` in decimal, indicating that the length of the name is `16`.
+              - title: Name
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Name is a byte array parsed as a string indicating the name of the feature level record.
+
+                  In this case, after parsing `0x6d657461646174612e76657273696f6e` as a string, we get the value as `metadata.version`.
+              - title: Feature Level
+                length_in_bytes: 2
+                explanation_markdown: |
+                  Feature Level is a 2-byte big-endian integer indicating the level of the feature.
+
+                  In this case, the value is `0x0014`, which is `20` in decimal.
+                  Indicating that, the `metadata.version` is at level `20`.
+              - title: Tagged Fields Count
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+
+                  In this case, the value is `0x00`, which is `0` in decimal.
+                  So, we can skip parsing the tagged fields.
+  - title: Record Batch #2
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
 
-      In this case, the record batch contains 1 records starting at base offset `2`.
+      In this case, the record batch contains 3 records starting at base offset `1`.
+    children:
+      - title: Base Offset
+        length_in_bytes: 8
+        explanation_markdown: |
+          Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
+
+          In this case, the value is `0x0000000000000001`, which is `1` in decimal, indicating that this is the second batch of records.
+      - title: Batch Length 
+        length_in_bytes: 4
+        explanation_markdown: |
+          Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.
+
+          In this case, the value is `0x000000e4`, which is `228` in decimal.
+      - title: Partition Leader Epoch
+        length_in_bytes: 4
+        explanation_markdown: |
+          Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.
+
+          In this case, the value is `0x00000001`, which is `1` in decimal.
+      - title: Magic Byte
+        length_in_bytes: 1
+        explanation_markdown: |
+          Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.
+
+          In this case, the value is `0x02`, which is `2` in decimal.
+      - title: CRC 
+        length_in_bytes: 4
+        explanation_markdown: |
+          CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
+          The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
+
+          In this case, the value is `0xeb602a9d`, which is `-346019171` in decimal.
+      - title: Attributes
+        length_in_bytes: 2
+        explanation_markdown: |
+          Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.
+          Attributes is a bitmask of the following flags:
+              bit 0~2:
+                  0: no compression
+                  1: gzip
+                  2: snappy
+                  3: lz4
+                  4: zstd
+              bit 3: timestampType
+              bit 4: isTransactional (0 means not transactional)
+              bit 5: isControlBatch (0 means not a control batch)
+              bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
+              bit 7~15: unused
+
+          In this case, the value is `0x0000`, which is `0` in decimal.
+      - title: Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
+        length_in_bytes: 4
+        explanation_markdown: |
+          Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.
+
+          In this case, the value is `0x00000002`, which is `2` in decimal, indicating that the last offset of this record batch is `2` higher than the base offset, so there are 3 records in the recordBatch.
+      - title: Base Timestamp
+        length_in_bytes: 8
+        explanation_markdown: |
+          Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.
+
+          In this case, the value is `0x00000191e05b2d15`, which is `1726045957397` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.
+      - title: Max Timestamp
+        length_in_bytes: 8
+        explanation_markdown: |
+          Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.
+
+          In this case, the value is `0x00000191e05b2d15`, which is `1726045957397` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.
+      - title: Producer ID
+        length_in_bytes: 8
+        explanation_markdown: |
+          Producer ID is a 8-byte big-endian integer indicating the ID of the producer that produced the records in this batch.
+
+          In this case, the value is `0xffffffffffffffff`, which is `-1` in decimal.
+          This is a special value that indicates that the producer ID is not set.
+      - title: Producer Epoch
+        length_in_bytes: 2
+        explanation_markdown: |
+          Producer Epoch is a 2-byte big-endian integer indicating the epoch of the producer that produced the records in this batch.
+
+          In this case, the value is `0xffff`, which is `-1` in decimal.
+          This is a special value that indicates that the producer epoch is not applicable.
+      - title: Base Sequence
+        length_in_bytes: 4
+        explanation_markdown: |
+          Base Sequence is a 4-byte big-endian integer indicating the sequence number of the first record in a batch. It is used to ensure the correct ordering and deduplication of messages produced by a Kafka producer.
+
+          In this case, the value is `0xffffffff`, which is `-1` in decimal.
+      - title: Records Length
+        length_in_bytes: 4
+        explanation_markdown: |
+          Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
+
+          In this case, the value is `0x00000003`, which is `3` in decimal, indicating that there are 3 records in the recordBatch.
+      - title: Record #1
+        explanation_markdown: |
+          A record is the on-disk format that Kafka uses to store a single record.
+        children:
+          - title: Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Length is a signed variable size integer indicating the length of the record, the length is calculated from the attributes field to the end of the record.
+
+              In this case, the value is `0x3c`, which is `30` in decimal after parsing.
+          - title: Attributes
+            length_in_bytes: 1
+            explanation_markdown: |
+              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Currently, this field is unused in the protocol.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Timestamp Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Timestamp Delta is a signed variable size integer indicating the difference between the timestamp of the record and the base timestamp of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Offset Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Offset Delta is a signed variable size integer indicating the difference between the offset of the record and the base offset of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Key Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Key Length is a signed variable size integer indicating the length of the key of the record.
+
+              In this case, the value is `0x01`, which is `-1` in decimal after parsing.
+              This is a special value that indicates that the key is null.
+          - title: Key
+            length_in_bytes: 0
+            explanation_markdown: |
+              Key is a byte array indicating the key of the record.
+
+              In this case, the key is null.      
+          - title: Value Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Value Length is a signed variable size integer indicating the length of the value of the record.
+
+              In this case, the value is `0x30`, which is `24` in decimal after parsing.
+          - title: Value (Feature Level Record)
+            length_in_bytes: 24
+            explanation_markdown: |
+              Value is a byte array indicating the value of the record.
+
+              In this case, the value is the payload of the Topic Record type.
+            children:
+              - title: Frame Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Type
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Type is a 1-byte big-endian integer indicating the type of the record.
+
+                  In this case, the value is `0x02`, which is `2` in decimal, indicating that this is a Topic Record.
+              - title: Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+
+                  In this case, the value is `0x00`, which is `0` in decimal.
+              - title: Name length
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Name length is a unsigned variable size integer indicating the length of the name. But, as name is a compact string, the length of the name is always length - 1.
+
+                  In this case, the value is `0x04`, which is `4` in decimal, indicating that the length of the name is `3`.
+              - title: Topic Name
+                length_in_bytes: 3
+                explanation_markdown: |
+                  Name is a byte array parsed as a string indicating the name of the feature level record.
+
+                  In this case, after parsing `0x73617a` as a string, we get the value as `saz`.
+              - title: Topic UUID
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.
+
+                  In this case, the value is `0x00000000-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.
+              - title: Tagged Fields Count
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+
+                  In this case, the value is `0x00`, which is `0` in decimal.
+                  So, we can skip parsing the tagged fields.
+      - title: Record #2
+        explanation_markdown: |
+          A record is the on-disk format that Kafka uses to store a single record.
+        children:
+          - title: Length
+            length_in_bytes: 2
+            explanation_markdown: |
+              Length is a signed variable size integer indicating the length of the record, the length is calculated from the attributes field to the end of the record.
+
+              In this case, the value is `0x9001`, which is `72` in decimal after parsing.
+          - title: Attributes
+            length_in_bytes: 1
+            explanation_markdown: |
+              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Currently, this field is unused in the protocol.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Timestamp Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Timestamp Delta is a signed variable size integer indicating the difference between the timestamp of the record and the base timestamp of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Offset Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Offset Delta is a signed variable size integer indicating the difference between the offset of the record and the base offset of the record batch.
+
+              In this case, the value is `0x02`, which is `1` in decimal after parsing.
+          - title: Key Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Key Length is a signed variable size integer indicating the length of the key of the record.
+
+              In this case, the value is `0x01`, which is `-1` in decimal after parsing.
+              This is a special value that indicates that the key is null.
+          - title: Key
+            length_in_bytes: 0
+            explanation_markdown: |
+              Key is a byte array indicating the key of the record.
+
+              In this case, the key is null.      
+          - title: Value Length
+            length_in_bytes: 2
+            explanation_markdown: |
+              Value Length is a signed variable size integer indicating the length of the value of the record.
+
+              In this case, the value is `0x8201`, which is `65` in decimal after parsing.
+          - title: Value (Partition Record)
+            length_in_bytes: 65
+            explanation_markdown: |
+              Value is a byte array indicating the value of the record.
+
+              In this case, the value is the payload of the Partition Record type.
+            children:
+              - title: Frame Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Type
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Type is a 1-byte big-endian integer indicating the type of the record.
+
+                  In this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.
+              - title: Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Partition ID
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Partition ID is a 4-byte big-endian integer indicating the ID of the partition.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal. Indicating that this Partition record is for partition `1`.
+              - title: Topic UUID
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.
+
+                  In this case, the value is `0x00000000-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.
+              - title: Length of replica array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of replica array is an unsigned variable size integer indicating the number of replicas in the replica array.
+
+                  In this case, the value is `0x02`, which is `2` in decimal. As the replica array is a compact array, the length of the replica array is length - 1, which means its length is `1`.
+              - title: Replica Array
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the replicas.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal.
+                  Indicating that the replica ID of the first entry in the replicas array is `1`.
+              - title: Length of In Sync Replica array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of In Sync Replica array is an unsigned variable size integer indicating the number of replicas in the In Sync Replica array.
+
+                  In this case, the value is `0x02`, which is `2` in decimal. As the in sync replica array is a compact array, the length of the actual array is length - 1, which means its length is `1`.
+              - title: In Sync Replica Array
+                length_in_bytes: 4
+                explanation_markdown: |
+                  In Sync Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the in sync replicas.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal.
+                  Indicating that the replica ID of the first entry in the in sync replicas array is `1`.
+              - title: Length of Removing Replicas array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of Removing Replicas array is an unsigned variable size integer indicating the number of replicas in the Removing Replicas array.
+
+                  In this case, the value is `0x01`, which is `1` in decimal. As the removing replicas array is a compact array, the length of the actual array is length - 1, which means its length is `0`.
+              - title: Length of Adding Replicas array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of Adding Replicas array is an unsigned variable size integer indicating the number of replicas in the Adding Replicas array.
+
+                  In this case, the value is `0x01`, which is `1` in decimal. As the adding replicas array is a compact array, the length of the actual array is length - 1, which means its length is `0`.
+              - title: Leader
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Leader is a 4-byte big-endian integer indicating the replica ID of the leader.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal.
+                  Indicating that the leader is replica `1`.
+              - title: Leader Epoch
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader.
+
+                  In this case, the value is `0x00000000`, which is `0` in decimal.
+              - title: Partition Epoch
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Partition Epoch is a 4-byte big-endian integer indicating the epoch of the partition.
+
+                  In this case, the value is `0x00000000`, which is `0` in decimal.
+              - title: Length of Directories array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of Directories array is an unsigned variable size integer indicating the number of directories in the Directories array.
+
+                  In this case, the value is `0x02`, which is `2` in decimal. As the directories array is a compact array, the length of the actual array is length - 1, which means its length is `1`.
+              - title: Directories Array
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.
+
+                  In this case, the value is `0x00000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
+              - title: Tagged Fields Count
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+
+                  In this case, the value is `0x00`, which is `0` in decimal.
+                  So, we can skip parsing the tagged fields.
+      - title: Record #3
+        explanation_markdown: |
+          A record is the on-disk format that Kafka uses to store a single record.
+        children:
+          - title: Length
+            length_in_bytes: 2
+            explanation_markdown: |
+              Length is a signed variable size integer indicating the length of the record, the length is calculated from the attributes field to the end of the record.
+
+              In this case, the value is `0x9001`, which is `72` in decimal after parsing.
+          - title: Attributes
+            length_in_bytes: 1
+            explanation_markdown: |
+              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Currently, this field is unused in the protocol.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Timestamp Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Timestamp Delta is a signed variable size integer indicating the difference between the timestamp of the record and the base timestamp of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Offset Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Offset Delta is a signed variable size integer indicating the difference between the offset of the record and the base offset of the record batch.
+
+              In this case, the value is `0x04`, which is `2` in decimal after parsing.
+          - title: Key Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Key Length is a signed variable size integer indicating the length of the key of the record.
+
+              In this case, the value is `0x01`, which is `-1` in decimal after parsing.
+              This is a special value that indicates that the key is null.
+          - title: Key
+            length_in_bytes: 0
+            explanation_markdown: |
+              Key is a byte array indicating the key of the record.
+
+              In this case, the key is null.      
+          - title: Value Length
+            length_in_bytes: 2
+            explanation_markdown: |
+              Value Length is a signed variable size integer indicating the length of the value of the record.
+
+              In this case, the value is `0x8201`, which is `65` in decimal after parsing.
+          - title: Value (Partition Record)
+            length_in_bytes: 65
+            explanation_markdown: |
+              Value is a byte array indicating the value of the record.
+
+              In this case, the value is the payload of the Partition Record type.
+            children:
+              - title: Frame Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Type
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Type is a 1-byte big-endian integer indicating the type of the record.
+
+                  In this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.
+              - title: Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Partition ID
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Partition ID is a 4-byte big-endian integer indicating the ID of the partition.
+
+                  In this case, the value is `0x00000000`, which is `0` in decimal. Indicating that this Partition record is for partition `0`.
+              - title: Topic UUID
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.
+
+                  In this case, the value is `0x00000000-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.
+              - title: Length of replica array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of replica array is an unsigned variable size integer indicating the number of replicas in the replica array.
+
+                  In this case, the value is `0x02`, which is `2` in decimal. As the replica array is a compact array, the length of the replica array is length - 1, which means its length is `1`.
+              - title: Replica Array
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the replicas.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal.
+                  Indicating that the replica ID of the first entry in the replicas array is `1`.
+              - title: Length of In Sync Replica array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of In Sync Replica array is an unsigned variable size integer indicating the number of replicas in the In Sync Replica array.
+
+                  In this case, the value is `0x02`, which is `2` in decimal. As the in sync replica array is a compact array, the length of the actual array is length - 1, which means its length is `1`.
+              - title: In Sync Replica Array
+                length_in_bytes: 4
+                explanation_markdown: |
+                  In Sync Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the in sync replicas.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal.
+                  Indicating that the replica ID of the first entry in the in sync replicas array is `1`.
+              - title: Length of Removing Replicas array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of Removing Replicas array is an unsigned variable size integer indicating the number of replicas in the Removing Replicas array.
+
+                  In this case, the value is `0x01`, which is `1` in decimal. As the removing replicas array is a compact array, the length of the actual array is length - 1, which means its length is `0`.
+              - title: Length of Adding Replicas array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of Adding Replicas array is an unsigned variable size integer indicating the number of replicas in the Adding Replicas array.
+
+                  In this case, the value is `0x01`, which is `1` in decimal. As the adding replicas array is a compact array, the length of the actual array is length - 1, which means its length is `0`.
+              - title: Leader
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Leader is a 4-byte big-endian integer indicating the replica ID of the leader.
+
+                  In this case, the value is `0x00000001`, which is `1` in decimal.
+                  Indicating that the leader is replica `1`.
+              - title: Leader Epoch
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader.
+
+                  In this case, the value is `0x00000000`, which is `0` in decimal.
+              - title: Partition Epoch
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Partition Epoch is a 4-byte big-endian integer indicating the epoch of the partition.
+
+                  In this case, the value is `0x00000000`, which is `0` in decimal.
+              - title: Length of Directories array
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Length of Directories array is an unsigned variable size integer indicating the number of directories in the Directories array.
+
+                  In this case, the value is `0x02`, which is `2` in decimal. As the directories array is a compact array, the length of the actual array is length - 1, which means its length is `1`.
+              - title: Directories Array
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.
+
+                  In this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
+              - title: Tagged Fields Count
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+
+                  In this case, the value is `0x00`, which is `0` in decimal.
+                  So, we can skip parsing the tagged fields.
