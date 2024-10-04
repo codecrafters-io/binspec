@@ -711,7 +711,7 @@ segments:
               Value Length is a signed variable size integer indicating the length of the value of the record.
 
               In this case, the value is `0x30`, which is `24` in decimal after parsing.
-          - title: Value (Feature Level Record)
+          - title: Value (Topic Record)
             length_in_bytes: 24
             explanation_markdown: |
               Value is a byte array indicating the value of the record.
@@ -733,7 +733,7 @@ segments:
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte big-endian integer indicating the version of the topic record.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
               - title: Name length
@@ -745,7 +745,7 @@ segments:
               - title: Topic Name
                 length_in_bytes: 3
                 explanation_markdown: |
-                  Name is a byte array parsed as a string indicating the name of the feature level record.
+                  Name is a byte array parsed as a string indicating the name of the topic.
 
                   In this case, after parsing `0x73617a` as a string, we get the value as `saz`.
               - title: Topic UUID
@@ -831,7 +831,7 @@ segments:
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte big-endian integer indicating the version of the partition record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Partition ID
@@ -992,7 +992,7 @@ segments:
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte big-endian integer indicating the version of the partition record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Partition ID
