@@ -507,8 +507,50 @@ segments:
 
               In this case, the value is the payload of the Feature level record.
             children:
-              pass
+              - title: Frame Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
 
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Type
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Type is a 1-byte big-endian integer indicating the type of the record.
+
+                  In this case, the value is `0x0c`, which is `12` in decimal, indicating that this is a Feature Level Record.
+              - title: Version
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+
+                  In this case, the value is `0x01`, which is `1` in decimal.
+              - title: Name length
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Name length is a unsigned variable size integer indicating the length of the name. But, as name is a compact string, the length of the name is always length - 1.
+
+                  In this case, the value is `0x11`, which is `17` in decimal, indicating that the length of the name is `16`.
+              - title: Name
+                length_in_bytes: 16
+                explanation_markdown: |
+                  Name is a byte array parsed as a string indicating the name of the feature level record.
+
+                  In this case, the value is `metadata.version`.
+              - title: Feature Level
+                length_in_bytes: 2
+                explanation_markdown: |
+                  Feature Level is a 2-byte big-endian integer indicating the level of the feature.
+
+                  In this case, the value is `0x0014`, which is `20` in decimal.
+                  Indicating that, the `metadata.version` is at level `20`.
+              - title: Tagged Fields Count
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+
+                  In this case, the value is `0x00`, which is `0` in decimal.
+                  So, we can skip parsing the tagged fields.
           - title: Elements
             children:
               - title: Record 1
