@@ -452,10 +452,63 @@ segments:
           Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
 
           In this case, the value is `0x00000001`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.
-      - title: Records
+      - title: Record \#1
+        explanation_markdown: |
+          A record is the on-disk format that Kafka uses to store a single record.
         children:
-          - title: Count
-            length_in_bytes: 2
+          - title: Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Length is a signed variable size integer indicating the length of the record, the length is calculated from the attributes field to the end of the record.
+
+              In this case, the value is `0x3a`, which is `29` in decimal after parsing.
+          - title: Attributes
+            length_in_bytes: 1
+            explanation_markdown: |
+              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Currently, this field is unused in the protocol.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Timestamp Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Timestamp Delta is a signed variable size integer indicating the difference between the timestamp of the record and the base timestamp of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Offset Delta
+            length_in_bytes: 1
+            explanation_markdown: |
+              Offset Delta is a signed variable size integer indicating the difference between the offset of the record and the base offset of the record batch.
+
+              In this case, the value is `0x00`, which is `0` in decimal after parsing.
+          - title: Key Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Key Length is a signed variable size integer indicating the length of the key of the record.
+
+              In this case, the value is `0x01`, which is `-1` in decimal after parsing.
+              This is a special value that indicates that the key is null.
+          - title: Key
+            length_in_bytes: 1
+            explanation_markdown: |
+              Key is a byte array indicating the key of the record.
+
+              In this case, the key is null.      
+          - title: Value Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Value Length is a signed variable size integer indicating the length of the value of the record.
+
+              In this case, the value is `0x2e`, which is `23` in decimal after parsing.
+          - title: Value (Feature Level Record)
+            length_in_bytes: 23
+            explanation_markdown: |
+              Value is a byte array indicating the value of the record.
+
+              In this case, the value is the payload of the Feature level record.
+            children:
+              pass
+
           - title: Elements
             children:
               - title: Record 1
