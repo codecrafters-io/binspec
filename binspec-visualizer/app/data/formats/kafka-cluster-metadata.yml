@@ -19,10 +19,10 @@ data:
   - 0x00
   - 0x01
   - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
-  - 0x96 # CRC (4 bytes, 0x9654b1a5 in hex, -1772834395 in decimal)
-  - 0x54
-  - 0xb1
-  - 0xa5
+  - 0xb0 # CRC (4 bytes, 0xb069457c in hex, -1335278212 in decimal)
+  - 0x69
+  - 0x45
+  - 0x7c
   - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
@@ -52,7 +52,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff
+  - 0xff  
   - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
   - 0xff
   - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
@@ -96,6 +96,7 @@ data:
   - 0x00 # Feature Level (2 bytes, 0x14 in hex, 20 in decimal)
   - 0x14
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Headers array Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # RecordBatch[1]
   - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
@@ -115,10 +116,10 @@ data:
   - 0x00
   - 0x01
   - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
-  - 0xeb # CRC (4 bytes, 0xeb602a9d in hex, -346019171 in decimal)
-  - 0x60
-  - 0x2a
-  - 0x9d
+  - 0x24 # CRC (4 bytes, 0x24db12dd in hex, 618336989 in decimal)
+  - 0xdb
+  - 0x12
+  - 0xdd
   - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
@@ -148,7 +149,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff
+  - 0xff  
   - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
   - 0xff
   - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
@@ -193,6 +194,7 @@ data:
   - 0x00
   - 0x91
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Headers array Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # Record[1]
   - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
@@ -208,10 +210,10 @@ data:
   - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
   - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
   - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
-  - 0x00 # Partition ID (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
-  - 0x01
+  - 0x00 
   - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
   - 0x00
   - 0x00
@@ -270,6 +272,7 @@ data:
   - 0x00
   - 0x01
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Headers array Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # Record[2]
   - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
@@ -286,10 +289,10 @@ data:
   - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
   - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
   - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
-  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x01 in hex, 1 in decimal)
   - 0x00
   - 0x00
-  - 0x00
+  - 0x01 
   - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
   - 0x00
   - 0x00
@@ -347,7 +350,8 @@ data:
   - 0x00
   - 0x00
   - 0x01
-  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
 
 segments:
   - title: "Record Batch #1"
