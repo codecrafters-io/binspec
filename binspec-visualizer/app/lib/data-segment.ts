@@ -85,6 +85,24 @@ export class DataSegment {
     return Math.ceil((this.endBitIndex - this.startBitIndex + 1) / 8);
   }
 
+  get previousSibling(): DataSegment | undefined {
+    if (!this.parent) {
+      return undefined;
+    }
+
+    const index = this.parent.children.indexOf(this);
+    return this.parent.children[index - 1];
+  }
+
+  get nextSibling(): DataSegment | undefined {
+    if (!this.parent) {
+      return undefined;
+    }
+
+    const index = this.parent.children.indexOf(this);
+    return this.parent.children[index + 1];
+  }
+
   get startByteIndex(): number {
     return Math.floor(this.startBitIndex / 8);
   }

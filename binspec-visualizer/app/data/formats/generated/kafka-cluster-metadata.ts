@@ -404,7 +404,7 @@ const generated: GeneratedData = {
           "explanation_markdown": "Records Length is a 4-byte big-endian integer indicating the number of records in this batch.\n\nIn this case, the value is `0x01`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.\n"
         },
         {
-          "title": "Record",
+          "title": "Record #1",
           "explanation_markdown": "A record is the on-disk format that Kafka uses to store a single record.\n",
           "children": [
             {
@@ -489,7 +489,7 @@ const generated: GeneratedData = {
       ]
     },
     {
-      "title": "Record Batch",
+      "title": "Record Batch #2",
       "explanation_markdown": "A record batch is the on-disk format that Kafka uses to store multiple records.\n\nIn this case, the record batch contains 3 records starting at base offset `1`.\n",
       "children": [
         {
@@ -558,7 +558,7 @@ const generated: GeneratedData = {
           "explanation_markdown": "Records Length is a 4-byte big-endian integer indicating the number of records in this batch.\n\nIn this case, the value is `0x03`, which is `3` in decimal, indicating that there are 3 records in the recordBatch.\n"
         },
         {
-          "title": "Record",
+          "title": "Record #1",
           "explanation_markdown": "A record is the on-disk format that Kafka uses to store a single record.\n",
           "children": [
             {
@@ -641,7 +641,7 @@ const generated: GeneratedData = {
           ]
         },
         {
-          "title": "Record",
+          "title": "Record #2",
           "explanation_markdown": "A record is the on-disk format that Kafka uses to store a single record.\n",
           "children": [
             {
@@ -774,7 +774,7 @@ const generated: GeneratedData = {
           ]
         },
         {
-          "title": "Record",
+          "title": "Record #3",
           "explanation_markdown": "A record is the on-disk format that Kafka uses to store a single record.\n",
           "children": [
             {
