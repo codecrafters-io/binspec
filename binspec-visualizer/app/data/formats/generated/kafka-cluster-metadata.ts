@@ -2,7 +2,7 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka Cluster Metadata",
+  "name": "Kafka Cluster Metadata Log File",
   "slug": "kafka-cluster-metadata",
   "data": [
     0,
