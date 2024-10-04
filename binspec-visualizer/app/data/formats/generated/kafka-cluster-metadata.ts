@@ -346,7 +346,7 @@ const generated: GeneratedData = {
         {
           "title": "Batch Length",
           "length_in_bytes": 4,
-          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nIn this case, the value is `0x4f`, which is `79` in decimal.\n"
+          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nThis value excludes the Base Offset (8 bytes) and the Batch Length (4 bytes) itself, but includes\nall other bytes in the record batch.\n\nIn this case, the value is `0x4f`, which is `79` in decimal.\n"
         },
         {
           "title": "Partition Leader Epoch",
@@ -500,7 +500,7 @@ const generated: GeneratedData = {
         {
           "title": "Batch Length",
           "length_in_bytes": 4,
-          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nIn this case, the value is `0xe4`, which is `228` in decimal.\n"
+          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nThis value excludes the Base Offset (8 bytes) and the Batch Length (4 bytes) itself, but includes\nall other bytes in the record batch.\n\nIn this case, the value is `0xe4`, which is `228` in decimal.\n"
         },
         {
           "title": "Partition Leader Epoch",
