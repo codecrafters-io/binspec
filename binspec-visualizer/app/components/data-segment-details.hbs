@@ -1,6 +1,7 @@
 <div ...attributes>
   <div class="flex items-center justify-between">
     <DataSegmentDetails::TitleWithBreadcrumbs
+      class="flex-shrink"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
@@ -8,6 +9,7 @@
     />
 
     <DataSegmentDetails::SiblingSwitcherContainer
+      class="flex-shrink-0"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
