@@ -379,7 +379,7 @@ const generated: GeneratedData = {
           "explanation_markdown": "Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.\n\nIn this case, the value is `0x191e05af818`, which is `1726045943832` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.\n"
         },
         {
-          "title": "Max Timestamp (8 bytes, 0x191e05af818 in hex, 1726045943832 in decimal)",
+          "title": "Max Timestamp",
           "length_in_bytes": 8,
           "explanation_markdown": "Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.\n\nIn this case, the value is `0x191e05af818`, which is `1726045943832` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.\n"
         },
