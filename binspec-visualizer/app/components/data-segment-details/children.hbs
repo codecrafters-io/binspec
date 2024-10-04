@@ -1,22 +1,16 @@
-<div class="flex items-center flex-wrap gap-1" ...attributes>
-  <span class="text-xs text-zinc-400/80 uppercase font-medium">
+<div ...attributes>
+  {{!-- <span class="text-xs text-zinc-400/80 uppercase font-medium mb-1">
     Contains:
-  </span>
+  </span> --}}
 
   {{#each @segment.children as |child|}}
-    <span
-      class="inline-flex flex-shrink-0 items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset
-        {{if
-          (segment-eq child this.hoveredSegment)
-          'ring-blue-400/20 bg-blue-400/10 text-blue-400'
-          'ring-gray-400/20 bg-gray-400/10 text-gray-400'
-        }}"
-      role="button"
-      {{on "click" (fn @onSegmentSelect child)}}
+    <SegmentAncestorsTooltipItem
+      @segment={{child}}
+      @highlightedSegment={{@segment}}
+      @indentationLevel={{0}}
       {{on "mouseenter" (fn @onSegmentMouseEnter "other" child undefined)}}
       {{on "mouseleave" @onSegmentMouseLeave}}
-    >
-      {{child.titleForDisplay}}
-    </span>
+      {{on "click" (fn @onSegmentSelect child)}}
+    />
   {{/each}}
 </div>
