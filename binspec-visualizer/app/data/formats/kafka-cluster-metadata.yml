@@ -350,7 +350,7 @@ data:
   - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
 
 segments:
-  - title: Record Batch \#1
+  - title: Record Batch #1
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
 
@@ -451,7 +451,7 @@ segments:
           Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
 
           In this case, the value is `0x00000001`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.
-      - title: Record \#1
+      - title: Record #1
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
         children:
@@ -550,7 +550,7 @@ segments:
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
-  - title: Record Batch \#2
+  - title: Record Batch #2
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
 
@@ -651,7 +651,7 @@ segments:
           Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
 
           In this case, the value is `0x00000003`, which is `3` in decimal, indicating that there are 3 records in the recordBatch.
-      - title: Record \#1
+      - title: Record #1
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
         children:
@@ -749,7 +749,7 @@ segments:
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
-      - title: Record \#2
+      - title: Record #2
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
         children:
@@ -910,7 +910,7 @@ segments:
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
-      - title: Record \#3
+      - title: Record #3
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
         children:
