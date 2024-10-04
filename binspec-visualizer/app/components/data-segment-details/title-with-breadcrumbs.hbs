@@ -8,16 +8,13 @@
     >
       …
 
-      {{#if this.ancestorTreeTooltipIsOpen}}
-        <SegmentAncestorsTooltip
-          @segment={{@segment}}
-          @highlightedSegment={{@segment}}
-          @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-          @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-          @onSegmentSelect={{@onSegmentSelect}}
-          {{click-outside this.handleAncestorTreeTooltipClose}}
-        />
-      {{/if}}
+      <SegmentAncestorsTooltip
+        @segment={{@segment}}
+        @highlightedSegment={{@segment}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+        @onSegmentSelect={{@onSegmentSelect}}
+      />
     </div>
 
     <svg
