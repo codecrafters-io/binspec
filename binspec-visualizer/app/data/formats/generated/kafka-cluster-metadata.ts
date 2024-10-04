@@ -341,17 +341,17 @@ const generated: GeneratedData = {
         {
           "title": "Base Offset",
           "length_in_bytes": 8,
-          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIn this case, the value is `0x0000000000000000`, which is `0` in decimal, indicating that this is the first batch of records.\n"
+          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIn this case, the value is `0x00`, which is `0` in decimal, indicating that this is the first batch of records.\n"
         },
         {
           "title": "Batch Length",
           "length_in_bytes": 4,
-          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nIn this case, the value is `0x0000004f`, which is `79` in decimal.\n"
+          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nIn this case, the value is `0x4f`, which is `79` in decimal.\n"
         },
         {
           "title": "Partition Leader Epoch",
           "length_in_bytes": 4,
-          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal.\n"
+          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
         },
         {
           "title": "Magic Byte",
@@ -366,22 +366,22 @@ const generated: GeneratedData = {
         {
           "title": "Attributes",
           "length_in_bytes": 2,
-          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x0000`, which is `0` in decimal.\n"
+          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
         },
         {
           "title": "Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)",
           "length_in_bytes": 4,
-          "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x00000000`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.\n"
+          "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x00`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.\n"
         },
         {
           "title": "Base Timestamp",
           "length_in_bytes": 8,
-          "explanation_markdown": "Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.\n\nIn this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.\n"
+          "explanation_markdown": "Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.\n\nIn this case, the value is `0x191e05af818`, which is `1726045943832` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.\n"
         },
         {
-          "title": "Max Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)",
+          "title": "Max Timestamp (8 bytes, 0x191e05af818 in hex, 1726045943832 in decimal)",
           "length_in_bytes": 8,
-          "explanation_markdown": "Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.\n\nIn this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.\n"
+          "explanation_markdown": "Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.\n\nIn this case, the value is `0x191e05af818`, which is `1726045943832` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.\n"
         },
         {
           "title": "Producer ID",
@@ -401,7 +401,7 @@ const generated: GeneratedData = {
         {
           "title": "Records Length",
           "length_in_bytes": 4,
-          "explanation_markdown": "Records Length is a 4-byte big-endian integer indicating the number of records in this batch.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.\n"
+          "explanation_markdown": "Records Length is a 4-byte big-endian integer indicating the number of records in this batch.\n\nIn this case, the value is `0x01`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.\n"
         },
         {
           "title": "Record",
@@ -475,7 +475,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Feature Level",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "Feature Level is a 2-byte big-endian integer indicating the level of the feature.\n\nIn this case, the value is `0x0014`, which is `20` in decimal.\nIndicating that, the `metadata.version` is at level `20`.\n"
+                  "explanation_markdown": "Feature Level is a 2-byte big-endian integer indicating the level of the feature.\n\nIn this case, the value is `0x14`, which is `20` in decimal.\nIndicating that, the `metadata.version` is at level `20`.\n"
                 },
                 {
                   "title": "Tagged Fields Count",
@@ -495,17 +495,17 @@ const generated: GeneratedData = {
         {
           "title": "Base Offset",
           "length_in_bytes": 8,
-          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIn this case, the value is `0x0000000000000001`, which is `1` in decimal, indicating that this is the second batch of records.\n"
+          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIn this case, the value is `0x01`, which is `1` in decimal, indicating that this is the second batch of records.\n"
         },
         {
           "title": "Batch Length",
           "length_in_bytes": 4,
-          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nIn this case, the value is `0x000000e4`, which is `228` in decimal.\n"
+          "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nIn this case, the value is `0xe4`, which is `228` in decimal.\n"
         },
         {
           "title": "Partition Leader Epoch",
           "length_in_bytes": 4,
-          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal.\n"
+          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
         },
         {
           "title": "Magic Byte",
@@ -520,22 +520,22 @@ const generated: GeneratedData = {
         {
           "title": "Attributes",
           "length_in_bytes": 2,
-          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x0000`, which is `0` in decimal.\n"
+          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
         },
         {
           "title": "Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)",
           "length_in_bytes": 4,
-          "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x00000002`, which is `2` in decimal, indicating that the last offset of this record batch is `2` higher than the base offset, so there are 3 records in the recordBatch.\n"
+          "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x02`, which is `2` in decimal, indicating that the last offset of this record batch is `2` higher than the base offset, so there are 3 records in the recordBatch.\n"
         },
         {
           "title": "Base Timestamp",
           "length_in_bytes": 8,
-          "explanation_markdown": "Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.\n\nIn this case, the value is `0x00000191e05b2d15`, which is `1726045957397` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.\n"
+          "explanation_markdown": "Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.\n\nIn this case, the value is `0x191e05b2d15`, which is `1726045957397` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.\n"
         },
         {
           "title": "Max Timestamp",
           "length_in_bytes": 8,
-          "explanation_markdown": "Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.\n\nIn this case, the value is `0x00000191e05b2d15`, which is `1726045957397` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.\n"
+          "explanation_markdown": "Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.\n\nIn this case, the value is `0x191e05b2d15`, which is `1726045957397` in decimal.\nThis is an unix timestamp in milliseconds, which is `2024-09-11 09:12:37.397` in UTC.\n"
         },
         {
           "title": "Producer ID",
@@ -555,7 +555,7 @@ const generated: GeneratedData = {
         {
           "title": "Records Length",
           "length_in_bytes": 4,
-          "explanation_markdown": "Records Length is a 4-byte big-endian integer indicating the number of records in this batch.\n\nIn this case, the value is `0x00000003`, which is `3` in decimal, indicating that there are 3 records in the recordBatch.\n"
+          "explanation_markdown": "Records Length is a 4-byte big-endian integer indicating the number of records in this batch.\n\nIn this case, the value is `0x03`, which is `3` in decimal, indicating that there are 3 records in the recordBatch.\n"
         },
         {
           "title": "Record",
@@ -629,7 +629,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Topic UUID",
                   "length_in_bytes": 16,
-                  "explanation_markdown": "Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.\n\nIn this case, the value is `0x00000000-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.\n"
+                  "explanation_markdown": "Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.\n\nIn this case, the value is `0x00-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.\n"
                 },
                 {
                   "title": "Tagged Fields Count",
@@ -702,12 +702,12 @@ const generated: GeneratedData = {
                 {
                   "title": "Partition ID",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Partition ID is a 4-byte big-endian integer indicating the ID of the partition.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal. Indicating that this Partition record is for partition `1`.\n"
+                  "explanation_markdown": "Partition ID is a 4-byte big-endian integer indicating the ID of the partition.\n\nIn this case, the value is `0x01`, which is `1` in decimal. Indicating that this Partition record is for partition `1`.\n"
                 },
                 {
                   "title": "Topic UUID",
                   "length_in_bytes": 16,
-                  "explanation_markdown": "Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.\n\nIn this case, the value is `0x00000000-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.\n"
+                  "explanation_markdown": "Topic UUID is a 16-byte raw byte array indicating the UUID of the topic.\n\nIn this case, the value is `0x00-0000-4000-8000-000000000091`, which needs to be parsed as a UUID.\n"
                 },
                 {
                   "title": "Length of replica array",
@@ -717,7 +717,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Replica Array",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the replicas.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal.\nIndicating that the replica ID of the first entry in the replicas array is `1`.\n"
+                  "explanation_markdown": "Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the replicas.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\nIndicating that the replica ID of the first entry in the replicas array is `1`.\n"
                 },
                 {
                   "title": "Length of In Sync Replica array",
@@ -727,7 +727,7 @@ const generated: GeneratedData = {
                 {
                   "title": "In Sync Replica Array",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "In Sync Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the in sync replicas.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal.\nIndicating that the replica ID of the first entry in the in sync replicas array is `1`.\n"
+                  "explanation_markdown": "In Sync Replica Array is a compact array of 4-byte big-endian integers, containing the replica ID of the in sync replicas.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\nIndicating that the replica ID of the first entry in the in sync replicas array is `1`.\n"
                 },
                 {
                   "title": "Length of Removing Replicas array",
@@ -742,17 +742,17 @@ const generated: GeneratedData = {
                 {
                   "title": "Leader",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Leader is a 4-byte big-endian integer indicating the replica ID of the leader.\n\nIn this case, the value is `0x00000001`, which is `1` in decimal.\nIndicating that the leader is replica `1`.\n"
+                  "explanation_markdown": "Leader is a 4-byte big-endian integer indicating the replica ID of the leader.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\nIndicating that the leader is replica `1`.\n"
                 },
                 {
                   "title": "Leader Epoch",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader.\n\nIn this case, the value is `0x00000000`, which is `0` in decimal.\n"
+                  "explanation_markdown": "Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                 },
                 {
                   "title": "Partition Epoch",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Partition Epoch is a 4-byte big-endian integer indicating the epoch of the partition.\n\nIn this case, the value is `0x00000000`, which is `0` in decimal.\n"
+                  "explanation_markdown": "Partition Epoch is a 4-byte big-endian integer indicating the epoch of the partition.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                 },
                 {
                   "title": "Length of Directories array",
