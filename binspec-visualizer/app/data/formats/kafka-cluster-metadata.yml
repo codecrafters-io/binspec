@@ -52,7 +52,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff  
+  - 0xff
   - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
   - 0xff
   - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
@@ -149,7 +149,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff  
+  - 0xff
   - 0xff # Producer Epoch (2 bytes, 0xffff in hex, -1 in decimal)
   - 0xff
   - 0xff # Base Sequence (4 bytes, 0xffffffff in hex, -1 in decimal)
@@ -213,7 +213,7 @@ data:
   - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
-  - 0x00 
+  - 0x00
   - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
   - 0x00
   - 0x00
@@ -292,7 +292,7 @@ data:
   - 0x00 # Partition ID (4 bytes, 0x01 in hex, 1 in decimal)
   - 0x00
   - 0x00
-  - 0x01 
+  - 0x01
   - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
   - 0x00
   - 0x00
@@ -351,7 +351,7 @@ data:
   - 0x00
   - 0x01
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
-  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal) 
+  - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal)
 
 segments:
   - title: "Record Batch #1"
@@ -769,12 +769,12 @@ segments:
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
           - title: Headers Array Count
-          length_in_bytes: 1
-          explanation_markdown: |
-            Header array count is an unsigned variable size integer indicating the number of headers present.
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
 
-            In this case, the value is `0x00`, which is `0` in decimal.
-            So, we can skip parsing the headers. 
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
       - title: "Record #2"
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
