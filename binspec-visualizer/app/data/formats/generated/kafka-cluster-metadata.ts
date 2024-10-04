@@ -355,7 +355,7 @@ const generated: GeneratedData = {
         {
           "title": "Partition Leader Epoch",
           "length_in_bytes": 4,
-          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+          "explanation_markdown": "Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This value is used to detect out of order writes.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
         },
         {
           "title": "Magic Byte",
