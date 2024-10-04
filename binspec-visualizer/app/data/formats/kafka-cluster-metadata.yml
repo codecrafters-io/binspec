@@ -394,18 +394,20 @@ segments:
         length_in_bytes: 2
         explanation_markdown: |
           Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.
+
           Attributes is a bitmask of the following flags:
-              bit 0~2:
-                  0: no compression
-                  1: gzip
-                  2: snappy
-                  3: lz4
-                  4: zstd
-              bit 3: timestampType
-              bit 4: isTransactional (0 means not transactional)
-              bit 5: isControlBatch (0 means not a control batch)
-              bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
-              bit 7~15: unused
+
+          - bit 0~2:
+              - 0: no compression
+              - 1: gzip
+              - 2: snappy
+              - 3: lz4
+              - 4: zstd
+          - bit 3: timestampType
+          - bit 4: isTransactional (0 means not transactional)
+          - bit 5: isControlBatch (0 means not a control batch)
+          - bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
+          - bit 7~15: unused
 
           In this case, the value is `0x00`, which is `0` in decimal.
       - title: Last Offset Delta
@@ -598,17 +600,17 @@ segments:
         explanation_markdown: |
           Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.
           Attributes is a bitmask of the following flags:
-              bit 0~2:
-                  0: no compression
-                  1: gzip
-                  2: snappy
-                  3: lz4
-                  4: zstd
-              bit 3: timestampType
-              bit 4: isTransactional (0 means not transactional)
-              bit 5: isControlBatch (0 means not a control batch)
-              bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
-              bit 7~15: unused
+              - bit 0~2:
+                  - 0: no compression
+                  - 1: gzip
+                  - 2: snappy
+                  - 3: lz4
+                  - 4: zstd
+              - bit 3: timestampType
+              - bit 4: isTransactional (0 means not transactional)
+              - bit 5: isControlBatch (0 means not a control batch)
+              - bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
+              - bit 7~15: unused
 
           In this case, the value is `0x00`, which is `0` in decimal.
       - title: Last Offset Delta

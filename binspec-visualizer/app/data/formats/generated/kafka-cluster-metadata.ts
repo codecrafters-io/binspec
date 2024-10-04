@@ -366,7 +366,7 @@ const generated: GeneratedData = {
         {
           "title": "Attributes",
           "length_in_bytes": 2,
-          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
+          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\n\nAttributes is a bitmask of the following flags:\n\n- bit 0~2:\n    - 0: no compression\n    - 1: gzip\n    - 2: snappy\n    - 3: lz4\n    - 4: zstd\n- bit 3: timestampType\n- bit 4: isTransactional (0 means not transactional)\n- bit 5: isControlBatch (0 means not a control batch)\n- bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n- bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
         },
         {
           "title": "Last Offset Delta",
@@ -520,7 +520,7 @@ const generated: GeneratedData = {
         {
           "title": "Attributes",
           "length_in_bytes": 2,
-          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    bit 0~2:\n        0: no compression\n        1: gzip\n        2: snappy\n        3: lz4\n        4: zstd\n    bit 3: timestampType\n    bit 4: isTransactional (0 means not transactional)\n    bit 5: isControlBatch (0 means not a control batch)\n    bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
+          "explanation_markdown": "Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.\nAttributes is a bitmask of the following flags:\n    - bit 0~2:\n        - 0: no compression\n        - 1: gzip\n        - 2: snappy\n        - 3: lz4\n        - 4: zstd\n    - bit 3: timestampType\n    - bit 4: isTransactional (0 means not transactional)\n    - bit 5: isControlBatch (0 means not a control batch)\n    - bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n    - bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
         },
         {
           "title": "Last Offset Delta",
