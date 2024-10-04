@@ -365,7 +365,7 @@ const generated: GeneratedData = {
         {
           "title": "CRC",
           "length_in_bytes": 4,
-          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.\nThe CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0xb069457c`, which is `-1335278212` in decimal.\n"
+          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.\n\nThe CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0x24db12dd`, which is `618336989` in decimal.\n"
         },
         {
           "title": "Attributes",
@@ -524,7 +524,7 @@ const generated: GeneratedData = {
         {
           "title": "CRC",
           "length_in_bytes": 4,
-          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.\nThe CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0x24db12dd`, which is `618336989` in decimal.\n"
+          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.\n\nThe CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0x24db12dd`, which is `618336989` in decimal.\n"
         },
         {
           "title": "Attributes",
