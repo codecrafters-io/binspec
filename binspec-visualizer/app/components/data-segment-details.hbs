@@ -1,10 +1,23 @@
 <div ...attributes>
-  <DataSegmentDetails::TitleWithBreadcrumbs
-    @segment={{@segment}}
-    @onSegmentSelect={{@onSegmentSelect}}
-    @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-    @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-  />
+  <div class="flex items-center justify-between">
+    <DataSegmentDetails::TitleWithBreadcrumbs
+      class="flex-shrink"
+      @segment={{@segment}}
+      @onSegmentSelect={{@onSegmentSelect}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+    />
+
+    {{#if @segment.parent}}
+      <DataSegmentDetails::SiblingSwitcherContainer
+        class="flex-shrink-0"
+        @segment={{@segment}}
+        @onSegmentSelect={{@onSegmentSelect}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      />
+    {{/if}}
+  </div>
 
   {{#if (gt @segment.children.length 0)}}
     <DataSegmentDetails::Children
