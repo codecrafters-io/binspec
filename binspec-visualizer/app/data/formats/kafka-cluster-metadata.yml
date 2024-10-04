@@ -19,10 +19,10 @@ data:
   - 0x00
   - 0x01
   - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
-  - 0x96 # CRC (4 bytes, 0x9654b1a5 in hex, -1772834395 in decimal)
-  - 0x54
-  - 0xb1
-  - 0xa5
+  - 0xb0 # CRC (4 bytes, 0xb069457c in hex, -1335278212 in decimal)
+  - 0x69
+  - 0x45
+  - 0x7c
   - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
@@ -96,6 +96,7 @@ data:
   - 0x00 # Feature Level (2 bytes, 0x14 in hex, 20 in decimal)
   - 0x14
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Headers array Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # RecordBatch[1]
   - 0x00 # Base Offset (8 bytes, 0x01 in hex, 1 in decimal)
@@ -115,10 +116,10 @@ data:
   - 0x00
   - 0x01
   - 0x02 # Magic Byte (1 byte, 0x02 in hex, 2 in decimal)
-  - 0xeb # CRC (4 bytes, 0xeb602a9d in hex, -346019171 in decimal)
-  - 0x60
-  - 0x2a
-  - 0x9d
+  - 0x24 # CRC (4 bytes, 0x24db12dd in hex, 618336989 in decimal)
+  - 0xdb
+  - 0x12
+  - 0xdd
   - 0x00 # Attributes (2 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Last Offset Delta (4 bytes, 0x01 in hex, 1 in decimal)
@@ -193,6 +194,7 @@ data:
   - 0x00
   - 0x91
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Headers array Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
 
   # Record[1]
   - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
@@ -204,6 +206,85 @@ data:
   # As key length is -1, the key value is empty
   - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
   - 0x01
+  # Payload: Partition Record
+  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
+  - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x91
+  - 0x02 # Length of Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x02 # Length of In Sync Replica array (1 byte, 0x02 in hex, 2 in decimal)
+  - 0x00 # In Sync Replica array (1 element, length = (2-1), each element is 4 bytes)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x01 # Length of Removing Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x01 # Length of Adding Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
+  - 0x00 # Leader (4 bytes, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Leader Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00 # Partition Epoch (4 bytes, 0x00 in hex, 0 in decimal)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x02 # Compact Array Length (1 byte, 0x02 in hex, 1 in decimal (parsed as an unsigned varint))
+  - 0x10 # Directory UUID (16 raw bytes, 10000000-0000-4000-8000-000000000001 after parsing)
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x40
+  - 0x00
+  - 0x80
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+  - 0x00 # Headers array Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
+
+  # Record[2]
+  - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
+  - 0x01
+  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
+  - 0x04 # Offset Delta (1 byte, 0x04 in hex, 2 in decimal (as signed varint))
+  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  # As key length is -1, the key value is empty
+  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
+  - 0x01
+
   # Payload: Partition Record
   - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
   - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
@@ -270,83 +351,6 @@ data:
   - 0x00
   - 0x01
   - 0x00 # Tagged Field Count (1 byte, 0x00 in hex, 0 in decimal) (unsigned varint)
-
-  # Record[2]
-  - 0x90 # Record Length (1 byte, 0x9001 in hex, 72 in decimal (as signed varint)) (Length from attributes to the end of the record)
-  - 0x01
-  - 0x00 # Attributes (1 byte, 0x00 in hex, 0 in decimal)
-  - 0x00 # Timestamp Delta (1 byte, 0x00 in hex, 0 in decimal)
-  - 0x04 # Offset Delta (1 byte, 0x04 in hex, 2 in decimal (as signed varint))
-  - 0x01 # Key Length (1 byte, 0x01 in hex, -1 in decimal (as signed varint, using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
-  # As key length is -1, the key value is empty
-  - 0x82 # Value Length (2 bytes, 0x8201 in hex, 65 in decimal (as signed varint))
-  - 0x01
-
-  # Payload: Partition Record
-  - 0x01 # Frame Version (1 byte, 0x01 in hex, 1 in decimal)
-  - 0x03 # Type (1 byte, 0x03 in hex, 3 in decimal)
-  - 0x01 # Version (1 byte, 0x01 in hex, 1 in decimal)
-  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00 # Topic UUID (16 raw bytes, 00000000-0000-4000-8000-000000000091 after parsing)
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x40
-  - 0x00
-  - 0x80
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x91
-  - 0x02 # Length of Replica array (1 byte, 0x02 in hex, 2 in decimal)
-  - 0x00 # Replica array (1 element, length = (2-1), each element is 4 bytes)
-  - 0x00
-  - 0x00
-  - 0x01
-  - 0x02 # Length of In Sync Replica array (1 byte, 0x02 in hex, 2 in decimal)
-  - 0x00 # In Sync Replica array (1 element, length = (2-1), each element is 4 bytes)
-  - 0x00
-  - 0x00
-  - 0x01
-  - 0x01 # Length of Removing Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
-  - 0x01 # Length of Adding Replicas array (1 byte, 0x01 in hex, 1 in decimal, actual length = (1 - 1 = 0))
-  - 0x00 # Leader (4 bytes, 0x01 in hex, 1 in decimal)
-  - 0x00
-  - 0x00
-  - 0x01
-  - 0x00 # Leader Epoch (4 bytes, 0x00 in hex, 0 in decimal)
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00 # Partition Epoch (4 bytes, 0x00 in hex, 0 in decimal)
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x02 # Compact Array Length (1 byte, 0x02 in hex, 1 in decimal (parsed as an unsigned varint))
-  - 0x10 # Directory UUID (16 raw bytes, 10000000-0000-4000-8000-000000000001 after parsing)
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x40
-  - 0x00
-  - 0x80
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x01
   - 0x00 # Number of Headers (1 byte, 0x00 in hex, 0 in decimal)
 
 segments:
@@ -389,7 +393,7 @@ segments:
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
           The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
 
-          In this case, the value is `0x9654b1a5`, which is `-1772834395` in decimal.
+          In this case, the value is `0xb069457c`, which is `-1335278212` in decimal.
       - title: Attributes
         length_in_bytes: 2
         explanation_markdown: |
@@ -551,10 +555,17 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
   - title: "Record Batch #2"
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
@@ -594,7 +605,7 @@ segments:
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
           The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
 
-          In this case, the value is `0xeb602a9d`, which is `-346019171` in decimal.
+          In this case, the value is `0x24db12dd`, which is `618336989` in decimal.
       - title: Attributes
         length_in_bytes: 2
         explanation_markdown: |
@@ -707,7 +718,7 @@ segments:
               Value Length is a signed variable size integer indicating the length of the value of the record.
 
               In this case, the value is `0x30`, which is `24` in decimal after parsing.
-          - title: Value (Feature Level Record)
+          - title: Value (Topic Record)
             length_in_bytes: 24
             explanation_markdown: |
               Value is a byte array indicating the value of the record.
@@ -729,7 +740,7 @@ segments:
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte big-endian integer indicating the version of the topic record.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
               - title: Name length
@@ -741,7 +752,7 @@ segments:
               - title: Topic Name
                 length_in_bytes: 3
                 explanation_markdown: |
-                  Name is a byte array parsed as a string indicating the name of the feature level record.
+                  Name is a byte array parsed as a string indicating the name of the topic.
 
                   In this case, after parsing `0x73617a` as a string, we get the value as `saz`.
               - title: Topic UUID
@@ -753,10 +764,17 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
       - title: "Record #2"
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
@@ -827,7 +845,7 @@ segments:
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte big-endian integer indicating the version of the partition record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Partition ID
@@ -914,10 +932,17 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
       - title: "Record #3"
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
@@ -988,7 +1013,7 @@ segments:
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte big-endian integer indicating the version of the partition record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Partition ID
@@ -1075,7 +1100,14 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.

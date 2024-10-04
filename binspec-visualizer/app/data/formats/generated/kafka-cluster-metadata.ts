@@ -22,10 +22,10 @@ const generated: GeneratedData = {
     0,
     1,
     2,
-    150,
-    84,
-    177,
-    165,
+    176,
+    105,
+    69,
+    124,
     0,
     0,
     0,
@@ -102,6 +102,7 @@ const generated: GeneratedData = {
     0,
     0,
     0,
+    0,
     1,
     0,
     0,
@@ -112,10 +113,10 @@ const generated: GeneratedData = {
     0,
     1,
     2,
-    235,
-    96,
-    42,
-    157,
+    36,
+    219,
+    18,
+    221,
     0,
     0,
     0,
@@ -186,6 +187,7 @@ const generated: GeneratedData = {
     0,
     145,
     0,
+    0,
     144,
     1,
     0,
@@ -200,7 +202,7 @@ const generated: GeneratedData = {
     0,
     0,
     0,
-    1,
+    0,
     0,
     0,
     0,
@@ -258,6 +260,7 @@ const generated: GeneratedData = {
     0,
     0,
     1,
+    0,
     0,
     144,
     1,
@@ -273,7 +276,7 @@ const generated: GeneratedData = {
     0,
     0,
     0,
-    0,
+    1,
     0,
     0,
     0,
@@ -331,6 +334,7 @@ const generated: GeneratedData = {
     0,
     0,
     1,
+    0,
     0
   ],
   "segments": [
@@ -361,7 +365,7 @@ const generated: GeneratedData = {
         {
           "title": "CRC",
           "length_in_bytes": 4,
-          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.\nThe CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0x9654b1a5`, which is `-1772834395` in decimal.\n"
+          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.\nThe CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0xb069457c`, which is `-1335278212` in decimal.\n"
         },
         {
           "title": "Attributes",
@@ -480,9 +484,14 @@ const generated: GeneratedData = {
                 {
                   "title": "Tagged Fields Count",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
+                  "explanation_markdown": "Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
                 }
               ]
+            },
+            {
+              "title": "Headers Array Count",
+              "length_in_bytes": 1,
+              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         }
@@ -515,7 +524,7 @@ const generated: GeneratedData = {
         {
           "title": "CRC",
           "length_in_bytes": 4,
-          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.\nThe CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0xeb602a9d`, which is `-346019171` in decimal.\n"
+          "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.\nThe CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0x24db12dd`, which is `618336989` in decimal.\n"
         },
         {
           "title": "Attributes",
@@ -597,7 +606,7 @@ const generated: GeneratedData = {
               "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x30`, which is `24` in decimal after parsing.\n"
             },
             {
-              "title": "Value (Feature Level Record)",
+              "title": "Value (Topic Record)",
               "length_in_bytes": 24,
               "explanation_markdown": "Value is a byte array indicating the value of the record.\n\nIn this case, the value is the payload of the Topic Record type.\n",
               "children": [
@@ -614,7 +623,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the feature level record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the topic record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                 },
                 {
                   "title": "Name length",
@@ -624,7 +633,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Topic Name",
                   "length_in_bytes": 3,
-                  "explanation_markdown": "Name is a byte array parsed as a string indicating the name of the feature level record.\n\nIn this case, after parsing `0x73617a` as a string, we get the value as `saz`.\n"
+                  "explanation_markdown": "Name is a byte array parsed as a string indicating the name of the topic.\n\nIn this case, after parsing `0x73617a` as a string, we get the value as `saz`.\n"
                 },
                 {
                   "title": "Topic UUID",
@@ -634,9 +643,14 @@ const generated: GeneratedData = {
                 {
                   "title": "Tagged Fields Count",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
+                  "explanation_markdown": "Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
                 }
               ]
+            },
+            {
+              "title": "Headers Array Count",
+              "length_in_bytes": 1,
+              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         },
@@ -697,7 +711,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the feature level record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the partition record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Partition ID",
@@ -767,9 +781,14 @@ const generated: GeneratedData = {
                 {
                   "title": "Tagged Fields Count",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
+                  "explanation_markdown": "Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
                 }
               ]
+            },
+            {
+              "title": "Headers Array Count",
+              "length_in_bytes": 1,
+              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         },
@@ -830,7 +849,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the feature level record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the partition record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Partition ID",
@@ -900,9 +919,14 @@ const generated: GeneratedData = {
                 {
                   "title": "Tagged Fields Count",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
+                  "explanation_markdown": "Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the tagged fields.\n"
                 }
               ]
+            },
+            {
+              "title": "Headers Array Count",
+              "length_in_bytes": 1,
+              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         }
