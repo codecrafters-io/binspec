@@ -3,6 +3,7 @@ import generatedSQLiteDatabase from 'binspec-visualizer/data/formats/generated/s
 import kafkaApiVersionsRequestV4 from 'binspec-visualizer/data/formats/generated/kafka-api-versions-request-v4';
 import kafkaDescribeTopicPartitionsRequestV0 from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-request-v0';
 import kafkaDescribeTopicPartitionsResponseV0 from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-response-v0';
+import kafkaClusterMetadata from 'binspec-visualizer/data/formats/generated/kafka-cluster-metadata';
 
 export default class FormatRegistry {
   static getBySlug(slug: string): Format | undefined {
@@ -15,6 +16,7 @@ export default class FormatRegistry {
       Format.fromGeneratedData(kafkaApiVersionsRequestV4),
       Format.fromGeneratedData(kafkaDescribeTopicPartitionsRequestV0),
       Format.fromGeneratedData(kafkaDescribeTopicPartitionsResponseV0),
+      Format.fromGeneratedData(kafkaClusterMetadata),
     ];
   }
 }
