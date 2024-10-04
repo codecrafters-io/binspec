@@ -393,7 +393,7 @@ segments:
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
           The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
 
-          In this case, the value is `0x9654b1a5`, which is `-1772834395` in decimal.
+          In this case, the value is `0xb069457c`, which is `-1335278212` in decimal.
       - title: Attributes
         length_in_bytes: 2
         explanation_markdown: |
@@ -555,10 +555,17 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
   - title: "Record Batch #2"
     explanation_markdown: |
       A record batch is the on-disk format that Kafka uses to store multiple records.
@@ -598,7 +605,7 @@ segments:
           CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
           The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
 
-          In this case, the value is `0xeb602a9d`, which is `-346019171` in decimal.
+          In this case, the value is `0x24db12dd`, which is `618336989` in decimal.
       - title: Attributes
         length_in_bytes: 2
         explanation_markdown: |
@@ -757,10 +764,17 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+          length_in_bytes: 1
+          explanation_markdown: |
+            Header array count is an unsigned variable size integer indicating the number of headers present.
+
+            In this case, the value is `0x00`, which is `0` in decimal.
+            So, we can skip parsing the headers. 
       - title: "Record #2"
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
@@ -918,10 +932,17 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
       - title: "Record #3"
         explanation_markdown: |
           A record is the on-disk format that Kafka uses to store a single record.
@@ -1079,7 +1100,14 @@ segments:
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tagged Fields is an unsigned variable size integer indicating the number of tagged fields.
+                  Tagged Field count is an unsigned variable size integer indicating the number of tagged fields.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
                   So, we can skip parsing the tagged fields.
+          - title: Headers Array Count
+            length_in_bytes: 1
+            explanation_markdown: |
+              Header array count is an unsigned variable size integer indicating the number of headers present.
+
+              In this case, the value is `0x00`, which is `0` in decimal.
+              So, we can skip parsing the headers.
