@@ -38,11 +38,11 @@ export default class SegmentAncestorsTooltipItemComponent extends Component<Sign
 
   get textColorClasses(): string {
     if (this.isHighlightedSegment) {
-      return 'text-yellow-300';
+      return 'border-transparent text-yellow-300';
     } else if (this.isHoveredSegment) {
-      return 'text-sky-400';
+      return 'border-sky-400/60 text-sky-400';
     } else {
-      return 'text-white';
+      return 'border-zinc-400/20 text-white';
     }
   }
 

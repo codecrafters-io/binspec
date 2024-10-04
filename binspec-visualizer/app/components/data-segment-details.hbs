@@ -8,7 +8,7 @@
 
   {{#if (gt @segment.children.length 0)}}
     <DataSegmentDetails::Children
-      class="mt-2"
+      class="mt-1"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
@@ -22,24 +22,26 @@
     </div>
   {{/if}}
 
-  <HexPreview
-    class="mt-3 w-full"
-    @data={{@data}}
-    @endByteIndex={{this.previewEndByteIndex}}
-    @highlightedSegment={{@segment}}
-    @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-    @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-    @onSegmentSelect={{@onSegmentSelect}}
-    @section="segment-details-hexdump"
-    @segments={{array @segment}}
-    @startByteIndex={{@segment.startByteIndex}}
-  >
-    <:lastBytePreview>
-      {{#if this.previewIsTruncated}}
-        <div class="flex items-center justify-center">
-          <span class="text-lg text-zinc-500">⋯</span>
-        </div>
-      {{/if}}
-    </:lastBytePreview>
-  </HexPreview>
+  {{#if @segment.isLeafSegment}}
+    <HexPreview
+      class="mt-3 w-full"
+      @data={{@data}}
+      @endByteIndex={{this.previewEndByteIndex}}
+      @highlightedSegment={{@segment}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      @onSegmentSelect={{@onSegmentSelect}}
+      @section="segment-details-hexdump"
+      @segments={{array @segment}}
+      @startByteIndex={{@segment.startByteIndex}}
+    >
+      <:lastBytePreview>
+        {{#if this.previewIsTruncated}}
+          <div class="flex items-center justify-center">
+            <span class="text-lg text-zinc-500">⋯</span>
+          </div>
+        {{/if}}
+      </:lastBytePreview>
+    </HexPreview>
+  {{/if}}
 </div>
