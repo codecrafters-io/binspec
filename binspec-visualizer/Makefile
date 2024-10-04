@@ -5,3 +5,10 @@ generate_data_from_yaml:
 	gsed -i '1s|^|import type { GeneratedData } from "binspec-visualizer/lib/format";\n\n|' app/data/formats/generated/*.ts
 	gsed -i '1s/^/\/\/ GENERATED FILE - DO NOT EDIT DIRECTLY - RUN make generate_data_from_yaml INSTEAD\n/' app/data/formats/generated/*.ts
 	gsed -i '$$a\\nexport default generated;' app/data/formats/generated/*.ts
+
+watch_and_generate:
+	echo "Watching for changes in app/data/formats/*.yml..."
+	fswatch -o app/data/formats/*.yml | xargs -n1 -I{} make generate_data_from_yaml
+
+.PHONY: watch_and_generate
+

@@ -2,13 +2,13 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka Describe Topic Partitions Response (v0)",
+  "name": "Kafka DescribeTopicPartitions Response (v0)",
   "slug": "kafka-describe-topic-partitions-response-v0",
   "data": [
     0,
     0,
     0,
-    41,
+    97,
     0,
     0,
     0,
@@ -20,19 +20,29 @@ const generated: GeneratedData = {
     0,
     2,
     0,
-    3,
+    0,
     4,
     102,
     111,
     111,
+    227,
+    146,
+    128,
+    109,
+    181,
+    51,
+    72,
+    16,
+    186,
+    3,
+    11,
+    67,
+    196,
+    155,
+    96,
+    252,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    3,
     0,
     0,
     0,
@@ -43,6 +53,52 @@ const generated: GeneratedData = {
     0,
     0,
     1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    2,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
     0,
     0,
     13,
@@ -92,55 +148,216 @@ const generated: GeneratedData = {
               "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
-              "title": "Topics",
+              "title": "Topic #1",
               "explanation_markdown": "A single topic in the array.\n",
               "children": [
                 {
                   "title": "Error Code",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the error code for this topic.\n\nHere, it is 0x0003 (3), which corresponds to UNKNOWN_TOPIC.\n"
+                  "explanation_markdown": "A 2-byte integer representing the error code for this topic.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                 },
                 {
                   "title": "Topic Name",
-                  "length_in_bytes": 4,
-                  "explanation_markdown": "The topic name encoded as a `COMPACT_NULLABLE_STRING`.\n",
+                  "explanation_markdown": "The name of the topic, encoded as a COMPACT_STRING.\n",
                   "children": [
                     {
-                      "title": "Length",
+                      "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the topic name + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
                     },
                     {
-                      "title": "Contents",
+                      "title": "String Content",
                       "length_in_bytes": 3,
-                      "explanation_markdown": "The actual topic name. In this case, it is \"foo\" encoded in UTF-8.\n"
+                      "explanation_markdown": "The content of the string: \"foo\".\n"
                     }
                   ]
                 },
                 {
                   "title": "Topic ID",
                   "length_in_bytes": 16,
-                  "explanation_markdown": "A 16-byte UUID representing the unique identifier for this topic.\n\nHere, it is all zeros (00000000-0000-0000-0000-000000000000), which typically indicates an unassigned or null UUID.\n"
+                  "explanation_markdown": "A 16-byte UUID representing the unique identifier for this topic.\nHere, it is e392806d-b533-4810-ba03-0b43c49b60fc.\n"
                 },
                 {
                   "title": "Is Internal",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "A boolean indicating whether the topic is internal.\n\nHere, it is 0x00 (false).\n"
+                  "explanation_markdown": "A boolean indicating whether the topic is internal.\nHere, it is 0x00 (false).\n"
                 },
                 {
                   "title": "Partitions Array",
-                  "length_in_bytes": 1,
-                  "explanation_markdown": "An array of partitions for this topic.\n\nHere, the length is 0x01 (1), indicating an empty array.\n"
+                  "explanation_markdown": "An array of partitions for this topic.\n",
+                  "children": [
+                    {
+                      "title": "Array Length",
+                      "length_in_bytes": 1,
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
+                    },
+                    {
+                      "title": "Partition 0",
+                      "explanation_markdown": "Information about the first partition.\n",
+                      "children": [
+                        {
+                          "title": "Error Code",
+                          "length_in_bytes": 2,
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                        },
+                        {
+                          "title": "Partition Index",
+                          "length_in_bytes": 4,
+                          "explanation_markdown": "A 4-byte integer representing the index of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
+                        },
+                        {
+                          "title": "Leader ID",
+                          "length_in_bytes": 4,
+                          "explanation_markdown": "A 4-byte integer representing the ID of the leader for this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
+                        },
+                        {
+                          "title": "Leader Epoch",
+                          "length_in_bytes": 4,
+                          "explanation_markdown": "A 4-byte integer representing the epoch of the leader.\nHere, it is 0x00000000 (0 in decimal).\n"
+                        },
+                        {
+                          "title": "Replica Nodes",
+                          "explanation_markdown": "An array of replica node IDs for this partition.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                            },
+                            {
+                              "title": "Replica Node",
+                              "length_in_bytes": 4,
+                              "explanation_markdown": "A 4-byte integer representing a replica node ID.\nHere, it is 0x00000001 (1 in decimal).\n"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "ISR Nodes",
+                          "explanation_markdown": "An array of in-sync replica node IDs for this partition.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                            },
+                            {
+                              "title": "ISR Node",
+                              "length_in_bytes": 4,
+                              "explanation_markdown": "A 4-byte integer representing an in-sync replica node ID.\nHere, it is 0x00000001 (1 in decimal).\n"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Eligible Leader Replicas",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "The count of eligible leader replicas + 1, encoded as a varint.\nHere, it is 0x01 (1), indicating 0 eligible leader replicas.\n"
+                        },
+                        {
+                          "title": "Last Known ELR",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "The count of last known eligible leader replicas + 1, encoded as a varint.\nHere, it is 0x01 (1), indicating 0 last known eligible leader replicas.\n"
+                        },
+                        {
+                          "title": "Offline Replicas",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "The count of offline replicas + 1, encoded as a varint.\nHere, it is 0x01 (1), indicating 0 offline replicas.\n"
+                        },
+                        {
+                          "title": "Tag Buffer",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "An empty tagged field array, represented by a single byte of value 0x00.\n"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Partition 1",
+                      "explanation_markdown": "Information about the second partition.\n",
+                      "children": [
+                        {
+                          "title": "Error Code",
+                          "length_in_bytes": 2,
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                        },
+                        {
+                          "title": "Partition Index",
+                          "length_in_bytes": 4,
+                          "explanation_markdown": "A 4-byte integer representing the index of this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
+                        },
+                        {
+                          "title": "Leader ID",
+                          "length_in_bytes": 4,
+                          "explanation_markdown": "A 4-byte integer representing the ID of the leader for this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
+                        },
+                        {
+                          "title": "Leader Epoch",
+                          "length_in_bytes": 4,
+                          "explanation_markdown": "A 4-byte integer representing the epoch of the leader.\nHere, it is 0x00000000 (0 in decimal).\n"
+                        },
+                        {
+                          "title": "Replica Nodes",
+                          "explanation_markdown": "An array of replica node IDs for this partition.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                            },
+                            {
+                              "title": "Replica Node",
+                              "length_in_bytes": 4,
+                              "explanation_markdown": "A 4-byte integer representing a replica node ID.\nHere, it is 0x00000001 (1 in decimal).\n"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "ISR Nodes",
+                          "explanation_markdown": "An array of in-sync replica node IDs for this partition.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                            },
+                            {
+                              "title": "ISR Node",
+                              "length_in_bytes": 4,
+                              "explanation_markdown": "A 4-byte integer representing an in-sync replica node ID.\nHere, it is 0x00000001 (1 in decimal).\n"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Eligible Leader Replicas",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "The count of eligible leader replicas + 1, encoded as a varint.\nHere, it is 0x01 (1), indicating 0 eligible leader replicas.\n"
+                        },
+                        {
+                          "title": "Last Known ELR",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "The count of last known eligible leader replicas + 1, encoded as a varint.\nHere, it is 0x01 (1), indicating 0 last known eligible leader replicas.\n"
+                        },
+                        {
+                          "title": "Offline Replicas",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "The count of offline replicas + 1, encoded as a varint.\nHere, it is 0x01 (1), indicating 0 offline replicas.\n"
+                        },
+                        {
+                          "title": "Tag Buffer",
+                          "length_in_bytes": 1,
+                          "explanation_markdown": "An empty tagged field array, represented by a single byte of value 0x00.\n"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "title": "Topic Authorized Operations",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "A 4-byte integer representing the authorized operations for this topic.\n\nHere, it is 0x00000df8 (3576 in decimal).\n"
+                  "explanation_markdown": "A 4-byte integer representing the authorized operations for this topic.\nHere, it is 0x00000df8.\n"
                 },
                 {
                   "title": "Tag Buffer",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "An empty tagged field array for the topic, represented by a single byte of value 0x00.\n"
+                  "explanation_markdown": "An empty tagged field array, represented by a single byte of value 0x00.\n"
                 }
               ]
             }

@@ -1,21 +1,14 @@
 <div ...attributes>
-  {{#if @segment.parent}}
-    <DataSegmentDetails::Ancestors
-      class="mb-1"
-      @segment={{@segment}}
-      @onSegmentSelect={{@onSegmentSelect}}
-      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-    />
-  {{/if}}
-
-  <div class="text-xl font-medium {{this.titleTextColorClasses}}">
-    {{@segment.titleForDisplay}}
-  </div>
+  <DataSegmentDetails::TitleWithBreadcrumbs
+    @segment={{@segment}}
+    @onSegmentSelect={{@onSegmentSelect}}
+    @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+    @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+  />
 
   {{#if (gt @segment.children.length 0)}}
     <DataSegmentDetails::Children
-      class="mt-2"
+      class="mt-1"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
@@ -29,16 +22,26 @@
     </div>
   {{/if}}
 
-  <HexPreview
-    class="mt-2 w-full"
-    @data={{@data}}
-    @endByteIndex={{@segment.endByteIndex}}
-    @highlightedSegment={{@segment}}
-    @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-    @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-    @onSegmentSelect={{@onSegmentSelect}}
-    @section="segment-details-hexdump"
-    @segments={{array @segment}}
-    @startByteIndex={{@segment.startByteIndex}}
-  />
+  {{#if @segment.isLeafSegment}}
+    <HexPreview
+      class="mt-3 w-full"
+      @data={{@data}}
+      @endByteIndex={{this.previewEndByteIndex}}
+      @highlightedSegment={{@segment}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      @onSegmentSelect={{@onSegmentSelect}}
+      @section="segment-details-hexdump"
+      @segments={{array @segment}}
+      @startByteIndex={{@segment.startByteIndex}}
+    >
+      <:lastBytePreview>
+        {{#if this.previewIsTruncated}}
+          <div class="flex items-center justify-center">
+            <span class="text-lg text-zinc-500">⋯</span>
+          </div>
+        {{/if}}
+      </:lastBytePreview>
+    </HexPreview>
+  {{/if}}
 </div>

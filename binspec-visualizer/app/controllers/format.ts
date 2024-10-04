@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 import type HoverStateService from 'binspec-visualizer/services/hover-state';
 import type { ModelType } from 'binspec-visualizer/routes/format';
+import { next } from '@ember/runloop';
 
 export default class FormatController extends Controller {
   declare model: ModelType;
@@ -23,7 +24,6 @@ export default class FormatController extends Controller {
 
   @action
   handleClickOutside() {
-    console.log('click outside triggered');
     this.hoverState.clear();
     this.highlightedSegment = undefined;
   }
@@ -55,5 +55,9 @@ export default class FormatController extends Controller {
   handleSegmentSelected(segment: DataSegment) {
     this.highlightedSegment = segment;
     this.hoverState.clear();
+
+    next(() => {
+      this.hoverState.clear(); // If interstitial jumps and we trigger hover, let's clear that too
+    });
   }
 }

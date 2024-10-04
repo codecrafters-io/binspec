@@ -2,7 +2,7 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka Describe Topic Partitions Request (v0)",
+  "name": "Kafka DescribeTopicPartitions Request (v0)",
   "slug": "kafka-describe-topic-partitions-request-v0",
   "data": [
     0,
