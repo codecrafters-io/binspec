@@ -92,7 +92,7 @@ const generated: GeneratedData = {
               "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
-              "title": "Topics",
+              "title": "Topic #1",
               "explanation_markdown": "A single topic in the array.\n",
               "children": [
                 {
