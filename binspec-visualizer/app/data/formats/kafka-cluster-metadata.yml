@@ -28,7 +28,7 @@ data:
   - 0x00 # Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
   - 0x00
   - 0x00
-  - 0x03
+  - 0x00
   - 0x00 # Base Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
   - 0x00
   - 0x01
@@ -359,8 +359,99 @@ segments:
     children:
       - title: Base Offset
         length_in_bytes: 8
-      # ...
+        explanation_markdown: |
+          Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
 
+          In this case, the value is `0x0000000000000000`, which is `0` in decimal, indicating that this is the first batch of records.
+      - title: Batch Length 
+        length_in_bytes: 4
+        explanation_markdown: |
+          Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.
+
+          In this case, the value is `0x0000004f`, which is `79` in decimal.
+      - title: Partition Leader Epoch
+        length_in_bytes: 4
+        explanation_markdown: |
+          Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This allows to detect out of order writes.
+
+          In this case, the value is `0x00000001`, which is `1` in decimal.
+      - title: Magic Byte
+        length_in_bytes: 1
+        explanation_markdown: |
+          Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. It allows Kafka to support multiple message format versions simultaneously.
+
+          In this case, the value is `0x02`, which is `2` in decimal.
+      - title: CRC 
+        length_in_bytes: 4
+        explanation_markdown: |
+          CRC is a 4-byte big-endian integer indicating the CRC32 checksum of the record batch.
+          The CRC covers the data from the attributes to the end of the record batch. The CRC-32C (Castagnoli) polynomial is used for the computation.
+
+          In this case, the value is `0x9654b1a5`, which is `-1772834395` in decimal.
+      - title: Attributes
+        length_in_bytes: 2
+        explanation_markdown: |
+          Attributes is a 2-byte big-endian integer indicating the attributes of the record batch.
+          Attributes is a bitmask of the following flags:
+              bit 0~2:
+                  0: no compression
+                  1: gzip
+                  2: snappy
+                  3: lz4
+                  4: zstd
+              bit 3: timestampType
+              bit 4: isTransactional (0 means not transactional)
+              bit 5: isControlBatch (0 means not a control batch)
+              bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)
+              bit 7~15: unused
+
+          In this case, the value is `0x0000`, which is `0` in decimal.
+      - title: Last Offset Delta (4 bytes, 0x03 in hex, 3 in decimal)
+        length_in_bytes: 4
+        explanation_markdown: |
+          Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.
+
+          In this case, the value is `0x00000000`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.
+      - title: Base Timestamp
+        length_in_bytes: 8
+        explanation_markdown: |
+          Base Timestamp is a 8-byte big-endian integer indicating the timestamp of the first record in this batch.
+
+          In this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.
+      - title: Max Timestamp (8 bytes, 0x00000191e05af818 in hex, 1726045943832 in decimal)
+        length_in_bytes: 8
+        explanation_markdown: |
+          Max Timestamp is a 8-byte big-endian integer indicating the maximum timestamp of the records in this batch.
+
+          In this case, the value is `0x00000191e05af818`, which is `1726045943832` in decimal.
+          This is an unix timestamp in milliseconds, which is `2024-09-11 09:12:23.832` in UTC.
+      - title: Producer ID
+        length_in_bytes: 8
+        explanation_markdown: |
+          Producer ID is a 8-byte big-endian integer indicating the ID of the producer that produced the records in this batch.
+
+          In this case, the value is `0xffffffffffffffff`, which is `-1` in decimal.
+          This is a special value that indicates that the producer ID is not set.
+      - title: Producer Epoch
+        length_in_bytes: 2
+        explanation_markdown: |
+          Producer Epoch is a 2-byte big-endian integer indicating the epoch of the producer that produced the records in this batch.
+
+          In this case, the value is `0xffff`, which is `-1` in decimal.
+          This is a special value that indicates that the producer epoch is not applicable.
+      - title: Base Sequence
+        length_in_bytes: 4
+        explanation_markdown: |
+          Base Sequence is a 4-byte big-endian integer indicating the sequence number of the first record in a batch. It is used to ensure the correct ordering and deduplication of messages produced by a Kafka producer.
+
+          In this case, the value is `0xffffffff`, which is `-1` in decimal.
+      - title: Records Length
+        length_in_bytes: 4
+        explanation_markdown: |
+          Records Length is a 4-byte big-endian integer indicating the number of records in this batch.
+
+          In this case, the value is `0x00000001`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.
       - title: Records
         children:
           - title: Count
