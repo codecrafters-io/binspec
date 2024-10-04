@@ -167,23 +167,27 @@ export default class HexPreview extends Component<Signature> {
       );
     }
 
-    // If the highlighted segment contains the byte index, we'll use its children
-    // Otherwise, we'll try to find a sibling segment
-    return (
-      highlightedSegment.findChildOrSiblingOrAncestorContainingByteIndex(
-        byteIndex,
-      ) ||
-      this.args.segments.find(
-        (segment) =>
-          segment.containsByteIndex(byteIndex) &&
-          !segment.contains(highlightedSegment),
-      )
+    if (highlightedSegment.containsByteIndex(byteIndex)) {
+      return highlightedSegment.children.find((child) =>
+        child.containsByteIndex(byteIndex),
+      );
+    }
+
+    if (
+      highlightedSegment.parent &&
+      highlightedSegment.parent.containsByteIndex(byteIndex)
+    ) {
+      return highlightedSegment.parent;
+    }
+
+    // If the segment & its parent doesn't contain the byte index, we'll use the root segments
+    return this.args.segments.find((segment) =>
+      segment.containsByteIndex(byteIndex),
     );
   }
 
   @action
   handleBytePreviewClick(byteIndex: number) {
-    console.log('handleBytePreviewClick', byteIndex);
     const segment = this.hoverableSegmentForByteIndex(byteIndex);
 
     if (segment) {
@@ -193,7 +197,6 @@ export default class HexPreview extends Component<Signature> {
 
   @action
   handleBytePreviewMouseEnter(byteIndex: number) {
-    console.log('handleBytePreviewMouseEnter', byteIndex);
     const segment = this.hoverableSegmentForByteIndex(byteIndex);
 
     if (segment) {

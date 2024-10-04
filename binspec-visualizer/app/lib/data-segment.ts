@@ -61,36 +61,12 @@ export class DataSegment {
     );
   }
 
-  findChildOrSiblingOrAncestorContainingByteIndex(
-    byteIndex: number,
-  ): DataSegment | undefined {
-    // If the highlighted segment contains the byte index, we'll use its children
-    if (this.containsByteIndex(byteIndex)) {
-      return this.children.find((segment) =>
-        segment.containsByteIndex(byteIndex),
-      );
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    let currentRoot = this as DataSegment;
-
-    while (currentRoot.parent) {
-      const matchingSegment = currentRoot.parent.children.find((child) =>
-        child.containsByteIndex(byteIndex),
-      );
-
-      if (matchingSegment) {
-        return matchingSegment;
-      }
-
-      currentRoot = currentRoot.parent;
-    }
-
-    return undefined;
-  }
-
   get grandparent(): DataSegment | undefined {
     return this.parent?.parent;
+  }
+
+  get isLeafSegment(): boolean {
+    return this.children.length === 0;
   }
 
   get leafSegments(): DataSegment[] {
