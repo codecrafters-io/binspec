@@ -81,6 +81,10 @@ export class DataSegment {
     return this.endBitIndex - this.startBitIndex + 1;
   }
 
+  get lengthInBytes(): number {
+    return Math.ceil((this.endBitIndex - this.startBitIndex + 1) / 8);
+  }
+
   get startByteIndex(): number {
     return Math.floor(this.startBitIndex / 8);
   }

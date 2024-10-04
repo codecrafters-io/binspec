@@ -18,6 +18,10 @@ export default class FormatController extends Controller {
     return this.model.format.data;
   }
 
+  get hoveredSegment(): DataSegment | undefined {
+    return this.hoverState.segment;
+  }
+
   get segments(): DataSegment[] {
     return this.model.format.segments;
   }
