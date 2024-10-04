@@ -1,13 +1,13 @@
 <div ...attributes>
   {{!-- <span class="text-xs text-zinc-400/80 uppercase font-medium mb-1">
-    Contains:
+    Children:
   </span> --}}
 
   {{#each @segment.children as |child|}}
     <SegmentAncestorsTooltipItem
       @segment={{child}}
       @highlightedSegment={{@segment}}
-      @indentationLevel={{0}}
+      @indentationLevel={{1}}
       {{on "mouseenter" (fn @onSegmentMouseEnter "other" child undefined)}}
       {{on "mouseleave" @onSegmentMouseLeave}}
       {{on "click" (fn @onSegmentSelect child)}}
