@@ -63,6 +63,12 @@ export default class FormatController extends Controller {
 
     next(() => {
       this.hoverState.clear(); // If interstitial jumps and we trigger hover, let's clear that too
+
+      const interstitial = document.getElementById(
+        'highlighted-segment-interstitial',
+      );
+
+      interstitial?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   }
 }
