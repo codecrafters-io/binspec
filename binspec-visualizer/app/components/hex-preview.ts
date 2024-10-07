@@ -158,33 +158,43 @@ export default class HexPreview extends Component<Signature> {
   }
 
   hoverableSegmentForByteIndex(byteIndex: number): DataSegment | undefined {
-    const highlightedSegment = this.args.highlightedSegment;
+    const leafSegments = [];
 
-    // If there's no highlighted segment, we'll use the root segments
-    if (!highlightedSegment) {
-      return this.args.segments.find((segment) =>
-        segment.containsByteIndex(byteIndex),
-      );
+    for (const segment of this.args.segments) {
+      if (segment.containsByteIndex(byteIndex)) {
+        leafSegments.push(...segment.leafSegments);
+      }
     }
 
-    // If we're within a highlighted segment, we only allow hover if child segments exist.
-    if (highlightedSegment.containsByteIndex(byteIndex)) {
-      return highlightedSegment.children.find((child) =>
-        child.containsByteIndex(byteIndex),
-      );
-    }
+    return leafSegments.find((segment) => segment.containsByteIndex(byteIndex));
 
-    if (
-      highlightedSegment.parent &&
-      highlightedSegment.parent.containsByteIndex(byteIndex)
-    ) {
-      return highlightedSegment.parent;
-    }
+    // const highlightedSegment = this.args.highlightedSegment;
 
-    // If the segment & its parent doesn't contain the byte index, we'll use the root segments
-    return this.args.segments.find((segment) =>
-      segment.containsByteIndex(byteIndex),
-    );
+    // // If there's no highlighted segment, we'll use the root segments
+    // if (!highlightedSegment) {
+    //   return this.args.segments.find((segment) =>
+    //     segment.containsByteIndex(byteIndex),
+    //   );
+    // }
+
+    // // If we're within a highlighted segment, we only allow hover if child segments exist.
+    // if (highlightedSegment.containsByteIndex(byteIndex)) {
+    //   return highlightedSegment.children.find((child) =>
+    //     child.containsByteIndex(byteIndex),
+    //   );
+    // }
+
+    // if (
+    //   highlightedSegment.parent &&
+    //   highlightedSegment.parent.containsByteIndex(byteIndex)
+    // ) {
+    //   return highlightedSegment.parent;
+    // }
+
+    // // If the segment & its parent doesn't contain the byte index, we'll use the root segments
+    // return this.args.segments.find((segment) =>
+    //   segment.containsByteIndex(byteIndex),
+    // );
   }
 
   @action

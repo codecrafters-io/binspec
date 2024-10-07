@@ -5,13 +5,12 @@
   @tooltipClass="bg-zinc-800 border-zinc-600/80 text-white px-4 py-3 max-w-[300px]"
   @effect="none"
 >
-  <div class="mb-3 border-b border-zinc-700/40 pb-1 font-medium text-white">
+  <div class="font-medium text-white">
     {{@segment.titleForDisplay}}
   </div>
-
-  {{#if @segment.explanationMarkdown}}
+  {{!-- {{#if @segment.explanationMarkdown}}
     <div class="prose prose-invert prose-sm line-clamp-5">
       {{markdown-to-html @segment.explanationMarkdown}}
     </div>
-  {{/if}}
+  {{/if}} --}}
 </EmberPopover>
