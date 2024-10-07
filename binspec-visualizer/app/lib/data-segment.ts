@@ -61,6 +61,14 @@ export class DataSegment {
     );
   }
 
+  get firstLeafSegment(): DataSegment | undefined {
+    if (this.children.length === 0) {
+      return this;
+    }
+
+    return this.children[0]!.firstLeafSegment;
+  }
+
   get grandparent(): DataSegment | undefined {
     return this.parent?.parent;
   }

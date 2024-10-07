@@ -10,7 +10,8 @@ import { next } from '@ember/runloop';
 export default class FormatController extends Controller {
   declare model: ModelType;
 
-  @tracked highlightedSegment?: DataSegment = this.model.format.segments[0]!;
+  @tracked highlightedSegment?: DataSegment =
+    this.model.format.segments[0]!.firstLeafSegment!;
 
   @service declare hoverState: HoverStateService;
 

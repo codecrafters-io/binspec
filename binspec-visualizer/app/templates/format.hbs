@@ -8,41 +8,34 @@
       {{@model.format.name}}
     </h2>
     <div
-      class="rounded-md border border-zinc-700/60 flex-grow overflow-auto p-2 w-full"
+      class="rounded-md border border-zinc-700/60 flex-grow w-full flex flex-col min-h-0"
       id="raw-container"
       {{!-- {{click-outside this.handleClickOutside}} --}}
     >
-      <HexPreview
-        @section="root-hexdump"
-        @byteIndexForInterstitial={{if
-          this.highlightedSegment
-          this.highlightedSegment.endByteIndex
-          0
-        }}
-        @data={{this.data}}
-        @segments={{this.segments}}
-        @highlightedSegment={{this.highlightedSegment}}
-        @onSegmentSelect={{this.handleSegmentSelected}}
-        @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-        @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+      <div class="p-4 flex-grow overflow-y-auto min-h-0">
+        {{#if this.highlightedSegment}}
+          <DataSegmentDetails
+            @data={{this.data}}
+            @segment={{this.highlightedSegment}}
+            @onSegmentSelect={{this.handleSegmentSelected}}
+            @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+            @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+          />
+        {{/if}}
+      </div>
+      <div
+        class="h-[150px] overflow-y-auto border-t border-zinc-700/60 py-12 px-4"
       >
-        <:interstitial>
-          {{#if this.highlightedSegment}}
-            <div
-              class="rounded-md border border-yellow-500/40 shadow p-3 pt-2 w-full my-2 scroll-my-16"
-              {{scroll-into-view-on-insert}}
-            >
-              <DataSegmentDetails
-                @data={{this.data}}
-                @segment={{this.highlightedSegment}}
-                @onSegmentSelect={{this.handleSegmentSelected}}
-                @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-                @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
-              />
-            </div>
-          {{/if}}
-        </:interstitial>
-      </HexPreview>
+        <HexPreview
+          @section="root-hexdump"
+          @data={{this.data}}
+          @segments={{this.segments}}
+          @highlightedSegment={{this.highlightedSegment}}
+          @onSegmentSelect={{this.handleSegmentSelected}}
+          @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+          @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+        />
+      </div>
     </div>
     <div class="text-right w-full text-xs text-zinc-500 mt-1">
       {{#if this.hoveredSegment}}
