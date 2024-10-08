@@ -18,6 +18,10 @@ type Signature = {
   };
 
   Element: HTMLDivElement;
+
+  Blocks: {
+    topRight?: [];
+  };
 };
 
 export default class DataSegmentDetails extends Component<Signature> {

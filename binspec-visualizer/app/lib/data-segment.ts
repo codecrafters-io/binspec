@@ -47,6 +47,17 @@ export class DataSegment {
     return this.ancestors.reverse();
   }
 
+  get recursiveChildren(): DataSegment[] {
+    const children: DataSegment[] = [];
+
+    for (const child of this.children) {
+      children.push(child);
+      children.push(...child.recursiveChildren);
+    }
+
+    return children;
+  }
+
   contains(other: DataSegment): boolean {
     return (
       this.startBitIndex <= other.startBitIndex &&
@@ -59,6 +70,14 @@ export class DataSegment {
       this.startBitIndex === other.startBitIndex &&
       this.endBitIndex === other.endBitIndex
     );
+  }
+
+  get firstLeafSegment(): DataSegment | undefined {
+    if (this.children.length === 0) {
+      return this;
+    }
+
+    return this.children[0]!.firstLeafSegment;
   }
 
   get grandparent(): DataSegment | undefined {

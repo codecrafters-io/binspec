@@ -11,12 +11,16 @@ export type ModelType = {
 export default class FormatRoute extends Route {
   @service declare router: RouterService;
 
-  model(params: { format_slug: string }) {
-    if (!FormatRegistry.getBySlug(params.format_slug)) {
+  model(params: { format_slug: string; highlight?: string }): ModelType {
+    const format = FormatRegistry.getBySlug(params.format_slug);
+
+    if (!format) {
       this.router.transitionTo('index');
-      return;
+      return {} as ModelType;
     }
 
-    return { format: FormatRegistry.getBySlug(params.format_slug) };
+    return {
+      format,
+    };
   }
 }

@@ -5,7 +5,8 @@ import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
-    segment: DataSegment;
+    nextSegment?: DataSegment;
+    previousSegment?: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
     onSegmentMouseEnter: (
       section: NonNullable<HoverStateService['initiatedFromSection']>,

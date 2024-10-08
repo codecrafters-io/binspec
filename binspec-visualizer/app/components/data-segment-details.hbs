@@ -1,21 +1,16 @@
 <div ...attributes>
-  <div class="flex items-center justify-between">
+  <div class="flex items-center w-full">
     <DataSegmentDetails::TitleWithBreadcrumbs
-      class="flex-shrink"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
       @onSegmentMouseLeave={{@onSegmentMouseLeave}}
     />
 
-    {{#if @segment.parent}}
-      <DataSegmentDetails::SiblingSwitcherContainer
-        class="flex-shrink-0"
-        @segment={{@segment}}
-        @onSegmentSelect={{@onSegmentSelect}}
-        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-      />
+    {{#if (has-block "topRight")}}
+      <div class="flex-grow flex items-center justify-end pl-2">
+        {{yield to="topRight"}}
+      </div>
     {{/if}}
   </div>
 
