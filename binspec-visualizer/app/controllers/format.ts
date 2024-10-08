@@ -30,7 +30,6 @@ export default class FormatController extends Controller {
   @action
   handleClickOutside() {
     this.hoverState.clear();
-    this.highlightedSegment = undefined;
   }
 
   @action
@@ -58,6 +57,7 @@ export default class FormatController extends Controller {
 
   @action
   handleSegmentSelected(segment: DataSegment) {
+    console.log('handleSegmentSelected', segment);
     this.highlightedSegment = segment;
     this.hoverState.clear();
 

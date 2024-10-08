@@ -8,15 +8,13 @@
       @onSegmentMouseLeave={{@onSegmentMouseLeave}}
     />
 
-    {{#if @segment.parent}}
-      <DataSegmentDetails::SiblingSwitcherContainer
-        class="flex-shrink-0"
-        @segment={{@segment}}
-        @onSegmentSelect={{@onSegmentSelect}}
-        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-      />
-    {{/if}}
+    <DataSegmentDetails::SiblingSwitcherContainer
+      class="flex-shrink-0"
+      @segment={{@segment}}
+      @onSegmentSelect={{@onSegmentSelect}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+    />
   </div>
 
   {{#if (gt @segment.children.length 0)}}

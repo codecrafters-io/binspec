@@ -167,34 +167,6 @@ export default class HexPreview extends Component<Signature> {
     }
 
     return leafSegments.find((segment) => segment.containsByteIndex(byteIndex));
-
-    // const highlightedSegment = this.args.highlightedSegment;
-
-    // // If there's no highlighted segment, we'll use the root segments
-    // if (!highlightedSegment) {
-    //   return this.args.segments.find((segment) =>
-    //     segment.containsByteIndex(byteIndex),
-    //   );
-    // }
-
-    // // If we're within a highlighted segment, we only allow hover if child segments exist.
-    // if (highlightedSegment.containsByteIndex(byteIndex)) {
-    //   return highlightedSegment.children.find((child) =>
-    //     child.containsByteIndex(byteIndex),
-    //   );
-    // }
-
-    // if (
-    //   highlightedSegment.parent &&
-    //   highlightedSegment.parent.containsByteIndex(byteIndex)
-    // ) {
-    //   return highlightedSegment.parent;
-    // }
-
-    // // If the segment & its parent doesn't contain the byte index, we'll use the root segments
-    // return this.args.segments.find((segment) =>
-    //   segment.containsByteIndex(byteIndex),
-    // );
   }
 
   @action
