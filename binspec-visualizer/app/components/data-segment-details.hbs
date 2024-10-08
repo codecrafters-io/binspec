@@ -31,8 +31,13 @@
   {{/if}}
 
   {{#if @segment.isLeafSegment}}
+    <div class="mt-3 text-xs uppercase text-zinc-500 font-semibold">
+      {{@segment.lengthInBytes}}
+      {{if (eq @segment.lengthInBytes 1) "byte" "bytes"}}:
+    </div>
+
     <HexPreview
-      class="mt-3 w-full"
+      class="mt-2 w-full"
       @data={{@data}}
       @endByteIndex={{this.previewEndByteIndex}}
       @highlightedSegment={{@segment}}
