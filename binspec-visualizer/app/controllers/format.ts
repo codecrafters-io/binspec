@@ -10,13 +10,53 @@ import { next } from '@ember/runloop';
 export default class FormatController extends Controller {
   declare model: ModelType;
 
-  @tracked highlightedSegment?: DataSegment =
-    this.model.format.segments[0]!.firstLeafSegment!;
+  queryParams = [
+    {
+      highlightQueryParam: 'highlight',
+    },
+  ];
+
+  @tracked highlightQueryParam?: string;
 
   @service declare hoverState: HoverStateService;
 
   get data(): Uint8Array {
     return this.model.format.data;
+  }
+
+  get highlightedSegment(): DataSegment | undefined {
+    if (!this.highlightQueryParam) {
+      return this.model.format.segments[0]!.firstLeafSegment!;
+    }
+
+    const startByteIndexStr = this.highlightQueryParam.split('-')[0];
+    const endByteIndexStr = this.highlightQueryParam.split('-')[1];
+
+    if (startByteIndexStr === undefined || endByteIndexStr === undefined) {
+      return this.model.format.segments[0]!.firstLeafSegment!;
+    }
+
+    const startByteIndex = parseInt(startByteIndexStr, 10);
+    const endByteIndex = parseInt(endByteIndexStr, 10);
+
+    const allSegments = [];
+
+    for (const segment of this.model.format.segments) {
+      allSegments.push(segment);
+      allSegments.push(...segment.recursiveChildren);
+    }
+
+    const exactMatch = allSegments.find(
+      (segment) =>
+        segment.startByteIndex === startByteIndex &&
+        segment.endByteIndex === endByteIndex,
+    );
+
+    if (exactMatch) {
+      return exactMatch;
+    }
+
+    return this.model.format.segments[0]!.firstLeafSegment!;
   }
 
   get hoveredSegment(): DataSegment | undefined {
@@ -133,7 +173,7 @@ export default class FormatController extends Controller {
 
   @action
   handleSegmentSelected(segment: DataSegment) {
-    this.highlightedSegment = segment;
+    this.highlightQueryParam = `${segment.startByteIndex}-${segment.endByteIndex}`;
     this.hoverState.clear();
 
     next(() => {
