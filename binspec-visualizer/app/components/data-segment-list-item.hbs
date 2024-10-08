@@ -1,42 +1,18 @@
 <div class="flex flex-col items-stretch" ...attributes>
   <div
-    class="cursor-pointer p-2
-      {{if this.isHoveredSegment 'bg-zinc-700/60'}}
-      {{if this.isHighlightedSegment 'bg-zinc-700/60'}}
-      "
+    class="cursor-pointer py-0.5"
     {{on "mouseenter" (fn @onSegmentMouseEnter "other" @segment undefined)}}
     {{on "mouseleave" @onSegmentMouseLeave}}
   >
     <div role="button" {{on "click" (fn @onSegmentSelect @segment)}}>
-      <div class="text-lg font-medium {{this.titleTextColorClasses}}">
-        {{@segment.titleForDisplay}}
+      <div class="text-xs font-extralight {{this.titleTextColorClasses}}">
+        <span class="opacity-20">-</span> {{@segment.titleForDisplay}}
       </div>
-
-      {{#if @segment.explanationMarkdown}}
-        <div class="prose prose-invert prose-sm mt-2">
-          {{markdown-to-html @segment.explanationMarkdown}}
-        </div>
-      {{/if}}
     </div>
-
-    {{#if (segment-eq @segment @highlightedSegment)}}
-      <HexPreview
-        class="mt-4"
-        @section="other"
-        @data={{@data}}
-        @startByteIndex={{@segment.startByteIndex}}
-        @endByteIndex={{@segment.endByteIndex}}
-        @segments={{@segment.children}}
-        @highlightedSegment={{@highlightedSegment}}
-        @onSegmentSelect={{@onSegmentSelect}}
-        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-      />
-    {{/if}}
   </div>
 
   {{#if @segment.children}}
-    <div class="pl-4 flex flex-col gap-4 py-4">
+    <div class="pl-2 flex flex-col gap-0.5 my-0.5">
       {{#each @segment.children as |child|}}
         <DataSegmentListItem
           @data={{@data}}
