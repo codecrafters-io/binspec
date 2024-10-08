@@ -34,41 +34,54 @@
           </DataSegmentDetails>
         {{/if}}
       </div>
-      <div class="relative w-full">
+      {{! <div class="relative w-full">
         <div
           class="absolute h-6 -top-3 left-1/2 -translate-x-1/2 text-zinc-500 text-xs bg-zinc-800 px-2 rounded-md flex items-center"
         >
           Hex Preview
         </div>
-      </div>
+      </div> }}
       <div
-        class="h-[150px] overflow-y-auto border rounded mx-1 mb-1 border-zinc-700/60 py-12 px-4"
+        class="flex items-stretch border rounded mx-1 mb-1 border-zinc-700/60 relative"
       >
-        <HexPreview
-          id="hexdump-container"
-          @section="root-hexdump"
-          @byteIndexForInterstitial={{if
-            this.highlightedSegment
-            this.highlightedSegment.startByteIndex
-            0
-          }}
-          @data={{this.data}}
-          @segments={{this.segments}}
-          @highlightedSegment={{this.highlightedSegment}}
-          @onSegmentSelect={{this.handleSegmentSelected}}
-          @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-          @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+        <div
+          class="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-zinc-800 from-30% to-zinc-800/0"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-zinc-800 from-30% to-zinc-800/0"
+        ></div>
+        <div
+          class="absolute h-6 -top-3 left-1/2 -translate-x-1/2 text-zinc-500 text-xs bg-zinc-800 px-2 rounded-md flex items-center"
         >
-          <:interstitial>
-            {{#if this.highlightedSegment}}
-              <div
-                id="highlighted-segment-interstitial"
-                class="scroll-mt-[50px]"
-              >
-              </div>
-            {{/if}}
-          </:interstitial>
-        </HexPreview>
+          Hex Preview
+        </div>
+        <div class="overflow-y-auto h-[150px] w-full py-12 px-4">
+          <HexPreview
+            id="hexdump-container"
+            @section="root-hexdump"
+            @byteIndexForInterstitial={{if
+              this.highlightedSegment
+              this.highlightedSegment.startByteIndex
+              0
+            }}
+            @data={{this.data}}
+            @segments={{this.segments}}
+            @highlightedSegment={{this.highlightedSegment}}
+            @onSegmentSelect={{this.handleSegmentSelected}}
+            @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+            @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+          >
+            <:interstitial>
+              {{#if this.highlightedSegment}}
+                <div
+                  id="highlighted-segment-interstitial"
+                  class="scroll-mt-[50px]"
+                >
+                </div>
+              {{/if}}
+            </:interstitial>
+          </HexPreview>
+        </div>
       </div>
     </div>
     <div class="text-right w-full text-xs text-zinc-500 mt-1">
