@@ -36,8 +36,10 @@ export default class DataSegmentListItem extends Component<Signature> {
   get titleTextColorClasses(): string {
     if (this.isHighlightedSegment) {
       return 'text-yellow-300';
+    } else if (this.isHoveredSegment) {
+      return 'text-sky-400';
     } else {
-      return 'text-white';
+      return 'text-zinc-400';
     }
   }
 }

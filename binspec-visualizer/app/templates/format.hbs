@@ -8,10 +8,28 @@
       {{@model.format.name}}
     </h2>
     <div
-      class="rounded-md border border-zinc-700/60 flex-grow w-full flex flex-col min-h-0"
+      class="rounded-md border border-zinc-700/60 flex-grow w-full flex flex-col min-h-0 relative"
       id="raw-container"
       {{click-outside this.handleClickOutside}}
     >
+      <div
+        class="absolute right-0 top-0 bottom-0 flex items-stretch justify-stretch"
+      >
+        <div class="relative">
+          <div class="absolute left-0 top-0 bottom-0 w-[320px] overflow-y-auto">
+            <DataSegmentList
+              class="ml-3"
+              @data={{this.data}}
+              @segments={{this.segments}}
+              @highlightedSegment={{this.highlightedSegment}}
+              @onSegmentSelect={{this.handleSegmentSelected}}
+              @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+              @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+            />
+          </div>
+        </div>
+      </div>
+
       <div class="p-4 flex-grow overflow-y-auto min-h-0">
         {{#if this.highlightedSegment}}
           <DataSegmentDetails
