@@ -1,6 +1,7 @@
 <div ...attributes>
   <div class="flex items-center w-full">
     <DataSegmentDetails::TitleWithBreadcrumbs
+      @highlightedSegment={{@highlightedSegment}}
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
@@ -14,20 +15,20 @@
     {{/if}}
   </div>
 
+  {{#if @segment.explanationMarkdown}}
+    <div class="prose prose-invert prose-sm mt-3">
+      {{markdown-to-html @segment.explanationMarkdown}}
+    </div>
+  {{/if}}
+
   {{#if (gt @segment.children.length 0)}}
     <DataSegmentDetails::Children
-      class="mt-1"
+      class="mt-3"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
       @onSegmentMouseLeave={{@onSegmentMouseLeave}}
     />
-  {{/if}}
-
-  {{#if @segment.explanationMarkdown}}
-    <div class="prose prose-invert prose-sm mt-2">
-      {{markdown-to-html @segment.explanationMarkdown}}
-    </div>
   {{/if}}
 
   {{#if @segment.isLeafSegment}}

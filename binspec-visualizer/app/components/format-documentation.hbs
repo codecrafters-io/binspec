@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-8">
+  {{#each @segments as |segment|}}
+    <FormatDocumentation::Segment
+      @data={{@data}}
+      @segment={{segment}}
+      @highlightedSegment={{@highlightedSegment}}
+      @onSegmentSelect={{@onSegmentSelect}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+    />
+  {{/each}}
+</div>
