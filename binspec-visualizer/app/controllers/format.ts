@@ -23,6 +23,82 @@ export default class FormatController extends Controller {
     return this.hoverState.segment;
   }
 
+  get nextSegment(): DataSegment | undefined {
+    // If there's no highlighted segment, return the first leaf segment
+    if (!this.highlightedSegment) {
+      return this.model.format.segments[0]!.firstLeafSegment;
+    }
+
+    const leafSegments = [];
+
+    for (const segment of this.model.format.segments) {
+      leafSegments.push(...segment.leafSegments);
+    }
+
+    const nextLeafSegment = leafSegments
+      .sort((a, b) => a.startByteIndex - b.startByteIndex)
+      .find(
+        (segment) =>
+          segment.startByteIndex > this.highlightedSegment!.endByteIndex,
+      );
+
+    // If this is a leaf segment, find the next leaf segment
+    if (this.highlightedSegment.isLeafSegment) {
+      return nextLeafSegment;
+    }
+
+    // If this is a root segment, let's find the next root segment
+    if (!this.highlightedSegment.parent) {
+      return this.model.format.segments
+        .sort((a, b) => a.startByteIndex - b.startByteIndex)
+        .find(
+          (segment) =>
+            segment.startByteIndex > this.highlightedSegment!.startByteIndex,
+        );
+    }
+
+    // Otherwise, let's try to find the next sibling, and if not, let's find the next leaf segment
+    return this.highlightedSegment.nextSibling || nextLeafSegment;
+  }
+
+  get previousSegment(): DataSegment | undefined {
+    // If there's no highlighted segment, return the first leaf segment
+    if (!this.highlightedSegment) {
+      return this.model.format.segments[0]!.firstLeafSegment;
+    }
+
+    const leafSegments = [];
+
+    for (const segment of this.model.format.segments) {
+      leafSegments.push(...segment.leafSegments);
+    }
+
+    const previousLeafSegment = leafSegments
+      .sort((a, b) => b.startByteIndex - a.startByteIndex)
+      .find(
+        (segment) =>
+          segment.endByteIndex < this.highlightedSegment!.startByteIndex,
+      );
+
+    // If this is a leaf segment, find the previous leaf segment
+    if (this.highlightedSegment.isLeafSegment) {
+      return previousLeafSegment;
+    }
+
+    // If this is a root segment, let's find the previous root segment
+    if (!this.highlightedSegment.parent) {
+      return this.model.format.segments
+        .sort((a, b) => b.startByteIndex - a.startByteIndex)
+        .find(
+          (segment) =>
+            segment.endByteIndex < this.highlightedSegment!.startByteIndex,
+        );
+    }
+
+    // Otherwise, let's try to find the previous sibling, and if not, let's find the previous leaf segment
+    return this.highlightedSegment.previousSibling || previousLeafSegment;
+  }
+
   get segments(): DataSegment[] {
     return this.model.format.segments;
   }

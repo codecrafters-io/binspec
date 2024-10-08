@@ -8,13 +8,9 @@
       @onSegmentMouseLeave={{@onSegmentMouseLeave}}
     />
 
-    <DataSegmentDetails::SiblingSwitcherContainer
-      class="flex-shrink-0"
-      @segment={{@segment}}
-      @onSegmentSelect={{@onSegmentSelect}}
-      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-    />
+    {{#if (has-block "topRight")}}
+      {{yield to="topRight"}}
+    {{/if}}
   </div>
 
   {{#if (gt @segment.children.length 0)}}

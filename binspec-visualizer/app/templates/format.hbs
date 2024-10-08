@@ -20,7 +20,18 @@
             @onSegmentSelect={{this.handleSegmentSelected}}
             @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
             @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
-          />
+          >
+            <:topRight>
+              <DataSegmentDetails::SiblingSwitcherContainer
+                class="flex-shrink-0"
+                @nextSegment={{this.nextSegment}}
+                @previousSegment={{this.previousSegment}}
+                @onSegmentSelect={{this.handleSegmentSelected}}
+                @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+                @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+              />
+            </:topRight>
+          </DataSegmentDetails>
         {{/if}}
       </div>
       <div

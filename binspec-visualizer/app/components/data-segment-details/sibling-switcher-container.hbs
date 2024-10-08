@@ -2,15 +2,12 @@
   class="inline-flex rounded items-stretch shadow-sm select-none"
   ...attributes
 >
-  {{#if @segment.previousSibling}}
+  {{#if @previousSegment}}
     <div
       role="button"
-      class="rounded-l border-r-0 flex items-center border border-zinc-700 transition-colors duration-75 px-1.5 py-1.5 text-zinc-500 bg-zinc-800 hover:bg-zinc-700/60"
-      {{on "click" (fn @onSegmentSelect @segment.previousSibling)}}
-      {{on
-        "mouseenter"
-        (fn @onSegmentMouseEnter "other" @segment.previousSibling 0)
-      }}
+      class="rounded-l border-r-0 flex items-center border border-zinc-700 transition-colors duration-75 px-1.5 py-1.5 text-zinc-500 bg-zinc-800 hover:bg-blue-400/20 hover:text-white"
+      {{on "click" (fn @onSegmentSelect @previousSegment)}}
+      {{on "mouseenter" (fn @onSegmentMouseEnter "other" @previousSegment 0)}}
       {{on "mouseleave" @onSegmentMouseLeave}}
     >
       <svg
@@ -43,23 +40,18 @@
         />
       </svg>
 
-      <EmberTooltip
-        @text="This is the first segment in {{@segment.parent.title}}"
-      />
+      <EmberTooltip @text="This is the first segment." />
     </div>
   {{/if}}
 
   <div class="w-px bg-zinc-700"></div>
 
-  {{#if @segment.nextSibling}}
+  {{#if @nextSegment}}
     <div
       role="button"
-      class="rounded-r border-l-0 flex items-center border border-zinc-700 transition-colors duration-75 px-1.5 py-1.5 text-zinc-500 bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700/60"
-      {{on "click" (fn @onSegmentSelect @segment.nextSibling)}}
-      {{on
-        "mouseenter"
-        (fn @onSegmentMouseEnter "other" @segment.nextSibling 0)
-      }}
+      class="rounded-r border-l-0 flex items-center border border-zinc-700 transition-colors duration-75 px-1.5 py-1.5 text-zinc-500 bg-zinc-800 hover:bg-blue-400/20 hover:text-white"
+      {{on "click" (fn @onSegmentSelect @nextSegment)}}
+      {{on "mouseenter" (fn @onSegmentMouseEnter "other" @nextSegment 0)}}
       {{on "mouseleave" @onSegmentMouseLeave}}
     >
       <svg
@@ -77,7 +69,7 @@
     </div>
   {{else}}
     <div
-      class="rounded-r border-l-0 flex items-center border border-zinc-300 dark:border-zinc-700 transition-colors duration-75 px-1.5 py-1.5 text-zinc-500 bg-white dark:bg-zinc-800 cursor-not-allowed"
+      class="rounded-r border-l-0 flex items-center border border-zinc-700 transition-colors duration-75 px-1.5 py-1.5 text-zinc-500 bg-zinc-800 cursor-not-allowed"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -92,9 +84,7 @@
         />
       </svg>
 
-      <EmberTooltip
-        @text="This is the last segment in {{@segment.parent.title}}"
-      />
+      <EmberTooltip @text="This is the last segment." />
     </div>
   {{/if}}
 </div>
