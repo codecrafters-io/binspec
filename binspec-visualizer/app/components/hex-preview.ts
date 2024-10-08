@@ -166,7 +166,23 @@ export default class HexPreview extends Component<Signature> {
       }
     }
 
-    return leafSegments.find((segment) => segment.containsByteIndex(byteIndex));
+    const matchingLeafSegment = leafSegments.find((segment) =>
+      segment.containsByteIndex(byteIndex),
+    );
+
+    if (!matchingLeafSegment) {
+      return undefined;
+    }
+
+    if (!this.args.highlightedSegment) {
+      return matchingLeafSegment;
+    }
+
+    if (!matchingLeafSegment.equals(this.args.highlightedSegment)) {
+      return matchingLeafSegment;
+    }
+
+    return undefined;
   }
 
   @action

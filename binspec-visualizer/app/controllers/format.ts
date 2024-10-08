@@ -57,7 +57,6 @@ export default class FormatController extends Controller {
 
   @action
   handleSegmentSelected(segment: DataSegment) {
-    console.log('handleSegmentSelected', segment);
     this.highlightedSegment = segment;
     this.hoverState.clear();
 
