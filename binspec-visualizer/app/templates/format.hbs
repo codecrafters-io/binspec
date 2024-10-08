@@ -34,8 +34,15 @@
           </DataSegmentDetails>
         {{/if}}
       </div>
+      <div class="relative w-full">
+        <div
+          class="absolute h-6 -top-3 left-1/2 -translate-x-1/2 text-zinc-500 text-xs bg-zinc-800 px-2 rounded-md flex items-center"
+        >
+          Hex Preview
+        </div>
+      </div>
       <div
-        class="h-[150px] overflow-y-auto border-t border-zinc-700/60 py-12 px-4"
+        class="h-[150px] overflow-y-auto border rounded mx-1 mb-1 border-zinc-700/60 py-12 px-4"
       >
         <HexPreview
           id="hexdump-container"
