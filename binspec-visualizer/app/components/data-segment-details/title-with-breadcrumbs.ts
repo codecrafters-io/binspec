@@ -17,8 +17,6 @@ type Signature = {
     ) => void;
     onSegmentMouseLeave: () => void;
   };
-
-  Element: HTMLDivElement;
 };
 
 export default class TitleWithBreadcrumbsComponent extends Component<Signature> {

@@ -1,7 +1,6 @@
 <div ...attributes>
-  <div class="flex items-center justify-between">
+  <div class="flex items-center w-full">
     <DataSegmentDetails::TitleWithBreadcrumbs
-      class="flex-shrink"
       @segment={{@segment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
@@ -9,7 +8,9 @@
     />
 
     {{#if (has-block "topRight")}}
-      {{yield to="topRight"}}
+      <div class="flex-grow flex items-center justify-end pl-2">
+        {{yield to="topRight"}}
+      </div>
     {{/if}}
   </div>
 

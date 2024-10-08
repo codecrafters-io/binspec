@@ -1,82 +1,80 @@
-<div class="flex items-center" ...attributes>
-  {{#if @segment.grandparent}}
-    {{! template-lint-disable require-presentational-children }}
-    <div
-      role="button"
-      class="border-b-2 font-medium text-base sm:text-lg hover:text-blue-400 hover:border-blue-400/80 text-zinc-400 border-zinc-400/20"
-      {{on "click" this.handleAncestorTreeToggleButtonClick}}
-    >
-      …
-
-      <SegmentAncestorsTooltip
-        @segment={{@segment}}
-        @highlightedSegment={{@segment}}
-        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
-        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
-        @onSegmentSelect={{@onSegmentSelect}}
-      />
-    </div>
-
-    <svg
-      class="h-4 w-4 flex-shrink-0 text-zinc-400/40 mx-1"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  {{/if}}
-  {{#if @segment.parent}}
-    {{! template-lint-disable require-presentational-children }}
-    <div
-      role="button"
-      class="border-b-2 font-medium text-base sm:text-lg truncate flex-shrink max-w-[14em]
-        {{if
-          (segment-eq @segment.parent this.hoveredSegment)
-          'text-blue-400 border-blue-400/80'
-          'text-zinc-400 border-zinc-400/20'
-        }}"
-      {{on "click" (fn @onSegmentSelect @segment.parent)}}
-      {{on
-        "mouseenter"
-        (fn @onSegmentMouseEnter "breadcrumb" @segment.parent undefined)
-      }}
-      {{on "mouseleave" (fn @onSegmentMouseLeave "breadcrumb" @segment.parent)}}
-    >
-      {{@segment.parent.titleForDisplay}}
-
-      {{#if
-        (and
-          (segment-eq @segment.parent this.hoveredSegment)
-          (eq this.hoverState.initiatedFromSection "breadcrumb")
-        )
-      }}
-        <HexPreview::SegmentTooltip @segment={{@segment.parent}} />
-      {{/if}}
-    </div>
-
-    <svg
-      class="h-4 w-4 flex-shrink-0 text-zinc-400/40 mx-1"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  {{/if}}
-
+{{#if @segment.grandparent}}
+  {{! template-lint-disable require-presentational-children }}
   <div
-    class="font-medium text-base sm:text-lg truncate
-      {{this.titleTextColorClasses}}"
+    role="button"
+    class="border-b-2 font-medium text-base sm:text-lg hover:text-blue-400 hover:border-blue-400/80 text-zinc-400 border-zinc-400/20 flex-shrink-0"
+    {{on "click" this.handleAncestorTreeToggleButtonClick}}
   >
-    {{@segment.titleForDisplay}}
+    …
+
+    <SegmentAncestorsTooltip
+      @segment={{@segment}}
+      @highlightedSegment={{@segment}}
+      @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+      @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      @onSegmentSelect={{@onSegmentSelect}}
+    />
   </div>
+
+  <svg
+    class="h-4 w-4 flex-shrink-0 text-zinc-400/40 mx-1"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+      clip-rule="evenodd"
+    />
+  </svg>
+{{/if}}
+{{#if @segment.parent}}
+  {{! template-lint-disable require-presentational-children }}
+  <div
+    role="button"
+    class="border-b-2 font-medium text-base sm:text-lg truncate flex-shrink max-w-[35%]
+      {{if
+        (segment-eq @segment.parent this.hoveredSegment)
+        'text-blue-400 border-blue-400/80'
+        'text-zinc-400 border-zinc-400/20'
+      }}"
+    {{on "click" (fn @onSegmentSelect @segment.parent)}}
+    {{on
+      "mouseenter"
+      (fn @onSegmentMouseEnter "breadcrumb" @segment.parent undefined)
+    }}
+    {{on "mouseleave" (fn @onSegmentMouseLeave "breadcrumb" @segment.parent)}}
+  >
+    {{@segment.parent.titleForDisplay}}
+
+    {{#if
+      (and
+        (segment-eq @segment.parent this.hoveredSegment)
+        (eq this.hoverState.initiatedFromSection "breadcrumb")
+      )
+    }}
+      <HexPreview::SegmentTooltip @segment={{@segment.parent}} />
+    {{/if}}
+  </div>
+
+  <svg
+    class="h-4 w-4 flex-shrink-0 text-zinc-400/40 mx-1"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+      clip-rule="evenodd"
+    />
+  </svg>
+{{/if}}
+
+<div
+  class="font-medium text-base sm:text-lg truncate flex-shrink
+    {{this.titleTextColorClasses}}"
+>
+  {{@segment.titleForDisplay}}
 </div>
