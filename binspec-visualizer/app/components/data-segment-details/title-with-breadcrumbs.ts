@@ -7,6 +7,7 @@ import type HoverStateService from 'binspec-visualizer/services/hover-state';
 
 type Signature = {
   Args: {
+    highlightedSegment?: DataSegment;
     segment: DataSegment;
     onSegmentSelect: (segment: DataSegment) => void;
     onSegmentMouseEnter: (
@@ -29,9 +30,15 @@ export default class TitleWithBreadcrumbsComponent extends Component<Signature> 
   }
 
   get titleTextColorClasses(): string {
-    return this.hoveredSegment === this.args.segment
-      ? 'text-blue-400'
-      : 'text-yellow-300';
+    if (this.hoveredSegment?.equals(this.args.segment)) {
+      return 'text-sky-400';
+    }
+
+    if (this.args.highlightedSegment?.equals(this.args.segment)) {
+      return 'text-yellow-300';
+    }
+
+    return 'text-zinc-100';
   }
 
   get visibleAncestors(): DataSegment[] {

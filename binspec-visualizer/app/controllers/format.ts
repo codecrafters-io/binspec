@@ -26,7 +26,7 @@ export default class FormatController extends Controller {
 
   get highlightedSegment(): DataSegment | undefined {
     if (!this.highlightQueryParam) {
-      return this.model.format.segments[0]!.firstLeafSegment!;
+      return this.model.format.segments[0]!;
     }
 
     const startByteIndexStr = this.highlightQueryParam.split('-')[0];
