@@ -6,7 +6,17 @@
   >
     <div role="button" {{on "click" (fn @onSegmentSelect @segment)}}>
       <div class="text-xs font-extralight {{this.titleTextColorClasses}}">
-        <span class="opacity-20">-</span>
+        <span class="opacity-20 inline-flex w-3">
+          {{#if @segment.isLeafSegment}}
+            -
+          {{else}}
+            {{#if @isExpanded}}
+              ↓
+            {{else}}
+              →
+            {{/if}}
+          {{/if}}
+        </span>
         {{@segment.titleForDisplay}}
       </div>
     </div>
