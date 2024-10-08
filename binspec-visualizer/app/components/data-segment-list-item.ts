@@ -38,12 +38,13 @@ export default class DataSegmentListItem extends Component<Signature> {
       return this.args.segment.children;
     }
 
-    // If this is NOT the highlighted segment, but it contains the highlighted segment directly, render all children
+    // If this is NOT the highlighted segment, but it contains the highlighted segment directly and the highlighted segment is a leaf segment, render all children
     if (
       this.args.highlightedSegment &&
       this.args.segment.children.some((child) =>
         child.equals(this.args.highlightedSegment!),
-      )
+      ) &&
+      this.args.highlightedSegment.isLeafSegment
     ) {
       return this.args.segment.children;
     }
