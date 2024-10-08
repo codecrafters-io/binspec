@@ -25,6 +25,36 @@ type Signature = {
 export default class DataSegmentListItem extends Component<Signature> {
   @service declare hoverState: HoverStateService;
 
+  get childrenToRender(): DataSegment[] {
+    if (!this.args.isExpanded) {
+      return [];
+    }
+
+    // If this IS the highlighted segment, render all children
+    if (
+      this.args.highlightedSegment &&
+      this.args.segment.equals(this.args.highlightedSegment)
+    ) {
+      return this.args.segment.children;
+    }
+
+    // If this is NOT the highlighted segment, but it contains the highlighted segment directly and the highlighted segment is a leaf segment, render all children
+    if (
+      this.args.highlightedSegment &&
+      this.args.segment.children.some((child) =>
+        child.equals(this.args.highlightedSegment!),
+      ) &&
+      this.args.highlightedSegment.isLeafSegment
+    ) {
+      return this.args.segment.children;
+    }
+
+    // Otherwise, render only the children that contain the highlighted segment
+    return this.args.segment.children.filter((child) =>
+      child.contains(this.args.highlightedSegment!),
+    );
+  }
+
   get isHighlightedSegment(): boolean {
     return this.args.highlightedSegment?.equals(this.args.segment) ?? false;
   }
@@ -36,8 +66,10 @@ export default class DataSegmentListItem extends Component<Signature> {
   get titleTextColorClasses(): string {
     if (this.isHighlightedSegment) {
       return 'text-yellow-300';
+    } else if (this.isHoveredSegment) {
+      return 'text-sky-400';
     } else {
-      return 'text-white';
+      return 'text-zinc-400';
     }
   }
 }
