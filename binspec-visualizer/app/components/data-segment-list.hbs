@@ -3,7 +3,7 @@
     <DataSegmentListItem
       @data={{@data}}
       @segment={{segment}}
-      @isExpanded={{segment-eq segment @highlightedSegment}}
+      @isExpanded={{segment-contains segment @highlightedSegment}}
       @highlightedSegment={{@highlightedSegment}}
       @onSegmentSelect={{@onSegmentSelect}}
       @onSegmentMouseEnter={{@onSegmentMouseEnter}}
