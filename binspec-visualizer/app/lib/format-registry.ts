@@ -5,6 +5,7 @@ import kafkaDescribeTopicPartitionsRequestV0 from 'binspec-visualizer/data/forma
 import kafkaDescribeTopicPartitionsResponseV0 from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-response-v0';
 import kafkaDescribeTopicPartitionsResponseV0UnknownTopic from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-response-v0-unknown-topic';
 import kafkaClusterMetadata from 'binspec-visualizer/data/formats/generated/kafka-cluster-metadata';
+import bittorentHandshake from 'binspec-visualizer/data/formats/generated/bittorrent-handshake';
 
 export default class FormatRegistry {
   static getBySlug(slug: string): Format | undefined {
@@ -21,6 +22,7 @@ export default class FormatRegistry {
         kafkaDescribeTopicPartitionsResponseV0UnknownTopic,
       ),
       Format.fromGeneratedData(kafkaClusterMetadata),
+      Format.fromGeneratedData(bittorentHandshake),
     ];
   }
 }
