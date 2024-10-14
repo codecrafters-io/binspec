@@ -83,7 +83,7 @@ const generated: GeneratedData = {
     {
       "title": "Protocol string",
       "length_in_bytes": 19,
-      "explanation_markdown": "The protocol string is the second part of the BitTorrent handshake. It contains the string `BitTorrent protocol`.\n"
+      "explanation_markdown": "The protocol string is the second part of the BitTorrent handshake. It contains the string \"BitTorrent protocol\".\n"
     },
     {
       "title": "Reserved bytes",

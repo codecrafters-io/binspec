@@ -79,7 +79,7 @@ segments:
   - title: Protocol string
     length_in_bytes: 19
     explanation_markdown: |
-      The protocol string is the second part of the BitTorrent handshake. It contains the string `BitTorrent protocol`.
+      The protocol string is the second part of the BitTorrent handshake. It contains the string "BitTorrent protocol".
   - title: Reserved bytes
     length_in_bytes: 8
     explanation_markdown: |
