@@ -78,27 +78,27 @@ const generated: GeneratedData = {
     {
       "title": "Protocol string length",
       "length_in_bytes": 1,
-      "explanation_markdown": "The protocol string length is a 1-byte value that specifies the length of the protocol string. Length of this string (BitTorrent protocol) is 19, which is represented as 0x13 in hexadecimal.\n"
+      "explanation_markdown": "A 1-byte integer that specifies the length of the protocol string.\n\nThe value here is 19 (the length of the string \"BitTorrent protocol\"), which is represented as 0x13 in hexadecimal.\n"
     },
     {
       "title": "Protocol string",
       "length_in_bytes": 19,
-      "explanation_markdown": "The protocol string is the second part of the BitTorrent handshake. It contains the string `BitTorrent protocol`.\n"
+      "explanation_markdown": "The protocol string is the second part of the BitTorrent handshake. It contains the string \"BitTorrent protocol\".\n"
     },
     {
       "title": "Reserved bytes",
       "length_in_bytes": 8,
-      "explanation_markdown": "The reserved bytes are 8 bytes of 0x00 that are reserved for future use.\n"
+      "explanation_markdown": "The reserved bytes are 8 bytes that are reserved for future use.\n\nIn this example, all 8 bytes are 0x00.\n"
     },
     {
       "title": "Infohash",
       "length_in_bytes": 20,
-      "explanation_markdown": "The infohash is a 20-byte value that is used to identify the content of the BitTorrent file. In this example, the infohash value is `c77829d2a77d6516f88cd7a3de1a26abcbfab0db`.,\n"
+      "explanation_markdown": "The infohash is a 20-byte value that is used to identify the content of the BitTorrent file.\n\nIn this example, the infohash is `c77829d2a77d6516f88cd7a3de1a26abcbfab0db`.\n"
     },
     {
       "title": "Peer ID",
       "length_in_bytes": 20,
-      "explanation_markdown": "The peer ID is a 20-byte value that is used to identify the client. In this example, the peer ID value is `001122334455667788`.\n"
+      "explanation_markdown": "The peer ID is a 20-byte value that is used to identify the client.\n\nIn this example, the peer ID is `001122334455667788`.\n"
     }
   ]
 }
