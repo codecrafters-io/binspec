@@ -16,6 +16,8 @@ type Signature = {
     ) => void;
     onSegmentMouseLeave: () => void;
   };
+
+  Element: HTMLDivElement;
 };
 
 export default class DataSegmentList extends Component<Signature> {}
