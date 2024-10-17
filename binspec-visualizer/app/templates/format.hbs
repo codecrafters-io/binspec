@@ -7,95 +7,15 @@
     <h2 class="mb-4 text-xl md:text-2xl font-medium text-white">
       {{@model.format.name}}
     </h2>
-    <div
-      class="rounded-md border border-zinc-700/60 flex-grow w-full flex flex-col min-h-0"
-      id="raw-container"
-      {{click-outside this.handleClickOutside}}
-    >
-      <div class="p-4 flex-grow overflow-y-auto min-h-0">
-        {{#if this.highlightedSegment}}
-          <DataSegmentDetails
-            @data={{this.data}}
-            @segment={{this.highlightedSegment}}
-            @onSegmentSelect={{this.handleSegmentSelected}}
-            @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-            @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
-          >
-            <:topRight>
-              <DataSegmentDetails::SiblingSwitcherContainer
-                class="flex-shrink-0"
-                @nextSegment={{this.nextSegment}}
-                @previousSegment={{this.previousSegment}}
-                @onSegmentSelect={{this.handleSegmentSelected}}
-                @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-                @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
-              />
-            </:topRight>
-          </DataSegmentDetails>
-        {{/if}}
-      </div>
-      <div class="text-right w-full text-xs text-zinc-600 pb-1 px-2">
-        {{#if this.hoveredSegment}}
-          {{#if (eq this.hoveredSegment.lengthInBytes 1)}}
-            1 byte
-          {{else}}
-            {{this.hoveredSegment.lengthInBytes}}
-            bytes
-          {{/if}}
-        {{else if this.highlightedSegment}}
-          {{#if (eq this.highlightedSegment.lengthInBytes 1)}}
-            1 byte
-          {{else}}
-            {{this.highlightedSegment.lengthInBytes}}
-            bytes
-          {{/if}}
-        {{else}}
-          {{this.data.length}}
-          bytes
-        {{/if}}
-      </div>
-      <div
-        class="flex items-stretch border rounded mx-1 mb-1 border-zinc-700/60 relative"
-      >
-        <div
-          class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-zinc-800 from-30% to-zinc-800/0 pointer-events-none"
-        ></div>
-        <div
-          class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-zinc-800 from-30% to-zinc-800/0 pointer-events-none"
-        ></div>
-        <div
-          class="absolute h-6 -top-3 left-1/2 -translate-x-1/2 text-zinc-500 text-xs bg-zinc-800 px-2 rounded-md flex items-center"
-        >
-          Raw Bytes
-        </div>
-        <div class="overflow-y-auto h-[150px] w-full py-12 px-4">
-          <HexPreview
-            id="hexdump-container"
-            @section="root-hexdump"
-            @byteIndexForInterstitial={{if
-              this.highlightedSegment
-              this.highlightedSegment.startByteIndex
-              0
-            }}
-            @data={{this.data}}
-            @segments={{this.segments}}
-            @highlightedSegment={{this.highlightedSegment}}
-            @onSegmentSelect={{this.handleSegmentSelected}}
-            @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
-            @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
-          >
-            <:interstitial>
-              {{#if this.highlightedSegment}}
-                <div
-                  id="highlighted-segment-interstitial"
-                  class="scroll-mt-[50px]"
-                >
-                </div>
-              {{/if}}
-            </:interstitial>
-          </HexPreview>
-        </div>
-      </div>
+    <div class="p-4 flex-grow min-h-0">
+      <FormatDocumentation
+        @data={{this.data}}
+        @segments={{this.segments}}
+        @highlightedSegment={{this.highlightedSegment}}
+        @onSegmentSelect={{this.handleSegmentSelected}}
+        @onSegmentMouseEnter={{this.handleSegmentMouseEnter}}
+        @onSegmentMouseLeave={{this.handleSegmentMouseLeave}}
+      />
     </div>
   </div>
 </div>

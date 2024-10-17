@@ -1,0 +1,91 @@
+<div ...attributes>
+  <div
+    class="pl-4 border-l-2
+      {{if
+        (segment-eq @segment @highlightedSegment)
+        'border-yellow-300'
+        'border-transparent hover:bg-zinc-700/60'
+      }}"
+    role={{if
+      (segment-eq @segment @highlightedSegment)
+      "presentation"
+      "button"
+    }}
+    {{on "click" (fn @onSegmentSelect @segment)}}
+  >
+    <div class="flex items-center w-full">
+      <DataSegmentDetails::TitleWithBreadcrumbs
+        @highlightedSegment={{@highlightedSegment}}
+        @segment={{@segment}}
+        @onSegmentSelect={{@onSegmentSelect}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      />
+
+      {{#if (has-block "topRight")}}
+        <div class="flex-grow flex items-center justify-end pl-2">
+          {{yield to="topRight"}}
+        </div>
+      {{/if}}
+    </div>
+
+    {{#if @segment.explanationMarkdown}}
+      <div class="prose prose-invert prose-sm mt-3">
+        {{markdown-to-html @segment.explanationMarkdown}}
+      </div>
+    {{/if}}
+
+    {{#if (gt @segment.children.length 0)}}
+      <DataSegmentDetails::Children
+        class="mt-3"
+        @segment={{@segment}}
+        @onSegmentSelect={{@onSegmentSelect}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+      />
+    {{/if}}
+
+    {{#if
+      (and @segment.isLeafSegment (segment-eq @segment @highlightedSegment))
+    }}
+      <div class="mt-3 text-xs uppercase text-zinc-500 font-semibold">
+        {{@segment.lengthInBytes}}
+        {{if (eq @segment.lengthInBytes 1) "byte" "bytes"}}:
+      </div>
+
+      <HexPreview
+        class="mt-2 w-full"
+        @data={{@data}}
+        @endByteIndex={{this.previewEndByteIndex}}
+        @highlightedSegment={{@segment}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+        @onSegmentSelect={{@onSegmentSelect}}
+        @section="segment-details-hexdump"
+        @segments={{array @segment}}
+        @startByteIndex={{@segment.startByteIndex}}
+      >
+        <:lastBytePreview>
+          {{#if this.previewIsTruncated}}
+            <div class="flex items-center justify-center">
+              <span class="text-lg text-zinc-500">⋯</span>
+            </div>
+          {{/if}}
+        </:lastBytePreview>
+      </HexPreview>
+    {{/if}}
+  </div>
+
+  <div class="flex flex-col gap-4 mt-3">
+    {{#each @segment.children as |child|}}
+      <FormatDocumentation::Segment
+        @data={{@data}}
+        @highlightedSegment={{@highlightedSegment}}
+        @onSegmentSelect={{@onSegmentSelect}}
+        @onSegmentMouseEnter={{@onSegmentMouseEnter}}
+        @onSegmentMouseLeave={{@onSegmentMouseLeave}}
+        @segment={{child}}
+      />
+    {{/each}}
+  </div>
+</div>

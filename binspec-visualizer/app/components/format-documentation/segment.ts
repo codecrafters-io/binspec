@@ -25,7 +25,7 @@ type Signature = {
   };
 };
 
-export default class DataSegmentDetails extends Component<Signature> {
+export default class FormatDocumentationSegment extends Component<Signature> {
   @service declare hoverState: HoverStateService;
 
   get hoveredSegment(): DataSegment | undefined {
@@ -50,6 +50,6 @@ export default class DataSegmentDetails extends Component<Signature> {
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    DataSegmentDetails: typeof DataSegmentDetails;
+    'FormatDocumentation::Segment': typeof FormatDocumentationSegment;
   }
 }
