@@ -249,49 +249,34 @@ const generated: GeneratedData = {
                         },
                         {
                           "title": "Eligible Leader Replicas",
-                          "explanation_markdown": "An array of eligible leader replica node IDs for this partition.\n",
+                          "explanation_markdown": "An array of eligible leader replica node IDs (int32) for this partition.\n",
                           "children": [
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
                               "explanation_markdown": "The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            },
-                            {
-                              "title": "Eligible Leader Replica Node",
-                              "length_in_bytes": 0,
-                              "explanation_markdown": "A 4-byte integer representing an eligible leader replica node ID.\nHere, this field is empty.\n"
                             }
                           ]
                         },
                         {
                           "title": "Last Known ELR",
-                          "explanation_markdown": "An array of last known eligible leader replica node IDs for this partition.\n",
+                          "explanation_markdown": "An array of last known eligible leader replica node IDs (int32) for this partition.\n",
                           "children": [
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
                               "explanation_markdown": "The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            },
-                            {
-                              "title": "Last Known ELR Node",
-                              "length_in_bytes": 0,
-                              "explanation_markdown": "A 4-byte integer representing a last known eligible leader replica node ID.\nHere, this field is empty.\n"
                             }
                           ]
                         },
                         {
                           "title": "Offline Replicas",
-                          "explanation_markdown": "An array of offline replica node IDs for this partition.\n",
+                          "explanation_markdown": "An array of offline replica node IDs (int32) for this partition.\n",
                           "children": [
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
                               "explanation_markdown": "The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            },
-                            {
-                              "title": "Offline Replica Node",
-                              "length_in_bytes": 0,
-                              "explanation_markdown": "A 4-byte integer representing a last known eligible leader replica node ID.\nHere, this field is empty.\n"
                             }
                           ]
                         },
@@ -360,49 +345,34 @@ const generated: GeneratedData = {
                         },
                         {
                           "title": "Eligible Leader Replicas",
-                          "explanation_markdown": "An array of eligible leader replica node IDs for this partition.\n",
+                          "explanation_markdown": "An array of eligible leader replica node IDs (int32) for this partition.\n",
                           "children": [
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
                               "explanation_markdown": "The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            },
-                            {
-                              "title": "Eligible Leader Replica Node",
-                              "length_in_bytes": 0,
-                              "explanation_markdown": "A 4-byte integer representing an eligible leader replica node ID.\nHere, this field is empty.\n"
                             }
                           ]
                         },
                         {
                           "title": "Last Known ELR",
-                          "explanation_markdown": "An array of last known eligible leader replica node IDs for this partition.\n",
+                          "explanation_markdown": "An array of last known eligible leader replica node IDs (int32) for this partition.\n",
                           "children": [
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
                               "explanation_markdown": "The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            },
-                            {
-                              "title": "Last Known ELR Node",
-                              "length_in_bytes": 0,
-                              "explanation_markdown": "A 4-byte integer representing a last known eligible leader replica node ID.\nHere, this field is empty.\n"
                             }
                           ]
                         },
                         {
                           "title": "Offline Replicas",
-                          "explanation_markdown": "An array of offline replica node IDs for this partition.\n",
+                          "explanation_markdown": "An array of offline replica node IDs (int32) for this partition.\n",
                           "children": [
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
                               "explanation_markdown": "The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            },
-                            {
-                              "title": "Offline Replica Node",
-                              "length_in_bytes": 0,
-                              "explanation_markdown": "A 4-byte integer representing a last known eligible leader replica node ID.\nHere, this field is empty.\n"
                             }
                           ]
                         },
