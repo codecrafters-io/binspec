@@ -255,20 +255,29 @@ segments:
                               A 4-byte integer representing an in-sync replica node ID.
                               Here, it is 0x00000001 (1 in decimal).
                       - title: Eligible Leader Replicas
-                        length_in_bytes: 1
                         explanation_markdown: |
-                          The count of eligible leader replicas + 1, encoded as a varint.
-                          Here, it is 0x01 (1), indicating 0 eligible leader replicas.
+                          An array of eligible leader replica node IDs (int32) for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Last Known ELR
-                        length_in_bytes: 1
                         explanation_markdown: |
-                          The count of last known eligible leader replicas + 1, encoded as a varint.
-                          Here, it is 0x01 (1), indicating 0 last known eligible leader replicas.
+                          An array of last known eligible leader replica node IDs (int32) for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Offline Replicas
-                        length_in_bytes: 1
                         explanation_markdown: |
-                          The count of offline replicas + 1, encoded as a varint.
-                          Here, it is 0x01 (1), indicating 0 offline replicas.
+                          An array of offline replica node IDs (int32) for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -324,20 +333,29 @@ segments:
                               A 4-byte integer representing an in-sync replica node ID.
                               Here, it is 0x00000001 (1 in decimal).
                       - title: Eligible Leader Replicas
-                        length_in_bytes: 1
                         explanation_markdown: |
-                          The count of eligible leader replicas + 1, encoded as a varint.
-                          Here, it is 0x01 (1), indicating 0 eligible leader replicas.
+                          An array of eligible leader replica node IDs (int32) for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Last Known ELR
-                        length_in_bytes: 1
                         explanation_markdown: |
-                          The count of last known eligible leader replicas + 1, encoded as a varint.
-                          Here, it is 0x01 (1), indicating 0 last known eligible leader replicas.
+                          An array of last known eligible leader replica node IDs (int32) for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Offline Replicas
-                        length_in_bytes: 1
                         explanation_markdown: |
-                          The count of offline replicas + 1, encoded as a varint.
-                          Here, it is 0x01 (1), indicating 0 offline replicas.
+                          An array of offline replica node IDs (int32) for this partition.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
