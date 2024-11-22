@@ -55,6 +55,8 @@ segments:
           A 2-byte integer representing the error code for this response.
 
           Here, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.
+
+          <!-- TODO: Add a link to errors codes in docs -->
       - title: API Versions Array
         explanation_markdown: |
           An array of API Versions described in the response.
