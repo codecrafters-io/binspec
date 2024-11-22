@@ -1,0 +1,143 @@
+name: Kafka API Versions Response (v4)
+slug: kafka-api-versions-Response-v4
+data:
+  - 0x00 # Message length (4 bytes, 0x10 in hex, 16 in decimal)
+  - 0x00
+  - 0x00
+  - 0x10
+  - 0x00 # Correlation ID (4 bytes, 0x07 in hex, 7 in decimal)
+  - 0x00
+  - 0x00
+  - 0x07
+  - 0x00 # Error code (2 bytes, 0x23 in hex, 35 in decimal)
+  - 0x23
+  - 0x00 # Number of APIVersions Keys (4 byte, 0x01 in hex, 1 in decimal)
+  - 0x00
+  - 0x00 
+  - 0x01 
+  - 0x00 # API Key (2 bytes, 0x0012 in hex, 18 in decimal (APIVersions API))
+  - 0x12 
+  - 0x00 # Min supported APIVersion (2 bytes, 0x0000 in hex, 0 in decimal)
+  - 0x00
+  - 0x00 # Max supported APIVersion (2 bytes, 0x0004 in hex, 4 in decimal)
+  - 0x04 
+
+segments:
+  - title: Message Size
+    length_in_bytes: 4
+    explanation_markdown: |
+      Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.
+
+      In this case, the value is 0x21 (33 in decimal) indicating that the rest of the message is 33 bytes long.
+  - title: Response Header (v0)
+    explanation_markdown: |
+      The Response Header structure is common across all Kafka responses. APIVersions uses the older version of Response Headers, to keep this API compatible across all clients.
+    children:
+      - title: Correlation ID
+        length_in_bytes: 4
+        explanation_markdown: |
+          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+
+          Here, it is 0x07 (7).
+  - title: API Versions Response Body (v4)
+    explanation_markdown: |
+      The response body contains fields specific to the API Versions response.
+    children:
+      - title: Error Code
+        length_in_bytes: 2
+        explanation_markdown: |
+          A 2-byte integer representing the error code for this response.
+
+          Here, it is 0x0000 (0), which corresponds to NO_ERROR.
+      - title: API Versions Array
+        explanation_markdown: |
+          An array of API Versions described in the response.
+
+          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
+        children:
+          - title: Array Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              The length of the API Versions array + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the array length is 3.
+          - title: "API Version #1"
+            explanation_markdown: |
+              A single API Version in the array.
+            children:
+              - title: API Key
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the API Key for this API Version.
+
+                  Here, it is 0x0001 (1), which corresponds to the Fetch API.
+              - title: Min Supported API Version
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the minimum supported API Version for this API. 
+                  Here, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.
+              - title: Max Supported API Version
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the maximum supported API Version for this API.
+                  Here, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.
+              - title: Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  An empty tagged field array for the response, represented by a single byte of value 0x00.
+          - title: "API Version #2"
+            explanation_markdown: |
+              A single API Version in the array.
+            children:
+              - title: API Key
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the API Key for this API Version.
+
+                  Here, it is 0x0012 (18), which corresponds to the API Versions API.
+              - title: Min Supported API Version
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the minimum supported API Version for this API. 
+                  Here, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.
+              - title: Max Supported API Version
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the maximum supported API Version for this API.
+                  Here, it is 0x0004 (4), which means that the API Versions API supports versions upto 4.
+              - title: Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  An empty tagged field array for the response, represented by a single byte of value 0x00.
+          - title: "API Version #3"
+            explanation_markdown: |
+              A single API Version in the array.
+            children:
+              - title: API Key
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the API Key for this API Version.
+
+                  Here, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.
+              - title: Min Supported API Version
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the minimum supported API Version for this API. 
+                  Here, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.
+              - title: Max Supported API Version
+                length_in_bytes: 2
+                explanation_markdown: |
+                  A 2-byte integer representing the maximum supported API Version for this API.
+                  Here, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.
+              - title: Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  An empty tagged field array for the response, represented by a single byte of value 0x00.
+      - title: Throttle Time
+        length_in_bytes: 4
+        explanation_markdown: |
+          A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
+
+          Here, it is 0x00000000 (0 in decimal), indicating no throttling.
+      - title: Tag Buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          An empty tagged field array, represented by a single byte of value 0x00.
