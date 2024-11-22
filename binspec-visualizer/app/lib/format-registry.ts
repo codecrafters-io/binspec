@@ -1,6 +1,8 @@
 import Format from './format';
 import generatedSQLiteDatabase from 'binspec-visualizer/data/formats/generated/sqlite-database';
 import kafkaApiVersionsRequestV4 from 'binspec-visualizer/data/formats/generated/kafka-api-versions-request-v4';
+import kafkaApiVersionsErrorResponse from 'binspec-visualizer/data/formats/generated/kafka-api-versions-response-unsupported-version';
+import kafkaApiVersionsResponseV4 from 'binspec-visualizer/data/formats/generated/kafka-api-versions-response-v4';
 import kafkaDescribeTopicPartitionsRequestV0 from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-request-v0';
 import kafkaDescribeTopicPartitionsResponseV0 from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-response-v0';
 import kafkaDescribeTopicPartitionsResponseV0UnknownTopic from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-response-v0-unknown-topic';
@@ -23,6 +25,8 @@ export default class FormatRegistry {
       ),
       Format.fromGeneratedData(kafkaClusterMetadata),
       Format.fromGeneratedData(bittorentHandshake),
+      Format.fromGeneratedData(kafkaApiVersionsErrorResponse),
+      Format.fromGeneratedData(kafkaApiVersionsResponseV4),
     ];
   }
 }
