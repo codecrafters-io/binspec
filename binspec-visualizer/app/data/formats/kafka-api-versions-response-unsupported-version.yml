@@ -59,9 +59,9 @@ segments:
           <!-- TODO: Add a link to errors codes in docs -->
       - title: API Versions Array
         explanation_markdown: |
-          An array of API Versions described in the response.
+          An array of API Versions supported by this Kafka instance.
 
-          This array is encoded as an `ARRAY`, which starts with a int32 corresponding to the length of the array, followed by each element.
+          This array is encoded as an `ARRAY` type, which starts with a int32 corresponding to the length of the array, followed by each element.
         children:
           - title: Array Length
             length_in_bytes: 4
