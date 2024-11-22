@@ -62,6 +62,8 @@ segments:
           An array of API Versions supported by this Kafka instance.
 
           This array is encoded as an `ARRAY` type, which starts with a int32 corresponding to the length of the array, followed by each element.
+
+          Note: In all versions except for v0, this value is encoded as a `COMPACT_ARRAY`. In v0, it is encoded as a `ARRAY`.
         children:
           - title: Array Length
             length_in_bytes: 4
