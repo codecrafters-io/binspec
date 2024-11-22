@@ -2,8 +2,8 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka API Versions Response (v4)",
-  "slug": "kafka-api-versions-Response-v4",
+  "name": "Kafka API Versions Error Response (v0)",
+  "slug": "kafka-api-versions-response-unsupported-version",
   "data": [
     0,
     0,
