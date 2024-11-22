@@ -13,14 +13,14 @@ data:
   - 0x23
   - 0x00 # Number of APIVersions Keys (4 byte, 0x01 in hex, 1 in decimal)
   - 0x00
-  - 0x00 
-  - 0x01 
+  - 0x00
+  - 0x01
   - 0x00 # API Key (2 bytes, 0x0012 in hex, 18 in decimal (APIVersions API))
-  - 0x12 
+  - 0x12
   - 0x00 # Min supported APIVersion (2 bytes, 0x0000 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Max supported APIVersion (2 bytes, 0x0004 in hex, 4 in decimal)
-  - 0x04 
+  - 0x04
 
 segments:
   - title: Message Size
@@ -31,7 +31,13 @@ segments:
       In this case, the value is 0x10 (16 in decimal) indicating that the rest of the message is 16 bytes long.
   - title: Response Header (v0)
     explanation_markdown: |
-      The Response Header structure is common across all Kafka responses. APIVersions uses the older version of Response Headers, to keep this API compatible across all clients.
+      The Response Header structure is common across all Kafka responses.
+
+      Most Kafka responses use Response Header (v1), but when APIVersions is called with an unsupported version, it uses v0.
+
+      <!-- TODO: Add a link that explains this, can be to source code or KIP -->
+
+      v0 and v1 are nearly identical, the only difference is that v1 contains an additional `tag_buffer` field at the end.
     children:
       - title: Correlation ID
         length_in_bytes: 4
@@ -72,7 +78,7 @@ segments:
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this API. 
+                  A 2-byte integer representing the minimum supported API Version for this API.
                   Here, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
