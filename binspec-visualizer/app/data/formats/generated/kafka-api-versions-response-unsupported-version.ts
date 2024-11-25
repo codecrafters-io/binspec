@@ -53,13 +53,13 @@ const generated: GeneratedData = {
           "explanation_markdown": "A 2-byte integer representing the error code for this response.\n\nHere, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.\nYou can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)\n"
         },
         {
-          "title": "API Versions Array",
-          "explanation_markdown": "An array of API Versions supported by this Kafka instance.\n\nThis array is encoded as an `ARRAY` type, which starts with a int32 corresponding to the length of the array, followed by each element.\n\nNote: In all versions except for v0, this value is encoded as a `COMPACT_ARRAY`. In v0, it is encoded as a `ARRAY`.\n",
+          "title": "API Keys Array",
+          "explanation_markdown": "An array of API Keys supported by this Kafka instance.\n\nThis array is encoded as an `ARRAY` type, which starts with a int32 corresponding to the length of the array, followed by each element.\n\nNote: In all versions except for v0, this value is encoded as a `COMPACT_ARRAY`. In v0, it is encoded as a `ARRAY`.\n",
           "children": [
             {
               "title": "Array Length",
               "length_in_bytes": 4,
-              "explanation_markdown": "The length of the API Versions array, encoded as a int32. Here, it is 0x01 (1), meaning that the array length is 1.\n"
+              "explanation_markdown": "The length of the API Keys array, encoded as a int32. Here, it is 0x01 (1), meaning that the array length is 1.\n"
             },
             {
               "title": "API Version #1",
