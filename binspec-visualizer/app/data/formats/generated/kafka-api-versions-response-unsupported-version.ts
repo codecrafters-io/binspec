@@ -34,7 +34,7 @@ const generated: GeneratedData = {
     },
     {
       "title": "Response Header (v0)",
-      "explanation_markdown": "The Response Header structure is common across all Kafka responses. APIVersions uses the older version of Response Headers, to keep this API compatible across all clients.\n",
+      "explanation_markdown": "The Response Header structure is common across all Kafka responses.\n\nAPIVersions uses the older version of Response Headers (v0), to keep this API compatible across all clients.\n\nYou can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24)\n\nv0 headers and v1 headers are nearly identical, the only difference is that v1 contains an additional `tag_buffer` field at the end.\n",
       "children": [
         {
           "title": "Correlation ID",
@@ -50,11 +50,11 @@ const generated: GeneratedData = {
         {
           "title": "Error Code",
           "length_in_bytes": 2,
-          "explanation_markdown": "A 2-byte integer representing the error code for this response.\n\nHere, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.\n"
+          "explanation_markdown": "A 2-byte integer representing the error code for this response.\n\nHere, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.\nYou can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)\n"
         },
         {
           "title": "API Versions Array",
-          "explanation_markdown": "An array of API Versions described in the response.\n\nThis array is encoded as an `ARRAY`, which starts with a int32 corresponding to the length of the array, followed by each element.\n",
+          "explanation_markdown": "An array of API Versions supported by this Kafka instance.\n\nThis array is encoded as an `ARRAY` type, which starts with a int32 corresponding to the length of the array, followed by each element.\n\nNote: In all versions except for v0, this value is encoded as a `COMPACT_ARRAY`. In v0, it is encoded as a `ARRAY`.\n",
           "children": [
             {
               "title": "Array Length",
@@ -73,7 +73,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API. \nHere, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API.\nHere, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",

@@ -51,7 +51,7 @@ const generated: GeneratedData = {
     },
     {
       "title": "Response Header (v0)",
-      "explanation_markdown": "The Response Header structure is common across all Kafka responses. APIVersions uses the older version of Response Headers, to keep this API compatible across all clients.\n",
+      "explanation_markdown": "The Response Header structure is common across all Kafka responses.\n\nAPIVersions uses the older version of Response Headers (v0), to keep this API compatible across all clients.\n\nYou can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24)\n\nv0 headers and v1 headers are nearly identical, the only difference is that v1 contains an additional `tag_buffer` field at the end.\n",
       "children": [
         {
           "title": "Correlation ID",
@@ -85,17 +85,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this API Version.\n\nHere, it is 0x0001 (1), which corresponds to the Fetch API.\n"
+                  "explanation_markdown": "A 2-byte integer representing the API Key for this entry.\n\nHere, it is 0x0001 (1), which corresponds to the Fetch API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API. \nHere, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this API.\nHere, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.\n"
+                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this entry.\nHere, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.\n"
                 },
                 {
                   "title": "Tag Buffer",
@@ -111,17 +111,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this API Version.\n\nHere, it is 0x0012 (18), which corresponds to the API Versions API.\n"
+                  "explanation_markdown": "A 2-byte integer representing the API Key for this entry.\n\nHere, it is 0x0012 (18), which corresponds to the APIVersions API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API. \nHere, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the APIVersions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this API.\nHere, it is 0x0004 (4), which means that the API Versions API supports versions upto 4.\n"
+                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this entry.\nHere, it is 0x0004 (4), which means that the APIVersions API supports versions upto 4.\n"
                 },
                 {
                   "title": "Tag Buffer",
@@ -137,17 +137,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this API Version.\n\nHere, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.\n"
+                  "explanation_markdown": "A 2-byte integer representing the API Key for this entry.\n\nHere, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API. \nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this API.\nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.\n"
+                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this entry.\nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.\n"
                 },
                 {
                   "title": "Tag Buffer",
