@@ -56,9 +56,9 @@ segments:
 
           Here, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.
           You can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)
-      - title: API Versions Array
+      - title: API Keys Array
         explanation_markdown: |
-          An array of API Versions supported by this Kafka instance.
+          An array of API Keys supported by this Kafka instance.
 
           This array is encoded as an `ARRAY` type, which starts with a int32 corresponding to the length of the array, followed by each element.
 
@@ -67,7 +67,7 @@ segments:
           - title: Array Length
             length_in_bytes: 4
             explanation_markdown: |
-              The length of the API Versions array, encoded as a int32. Here, it is 0x01 (1), meaning that the array length is 1.
+              The length of the API Keys array, encoded as a int32. Here, it is 0x01 (1), meaning that the array length is 1.
           - title: "API Version #1"
             explanation_markdown: |
               A single API Version in the array.
