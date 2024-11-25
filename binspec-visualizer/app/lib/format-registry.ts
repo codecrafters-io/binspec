@@ -15,7 +15,7 @@ export default class FormatRegistry {
   }
 
   static get formats(): Format[] {
-    return [
+    const unsortedFormats = [
       Format.fromGeneratedData(generatedSQLiteDatabase),
       Format.fromGeneratedData(kafkaApiVersionsRequestV4),
       Format.fromGeneratedData(kafkaDescribeTopicPartitionsRequestV0),
@@ -28,5 +28,7 @@ export default class FormatRegistry {
       Format.fromGeneratedData(kafkaApiVersionsErrorResponse),
       Format.fromGeneratedData(kafkaApiVersionsResponseV4),
     ];
+
+    return unsortedFormats.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
