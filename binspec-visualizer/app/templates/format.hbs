@@ -10,6 +10,7 @@
     <div
       class="rounded-md border border-zinc-700/60 flex-grow w-full flex flex-col min-h-0 relative"
       id="raw-container"
+      flex
       {{click-outside this.handleClickOutside}}
     >
       <div
@@ -76,10 +77,10 @@
         class="flex items-stretch border rounded mx-1 mb-1 border-zinc-700/60 relative"
       >
         <div
-          class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-zinc-800 from-30% to-zinc-800/0 pointer-events-none"
+          class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-zinc-800 from-30% to-zinc-800/0 pointer-events-none rounded-t"
         ></div>
         <div
-          class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-zinc-800 from-30% to-zinc-800/0 pointer-events-none"
+          class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-zinc-800 from-30% to-zinc-800/0 pointer-events-none rounded-b"
         ></div>
         <div
           class="absolute h-6 -top-3 left-1/2 -translate-x-1/2 text-zinc-500 text-xs bg-zinc-800 px-2 rounded-md flex items-center"

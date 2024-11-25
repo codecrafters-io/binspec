@@ -22,9 +22,9 @@
     </div>
   </div>
 
-  {{#if (gt this.childrenToRender.length 0)}}
+  {{#if (and @isExpanded (gt @segment.children.length 0))}}
     <div class="pl-2 flex flex-col gap-0.5 my-0.5">
-      {{#each this.childrenToRender as |child|}}
+      {{#each @segment.children as |child|}}
         <DataSegmentListItem
           @data={{@data}}
           @segment={{child}}
