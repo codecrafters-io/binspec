@@ -48,7 +48,13 @@ segments:
       In this case, the value is 0x21 (33 in decimal) indicating that the rest of the message is 33 bytes long.
   - title: Response Header (v0)
     explanation_markdown: |
-      The Response Header structure is common across all Kafka responses. APIVersions uses the older version of Response Headers, to keep this API compatible across all clients.
+      The Response Header structure is common across all Kafka responses.
+
+      APIVersions uses the older version of Response Headers (v0), to keep this API compatible across all clients.
+
+      You can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24)
+
+      v0 headers and v1 headers are nearly identical, the only difference is that v1 contains an additional `tag_buffer` field at the end.
     children:
       - title: Correlation ID
         length_in_bytes: 4
@@ -83,18 +89,18 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this API Version.
+                  A 2-byte integer representing the API Key for this entry.
 
                   Here, it is 0x0001 (1), which corresponds to the Fetch API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this API. 
+                  A 2-byte integer representing the minimum supported API Version for this entry. 
                   Here, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this API.
+                  A 2-byte integer representing the maximum supported API Version for this entry.
                   Here, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.
               - title: Tag Buffer
                 length_in_bytes: 1
@@ -107,19 +113,19 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this API Version.
+                  A 2-byte integer representing the API Key for this entry.
 
-                  Here, it is 0x0012 (18), which corresponds to the API Versions API.
+                  Here, it is 0x0012 (18), which corresponds to the APIVersions API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this API. 
-                  Here, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.
+                  A 2-byte integer representing the minimum supported API Version for this entry. 
+                  Here, it is 0x0000 (0), which means that the APIVersions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this API.
-                  Here, it is 0x0004 (4), which means that the API Versions API supports versions upto 4.
+                  A 2-byte integer representing the maximum supported API Version for this entry.
+                  Here, it is 0x0004 (4), which means that the APIVersions API supports versions upto 4.
               - title: Tag Buffer
                 length_in_bytes: 1
                 explanation_markdown: |
@@ -131,18 +137,18 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this API Version.
+                  A 2-byte integer representing the API Key for this entry.
 
                   Here, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this API. 
+                  A 2-byte integer representing the minimum supported API Version for this entry. 
                   Here, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this API.
+                  A 2-byte integer representing the maximum supported API Version for this entry.
                   Here, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.
               - title: Tag Buffer
                 length_in_bytes: 1

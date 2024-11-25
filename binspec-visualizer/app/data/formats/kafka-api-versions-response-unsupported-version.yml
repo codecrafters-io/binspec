@@ -33,11 +33,11 @@ segments:
     explanation_markdown: |
       The Response Header structure is common across all Kafka responses.
 
-      Most Kafka responses use Response Header (v1), but when APIVersions is called with an unsupported version, it uses v0.
+      APIVersions uses the older version of Response Headers (v0), to keep this API compatible across all clients.
 
-      <!-- TODO: Add a link that explains this, can be to source code or KIP -->
+      You can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24)
 
-      v0 and v1 are nearly identical, the only difference is that v1 contains an additional `tag_buffer` field at the end.
+      v0 headers and v1 headers are nearly identical, the only difference is that v1 contains an additional `tag_buffer` field at the end.
     children:
       - title: Correlation ID
         length_in_bytes: 4
@@ -55,8 +55,7 @@ segments:
           A 2-byte integer representing the error code for this response.
 
           Here, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.
-
-          <!-- TODO: Add a link to errors codes in docs -->
+          You can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)
       - title: API Versions Array
         explanation_markdown: |
           An array of API Versions supported by this Kafka instance.
