@@ -394,7 +394,7 @@ segments:
 
           The CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.
 
-          In this case, the value is `0x24db12dd`, which is `618336989` in decimal.
+          In this case, the value is `0xb069457c`, which is `-1335278212` in decimal.
       - title: Attributes
         length_in_bytes: 2
         explanation_markdown: |
