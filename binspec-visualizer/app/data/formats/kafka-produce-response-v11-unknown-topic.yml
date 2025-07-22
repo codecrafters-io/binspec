@@ -83,17 +83,13 @@ segments:
       - title: Topic Responses Array
         explanation_markdown: |
           An array of topic responses.
+
+          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
         children:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              An array of topics described in the response.
-
-              This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
-          - title: Array Length
-            length_in_bytes: 1
-            explanation_markdown: |
-              The length of the topic responses array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
+              The length of the topic responses array + 1, encoded as an unsigned varint. Here, it is `0x02`, which is `2` in decimal, meaning that the array length is 1.
           - title: "Topic #1"
             explanation_markdown: |
               A single topic in the array.
@@ -113,11 +109,13 @@ segments:
               - title: Partition Responses Array
                 explanation_markdown: |
                   An array of partition responses for this topic.
+
+                  This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
                 children:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partition array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
+                      The length of the partition array + 1, encoded as an unsigned varint. Here, it is `0x02`, which is `2` in decimal, meaning that the array length is 1.
                   - title: "Partition #1"
                     explanation_markdown: |
                       Information about the first partition.
@@ -155,6 +153,8 @@ segments:
                       - title: Record Errors Array
                         explanation_markdown: |
                           An array of record-level errors.
+
+                          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
                         children:
                           - title: Array Length
                             length_in_bytes: 1

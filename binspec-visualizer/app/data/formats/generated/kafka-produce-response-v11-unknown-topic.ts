@@ -88,17 +88,12 @@ const generated: GeneratedData = {
       "children": [
         {
           "title": "Topic Responses Array",
-          "explanation_markdown": "An array of topic responses.\n",
+          "explanation_markdown": "An array of topic responses.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n"
-            },
-            {
-              "title": "Array Length",
-              "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topic responses array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
+              "explanation_markdown": "The length of the topic responses array + 1, encoded as an unsigned varint. Here, it is `0x02`, which is `2` in decimal, meaning that the array length is 1.\n"
             },
             {
               "title": "Topic #1",
@@ -122,12 +117,12 @@ const generated: GeneratedData = {
                 },
                 {
                   "title": "Partition Responses Array",
-                  "explanation_markdown": "An array of partition responses for this topic.\n",
+                  "explanation_markdown": "An array of partition responses for this topic.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
                   "children": [
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partition array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
+                      "explanation_markdown": "The length of the partition array + 1, encoded as an unsigned varint. Here, it is `0x02`, which is `2` in decimal, meaning that the array length is 1.\n"
                     },
                     {
                       "title": "Partition #1",
@@ -160,7 +155,7 @@ const generated: GeneratedData = {
                         },
                         {
                           "title": "Record Errors Array",
-                          "explanation_markdown": "An array of record-level errors.\n",
+                          "explanation_markdown": "An array of record-level errors.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
                           "children": [
                             {
                               "title": "Array Length",
