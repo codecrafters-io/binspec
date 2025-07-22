@@ -288,7 +288,7 @@ const generated: GeneratedData = {
                                 {
                                   "title": "Batch Length",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the rest of the record batch in bytes.\n\nIn this case, the value is `0x49`, which is `73` in decimal.\n"
+                                  "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nThis value excludes the Base Offset (8 bytes) and the Batch Length (4 bytes) itself, but includes all other bytes in the record batch.\n\nIn this case, the value is `0x49`, which is `73` in decimal.\n"
                                 },
                                 {
                                   "title": "Partition Leader Epoch",
@@ -303,47 +303,47 @@ const generated: GeneratedData = {
                                 {
                                   "title": "CRC",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.\n\nThe CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.\n"
+                                  "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.\n\nThe CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0xd0186c1a`, which is `-803734502` in decimal.\n"
                                 },
                                 {
                                   "title": "Attributes",
                                   "length_in_bytes": 2,
-                                  "explanation_markdown": "Attributes is a 2-byte bitfield indicating the attributes of the record batch.\n\nAttributes is a bitmask of the following flags:\n\n- bit 0~2: Compression codec (0: none, 1: gzip, 2: snappy, 3: lz4, 4: zstd)\n- bit 3: Timestamp type (0: CreateTime, 1: LogAppendTime)\n- bit 4: isTransactional (0 for non-transactional)\n- bit 5: isControlBatch (0 for data batches)\n- bit 6-15: unused\n\nIn this case, the value is `0x0000`, indicating no compression, `CreateTime` timestamp type, and a non-transactional data batch.\n"
+                                  "explanation_markdown": "Attributes is a 2-byte bitfield indicating the attributes of the record batch.\n\nAttributes is a bitmask of the following flags:\n\n- bit 0~2:\n    - 0: no compression\n    - 1: gzip\n    - 2: snappy\n    - 3: lz4\n    - 4: zstd\n- bit 3: timestampType\n- bit 4: isTransactional (0 means not transactional)\n- bit 5: isControlBatch (0 means not a control batch)\n- bit 6: hasDeleteHorizonMs (0 means baseTimestamp is not set as the delete horizon for compaction)\n- bit 7~15: unused\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                                 },
                                 {
                                   "title": "Last Offset Delta",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer. The offset of the last record is `Base Offset` + `Last Offset Delta`.\n\nIn this case, the value is `0`, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.\n"
+                                  "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x00`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.\n"
                                 },
                                 {
                                   "title": "Base Timestamp",
                                   "length_in_bytes": 8,
-                                  "explanation_markdown": "Base Timestamp is an 8-byte big-endian integer representing the timestamp of the first record in the batch.\n"
+                                  "explanation_markdown": "Base Timestamp is an 8-byte big-endian integer representing the timestamp of the first record in the batch.\n\nIn this case, the value is `0x019832418699`, which is `1736998490009` in decimal. This is an unix timestamp in milliseconds, which is `2024-12-04 18:54:50.009` in UTC.\n"
                                 },
                                 {
                                   "title": "Max Timestamp",
                                   "length_in_bytes": 8,
-                                  "explanation_markdown": "Max Timestamp is an 8-byte big-endian integer representing the maximum timestamp among all records in the batch.\n"
+                                  "explanation_markdown": "Max Timestamp is an 8-byte big-endian integer representing the maximum timestamp among all records in the batch.\n\nIn this case, the value is `0x019832418699`, which is `1736998490009` in decimal. This is an unix timestamp in milliseconds, which is `2024-12-04 18:54:50.009` in UTC.\n"
                                 },
                                 {
                                   "title": "Producer ID",
                                   "length_in_bytes": 8,
-                                  "explanation_markdown": "Producer ID is an 8-byte big-endian integer used for idempotent and transactional producers.\n\nA value of 0 indicates the producer is not idempotent.\n"
+                                  "explanation_markdown": "Producer ID is an 8-byte big-endian integer indicating the ID of the producer that produced the records in this batch.\n\nIn this case, the value is `0x00`, which is `0` in decimal, indicating that the producer ID is not set.\n"
                                 },
                                 {
                                   "title": "Producer Epoch",
                                   "length_in_bytes": 2,
-                                  "explanation_markdown": "Producer Epoch is a 2-byte big-endian integer used for idempotent and transactional producers.\n\nA value of 0 indicates the producer is not idempotent.\n"
+                                  "explanation_markdown": "Producer Epoch is a 2-byte big-endian integer indicating the epoch of the producer that produced the records in this batch.\n\nIn this case, the value is `0x00`, which is `0` in decimal, indicating that the producer epoch is not set.\n"
                                 },
                                 {
                                   "title": "Base Sequence",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "Base Sequence is a 4-byte big-endian integer used for idempotent and transactional producers to ensure correct ordering and prevent duplicates.\n\nA value of 0 indicates the producer is not idempotent.\n"
+                                  "explanation_markdown": "Base Sequence is a 4-byte big-endian integer indicating the sequence number of the first record in a batch. It is used for idempotent and transactional producers to ensure correct ordering and prevent duplicates.\n\nA value of 0 indicates the producer is not idempotent.\n"
                                 },
                                 {
                                   "title": "Records Count",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "A 4-byte big-endian integer indicating the number of records in the batch.\n\nIn this case, the value is `1`.\n"
+                                  "explanation_markdown": "A 4-byte big-endian integer indicating the number of records in the batch.\n\nIn this case, the value is `0x01`, which is `1` in decimal, indicating that there is 1 record in the recordBatch.\n"
                                 },
                                 {
                                   "title": "Record #1",
@@ -357,17 +357,17 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Attributes",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A 1-byte integer for record attributes. Currently unused.\n"
+                                      "explanation_markdown": "Attributes is a 1-byte big-endian integer indicating the attributes of the record. Currently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                                     },
                                     {
                                       "title": "Timestamp Delta",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A varint representing the time difference between this record's timestamp and the `Base Timestamp` of the batch.\n\nIn this case, the value is `0`, meaning the timestamp is the same as the batch's `Base Timestamp`.\n"
+                                      "explanation_markdown": "A varint representing the time difference between this record's timestamp and the `Base Timestamp` of the batch.\n\nIn this case, the value is `0x00`, which is `0` in decimal, meaning the timestamp is the same as the batch's `Base Timestamp`.\n"
                                     },
                                     {
                                       "title": "Offset Delta",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A varint representing the offset difference between this record and the `Base Offset` of the batch.\n\nIn this case, the value is `0`.\n"
+                                      "explanation_markdown": "Offset Delta is a signed variable size integer indicating the difference between the offset of the record and the base offset of the record batch.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                                     },
                                     {
                                       "title": "Key Length",
@@ -392,7 +392,7 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Headers Count",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A varint representing the number of headers.\n\nIn this case, the value is `0`, indicating no headers.\n"
+                                      "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0`, indicating no headers.\n"
                                     }
                                   ]
                                 }
