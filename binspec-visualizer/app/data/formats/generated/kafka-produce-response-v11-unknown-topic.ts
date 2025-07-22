@@ -93,6 +93,11 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
+              "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n"
+            },
+            {
+              "title": "Array Length",
+              "length_in_bytes": 1,
               "explanation_markdown": "The length of the topic responses array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
@@ -101,7 +106,7 @@ const generated: GeneratedData = {
               "children": [
                 {
                   "title": "Topic Name",
-                  "explanation_markdown": "The topic name, represented as a compact string.\n",
+                  "explanation_markdown": "The topic name encoded as a `COMPACT_STRING`, which starts with a varint corresponding to the length of the string + 1, followed by the string itself encoded in UTF-8.\n",
                   "children": [
                     {
                       "title": "String Length",
@@ -141,17 +146,17 @@ const generated: GeneratedData = {
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset of the batch. -1 indicates an error.\n"
+                          "explanation_markdown": "An 8-byte integer representing the base offset of the batch.\n\nHere, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error.\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp assigned to the batch by the broker. -1 indicates an error or when the broker is configured with `CreateTime`.\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp assigned to the batch by the broker.\n\nHere, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error or when the broker is configured with `CreateTime`.\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the start offset of the log. -1 indicates an error.\n"
+                          "explanation_markdown": "An 8-byte integer representing the start offset of the log.\n\nHere, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error.\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -167,7 +172,7 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Message",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "A nullable compact string containing a detailed error message. Here, `0x00` indicates a null string.\n"
+                          "explanation_markdown": "A nullable compact string containing a detailed error message.\n\nHere, it is `0x00`, which is `0` in decimal, indicating a null string.\n"
                         },
                         {
                           "title": "Tag Buffer",
@@ -190,7 +195,7 @@ const generated: GeneratedData = {
         {
           "title": "Throttle Time",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
+          "explanation_markdown": "A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is `0x00000000`, which is `0` in decimal, indicating no throttling.\n"
         },
         {
           "title": "Tag Buffer",
