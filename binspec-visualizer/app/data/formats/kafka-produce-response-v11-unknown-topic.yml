@@ -1,27 +1,28 @@
 name: Kafka Produce Response (v11) - Unknown Topic
 slug: kafka-produce-response-v11-unknown-topic
 data:
-  - 0x00
+  - 0x00 # Message length (4 bytes, 0x32 in hex, 50 in decimal)
   - 0x00
   - 0x00
   - 0x32
-  - 0x4d
-  - 0x22
-  - 0x73
-  - 0x43
-  - 0x00
-  - 0x02
-  - 0x04
-  - 0x71
-  - 0x75
-  - 0x7a
-  - 0x02
+  - 0x00 # Correlation ID (4 bytes, 0x00000007 in hex, 7 in decimal)
   - 0x00
   - 0x00
+  - 0x07
+  - 0x00 # Empty tag buffer after correlation ID
+  - 0x02 # Topics array length + 1 (varint, 0x02 in hex, 2 in decimal)
+  - 0x04 # Topic name length + 1 (varint, 0x04 in hex, 4 in decimal)
+  - 0x71 # q (topic name)
+  - 0x75 # u (topic name)
+  - 0x7a # z (topic name)
+  - 0x02 # Partitions array length + 1 (varint, 0x02 in hex, 2 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x00000000 in hex, 0 in decimal)
   - 0x00
-  - 0x05
   - 0x00
+  - 0x00
+  - 0x00 # Error code (2 bytes, 0x0003 in hex, 3 in decimal => UNKNOWN_TOPIC_OR_PARTITION)
   - 0x03
+  - 0xff # Base Offset (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
   - 0xff
   - 0xff
   - 0xff
@@ -29,6 +30,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
+  - 0xff # Log Append Time in ms (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
   - 0xff
   - 0xff
   - 0xff
@@ -36,6 +38,7 @@ data:
   - 0xff
   - 0xff
   - 0xff
+  - 0xff # Log Start Offset (8 bytes, 0xffffffffffffffff in hex, -1 in decimal)
   - 0xff
   - 0xff
   - 0xff
@@ -43,15 +46,12 @@ data:
   - 0xff
   - 0xff
   - 0xff
-  - 0xff
-  - 0xff
-  - 0xff
-  - 0x01
+  - 0x01 # Record Errors Array length + 1 (varint, 0x01 in hex, 1 in decimal)
+  - 0x00 # Error Message as CompactNullableString (varint, 0x00 => null)
+  - 0x00 # Empty tag buffer for Partition Response
+  - 0x00 # Empty tag buffer for Topic Response
+  - 0x00 # Throtte Time Ms (4 bytes, 0x00000000 in hex, 0 in decimal)
   - 0x00
   - 0x00
   - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
-  - 0x00
+  - 0x00 # Empty tag buffer for Response body
