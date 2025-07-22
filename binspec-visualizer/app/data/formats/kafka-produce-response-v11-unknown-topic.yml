@@ -9,7 +9,7 @@ data:
   - 0x00
   - 0x00
   - 0x07
-  - 0x00 # Empty tag buffer after correlation ID
+  - 0x00 # Empty tag buffer for Response Header
   - 0x02 # Topics array length + 1 (varint, 0x02 in hex, 2 in decimal)
   - 0x04 # Topic name length + 1 (varint, 0x04 in hex, 4 in decimal)
   - 0x71 # q (topic name)
