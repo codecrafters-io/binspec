@@ -9,10 +9,10 @@ data:
   - 0x00
   - 0x00 # API version (2 bytes, 0x000b in hex, 11 in decimal)
   - 0x0b
-  - 0x3f # Correlation ID (4 bytes, 0x3fda6a51 in hex, 1071278673 in decimal)
-  - 0xda
-  - 0x6a
-  - 0x51
+  - 0x00 # Correlation ID (4 bytes, 0x3fda6a51 in hex, 1071278673 in decimal)
+  - 0x00
+  - 0x00
+  - 0x07
   - 0x00 # Client ID length (2 bytes, 0x000c in hex, 12 in decimal) - compact string
   - 0x0c
   - 0x6b # Client ID (12 bytes, "kafka-tester" in UTF-8)
@@ -176,7 +176,7 @@ segments:
         explanation_markdown: |
           The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.
 
-          Here, it is 0x3fda6a51 (1071278673).
+          Here, it is 0x00000007 (7).
       - title: Client ID
         explanation_markdown: |
           The Client ID is a string identifying the client.
@@ -202,7 +202,9 @@ segments:
       - title: Transactional ID
         length_in_bytes: 1
         explanation_markdown: |
-          The Transactional ID as a nullable compact string. A value of 0x01 indicates null (no transactional ID).
+          The Transactional ID is a nullable compact string. A value of 0x01 indicates null (no transactional ID).
+
+          In this case, the value is 0x01, indicating that the producer is not transactional.
       - title: Required Acks
         length_in_bytes: 2
         explanation_markdown: |
@@ -236,7 +238,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the topic name compact string + 1, represented as a single byte. Here, it is 0x12 (18), indicating that the length of the topic name is 17.
+                      The length of the topic name compact string + 1, represented as an unsigned varint. Here, it is 0x12 (18), indicating that the length of the topic name is 17.
                   - title: String Content
                     length_in_bytes: 17
                     explanation_markdown: |
@@ -248,7 +250,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partition array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+                      The length of the partition array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
                   - title: Partition 0
                     explanation_markdown: |
                       Information about the first partition.
@@ -266,99 +268,150 @@ segments:
                           - title: Records Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              A varint representing the size of the record batch data that follows. Here, 0x56 indicates 86 bytes.
+                              An unsigned varint representing the number of bytes of record batch data that follows. Here, 0x56 indicates 86 bytes.
                           - title: Record Batch
                             explanation_markdown: |
-                              A batch of records.
+                              A batch of records. This has the same format as the on-disk record batches.
                             children:
                               - title: Base Offset
                                 length_in_bytes: 8
                                 explanation_markdown: |
-                                  An 8-byte integer. For produce requests, this is always 0.
+                                  Base Offset is an 8-byte big-endian integer indicating the offset of the first record in this batch. For produce requests, this is usually 0.
+
+                                  In this case, the value is `0x00`, which is `0` in decimal.
                               - title: Batch Length
                                 length_in_bytes: 4
                                 explanation_markdown: |
-                                  A 4-byte integer representing the length of the rest of the batch (74 bytes).
+                                  Batch Length is a 4-byte big-endian integer indicating the length of the rest of the record batch in bytes.
+
+                                  In this case, the value is `0x49`, which is `73` in decimal.
                               - title: Partition Leader Epoch
                                 length_in_bytes: 4
                                 explanation_markdown: |
-                                  A 4-byte integer. Set to -1.
+                                  Partition Leader Epoch is a 4-byte big-endian integer indicating the epoch of the leader for this partition. It is a monotonically increasing number that is incremented by 1 whenever the partition leader changes. This value is used to detect out of order writes.
+
+                                  In this case, the value is `0xffffffff`, which is `-1` in decimal, indicating that the producer is not aware of the leader epoch.
                               - title: Magic Byte
                                 length_in_bytes: 1
                                 explanation_markdown: |
-                                  A 1-byte integer indicating the record format version. 0x02 means v2.
-                              - title: CRC32
+                                  Magic Byte is a 1-byte integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.
+
+                                  In this case, the value is `0x02`, which is `2` in decimal, corresponding to message format v2.
+                              - title: CRC
                                 length_in_bytes: 4
                                 explanation_markdown: |
-                                  A 4-byte CRC32 checksum of the rest of the record batch.
+                                  CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.
+
+                                  The CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.
                               - title: Attributes
                                 length_in_bytes: 2
                                 explanation_markdown: |
-                                  A 2-byte bitfield of attributes. 0x0000 indicates no compression, `CreateTime` timestamp type, and that this is not a transactional or control batch.
+                                  Attributes is a 2-byte bitfield indicating the attributes of the record batch.
+
+                                  Attributes is a bitmask of the following flags:
+
+                                  - bit 0~2: Compression codec (0: none, 1: gzip, 2: snappy, 3: lz4, 4: zstd)
+                                  - bit 3: Timestamp type (0: CreateTime, 1: LogAppendTime)
+                                  - bit 4: isTransactional (0 for non-transactional)
+                                  - bit 5: isControlBatch (0 for data batches)
+                                  - bit 6-15: unused
+
+                                  In this case, the value is `0x0000`, indicating no compression, `CreateTime` timestamp type, and a non-transactional data batch.
                               - title: Last Offset Delta
                                 length_in_bytes: 4
                                 explanation_markdown: |
-                                  A 4-byte integer. The offset of the last record is `Base Offset` + `Last Offset Delta`. Here it is 0, so the batch contains one record.
-                              - title: First Timestamp
+                                  Last Offset Delta is a 4-byte big-endian integer. The offset of the last record is `Base Offset` + `Last Offset Delta`.
+
+                                  In this case, the value is `0`, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.
+                              - title: Base Timestamp
                                 length_in_bytes: 8
                                 explanation_markdown: |
-                                  An 8-byte integer representing the timestamp of the first record in the batch.
+                                  Base Timestamp is an 8-byte big-endian integer representing the timestamp of the first record in the batch.
                               - title: Max Timestamp
                                 length_in_bytes: 8
                                 explanation_markdown: |
-                                  An 8-byte integer representing the maximum timestamp among all records in the batch.
+                                  Max Timestamp is an 8-byte big-endian integer representing the maximum timestamp among all records in the batch.
                               - title: Producer ID
                                 length_in_bytes: 8
                                 explanation_markdown: |
-                                  An 8-byte integer. For idempotent and transactional producers. Set to 0.
+                                  Producer ID is an 8-byte big-endian integer used for idempotent and transactional producers.
+
+                                  A value of 0 indicates the producer is not idempotent.
                               - title: Producer Epoch
                                 length_in_bytes: 2
                                 explanation_markdown: |
-                                  A 2-byte integer. For idempotent and transactional producers. Set to 0.
+                                  Producer Epoch is a 2-byte big-endian integer used for idempotent and transactional producers.
+
+                                  A value of 0 indicates the producer is not idempotent.
                               - title: Base Sequence
                                 length_in_bytes: 4
                                 explanation_markdown: |
-                                  A 4-byte integer. For idempotent and transactional producers. Set to 0.
-                              - title: Record Count
+                                  Base Sequence is a 4-byte big-endian integer used for idempotent and transactional producers to ensure correct ordering and prevent duplicates.
+
+                                  A value of 0 indicates the producer is not idempotent.
+                              - title: Records Count
                                 length_in_bytes: 4
                                 explanation_markdown: |
-                                  A 4-byte integer indicating the number of records in the batch. Here, 1.
-                              - title: Record
+                                  A 4-byte big-endian integer indicating the number of records in the batch.
+
+                                  In this case, the value is `1`.
+                              - title: "Record #1"
                                 explanation_markdown: |
-                                  A single record.
+                                  A single record within the batch.
                                 children:
                                   - title: Length
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A varint representing the length of the record (24 bytes).
+                                      A varint representing the length of the record.
+
+                                      In this case, the value is `0x2e`, which is `46` in decimal.
                                   - title: Attributes
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A 1-byte integer. Unused.
+                                      A 1-byte integer for record attributes. Currently unused.
                                   - title: Timestamp Delta
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A varint representing the offset from the `First Timestamp`. Here, 0.
+                                      A varint representing the time difference between this record's timestamp and the `Base Timestamp` of the batch.
+
+                                      In this case, the value is `0`, meaning the timestamp is the same as the batch's `Base Timestamp`.
                                   - title: Offset Delta
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A varint representing the offset from the `Base Offset`. Here, 0.
+                                      A varint representing the offset difference between this record and the `Base Offset` of the batch.
+
+                                      In this case, the value is `0`.
                                   - title: Key Length
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A varint representing the key length. 0x01 indicates a null key.
+                                      Key Length is a signed variable size integer indicating the length of the key of the record.
+
+                                      In this case, the value is `0x01`, which is `-1` in decimal after parsing.
+                                      This is a special value that indicates that the key is null.
+                                  - title: Key
+                                    length_in_bytes: 0
+                                    explanation_markdown: |
+                                      Key is a byte array indicating the key of the record.
+
+                                      In this case, the key is null.
                                   - title: Value Length
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A varint representing the value length (17 bytes).
+                                      Value Length is a signed variable size integer indicating the length of the value of the record.
+
+                                      In this case, the value is `0x22`, which is `17` in decimal.
                                   - title: Value
                                     length_in_bytes: 17
                                     explanation_markdown: |
-                                      The record's value: "Hello from Eddie!".
-                                  - title: Header Count
+                                      Value is a byte array indicating the value of the record.
+
+                                      The record's value. In this case, it is "Hello from Eddie!".
+                                  - title: Headers Count
                                     length_in_bytes: 1
                                     explanation_markdown: |
-                                      A varint representing the number of headers. Here, 0.
+                                      A varint representing the number of headers.
+
+                                      In this case, the value is `0`, indicating no headers.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
