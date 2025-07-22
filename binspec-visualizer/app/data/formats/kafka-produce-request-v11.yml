@@ -156,7 +156,6 @@ segments:
 
       In this case, the value is 0x8f (143 in decimal) indicating that the rest of the message is 143 bytes long.
   - title: Request Header (v2)
-    length_in_bytes: 23
     explanation_markdown: |
       The Request Header structure is common across all Kafka requests. It contains information on the API Key this request is for, the version of that API, and more.
     children:
@@ -179,7 +178,6 @@ segments:
 
           Here, it is 0x3fda6a51 (1071278673).
       - title: Client ID
-        length_in_bytes: 14
         explanation_markdown: |
           The Client ID is a string identifying the client.
 
@@ -198,7 +196,6 @@ segments:
         explanation_markdown: |
           An empty tagged field array, represented by a single byte of value 0x00.
   - title: Produce Request Body (v11)
-    length_in_bytes: 116
     explanation_markdown: |
       The request body contains fields specific to the Produce request.
     children:
@@ -209,175 +206,80 @@ segments:
       - title: Required Acks
         length_in_bytes: 2
         explanation_markdown: |
-          The number of acknowledgments the producer requires the leader to have received before considering a request complete.
-          - 0: no acknowledgments
-          - 1: only the leader
-          - -1: full ISR
+          The number of acknowledgments the producer requires the leader to have received before considering a request complete. Allowed values: 0 for no acknowledgments, 1 for only the leader and -1 for the full ISR.
 
-          Here, it is 0x01 (1) indicating leader acknowledgment only.
+          Here, it is 0x0001 (1) indicating leader acknowledgment only.
       - title: Timeout
         length_in_bytes: 4
         explanation_markdown: |
-          The timeout to await a response in milliseconds. Here, it is 0x00 (0 milliseconds).
+          A 4-byte integer that represents the timeout to await a response in milliseconds.
+
+          Here, it is 0x00000000 (0 in decimal), indicating no timeout.
       - title: Topic Data Array
-        length_in_bytes: 110
         explanation_markdown: |
-          Array of topics to produce to. Uses compact array format.
+          An array of topics to produce to.
+
+          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
         children:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              Length of topic array + 1 for compact array format. Here, 0x02 indicates 1 topic.
-          - title: Topic
-            length_in_bytes: 109
+              The length of the topic array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+          - title: "Topic #1"
             explanation_markdown: |
-              Topic data containing name and partitions.
+              A single topic in the array.
             children:
               - title: Topic Name
-                length_in_bytes: 18
                 explanation_markdown: |
-                  The topic name as a compact string.
+                  The topic name, represented as a compact string.
                 children:
-                  - title: Length
+                  - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      Topic name length + 1 for compact string. Here, 0x12 (18) indicates 17 characters.
-                  - title: Contents
+                      The length of the topic name compact string + 1, represented as a single byte. Here, it is 0x12 (18), indicating that the length of the topic name is 17.
+                  - title: String Content
                     length_in_bytes: 17
                     explanation_markdown: |
-                      The topic name "unknown-topic-quz" encoded in UTF-8.
-              - title: Partition Data Array
-                length_in_bytes: 90
+                      The actual topic name string. In this case, it is "unknown-topic-quz" encoded in UTF-8.
+              - title: Partitions Array
                 explanation_markdown: |
-                  Array of partitions for this topic.
+                  An array of partitions for this topic.
                 children:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      Length of partition array + 1 for compact array format. Here, 0x02 indicates 1 partition.
-                  - title: Partition
-                    length_in_bytes: 89
+                      The length of the partition array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+                  - title: Partition 0
                     explanation_markdown: |
-                      Partition data containing ID and records.
+                      Information about the first partition.
                     children:
                       - title: Partition ID
                         length_in_bytes: 4
                         explanation_markdown: |
-                          The partition index. Here, 0x00 (partition 0).
-                      - title: Records
-                        length_in_bytes: 84
+                          A 4-byte integer representing the partition index.
+
+                          Here, it is 0x00000000 (0), which corresponds to partition 0.
+                      - title: Records Data
                         explanation_markdown: |
-                          The record data to be produced, containing record batches.
+                          The record data to be produced, containing a record batch with the message "Hello from Eddie!".
                         children:
                           - title: Records Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              Length of the records data. Here, 0x56 (86 bytes).
-                          - title: Record Batch
-                            length_in_bytes: 83
+                              Length indicator for the records data. Here, 0x56 (86 bytes).
+                          - title: Record Batch Data
+                            length_in_bytes: 86
                             explanation_markdown: |
-                              A record batch containing one or more records with their metadata.
-                            children:
-                              - title: Base Offset
-                                length_in_bytes: 8
-                                explanation_markdown: |
-                                  The offset of the first record in this batch. Here, 0x00 (offset 0).
-                              - title: Batch Length
-                                length_in_bytes: 4
-                                explanation_markdown: |
-                                  Length of the rest of the record batch. Here, 0x49 (73 bytes).
-                              - title: Partition Leader Epoch
-                                length_in_bytes: 4
-                                explanation_markdown: |
-                                  The partition leader epoch. Here, 0xffffffff (-1).
-                              - title: Magic Byte
-                                length_in_bytes: 1
-                                explanation_markdown: |
-                                  Version identifier for the record batch format. Here, 0x02 (version 2).
-                              - title: CRC32
-                                length_in_bytes: 4
-                                explanation_markdown: |
-                                  CRC32 checksum of the record batch data. Here, 0xd0186c1a.
-                              - title: Attributes
-                                length_in_bytes: 2
-                                explanation_markdown: |
-                                  Batch attributes including compression codec, timestamp type, transactional flag, and control batch flag.
-
-                                  Here, 0x0000 indicates no compression, CreateTime timestamps, non-transactional, data batch.
-                              - title: Last Offset Delta
-                                length_in_bytes: 4
-                                explanation_markdown: |
-                                  Delta between the base offset and the last record's offset. Here, 0x00.
-                              - title: First Timestamp
-                                length_in_bytes: 8
-                                explanation_markdown: |
-                                  Timestamp of the first record. Here, 0x019832418699 (Jan 1, 1970 00:06:48.843155097 UTC).
-                              - title: Max Timestamp
-                                length_in_bytes: 8
-                                explanation_markdown: |
-                                  Maximum timestamp among all records. Here, same as first timestamp.
-                              - title: Producer ID
-                                length_in_bytes: 8
-                                explanation_markdown: |
-                                  ID of the producer. Here, 0x00 (producer ID 0).
-                              - title: Producer Epoch
-                                length_in_bytes: 2
-                                explanation_markdown: |
-                                  Epoch of the producer. Here, 0x00 (epoch 0).
-                              - title: Base Sequence
-                                length_in_bytes: 4
-                                explanation_markdown: |
-                                  Base sequence number for records in this batch. Here, 0x00.
-                              - title: Record Count
-                                length_in_bytes: 4
-                                explanation_markdown: |
-                                  Number of records in this batch. Here, 0x01 (1 record).
-                              - title: Record
-                                length_in_bytes: 23
-                                explanation_markdown: |
-                                  Individual record containing the actual message data.
-                                children:
-                                  - title: Length
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Length of the record as a varint. Here, 0x2e (46 bytes).
-                                  - title: Attributes
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Record attributes (reserved). Here, 0x00.
-                                  - title: Timestamp Delta
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Delta from batch timestamp as varint. Here, 0x00.
-                                  - title: Offset Delta
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Delta from base offset as varint. Here, 0x00.
-                                  - title: Key Length
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Length of the key as varint. Here, 0x01 indicates null key.
-                                  - title: Value Length
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Length of the value as varint. Here, 0x22 (17 bytes).
-                                  - title: Value
-                                    length_in_bytes: 17
-                                    explanation_markdown: |
-                                      The actual message value. Here, "Hello from Eddie!" encoded in UTF-8.
-                                  - title: Header Count
-                                    length_in_bytes: 1
-                                    explanation_markdown: |
-                                      Number of headers as varint. Here, 0x00 (no headers).
-                      - title: Partition Tag Buffer
+                              Binary record batch data containing base offset, batch length, leader epoch, magic byte, CRC32, attributes, timestamps, producer info, sequence numbers, record count, and the actual record with the message "Hello from Eddie!".
+                      - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
-                          Empty tagged field array for partition data.
-              - title: Topic Tag Buffer
+                          An empty tagged field array, represented by a single byte of value 0x00.
+              - title: Tag Buffer
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Empty tagged field array for topic data.
-      - title: Request Body Tag Buffer
+                  An empty tagged field array, represented by a single byte of value 0x00.
+      - title: Tag Buffer
         length_in_bytes: 1
         explanation_markdown: |
-          Empty tagged field array for the request body.
+          An empty tagged field array, represented by a single byte of value 0x00.
