@@ -251,7 +251,7 @@ segments:
                     length_in_bytes: 1
                     explanation_markdown: |
                       The length of the partition array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
-                  - title: Partition 0
+                  - title: Partition #1
                     explanation_markdown: |
                       Information about the first partition.
                     children:

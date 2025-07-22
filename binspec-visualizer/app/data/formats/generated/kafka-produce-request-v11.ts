@@ -259,7 +259,7 @@ const generated: GeneratedData = {
                       "explanation_markdown": "The length of the partition array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
                     },
                     {
-                      "title": "Partition 0",
+                      "title": "Partition",
                       "explanation_markdown": "Information about the first partition.\n",
                       "children": [
                         {
