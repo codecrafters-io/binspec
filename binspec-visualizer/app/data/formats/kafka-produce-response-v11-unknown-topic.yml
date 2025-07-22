@@ -61,7 +61,7 @@ segments:
     explanation_markdown: |
       Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.
 
-      In this case, the value is 0x32 (50 in decimal) indicating that the rest of the message is 50 bytes long.
+      In this case, the value is `0x32`, which is `50` in decimal, indicating that the rest of the message is 50 bytes long.
   - title: Response Header (v1)
     explanation_markdown: |
       The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.
@@ -71,7 +71,7 @@ segments:
         explanation_markdown: |
           The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
 
-          Here, it is 0x07 (7).
+          Here, it is `0x07`, which is `7` in decimal.
       - title: Tag buffer
         length_in_bytes: 1
         explanation_markdown: |
@@ -127,31 +127,31 @@ segments:
                         explanation_markdown: |
                           A 4-byte integer representing the partition index.
 
-                          Here, it is 0x00000000 (0), which corresponds to partition 0.
+                          Here, it is `0x00000000`, which is `0` in decimal, which corresponds to partition 0.
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
                           A 2-byte integer representing the error code for this partition.
 
-                          Here, it is 0x0003 (3), which corresponds to `UNKNOWN_TOPIC_OR_PARTITION`. You can find all error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes).
+                          Here, it is `0x0003`, which is `3` in decimal, which corresponds to `UNKNOWN_TOPIC_OR_PARTITION`. You can find all error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes).
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
                           An 8-byte integer representing the base offset of the batch.
 
-                          Here, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error.
+                          Here, it is `0xffffffffffffffff`, which is `-1` in decimal, indicating an error.
                       - title: Log Append Time
                         length_in_bytes: 8
                         explanation_markdown: |
                           An 8-byte integer representing the timestamp assigned to the batch by the broker.
 
-                          Here, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error or when the broker is configured with `CreateTime`.
+                          Here, it is `0xffffffffffffffff`, which is `-1` in decimal, indicating an error or when the broker is configured with `CreateTime`.
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
                           An 8-byte integer representing the start offset of the log.
 
-                          Here, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error.
+                          Here, it is `0xffffffffffffffff`, which is `-1` in decimal, indicating an error.
                       - title: Record Errors Array
                         explanation_markdown: |
                           An array of record-level errors.
@@ -159,7 +159,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the record errors array + 1, encoded as an unsigned varint. Here, it is `0x01`, which is `1` in decimal, meaning the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |

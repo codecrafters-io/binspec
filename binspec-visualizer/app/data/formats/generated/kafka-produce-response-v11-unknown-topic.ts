@@ -64,7 +64,7 @@ const generated: GeneratedData = {
     {
       "title": "Message Size",
       "length_in_bytes": 4,
-      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.\n\nIn this case, the value is 0x32 (50 in decimal) indicating that the rest of the message is 50 bytes long.\n"
+      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.\n\nIn this case, the value is `0x32`, which is `50` in decimal, indicating that the rest of the message is 50 bytes long.\n"
     },
     {
       "title": "Response Header (v1)",
@@ -73,7 +73,7 @@ const generated: GeneratedData = {
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is `0x07`, which is `7` in decimal.\n"
         },
         {
           "title": "Tag buffer",
@@ -136,27 +136,27 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition ID",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the partition index.\n\nHere, it is 0x00000000 (0), which corresponds to partition 0.\n"
+                          "explanation_markdown": "A 4-byte integer representing the partition index.\n\nHere, it is `0x00000000`, which is `0` in decimal, which corresponds to partition 0.\n"
                         },
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\n\nHere, it is 0x0003 (3), which corresponds to `UNKNOWN_TOPIC_OR_PARTITION`. You can find all error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes).\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\n\nHere, it is `0x0003`, which is `3` in decimal, which corresponds to `UNKNOWN_TOPIC_OR_PARTITION`. You can find all error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes).\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset of the batch.\n\nHere, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error.\n"
+                          "explanation_markdown": "An 8-byte integer representing the base offset of the batch.\n\nHere, it is `0xffffffffffffffff`, which is `-1` in decimal, indicating an error.\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp assigned to the batch by the broker.\n\nHere, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error or when the broker is configured with `CreateTime`.\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp assigned to the batch by the broker.\n\nHere, it is `0xffffffffffffffff`, which is `-1` in decimal, indicating an error or when the broker is configured with `CreateTime`.\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the start offset of the log.\n\nHere, it is 0xffffffffffffffff (which is -1 in decimal), indicating an error.\n"
+                          "explanation_markdown": "An 8-byte integer representing the start offset of the log.\n\nHere, it is `0xffffffffffffffff`, which is `-1` in decimal, indicating an error.\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -165,7 +165,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the record errors array + 1, encoded as an unsigned varint. Here, it is `0x01`, which is `1` in decimal, meaning the array length is 0.\n"
                             }
                           ]
                         },
