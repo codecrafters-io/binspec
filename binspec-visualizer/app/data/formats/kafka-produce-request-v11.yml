@@ -70,7 +70,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x00 # First Timestamp (8 bytes, 0x0198380343f8 => Jul 23 2025 21:37:18)
+  - 0x00 # First Timestamp (8 bytes, 0x0198380343f8 => Jul 23 2025 03:59:54.872)
   - 0x00
   - 0x01
   - 0x98
@@ -78,7 +78,7 @@ data:
   - 0x03
   - 0x43
   - 0xf8
-  - 0x00 # Max Timestamp (8 bytes, 0x0198380343f8 => Jul 23 2025 21:37:18)
+  - 0x00 # Max Timestamp (8 bytes, 0x0198380343f8 => Jul 23 2025 03:59:54.872)
   - 0x00
   - 0x01
   - 0x98
@@ -123,7 +123,7 @@ segments:
     explanation_markdown: |
       Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.
 
-      In this case, the value is 0x8f (143 in decimal) indicating that the rest of the message is 143 bytes long.
+      In this case, the value is 0x70 (112 in decimal) indicating that the rest of the message is 143 bytes long.
   - title: Request Header (v2)
     explanation_markdown: |
       The Request Header structure is common across all Kafka requests. It contains information on the API Key this request is for, the version of that API, and more.
@@ -150,16 +150,16 @@ segments:
         explanation_markdown: |
           The Client ID is a string identifying the client.
 
-          Here, the value is "kafka-tester".
+          Here, the value is "kafka-cli".
         children:
           - title: Length
             length_in_bytes: 2
             explanation_markdown: |
-              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0c (12).
+              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x09 (9).
           - title: Contents
             length_in_bytes: 12
             explanation_markdown: |
-              The Client ID is a variable-length string identifying the client. In this case, it is "kafka-tester" encoded in UTF-8.
+              The Client ID is a variable-length string identifying the client. In this case, it is "kafka-cli" encoded in UTF-8.
       - title: Tag buffer
         length_in_bytes: 1
         explanation_markdown: |
@@ -207,11 +207,11 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the topic name compact string + 1, represented as an unsigned varint. Here, it is 0x12 (18), indicating that the length of the topic name is 17.
+                      The length of the topic name compact string + 1, represented as an unsigned varint. Here, it is 0x04 (4), indicating that the length of the topic name is 3.
                   - title: String Content
                     length_in_bytes: 17
                     explanation_markdown: |
-                      The actual topic name string. In this case, it is "unknown-topic-quz" encoded in UTF-8.
+                      The actual topic name string. In this case, it is "foo" encoded in UTF-8.
               - title: Partitions Array
                 explanation_markdown: |
                   An array of partitions for this topic.
@@ -237,7 +237,7 @@ segments:
                           - title: Records Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              An unsigned varint representing the number of bytes of record batch data that follows. Here, 0x56 indicates 86 bytes.
+                              An unsigned varint representing the number of bytes of record batch data that follows. Here, 0x48 indicates 72 bytes.
                           - title: Record Batch
                             explanation_markdown: |
                               A batch of records. This has the same format as the on-disk record batches.
@@ -255,7 +255,7 @@ segments:
 
                                   This value excludes the Base Offset (8 bytes) and the Batch Length (4 bytes) itself, but includes all other bytes in the record batch.
 
-                                  In this case, the value is `0x49`, which is `73` in decimal.
+                                  In this case, the value is `0x3b`, which is `59` in decimal.
                               - title: Partition Leader Epoch
                                 length_in_bytes: 4
                                 explanation_markdown: |
@@ -275,7 +275,7 @@ segments:
 
                                   The CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.
 
-                                  In this case, the value is `0xd0186c1a`, which is `-803734502` in decimal.
+                                  In this case, the value is `0x63b6ff13`, which is `1672937235` in decimal.
                               - title: Attributes
                                 length_in_bytes: 2
                                 explanation_markdown: |
@@ -307,13 +307,13 @@ segments:
                                 explanation_markdown: |
                                   Base Timestamp is an 8-byte big-endian integer representing the timestamp of the first record in the batch.
 
-                                  In this case, the value is `0x019832418699`, which is `1736998490009` in decimal. This is an unix timestamp in milliseconds, which is `2024-12-04 18:54:50.009` in UTC.
+                                  In this case, the value is `0x0198380343f8`, which is `1753286394872` in decimal. This is an unix timestamp in milliseconds, which is `2025-07-23 03:59:54.872` in UTC.
                               - title: Max Timestamp
                                 length_in_bytes: 8
                                 explanation_markdown: |
                                   Max Timestamp is an 8-byte big-endian integer representing the maximum timestamp among all records in the batch.
 
-                                  In this case, the value is `0x019832418699`, which is `1736998490009` in decimal. This is an unix timestamp in milliseconds, which is `2024-12-04 18:54:50.009` in UTC.
+                                  In this case, the value is `0x0198380343f8`, which is `1753286394872` in decimal. This is an unix timestamp in milliseconds, which is `2025-07-23 03:59:54.872` in UTC.
                               - title: Producer ID
                                 length_in_bytes: 8
                                 explanation_markdown: |
@@ -347,7 +347,7 @@ segments:
                                     explanation_markdown: |
                                       A varint representing the length of the record.
 
-                                      In this case, the value is `0x2e`, which is `46` in decimal.
+                                      In this case, the value is `0x12`, which is `18` in decimal.
                                   - title: Attributes
                                     length_in_bytes: 1
                                     explanation_markdown: |
@@ -384,13 +384,13 @@ segments:
                                     explanation_markdown: |
                                       Value Length is a signed variable size integer indicating the length of the value of the record.
 
-                                      In this case, the value is `0x22`, which is `17` in decimal.
+                                      In this case, the value is `0x06`, which is `6` in decimal.
                                   - title: Value
-                                    length_in_bytes: 17
+                                    length_in_bytes: 6
                                     explanation_markdown: |
                                       Value is a byte array indicating the value of the record.
 
-                                      The record's value. In this case, it is "Hello from Eddie!".
+                                      The record's value. In this case, it is "bar" encoded in UTF-8.
                                   - title: Headers Count
                                     length_in_bytes: 1
                                     explanation_markdown: |
