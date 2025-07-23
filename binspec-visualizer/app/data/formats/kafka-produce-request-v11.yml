@@ -104,13 +104,13 @@ data:
   - 0x00
   - 0x00
   - 0x01
-  - 0x12 # Record - Length (varint, 0x12 => 18 bytes)
+  - 0x12 # Record - Length (varint, 0x12 => 18, so the length is 9 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
   - 0x00 # Record Attributes (1 byte, 0x00)
   - 0x00 # Timestamp Delta (varint, 0x00 => 0)
   - 0x00 # Offset Delta (varint, 0x00 => 0)
   - 0x01 # Key Length (varint, 0x01 => null key)
-  - 0x06 # Value Length (varint, 0x06 => 6 bytes)
-  - 0x62 # Value (6 bytes, "bar" in UTF-8) - b
+  - 0x06 # Value Length (varint, 0x06 => 6, so the length is 3 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+  - 0x62 # Value is a byte array of length 3 ("bar" in UTF-8) - b
   - 0x61 # a
   - 0x72 # r
   - 0x00 # Header Count (varint, 0x00 => no headers)
@@ -348,6 +348,7 @@ segments:
                                       A varint representing the length of the record.
 
                                       In this case, the value is `0x12`, which is `18` in decimal.
+                                      But the actual length is 9 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
                                   - title: Attributes
                                     length_in_bytes: 1
                                     explanation_markdown: |
@@ -385,8 +386,9 @@ segments:
                                       Value Length is a signed variable size integer indicating the length of the value of the record.
 
                                       In this case, the value is `0x06`, which is `6` in decimal.
+                                      But the actual length is 3 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
                                   - title: Value
-                                    length_in_bytes: 6
+                                    length_in_bytes: 3
                                     explanation_markdown: |
                                       Value is a byte array indicating the value of the record.
 

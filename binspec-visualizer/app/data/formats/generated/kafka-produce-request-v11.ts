@@ -321,7 +321,7 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A varint representing the length of the record.\n\nIn this case, the value is `0x12`, which is `18` in decimal.\n"
+                                      "explanation_markdown": "A varint representing the length of the record.\n\nIn this case, the value is `0x12`, which is `18` in decimal.\nBut the actual length is 9 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))\n"
                                     },
                                     {
                                       "title": "Attributes",
@@ -351,11 +351,11 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Value Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x06`, which is `6` in decimal.\n"
+                                      "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x06`, which is `6` in decimal.\nBut the actual length is 3 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))\n"
                                     },
                                     {
                                       "title": "Value",
-                                      "length_in_bytes": 6,
+                                      "length_in_bytes": 3,
                                       "explanation_markdown": "Value is a byte array indicating the value of the record.\n\nThe record's value. In this case, it is \"bar\" encoded in UTF-8.\n"
                                     },
                                     {
