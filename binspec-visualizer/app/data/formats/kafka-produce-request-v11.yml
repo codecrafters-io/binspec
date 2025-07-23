@@ -1,19 +1,19 @@
 name: Kafka Produce Request (v11)
 slug: kafka-produce-request-v11
 data:
-  - 0x00 # Message length (4 bytes, 0x0000008f in hex, 143 in decimal)
+  - 0x00 # Message length (4 bytes, 0x8f in hex, 143 in decimal)
   - 0x00
   - 0x00
   - 0x8f
-  - 0x00 # API key (2 bytes, 0x0000 in hex, 0 in decimal => Produce)
+  - 0x00 # API key (2 bytes, 0x00 in hex, 0 in decimal => Produce)
   - 0x00
-  - 0x00 # API version (2 bytes, 0x000b in hex, 11 in decimal)
+  - 0x00 # API version (2 bytes, 0x0b in hex, 11 in decimal)
   - 0x0b
-  - 0x00 # Correlation ID (4 bytes, 0x3fda6a51 in hex, 1071278673 in decimal)
+  - 0x00 # Correlation ID (4 bytes, 0x07 in hex, 7 in decimal)
   - 0x00
   - 0x00
   - 0x07
-  - 0x00 # Client ID length (2 bytes, 0x000c in hex, 12 in decimal) - compact string
+  - 0x00 # Client ID length (2 bytes, 0x0c in hex, 12 in decimal) - compact string
   - 0x0c
   - 0x6b # Client ID (12 bytes, "kafka-tester" in UTF-8)
   - 0x61
@@ -29,9 +29,9 @@ data:
   - 0x72
   - 0x00 # Empty tagged field array (1 byte, 0x00)
   - 0x01 # Transactional ID (nullable compact string) - null (1 byte, 0x01)
-  - 0x00 # Required Acks (2 bytes, 0x0001 in hex, 1 in decimal)
+  - 0x00 # Required Acks (2 bytes, 0x01 in hex, 1 in decimal)
   - 0x01
-  - 0x00 # Timeout (4 bytes, 0x00000000 in hex, 0 in decimal)
+  - 0x00 # Timeout (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
   - 0x00
@@ -55,12 +55,12 @@ data:
   - 0x75
   - 0x7a
   - 0x02 # Partition array length (1 byte, 0x02 in hex, 1 partition + 1 for compact array)
-  - 0x00 # Partition ID (4 bytes, 0x00000000 in hex, 0 in decimal)
+  - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
   - 0x00
   - 0x56 # RecordBatch length (1 byte, 0x56 in hex, 86 in decimal)
-  - 0x00 # Record Batch - Base Offset (8 bytes, 0x0000000000000000 => offset 0)
+  - 0x00 # Record Batch - Base Offset (8 bytes, 0x00 => offset 0)
   - 0x00
   - 0x00
   - 0x00
@@ -68,7 +68,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x00 # Batch Length (4 bytes, 0x00000049 in hex, 73 in decimal)
+  - 0x00 # Batch Length (4 bytes, 0x49 in hex, 73 in decimal)
   - 0x00
   - 0x00
   - 0x49
@@ -81,9 +81,9 @@ data:
   - 0x18
   - 0x6c
   - 0x1a
-  - 0x00 # Attributes (2 bytes, 0x0000 => no compression, create time, non-transactional, data batch)
+  - 0x00 # Attributes (2 bytes, 0x00 => no compression, create time, non-transactional, data batch)
   - 0x00
-  - 0x00 # Last Offset Delta (4 bytes, 0x00000000 => 0)
+  - 0x00 # Last Offset Delta (4 bytes, 0x00 => 0)
   - 0x00
   - 0x00
   - 0x00
@@ -95,7 +95,7 @@ data:
   - 0x41
   - 0x86
   - 0x99
-  - 0x00 # Max Timestamp (8 bytes, same as first timestamp)
+  - 0x00 # Max Timestamp (8 bytes, 0x019832418699 => Jan 1 1970 00:06:48.843155097)
   - 0x00
   - 0x01
   - 0x98
@@ -103,7 +103,7 @@ data:
   - 0x41
   - 0x86
   - 0x99
-  - 0x00 # Producer ID (8 bytes, 0x0000000000000000 => 0)
+  - 0x00 # Producer ID (8 bytes, 0x00 => 0)
   - 0x00
   - 0x00
   - 0x00
@@ -111,13 +111,13 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x00 # Producer Epoch (2 bytes, 0x0000 => 0)
+  - 0x00 # Producer Epoch (2 bytes, 0x000 => 0)
   - 0x00
-  - 0x00 # Base Sequence (4 bytes, 0x00000000 => 0)
+  - 0x00 # Base Sequence (4 bytes, 0x00 => 0)
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record Count (4 bytes, 0x00000001 => 1 record)
+  - 0x01 # Record Count (4 bytes, 0x01 => 1 record)
   - 0x00
   - 0x00
   - 0x00
