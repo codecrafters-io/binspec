@@ -282,7 +282,7 @@ const generated: GeneratedData = {
                                 {
                                   "title": "Last Offset Delta",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x00`, which is `0` in decimal, indicating that the last offset of this record batch is `0` higher than the base offset, so there is 1 record in the recordBatch.\n"
+                                  "explanation_markdown": "Last Offset Delta is a 4-byte big-endian integer indicating the difference between the last offset of this record batch and the base offset.\n\nIn this case, the value is `0x00`, which is `0` in decimal, meaning that the last record's offset relative to the base offset is `0`.\n"
                                 },
                                 {
                                   "title": "Base Timestamp",
