@@ -1,10 +1,10 @@
 name: Kafka Produce Request (v11)
 slug: kafka-produce-request-v11
 data:
-  - 0x00 # Message length (4 bytes, 0x8f in hex, 143 in decimal)
+  - 0x00 # Message length (4 bytes, 0x70 in hex, 112 in decimal)
   - 0x00
   - 0x00
-  - 0x8f
+  - 0x70
   - 0x00 # API key (2 bytes, 0x00 in hex, 0 in decimal => Produce)
   - 0x00
   - 0x00 # API version (2 bytes, 0x0b in hex, 11 in decimal)
@@ -13,20 +13,17 @@ data:
   - 0x00
   - 0x00
   - 0x07
-  - 0x00 # Client ID length (2 bytes, 0x0c in hex, 12 in decimal) - compact string
-  - 0x0c
-  - 0x6b # Client ID (12 bytes, "kafka-tester" in UTF-8)
-  - 0x61
-  - 0x66
-  - 0x6b
-  - 0x61
-  - 0x2d
-  - 0x74
-  - 0x65
-  - 0x73
-  - 0x74
-  - 0x65
-  - 0x72
+  - 0x00 # Client ID length (2 bytes, 0x09 in hex, 9 in decimal) - compact string
+  - 0x09
+  - 0x6b # Client ID (9 bytes, "kafka-cli" in UTF-8): k
+  - 0x61 # a
+  - 0x66 # f
+  - 0x6b # k
+  - 0x61 # a
+  - 0x2d # -
+  - 0x63 # c
+  - 0x6c # l
+  - 0x69 # i
   - 0x00 # Empty tagged field array (1 byte, 0x00)
   - 0x01 # Transactional ID (nullable compact string) - null (1 byte, 0x01)
   - 0x00 # Required Acks (2 bytes, 0x01 in hex, 1 in decimal)
@@ -35,31 +32,17 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x02 # TopicResponse array length (1 byte, 0x02 in hex, 2 in decimal => 1 topic + 1 for compact array)
-  - 0x12 # Topic name length (1 byte, 0x12 in hex, 18 in decimal including +1 for compact)
-  - 0x75 # Topic name (17 bytes, "unknown-topic-quz" in UTF-8)
-  - 0x6e
-  - 0x6b
-  - 0x6e
+  - 0x02 # Topic data array length (1 byte, 0x02 in hex, 2 in decimal => 1 topic + 1 for compact array)
+  - 0x04 # Topic name length (1 byte, 0x04 in hex, 4 in decimal including +1 for compact)
+  - 0x66 # Topic name (3 bytes, "foo" in UTF-8)
   - 0x6f
-  - 0x77
-  - 0x6e
-  - 0x2d
-  - 0x74
   - 0x6f
-  - 0x70
-  - 0x69
-  - 0x63
-  - 0x2d
-  - 0x71
-  - 0x75
-  - 0x7a
   - 0x02 # Partition array length (1 byte, 0x02 in hex, 1 partition + 1 for compact array)
   - 0x00 # Partition ID (4 bytes, 0x00 in hex, 0 in decimal)
   - 0x00
   - 0x00
   - 0x00
-  - 0x56 # RecordBatch length (1 byte, 0x56 in hex, 86 in decimal)
+  - 0x48 # RecordBatch length (1 byte, 0x48 in hex, 72 in decimal)
   - 0x00 # Record Batch - Base Offset (8 bytes, 0x00 => offset 0)
   - 0x00
   - 0x00
@@ -68,41 +51,41 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x00 # Batch Length (4 bytes, 0x49 in hex, 73 in decimal)
+  - 0x00 # Batch Length (4 bytes, 0x3b in hex, 59 in decimal)
   - 0x00
   - 0x00
-  - 0x49
+  - 0x3b
   - 0xff # Partition Leader Epoch (4 bytes, 0xffffffff => -1)
   - 0xff
   - 0xff
   - 0xff
   - 0x02 # Magic Byte (1 byte, 0x02 => v2)
-  - 0xd0 # CRC32 (4 bytes, 0xd0186c1a)
-  - 0x18
-  - 0x6c
-  - 0x1a
+  - 0x63 # CRC32 (4 bytes, 0x63b6ff13)
+  - 0xb6
+  - 0xff
+  - 0x13
   - 0x00 # Attributes (2 bytes, 0x00 => no compression, create time, non-transactional, data batch)
   - 0x00
   - 0x00 # Last Offset Delta (4 bytes, 0x00 => 0)
   - 0x00
   - 0x00
   - 0x00
-  - 0x00 # First Timestamp (8 bytes, 0x019832418699 => Jan 1 1970 00:06:48.843155097)
+  - 0x00 # First Timestamp (8 bytes, 0x0198380343f8 => Jul 23 2025 21:37:18)
   - 0x00
   - 0x01
   - 0x98
-  - 0x32
-  - 0x41
-  - 0x86
-  - 0x99
-  - 0x00 # Max Timestamp (8 bytes, 0x019832418699 => Jan 1 1970 00:06:48.843155097)
+  - 0x38
+  - 0x03
+  - 0x43
+  - 0xf8
+  - 0x00 # Max Timestamp (8 bytes, 0x0198380343f8 => Jul 23 2025 21:37:18)
   - 0x00
   - 0x01
   - 0x98
-  - 0x32
-  - 0x41
-  - 0x86
-  - 0x99
+  - 0x38
+  - 0x03
+  - 0x43
+  - 0xf8
   - 0x00 # Producer ID (8 bytes, 0x00 => 0)
   - 0x00
   - 0x00
@@ -117,33 +100,19 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record Count (4 bytes, 0x01 => 1 record)
+  - 0x00 # Record Count (4 bytes, 0x01 => 1 record)
   - 0x00
   - 0x00
-  - 0x00
-  - 0x2e # Record - Length (varint, 0x2e => 46 bytes)
+  - 0x01
+  - 0x12 # Record - Length (varint, 0x12 => 18 bytes)
   - 0x00 # Record Attributes (1 byte, 0x00)
   - 0x00 # Timestamp Delta (varint, 0x00 => 0)
   - 0x00 # Offset Delta (varint, 0x00 => 0)
   - 0x01 # Key Length (varint, 0x01 => null key)
-  - 0x22 # Value Length (varint, 0x22 => 17 bytes)
-  - 0x48 # Value (17 bytes, "Hello from Eddie!" in UTF-8)
-  - 0x65
-  - 0x6c
-  - 0x6c
-  - 0x6f
-  - 0x20
-  - 0x66
-  - 0x72
-  - 0x6f
-  - 0x6d
-  - 0x20
-  - 0x45
-  - 0x64
-  - 0x64
-  - 0x69
-  - 0x65
-  - 0x21
+  - 0x06 # Value Length (varint, 0x06 => 6 bytes)
+  - 0x62 # Value (6 bytes, "bar" in UTF-8) - b
+  - 0x61 # a
+  - 0x72 # r
   - 0x00 # Header Count (varint, 0x00 => no headers)
   - 0x00 # Partition tagged field array (1 byte, 0x00)
   - 0x00 # Topic tagged field array (1 byte, 0x00)
