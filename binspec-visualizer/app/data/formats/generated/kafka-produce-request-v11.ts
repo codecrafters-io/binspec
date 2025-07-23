@@ -126,7 +126,7 @@ const generated: GeneratedData = {
     {
       "title": "Message Size",
       "length_in_bytes": 4,
-      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.\n\nIn this case, the value is 0x70 (112 in decimal) indicating that the rest of the message is 143 bytes long.\n"
+      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.\n\nIn this case, the value is 0x70 (112 in decimal) indicating that the rest of the message is 112 bytes long.\n"
     },
     {
       "title": "Request Header (v2)",
@@ -158,7 +158,7 @@ const generated: GeneratedData = {
             },
             {
               "title": "Contents",
-              "length_in_bytes": 12,
+              "length_in_bytes": 9,
               "explanation_markdown": "The Client ID is a variable-length string identifying the client. In this case, it is \"kafka-cli\" encoded in UTF-8.\n"
             }
           ]
@@ -213,7 +213,7 @@ const generated: GeneratedData = {
                     },
                     {
                       "title": "String Content",
-                      "length_in_bytes": 17,
+                      "length_in_bytes": 3,
                       "explanation_markdown": "The actual topic name string. In this case, it is \"foo\" encoded in UTF-8.\n"
                     }
                   ]

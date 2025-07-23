@@ -123,7 +123,7 @@ segments:
     explanation_markdown: |
       Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.
 
-      In this case, the value is 0x70 (112 in decimal) indicating that the rest of the message is 143 bytes long.
+      In this case, the value is 0x70 (112 in decimal) indicating that the rest of the message is 112 bytes long.
   - title: Request Header (v2)
     explanation_markdown: |
       The Request Header structure is common across all Kafka requests. It contains information on the API Key this request is for, the version of that API, and more.
@@ -157,7 +157,7 @@ segments:
             explanation_markdown: |
               The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x09 (9).
           - title: Contents
-            length_in_bytes: 12
+            length_in_bytes: 9
             explanation_markdown: |
               The Client ID is a variable-length string identifying the client. In this case, it is "kafka-cli" encoded in UTF-8.
       - title: Tag buffer
@@ -209,7 +209,7 @@ segments:
                     explanation_markdown: |
                       The length of the topic name compact string + 1, represented as an unsigned varint. Here, it is 0x04 (4), indicating that the length of the topic name is 3.
                   - title: String Content
-                    length_in_bytes: 17
+                    length_in_bytes: 3
                     explanation_markdown: |
                       The actual topic name string. In this case, it is "foo" encoded in UTF-8.
               - title: Partitions Array
