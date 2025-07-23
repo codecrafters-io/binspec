@@ -111,7 +111,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x00 # Producer Epoch (2 bytes, 0x000 => 0)
+  - 0x00 # Producer Epoch (2 bytes, 0x00 => 0)
   - 0x00
   - 0x00 # Base Sequence (4 bytes, 0x00 => 0)
   - 0x00
@@ -164,19 +164,19 @@ segments:
         explanation_markdown: |
           The API key is a 2-byte integer that identifies the API Key that this request is for.
 
-          Here it is 0x0000 (0), which corresponds to Produce.
+          Here it is 0x00 (0), which corresponds to Produce.
       - title: API Version
         length_in_bytes: 2
         explanation_markdown: |
           The API version is a 2-byte integer indicating the version of the API being used.
 
-          Here, it is 0x000b (11) which corresponds to v11 of the Produce API.
+          Here, it is 0x0b (11) which corresponds to v11 of the Produce API.
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
           The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.
 
-          Here, it is 0x00000007 (7).
+          Here, it is 0x07 (7).
       - title: Client ID
         explanation_markdown: |
           The Client ID is a string identifying the client.
@@ -186,7 +186,7 @@ segments:
           - title: Length
             length_in_bytes: 2
             explanation_markdown: |
-              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x000c (12).
+              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0c (12).
           - title: Contents
             length_in_bytes: 12
             explanation_markdown: |
@@ -210,13 +210,13 @@ segments:
         explanation_markdown: |
           The number of acknowledgments the producer requires the leader to have received before considering a request complete. Allowed values: 0 for no acknowledgments, 1 for only the leader and -1 for the full ISR.
 
-          Here, it is 0x0001 (1) indicating leader acknowledgment only.
+          Here, it is 0x01 (1) indicating leader acknowledgment only.
       - title: Timeout
         length_in_bytes: 4
         explanation_markdown: |
           A 4-byte integer that represents the timeout to await a response in milliseconds.
 
-          Here, it is 0x00000000 (0 in decimal), indicating no timeout.
+          Here, it is 0x00 (0 in decimal), indicating no timeout.
       - title: Topic Data Array
         explanation_markdown: |
           An array of topics to produce to.
@@ -260,7 +260,7 @@ segments:
                         explanation_markdown: |
                           A 4-byte integer representing the partition index.
 
-                          Here, it is 0x00000000 (0), which corresponds to partition 0.
+                          Here, it is 0x00 (0), which corresponds to partition 0.
                       - title: Records Data
                         explanation_markdown: |
                           The record data to be produced, containing a record batch.
