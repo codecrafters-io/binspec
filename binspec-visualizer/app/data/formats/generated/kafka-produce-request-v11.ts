@@ -8,7 +8,7 @@ const generated: GeneratedData = {
     0,
     0,
     0,
-    143,
+    112,
     0,
     0,
     0,
@@ -18,136 +18,105 @@ const generated: GeneratedData = {
     0,
     7,
     0,
-    12,
+    9,
     107,
     97,
     102,
     107,
     97,
     45,
-    116,
-    101,
-    115,
-    116,
-    101,
-    114,
-    0,
-    1,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    2,
-    18,
-    117,
-    110,
-    107,
-    110,
-    111,
-    119,
-    110,
-    45,
-    116,
-    111,
-    112,
-    105,
     99,
-    45,
-    113,
-    117,
-    122,
-    2,
-    0,
-    0,
-    0,
-    0,
-    86,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    73,
-    255,
-    255,
-    255,
-    255,
-    2,
-    208,
-    24,
     108,
-    26,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    152,
-    50,
-    65,
-    134,
-    153,
-    0,
-    0,
-    1,
-    152,
-    50,
-    65,
-    134,
-    153,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    46,
-    0,
-    0,
-    0,
-    1,
-    34,
-    72,
-    101,
-    108,
-    108,
-    111,
-    32,
-    102,
-    114,
-    111,
-    109,
-    32,
-    69,
-    100,
-    100,
     105,
-    101,
-    33,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    2,
+    4,
+    102,
+    111,
+    111,
+    2,
+    0,
+    0,
+    0,
+    0,
+    72,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    59,
+    255,
+    255,
+    255,
+    255,
+    2,
+    99,
+    182,
+    255,
+    19,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    152,
+    56,
+    3,
+    67,
+    248,
+    0,
+    0,
+    1,
+    152,
+    56,
+    3,
+    67,
+    248,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    18,
+    0,
+    0,
+    0,
+    1,
+    6,
+    98,
+    97,
+    114,
     0,
     0,
     0,
@@ -157,7 +126,7 @@ const generated: GeneratedData = {
     {
       "title": "Message Size",
       "length_in_bytes": 4,
-      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.\n\nIn this case, the value is 0x8f (143 in decimal) indicating that the rest of the message is 143 bytes long.\n"
+      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.\n\nIn this case, the value is 0x70 (112 in decimal) indicating that the rest of the message is 143 bytes long.\n"
     },
     {
       "title": "Request Header (v2)",
@@ -166,31 +135,31 @@ const generated: GeneratedData = {
         {
           "title": "API Key",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x0000 (0), which corresponds to Produce.\n"
+          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x00 (0), which corresponds to Produce.\n"
         },
         {
           "title": "API Version",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API version is a 2-byte integer indicating the version of the API being used.\n\nHere, it is 0x000b (11) which corresponds to v11 of the Produce API.\n"
+          "explanation_markdown": "The API version is a 2-byte integer indicating the version of the API being used.\n\nHere, it is 0x0b (11) which corresponds to v11 of the Produce API.\n"
         },
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x00000007 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x07 (7).\n"
         },
         {
           "title": "Client ID",
-          "explanation_markdown": "The Client ID is a string identifying the client.\n\nHere, the value is \"kafka-tester\".\n",
+          "explanation_markdown": "The Client ID is a string identifying the client.\n\nHere, the value is \"kafka-cli\".\n",
           "children": [
             {
               "title": "Length",
               "length_in_bytes": 2,
-              "explanation_markdown": "The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x000c (12).\n"
+              "explanation_markdown": "The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x09 (9).\n"
             },
             {
               "title": "Contents",
               "length_in_bytes": 12,
-              "explanation_markdown": "The Client ID is a variable-length string identifying the client. In this case, it is \"kafka-tester\" encoded in UTF-8.\n"
+              "explanation_markdown": "The Client ID is a variable-length string identifying the client. In this case, it is \"kafka-cli\" encoded in UTF-8.\n"
             }
           ]
         },
@@ -213,12 +182,12 @@ const generated: GeneratedData = {
         {
           "title": "Required Acks",
           "length_in_bytes": 2,
-          "explanation_markdown": "The number of acknowledgments the producer requires the leader to have received before considering a request complete. Allowed values: 0 for no acknowledgments, 1 for only the leader and -1 for the full ISR.\n\nHere, it is 0x0001 (1) indicating leader acknowledgment only.\n"
+          "explanation_markdown": "The number of acknowledgments the producer requires the leader to have received before considering a request complete. Allowed values: 0 for no acknowledgments, 1 for only the leader and -1 for the full ISR.\n\nHere, it is 0x01 (1) indicating leader acknowledgment only.\n"
         },
         {
           "title": "Timeout",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that represents the timeout to await a response in milliseconds.\n\nHere, it is 0x00000000 (0 in decimal), indicating no timeout.\n"
+          "explanation_markdown": "A 4-byte integer that represents the timeout to await a response in milliseconds.\n\nHere, it is 0x00 (0 in decimal), indicating no timeout.\n"
         },
         {
           "title": "Topic Data Array",
@@ -240,12 +209,12 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the topic name compact string + 1, represented as an unsigned varint. Here, it is 0x12 (18), indicating that the length of the topic name is 17.\n"
+                      "explanation_markdown": "The length of the topic name compact string + 1, represented as an unsigned varint. Here, it is 0x04 (4), indicating that the length of the topic name is 3.\n"
                     },
                     {
                       "title": "String Content",
                       "length_in_bytes": 17,
-                      "explanation_markdown": "The actual topic name string. In this case, it is \"unknown-topic-quz\" encoded in UTF-8.\n"
+                      "explanation_markdown": "The actual topic name string. In this case, it is \"foo\" encoded in UTF-8.\n"
                     }
                   ]
                 },
@@ -265,7 +234,7 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition ID",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the partition index.\n\nHere, it is 0x00000000 (0), which corresponds to partition 0.\n"
+                          "explanation_markdown": "A 4-byte integer representing the partition index.\n\nHere, it is 0x00 (0), which corresponds to partition 0.\n"
                         },
                         {
                           "title": "Records Data",
@@ -274,7 +243,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Records Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "An unsigned varint representing the number of bytes of record batch data that follows. Here, 0x56 indicates 86 bytes.\n"
+                              "explanation_markdown": "An unsigned varint representing the number of bytes of record batch data that follows. Here, 0x48 indicates 72 bytes.\n"
                             },
                             {
                               "title": "Record Batch",
@@ -288,7 +257,7 @@ const generated: GeneratedData = {
                                 {
                                   "title": "Batch Length",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nThis value excludes the Base Offset (8 bytes) and the Batch Length (4 bytes) itself, but includes all other bytes in the record batch.\n\nIn this case, the value is `0x49`, which is `73` in decimal.\n"
+                                  "explanation_markdown": "Batch Length is a 4-byte big-endian integer indicating the length of the entire record batch in bytes.\n\nThis value excludes the Base Offset (8 bytes) and the Batch Length (4 bytes) itself, but includes all other bytes in the record batch.\n\nIn this case, the value is `0x3b`, which is `59` in decimal.\n"
                                 },
                                 {
                                   "title": "Partition Leader Epoch",
@@ -303,7 +272,7 @@ const generated: GeneratedData = {
                                 {
                                   "title": "CRC",
                                   "length_in_bytes": 4,
-                                  "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.\n\nThe CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0xd0186c1a`, which is `-803734502` in decimal.\n"
+                                  "explanation_markdown": "CRC is a 4-byte big-endian integer indicating the CRC32-C checksum of the record batch.\n\nThe CRC is computed over the data following the CRC field to the end of the record batch. The CRC32-C (Castagnoli) polynomial is used for the computation.\n\nIn this case, the value is `0x63b6ff13`, which is `1672937235` in decimal.\n"
                                 },
                                 {
                                   "title": "Attributes",
@@ -318,12 +287,12 @@ const generated: GeneratedData = {
                                 {
                                   "title": "Base Timestamp",
                                   "length_in_bytes": 8,
-                                  "explanation_markdown": "Base Timestamp is an 8-byte big-endian integer representing the timestamp of the first record in the batch.\n\nIn this case, the value is `0x019832418699`, which is `1736998490009` in decimal. This is an unix timestamp in milliseconds, which is `2024-12-04 18:54:50.009` in UTC.\n"
+                                  "explanation_markdown": "Base Timestamp is an 8-byte big-endian integer representing the timestamp of the first record in the batch.\n\nIn this case, the value is `0x0198380343f8`, which is `1753286394872` in decimal. This is an unix timestamp in milliseconds, which is `2025-07-23 03:59:54.872` in UTC.\n"
                                 },
                                 {
                                   "title": "Max Timestamp",
                                   "length_in_bytes": 8,
-                                  "explanation_markdown": "Max Timestamp is an 8-byte big-endian integer representing the maximum timestamp among all records in the batch.\n\nIn this case, the value is `0x019832418699`, which is `1736998490009` in decimal. This is an unix timestamp in milliseconds, which is `2024-12-04 18:54:50.009` in UTC.\n"
+                                  "explanation_markdown": "Max Timestamp is an 8-byte big-endian integer representing the maximum timestamp among all records in the batch.\n\nIn this case, the value is `0x0198380343f8`, which is `1753286394872` in decimal. This is an unix timestamp in milliseconds, which is `2025-07-23 03:59:54.872` in UTC.\n"
                                 },
                                 {
                                   "title": "Producer ID",
@@ -352,7 +321,7 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A varint representing the length of the record.\n\nIn this case, the value is `0x2e`, which is `46` in decimal.\n"
+                                      "explanation_markdown": "A varint representing the length of the record.\n\nIn this case, the value is `0x12`, which is `18` in decimal.\n"
                                     },
                                     {
                                       "title": "Attributes",
@@ -382,12 +351,12 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Value Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x22`, which is `17` in decimal.\n"
+                                      "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x06`, which is `6` in decimal.\n"
                                     },
                                     {
                                       "title": "Value",
-                                      "length_in_bytes": 17,
-                                      "explanation_markdown": "Value is a byte array indicating the value of the record.\n\nThe record's value. In this case, it is \"Hello from Eddie!\".\n"
+                                      "length_in_bytes": 6,
+                                      "explanation_markdown": "Value is a byte array indicating the value of the record.\n\nThe record's value. In this case, it is \"bar\" encoded in UTF-8.\n"
                                     },
                                     {
                                       "title": "Headers Count",
