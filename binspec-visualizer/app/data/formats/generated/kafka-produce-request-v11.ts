@@ -177,7 +177,7 @@ const generated: GeneratedData = {
         {
           "title": "Transactional ID",
           "length_in_bytes": 1,
-          "explanation_markdown": "The Transactional ID is a nullable compact string. A value of 0x01 indicates null (no transactional ID).\n\nIn this case, the value is 0x01, indicating that the producer is not transactional.\n"
+          "explanation_markdown": "The Transactional ID is a nullable compact string. A value of 0x01 indicates null (no transactional ID).\n\nIn this case, the value is 0x01, but after ZigZag decoding, it is -1, indicating that the producer is not transactional.\n"
         },
         {
           "title": "Required Acks",
@@ -321,7 +321,7 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "A varint representing the length of the record.\n\nIn this case, the value is `0x12`, which is `18` in decimal.\nBut the actual length is 9 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))\n"
+                                      "explanation_markdown": "A varint representing the length of the record.\n\nIn this case, the value is `0x12`, which is `18` in decimal.\nBut, after ZigZag decoding, the actual value is 9 (refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))\n"
                                     },
                                     {
                                       "title": "Attributes",
@@ -341,7 +341,7 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Key Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "Key Length is a signed variable size integer indicating the length of the key of the record.\n\nIn this case, the value is `0x01`, which is `-1` in decimal after parsing.\nThis is a special value that indicates that the key is null.\n"
+                                      "explanation_markdown": "Key Length is a signed variable size integer indicating the length of the key of the record.\n\nIn this case, the value is `0x01`, which is `-1` after ZigZag decoding. This is a special value that indicates that the key is null.\n"
                                     },
                                     {
                                       "title": "Key",
@@ -351,7 +351,7 @@ const generated: GeneratedData = {
                                     {
                                       "title": "Value Length",
                                       "length_in_bytes": 1,
-                                      "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x06`, which is `6` in decimal.\nBut the actual length is 3 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))\n"
+                                      "explanation_markdown": "Value Length is a signed variable size integer indicating the length of the value of the record.\n\nIn this case, the value is `0x06`, which is `6` in decimal.\nBut, after ZigZag decoding, the actual value is 3 (refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))\n"
                                     },
                                     {
                                       "title": "Value",

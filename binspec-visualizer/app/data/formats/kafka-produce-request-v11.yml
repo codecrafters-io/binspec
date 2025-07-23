@@ -25,7 +25,7 @@ data:
   - 0x6c # l
   - 0x69 # i
   - 0x00 # Empty tagged field array (1 byte, 0x00)
-  - 0x01 # Transactional ID (nullable compact string) - null (1 byte, 0x01)
+  - 0x01 # Transactional ID (nullable compact string) - null (1 byte, 0x01, which is -1 after ZigZag decoding)
   - 0x00 # Required Acks (2 bytes, 0x01 in hex, 1 in decimal)
   - 0x01
   - 0x00 # Timeout (4 bytes, 0x00 in hex, 0 in decimal)
@@ -173,7 +173,7 @@ segments:
         explanation_markdown: |
           The Transactional ID is a nullable compact string. A value of 0x01 indicates null (no transactional ID).
 
-          In this case, the value is 0x01, indicating that the producer is not transactional.
+          In this case, the value is 0x01, but after ZigZag decoding, it is -1, indicating that the producer is not transactional.
       - title: Required Acks
         length_in_bytes: 2
         explanation_markdown: |
@@ -348,7 +348,7 @@ segments:
                                       A varint representing the length of the record.
 
                                       In this case, the value is `0x12`, which is `18` in decimal.
-                                      But the actual length is 9 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+                                      But, after ZigZag decoding, the actual value is 9 (refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
                                   - title: Attributes
                                     length_in_bytes: 1
                                     explanation_markdown: |
@@ -372,8 +372,7 @@ segments:
                                     explanation_markdown: |
                                       Key Length is a signed variable size integer indicating the length of the key of the record.
 
-                                      In this case, the value is `0x01`, which is `-1` in decimal after parsing.
-                                      This is a special value that indicates that the key is null.
+                                      In this case, the value is `0x01`, which is `-1` after ZigZag decoding. This is a special value that indicates that the key is null.
                                   - title: Key
                                     length_in_bytes: 0
                                     explanation_markdown: |
@@ -386,7 +385,7 @@ segments:
                                       Value Length is a signed variable size integer indicating the length of the value of the record.
 
                                       In this case, the value is `0x06`, which is `6` in decimal.
-                                      But the actual length is 3 bytes (using zigzag encoding, refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
+                                      But, after ZigZag decoding, the actual value is 3 (refer to: https://protobuf.dev/programming-guides/encoding/#signed-ints))
                                   - title: Value
                                     length_in_bytes: 3
                                     explanation_markdown: |
