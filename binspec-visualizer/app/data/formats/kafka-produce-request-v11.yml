@@ -415,7 +415,7 @@ data:
   - 0x00
     # Tag Buffer (Topic)
   - 0x00
-# Tag Buffer (Response)
+# Tag Buffer (Body)
   - 0x00
 segments:
   - title: Message Size
@@ -1030,7 +1030,7 @@ segments:
                 length_in_bytes: 1
                 explanation_markdown: |
                   Tag buffer for the topic. Value is 0x00 (empty).
-      - title: Request Tag Buffer
+      - title: Tag Buffer
         length_in_bytes: 1
         explanation_markdown: |
-          Tag buffer for the entire request. Value is 0x00 (empty).
+          Tag buffer for the request body. Value is 0x00 (empty).
