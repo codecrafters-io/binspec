@@ -1,0 +1,1036 @@
+name: Kafka Produce Request (v11)
+slug: kafka-produce-request-v11
+
+# Produce Request (Version: 11) => transactional_id acks timeout_ms [topic_data] _tagged_fields
+#   transactional_id => COMPACT_NULLABLE_STRING
+#   acks => INT16
+#   timeout_ms => INT32
+#   topic_data => name [partition_data] _tagged_fields
+#     name => COMPACT_STRING
+#     partition_data => index records _tagged_fields
+#       index => INT32
+#       records => COMPACT_RECORDS
+data:
+# Message Length: 299 [4 bytes big-endian integer]
+  - 0x00
+  - 0x00
+  - 0x01
+  - 0x2b
+# API Key: Produce (0) [2 bytes integer]
+  - 0x00
+  - 0x00
+# API Version: 11 [2 byte integer]
+  - 0x00
+  - 0x0b
+# Correlation ID: 858644801 [4 byte integer]
+  - 0x33
+  - 0x2d
+  - 0xe1
+  - 0x41
+# Client ID: kafka-tester
+  # Client ID: length [2 byte integer]
+  - 0x00
+  - 0x0c
+  # Client ID: Contents [UTF-8 string]
+  - 0x6b
+  - 0x61
+  - 0x66
+  - 0x6b
+  - 0x61
+  - 0x2d
+  - 0x74
+  - 0x65
+  - 0x73
+  - 0x74
+  - 0x65
+  - 0x72
+# TAG BUFFER (An empty tagged field array, represented by a single byte of value 0x00)
+  - 0x00
+# Transaction ID: Null [COMPACT_NULLABLE_STRING]
+  - 0x00
+# Required ACKS: Full ISR (-1) [2 bytes integer]
+  - 0xff
+  - 0xff
+# Timeout: 30000 [4 Bytes integer ]
+  - 0x00
+  - 0x00
+  - 0x75
+  - 0x30
+# Topic Array Length [Unsigned Varint (+1)]: Actual Length: 2
+  - 0x03
+  # Topic[0]
+    # Topic Name [COMPACT_STRING]
+      # Topic Name Length (+1): Actual length: 3
+  - 0x04
+      # Topic Name Value: "qux"
+  - 0x71
+  - 0x75
+  - 0x78
+    # Partions Array Length (+1) -> Actual length: 2
+  - 0x03
+      # Partition[0]
+        # Partition ID [4 bytes integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+        # RecordBatch Length: COMPACT_ARRAY_LENGTH
+  - 0x50
+        # RecordBatch[0]
+          # Offset [8 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Message Size [4 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x43
+          # Partition Leader Epoch [4 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Magic Byte [1 byte]
+  - 0x02
+          # CRC32: 0x936662d6 [4 byte integer]
+  - 0x93
+  - 0x66
+  - 0x62
+  - 0xd6
+          # Attribute [2 byte integer]
+  - 0x00
+  - 0x00
+          # Last Offset Delta [4 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # First Timestamp: Jan  1, 1970 00:00:00.000000000 UTC [8 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Last Timestamp: Jan  1, 1970 00:00:00.000000000 UTC [8 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Producer ID: -1 [8 byte integer]
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+          # Producer Epoch: -1 [2 byte integer]
+  - 0xff
+  - 0xff
+          # Base Sequence: -1 [4 byte integer]
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+          # Record Length: 1 [4 byte integer]
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+          # Record[0]
+            # Record Size [VARINT]
+  - 0x22
+            # Record Atrributes [1 byte integer]
+  - 0x00
+            # Timestamp Delta: Jan 21, 1970 08:00:24.567000000 UTC (Varint)
+  - 0xee
+  - 0x8f
+  - 0xb8
+  - 0x8b
+  - 0x0d
+            # Offset[VarInt]
+  - 0x00
+            # Key: NULL [Compact Bytes]
+  - 0x01
+
+            # Value: "messg 0"
+              # Value Length: [VarINT]
+  - 0x0e
+              # Value: "messg 0"
+  - 0x6d
+  - 0x65
+  - 0x73
+  - 0x73
+  - 0x67
+  - 0x20
+  - 0x30
+            # Headers
+  - 0x00
+      # Partition[1]
+        # Partition ID
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+        # Record Batch Size
+  - 0x50
+        # Record Batch[0]
+          # Offset
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Message Size: 67
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x43
+          # Leader Epoch: 0
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Magic Byte: 2
+  - 0x02
+          # CRC32: 0x80c4faa1
+  - 0x80
+  - 0xc4
+  - 0xfa
+  - 0xa1
+          # Attributes: 0
+  - 0x00
+  - 0x00
+          # Last Offset Delta: 0
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # First Timestamp: Jan  1, 1970 00:00:00.000000000 UTC
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Last Timestamp: Jan  1, 1970 00:00:00.000000000 UTC
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+          # Producer ID: -1
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+          # Producer Epoch: -1
+  - 0xff
+  - 0xff
+          # Base Sequence: -1
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+          # Number of Records: 1
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+          # Record[0]
+            # Record Size
+  - 0x22
+            # Record Attributes
+  - 0x00
+            # Timestamp: Jan 21, 1970 08:00:24.567000000 UTC
+  - 0xee
+  - 0x8f
+  - 0xb8
+  - 0x8b
+  - 0x0d
+            # Offset: 0
+  - 0x00
+            # Key: Null
+  - 0x01
+  - 0x0e
+            # Value: "messg 1"
+  - 0x6d
+  - 0x65
+  - 0x73
+  - 0x73
+  - 0x67
+  - 0x20
+  - 0x31
+            # Headers
+  - 0x00
+      # Tag Buffer (Partition)
+  - 0x00
+  # Tag Buffer (Topic)
+  - 0x00
+  # Topic[1]
+    # Topic Name
+  - 0x04
+  - 0x70
+  - 0x61
+  - 0x78
+    # Partition Array Length[1]
+  - 0x02
+    # Partition[0]
+      # Partition ID
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+      # Record Batch Size
+  - 0x50
+      # Record Batch[0]
+        # Offset
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+        # Message Size
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x43
+        # Partition Leader Epoch
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+        # Magic Byte
+  - 0x02
+        # CRC32: 0xb4235238
+  - 0xb4
+  - 0x23
+  - 0x52
+  - 0x38
+        # Attribute
+  - 0x00
+  - 0x00
+        # Last Offset Delta
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+        # First Timestamp: Jan  1, 1970 00:00:00.000000000 UTC
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+        # Last Timestamp: Jan  1, 1970 00:00:00.000000000 UTC
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x00
+        # Producer ID: -1
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+        # Producer Epoch
+  - 0xff
+  - 0xff
+        # Base Sequence: -1
+  - 0xff
+  - 0xff
+  - 0xff
+  - 0xff
+        # Records Array Length: 1
+  - 0x00
+  - 0x00
+  - 0x00
+  - 0x01
+        # Record[0]
+          # Record Size
+  - 0x22
+          # Record Attributes
+  - 0x00
+          # Timestamp: Jan 21, 1970 08:00:24.567000000 UTC
+  - 0xee
+  - 0x8f
+  - 0xb8
+  - 0x8b
+  - 0x0d
+          # Offset
+  - 0x00
+  - 0x01
+          # Key: null
+  - 0x0e
+          # Value: "messg 2"
+  - 0x6d
+  - 0x65
+  - 0x73
+  - 0x73
+  - 0x67
+  - 0x20
+  - 0x32
+          # Headers
+  - 0x00
+        # Tag Buffer (Record Batch)
+  - 0x00
+    # Tag Buffer (Topic)
+  - 0x00
+# Tag Buffer (Response)
+  - 0x00
+segments:
+  - title: Message Size
+    length_in_bytes: 4
+    explanation_markdown: |
+      Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka requests and responses start with this field.
+      In this case, the value is 0x012b (299 in decimal) indicating that the rest of the message is 299 bytes long.
+  - title: Request Header (v2)
+    length_in_bytes: 23
+    explanation_markdown: |
+      The Request Header structure is common across all Kafka requests. It contains information on the API Key this request is for, the version of that API, and more.
+    children:
+      - title: API Key
+        length_in_bytes: 2
+        explanation_markdown: |
+          The API key is a 2-byte integer that identifies the API Key that this request is for.
+
+          Here it is 0x00 (0), which corresponds to Produce.
+      - title: API Version
+        length_in_bytes: 2
+        explanation_markdown: |
+          The API version is a 2-byte integer indicating the version of the API being used.
+
+          Here, it is 0x0b (11) which corresponds to v11 of the Produce API.
+      - title: Correlation ID
+        length_in_bytes: 4
+        explanation_markdown: |
+          The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.
+
+          Here, it is 0x332de141 (858644801).
+      - title: Client ID
+        length_in_bytes: 14
+        explanation_markdown: |
+          The Client ID is a string identifying the client.
+
+          Here, the value is "kafka-tester".
+        children:
+          - title: Length
+            length_in_bytes: 2
+            explanation_markdown: |
+              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x000c (12).
+          - title: Contents
+            length_in_bytes: 12
+            explanation_markdown: |
+              The Client ID is a variable-length string identifying the client. In this case, it is "kafka-tester" encoded in UTF-8.
+      - title: Tag buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          An empty tagged field array, represented by a single byte of value 0x00.
+  - title: Produce Request Body (v11)
+    length_in_bytes: 276
+    explanation_markdown: |
+      The request body contains fields specific to the Produce request.
+    children:
+      - title: Transaction ID
+        length_in_bytes: 1
+        explanation_markdown: |
+          The Transaction ID as a COMPACT_NULLABLE_STRING. A value of 0x00 indicates null (no transaction ID).
+      - title: Required Acks
+        length_in_bytes: 2
+        explanation_markdown: |
+          Required Acks is a 2-byte integer indicating the number of acknowledgments the producer requires the leader to have received before considering a request complete.
+
+          Here it is 0xffff (-1), which means the producer requires acknowledgment from all in-sync replicas.
+      - title: Timeout
+        length_in_bytes: 4
+        explanation_markdown: |
+          Timeout is a 4-byte integer indicating the time in milliseconds to wait for acknowledgment from the server.
+
+          Here it is 0x00007530 (30000 milliseconds or 30 seconds).
+      - title: Topic Data Array
+        length_in_bytes: 268
+        explanation_markdown: |
+          A compact array containing topic data. The first byte indicates the array length + 1.
+
+          Here the value is 0x03, indicating an actual array length of 2.
+        children:
+          - title: Topic Array Length
+            length_in_bytes: 1
+            explanation_markdown: |
+              Compact array length (actual length + 1). Value of 0x03 means 2 topics.
+          - title: "Topic #1: qux"
+            length_in_bytes: 176
+            explanation_markdown: |
+              First topic in the array with name "qux" and its partitions.
+            children:
+              - title: Topic Name
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Topic name as a compact string.
+                children:
+                  - title: Length
+                    length_in_bytes: 1
+                    explanation_markdown: |
+                      Compact string length (actual length + 1). Value of 0x04 means 3 characters.
+                  - title: Contents
+                    length_in_bytes: 3
+                    explanation_markdown: |
+                      The topic name "qux" encoded in UTF-8.
+              - title: Partition Data Array
+                length_in_bytes: 171
+                explanation_markdown: |
+                  Array of partitions for this topic. Compact array length of 0x03 means 2 partitions.
+                children:
+                  - title: Partition Array Length
+                    length_in_bytes: 1
+                    explanation_markdown: |
+                      Compact array length (actual length + 1). Value of 0x03 means 2 partitions.
+                  - title: "Partition #0"
+                    length_in_bytes: 85
+                    explanation_markdown: |
+                      First partition (ID 0) with its record batch.
+                    children:
+                      - title: Partition ID
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          Partition ID as a 4-byte integer. Value is 0x00000000 (0).
+                      - title: Record Batches
+                        length_in_bytes: 80
+                        explanation_markdown: |
+                          Compact record batch for this partition.
+                        children:
+                          - title: Record Batch Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              Compact array length. Value of 0x50 (80 bytes).
+                          - title: Record Batch
+                            length_in_bytes: 79
+                            explanation_markdown: |
+                              The record batch containing the actual message data.
+                            children:
+                              - title: Base Offset
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Base offset is an 8-byte integer representing the starting offset for this record batch in the partition's log. All individual record offsets in this batch are calculated as base_offset + offset_delta.
+
+                                  Value is 0x0000000000000000 (0), indicating this batch starts at offset 0 in the partition.
+                              - title: Batch Length
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Length of this record batch. Value is 0x00000043 (67 bytes).
+                              - title: Partition Leader Epoch
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Partition leader epoch is a monotonically increasing number that identifies the current leader for this partition. It's used to prevent data corruption during leader changes and to detect stale requests.
+
+                                  Value is 0x00000000 (0), indicating this is from the first leader epoch for this partition.
+                              - title: Magic Byte
+                                length_in_bytes: 1
+                                explanation_markdown: |
+                                  Magic byte indicates the record batch format version, allowing Kafka to evolve the format while maintaining backward compatibility. Version 2 (0x02) introduced features like idempotent producers, transactional records, and improved compression.
+
+                                  Value is 0x02 (version 2), the current record batch format.
+                              - title: CRC32
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  CRC32 checksum of the record batch. Value is 0x936662d6.
+                              - title: Attributes
+                                length_in_bytes: 2
+                                explanation_markdown: |
+                                  Record batch attributes is a 16-bit bitmask indicating various properties:
+                                  - Bits 0-2: Compression type (0=none, 1=gzip, 2=snappy, 3=lz4, 4=zstd)
+                                  - Bit 3: Timestamp type (0=CreateTime, 1=LogAppendTime)
+                                  - Bit 4: Transactional flag (1 if part of a transaction)
+                                  - Bit 5: Control batch flag (1 for transaction markers)
+                                  - Bit 6: Has delete horizon ms flag
+
+                                  Value is 0x0000, indicating no compression, CreateTime timestamps, non-transactional, and regular data records.
+                              - title: Last Offset Delta
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Last offset delta represents the difference between the base offset and the highest offset in this batch. For a batch with N records, this equals N-1. This field helps determine the range of offsets covered by the batch.
+
+                                  Value is 0x00000000 (0), indicating this batch contains only one record (offset range: base_offset to base_offset+0).
+                              - title: First Timestamp
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  First timestamp in the batch represents the earliest timestamp among all records in this batch. Used for log retention, time-based indexing, and consumer seeking by timestamp.
+
+                                  Value is 0x0000000000000000 (Unix epoch - January 1, 1970 00:00:00.000 UTC), indicating timestamp 0.
+                              - title: Last Timestamp
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Last timestamp in the batch represents the latest timestamp among all records in this batch. When combined with first timestamp, defines the time range covered by this batch.
+
+                                  Value is 0x0000000000000000 (Unix epoch - January 1, 1970 00:00:00.000 UTC), same as first timestamp since there's only one record.
+                              - title: Producer ID
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Producer ID is a unique identifier assigned to each producer instance for idempotent and transactional operations. It enables Kafka to detect and prevent duplicate records.
+
+                                  Value is 0xffffffffffffffff (-1), indicating this producer is not using idempotent or transactional features.
+                              - title: Producer Epoch
+                                length_in_bytes: 2
+                                explanation_markdown: |
+                                  Producer epoch is a monotonically increasing number that prevents zombie producers from corrupting data after a producer restart or failover. Each producer session gets a new epoch.
+
+                                  Value is 0xffff (-1), indicating this producer is not using idempotent features.
+                              - title: Base Sequence
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Base sequence number is the starting sequence number for records in this batch. Each producer maintains a per-partition sequence counter for duplicate detection. Combined with producer ID and epoch, it ensures exactly-once semantics.
+
+                                  Value is 0xffffffff (-1), indicating this producer is not using idempotent features.
+                              - title: Number of Records
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Number of records in this batch. Value is 0x00000001 (1).
+                              - title: Records
+                                length_in_bytes: 18
+                                explanation_markdown: |
+                                  The actual records in this batch.
+                                children:
+                                  - title: "Record #0"
+                                    length_in_bytes: 18
+                                    explanation_markdown: |
+                                      First record containing "messg 0".
+                                    children:
+                                      - title: Record Length
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Varint record length. Value is 0x22 (17 bytes as varint).
+                                      - title: Record Attributes
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Record attributes is an 8-bit field for per-record flags. Currently unused but reserved for future extensions like per-record compression or encryption indicators.
+
+                                          Value is 0x00, indicating no special attributes for this record.
+                                      - title: Timestamp Delta
+                                        length_in_bytes: 5
+                                        explanation_markdown: |
+                                          Timestamp delta as varint represents the difference between this record's timestamp and the batch's first timestamp. This compression technique saves space since records in a batch often have similar timestamps.
+
+                                          The varint value decodes to a delta that, when added to first timestamp (0), gives Jan 21, 1970 08:00:24.567000000 UTC.
+                                      - title: Offset Delta
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Offset delta as varint represents this record's position within the batch. The actual offset of this record is base_offset + offset_delta. Encoded as a varint to save space.
+
+                                          Value is 0x00 (0), meaning this is the first record in the batch at offset base_offset+0.
+                                      - title: Key
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Key as compact bytes. Value is 0x01 (null).
+                                      - title: Value
+                                        length_in_bytes: 8
+                                        explanation_markdown: |
+                                          Value as compact bytes containing "messg 0".
+                                        children:
+                                          - title: Value Length
+                                            length_in_bytes: 1
+                                            explanation_markdown: |
+                                              Varint length. Value is 0x0e (7 bytes).
+                                          - title: Value Contents
+                                            length_in_bytes: 7
+                                            explanation_markdown: |
+                                              The message "messg 0" in UTF-8.
+                                      - title: Headers
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Headers array count. Value is 0x00 (no headers).
+                      - title: Partition Tag Buffer
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          Tag buffer for partition. Value is 0x00 (empty).
+                  - title: "Partition #1"
+                    length_in_bytes: 85
+                    explanation_markdown: |
+                      Second partition (ID 1) with its record batch.
+                    children:
+                      - title: Partition ID
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          Partition ID as a 4-byte integer. Value is 0x00000001 (1).
+                      - title: Record Batches
+                        length_in_bytes: 80
+                        explanation_markdown: |
+                          Compact record batch for this partition.
+                        children:
+                          - title: Record Batch Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              Compact array length. Value of 0x50 (80 bytes).
+                          - title: Record Batch
+                            length_in_bytes: 79
+                            explanation_markdown: |
+                              The record batch containing the actual message data.
+                            children:
+                              - title: Base Offset
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Base offset is an 8-byte integer representing the starting offset for this record batch in the partition's log. All individual record offsets in this batch are calculated as base_offset + offset_delta.
+
+                                  Value is 0x0000000000000000 (0), indicating this batch starts at offset 0 in the partition.
+                              - title: Batch Length
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Length of this record batch. Value is 0x00000043 (67 bytes).
+                              - title: Partition Leader Epoch
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Partition leader epoch is a monotonically increasing number that identifies the current leader for this partition. It's used to prevent data corruption during leader changes and to detect stale requests.
+
+                                  Value is 0x00000000 (0), indicating this is from the first leader epoch for this partition.
+                              - title: Magic Byte
+                                length_in_bytes: 1
+                                explanation_markdown: |
+                                  Magic byte indicates the record batch format version, allowing Kafka to evolve the format while maintaining backward compatibility. Version 2 (0x02) introduced features like idempotent producers, transactional records, and improved compression.
+
+                                  Value is 0x02 (version 2), the current record batch format.
+                              - title: CRC32
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  CRC32 checksum of the record batch. Value is 0x80c4faa1.
+                              - title: Attributes
+                                length_in_bytes: 2
+                                explanation_markdown: |
+                                  Record batch attributes is a 16-bit bitmask indicating various properties:
+                                  - Bits 0-2: Compression type (0=none, 1=gzip, 2=snappy, 3=lz4, 4=zstd)
+                                  - Bit 3: Timestamp type (0=CreateTime, 1=LogAppendTime)
+                                  - Bit 4: Transactional flag (1 if part of a transaction)
+                                  - Bit 5: Control batch flag (1 for transaction markers)
+                                  - Bit 6: Has delete horizon ms flag
+
+                                  Value is 0x0000, indicating no compression, CreateTime timestamps, non-transactional, and regular data records.
+                              - title: Last Offset Delta
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Last offset delta represents the difference between the base offset and the highest offset in this batch. For a batch with N records, this equals N-1. This field helps determine the range of offsets covered by the batch.
+
+                                  Value is 0x00000000 (0), indicating this batch contains only one record (offset range: base_offset to base_offset+0).
+                              - title: First Timestamp
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  First timestamp in the batch represents the earliest timestamp among all records in this batch. Used for log retention, time-based indexing, and consumer seeking by timestamp.
+
+                                  Value is 0x0000000000000000 (Unix epoch - January 1, 1970 00:00:00.000 UTC), indicating timestamp 0.
+                              - title: Last Timestamp
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Last timestamp in the batch represents the latest timestamp among all records in this batch. When combined with first timestamp, defines the time range covered by this batch.
+
+                                  Value is 0x0000000000000000 (Unix epoch - January 1, 1970 00:00:00.000 UTC), same as first timestamp since there's only one record.
+                              - title: Producer ID
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Producer ID is a unique identifier assigned to each producer instance for idempotent and transactional operations. It enables Kafka to detect and prevent duplicate records.
+
+                                  Value is 0xffffffffffffffff (-1), indicating this producer is not using idempotent or transactional features.
+                              - title: Producer Epoch
+                                length_in_bytes: 2
+                                explanation_markdown: |
+                                  Producer epoch is a monotonically increasing number that prevents zombie producers from corrupting data after a producer restart or failover. Each producer session gets a new epoch.
+
+                                  Value is 0xffff (-1), indicating this producer is not using idempotent features.
+                              - title: Base Sequence
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Base sequence number is the starting sequence number for records in this batch. Each producer maintains a per-partition sequence counter for duplicate detection. Combined with producer ID and epoch, it ensures exactly-once semantics.
+
+                                  Value is 0xffffffff (-1), indicating this producer is not using idempotent features.
+                              - title: Number of Records
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Number of records in this batch. Value is 0x00000001 (1).
+                              - title: Records
+                                length_in_bytes: 18
+                                explanation_markdown: |
+                                  The actual records in this batch.
+                                children:
+                                  - title: "Record #0"
+                                    length_in_bytes: 18
+                                    explanation_markdown: |
+                                      First record containing "messg 1".
+                                    children:
+                                      - title: Record Length
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Varint record length. Value is 0x22 (17 bytes as varint).
+                                      - title: Record Attributes
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Record attributes is an 8-bit field for per-record flags. Currently unused but reserved for future extensions like per-record compression or encryption indicators.
+
+                                          Value is 0x00, indicating no special attributes for this record.
+                                      - title: Timestamp Delta
+                                        length_in_bytes: 5
+                                        explanation_markdown: |
+                                          Timestamp delta as varint represents the difference between this record's timestamp and the batch's first timestamp. This compression technique saves space since records in a batch often have similar timestamps.
+
+                                          The varint value decodes to a delta that, when added to first timestamp (0), gives Jan 21, 1970 08:00:24.567000000 UTC.
+                                      - title: Offset Delta
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Offset delta as varint represents this record's position within the batch. The actual offset of this record is base_offset + offset_delta. Encoded as a varint to save space.
+
+                                          Value is 0x00 (0), meaning this is the first record in the batch at offset base_offset+0.
+                                      - title: Key
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Key as compact bytes. Value is 0x01 (null).
+                                      - title: Value
+                                        length_in_bytes: 8
+                                        explanation_markdown: |
+                                          Value as compact bytes containing "messg 1".
+                                        children:
+                                          - title: Value Length
+                                            length_in_bytes: 1
+                                            explanation_markdown: |
+                                              Varint length. Value is 0x0e (7 bytes).
+                                          - title: Value Contents
+                                            length_in_bytes: 7
+                                            explanation_markdown: |
+                                              The message "messg 1" in UTF-8.
+                                      - title: Headers
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Headers array count. Value is 0x00 (no headers).
+                      - title: Tag Buffer
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          Tag buffer for the partition. Value is 0x00 (empty).
+              - title: Topic Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tag buffer for the topic. Value is 0x00 (empty).
+          - title: "Topic #2: pax"
+            length_in_bytes: 91
+            explanation_markdown: |
+              Second topic in the array with name "pax" and its partitions.
+            children:
+              - title: Topic Name
+                length_in_bytes: 4
+                explanation_markdown: |
+                  Topic name as a compact string.
+                children:
+                  - title: Length
+                    length_in_bytes: 1
+                    explanation_markdown: |
+                      Compact string length (actual length + 1). Value of 0x04 means 3 characters.
+                  - title: Contents
+                    length_in_bytes: 3
+                    explanation_markdown: |
+                      The topic name "pax" encoded in UTF-8.
+              - title: Partition Data Array
+                length_in_bytes: 86
+                explanation_markdown: |
+                  Array of partitions for this topic. Compact array length of 0x02 means 1 partition.
+                children:
+                  - title: Partition Array Length
+                    length_in_bytes: 1
+                    explanation_markdown: |
+                      Compact array length (actual length + 1). Value of 0x02 means 1 partition.
+                  - title: "Partition #0"
+                    length_in_bytes: 85
+                    explanation_markdown: |
+                      First partition (ID 0) with its record batch.
+                    children:
+                      - title: Partition ID
+                        length_in_bytes: 4
+                        explanation_markdown: |
+                          Partition ID as a 4-byte integer. Value is 0x00000000 (0).
+                      - title: Records Batch
+                        length_in_bytes: 80
+                        explanation_markdown: |
+                          Compact record batch for this partition.
+                        children:
+                          - title: Record Batch Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              Compact array length. Value of 0x50 (80 bytes).
+                          - title: Record Batch
+                            length_in_bytes: 79
+                            explanation_markdown: |
+                              The record batch containing the actual message data.
+                            children:
+                              - title: Base Offset
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Base offset is an 8-byte integer representing the starting offset for this record batch in the partition's log. All individual record offsets in this batch are calculated as base_offset + offset_delta.
+
+                                  Value is 0x0000000000000000 (0), indicating this batch starts at offset 0 in the partition.
+                              - title: Batch Length
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Length of this record batch. Value is 0x00000043 (67 bytes).
+                              - title: Partition Leader Epoch
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Partition leader epoch is a monotonically increasing number that identifies the current leader for this partition. It's used to prevent data corruption during leader changes and to detect stale requests.
+
+                                  Value is 0x00000000 (0), indicating this is from the first leader epoch for this partition.
+                              - title: Magic Byte
+                                length_in_bytes: 1
+                                explanation_markdown: |
+                                  Magic byte indicates the record batch format version, allowing Kafka to evolve the format while maintaining backward compatibility. Version 2 (0x02) introduced features like idempotent producers, transactional records, and improved compression.
+
+                                  Value is 0x02 (version 2), the current record batch format.
+                              - title: CRC32
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  CRC32 checksum of the record batch. Value is 0xb4235238.
+                              - title: Attributes
+                                length_in_bytes: 2
+                                explanation_markdown: |
+                                  Record batch attributes is a 16-bit bitmask indicating various properties:
+                                  - Bits 0-2: Compression type (0=none, 1=gzip, 2=snappy, 3=lz4, 4=zstd)
+                                  - Bit 3: Timestamp type (0=CreateTime, 1=LogAppendTime)
+                                  - Bit 4: Transactional flag (1 if part of a transaction)
+                                  - Bit 5: Control batch flag (1 for transaction markers)
+                                  - Bit 6: Has delete horizon ms flag
+
+                                  Value is 0x0000, indicating no compression, CreateTime timestamps, non-transactional, and regular data records.
+                              - title: Last Offset Delta
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Last offset delta represents the difference between the base offset and the highest offset in this batch. For a batch with N records, this equals N-1. This field helps determine the range of offsets covered by the batch.
+
+                                  Value is 0x00000000 (0), indicating this batch contains only one record (offset range: base_offset to base_offset+0).
+                              - title: First Timestamp
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  First timestamp in the batch represents the earliest timestamp among all records in this batch. Used for log retention, time-based indexing, and consumer seeking by timestamp.
+
+                                  Value is 0x0000000000000000 (Unix epoch - January 1, 1970 00:00:00.000 UTC), indicating timestamp 0.
+                              - title: Last Timestamp
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Last timestamp in the batch represents the latest timestamp among all records in this batch. When combined with first timestamp, defines the time range covered by this batch.
+
+                                  Value is 0x0000000000000000 (Unix epoch - January 1, 1970 00:00:00.000 UTC), same as first timestamp since there's only one record.
+                              - title: Producer ID
+                                length_in_bytes: 8
+                                explanation_markdown: |
+                                  Producer ID is a unique identifier assigned to each producer instance for idempotent and transactional operations. It enables Kafka to detect and prevent duplicate records.
+
+                                  Value is 0xffffffffffffffff (-1), indicating this producer is not using idempotent or transactional features.
+                              - title: Producer Epoch
+                                length_in_bytes: 2
+                                explanation_markdown: |
+                                  Producer epoch is a monotonically increasing number that prevents zombie producers from corrupting data after a producer restart or failover. Each producer session gets a new epoch.
+
+                                  Value is 0xffff (-1), indicating this producer is not using idempotent features.
+                              - title: Base Sequence
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Base sequence number is the starting sequence number for records in this batch. Each producer maintains a per-partition sequence counter for duplicate detection. Combined with producer ID and epoch, it ensures exactly-once semantics.
+
+                                  Value is 0xffffffff (-1), indicating this producer is not using idempotent features.
+                              - title: Number of Records
+                                length_in_bytes: 4
+                                explanation_markdown: |
+                                  Number of records in this batch. Value is 0x00000001 (1).
+                              - title: Records
+                                length_in_bytes: 18
+                                explanation_markdown: |
+                                  The actual records in this batch.
+                                children:
+                                  - title: "Record #0"
+                                    length_in_bytes: 18
+                                    explanation_markdown: |
+                                      First record containing "messg 2".
+                                    children:
+                                      - title: Record Length
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Varint record length. Value is 0x22 (17 bytes as varint).
+                                      - title: Record Attributes
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Record attributes is an 8-bit field for per-record flags. Currently unused but reserved for future extensions like per-record compression or encryption indicators.
+
+                                          Value is 0x00, indicating no special attributes for this record.
+                                      - title: Timestamp Delta
+                                        length_in_bytes: 5
+                                        explanation_markdown: |
+                                          Timestamp delta as varint represents the difference between this record's timestamp and the batch's first timestamp. This compression technique saves space since records in a batch often have similar timestamps.
+
+                                          The varint value decodes to a delta that, when added to first timestamp (0), gives Jan 21, 1970 08:00:24.567000000 UTC.
+                                      - title: Offset Delta
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Offset delta as varint represents this record's position within the batch. The actual offset of this record is base_offset + offset_delta. Encoded as a varint to save space.
+
+                                          Value is 0x00 (0), meaning this is the first record in the batch at offset base_offset+0.
+                                      - title: Key
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Key as compact bytes. Value is 0x01 (null).
+                                      - title: Value
+                                        length_in_bytes: 8
+                                        explanation_markdown: |
+                                          Value as compact bytes containing "messg 2".
+                                        children:
+                                          - title: Value Length
+                                            length_in_bytes: 1
+                                            explanation_markdown: |
+                                              Varint length. Value is 0x0e (7 bytes).
+                                          - title: Value Contents
+                                            length_in_bytes: 7
+                                            explanation_markdown: |
+                                              The message "messg 2" in UTF-8.
+                                      - title: Headers
+                                        length_in_bytes: 1
+                                        explanation_markdown: |
+                                          Headers array count. Value is 0x00 (no headers).
+                      - title: Tag Buffer
+                        length_in_bytes: 1
+                        explanation_markdown: |
+                          Tag buffer for the partition. Value is 0x00 (empty).
+              - title: Topic Tag Buffer
+                length_in_bytes: 1
+                explanation_markdown: |
+                  Tag buffer for the topic. Value is 0x00 (empty).
+      - title: Request Tag Buffer
+        length_in_bytes: 1
+        explanation_markdown: |
+          Tag buffer for the entire request. Value is 0x00 (empty).
