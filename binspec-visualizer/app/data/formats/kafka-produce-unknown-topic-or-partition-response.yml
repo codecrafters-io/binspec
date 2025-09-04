@@ -109,81 +109,87 @@ segments:
           - title: Topic Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              Compact array length (actual length + 1). Value of 0x02 means 1 topic response.
+              The array of topics described in the response.
+
+              The aray is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
           - title: "Topic #1"
             length_in_bytes: 40
             explanation_markdown: |
-              Response for the topic "pear" which doesn't exist, resulting in an error.
+              A single topic in the array.
             children:
               - title: Topic Name
                 length_in_bytes: 5
                 explanation_markdown: |
-                  Topic name as a compact string.
+                  The name of the topic, encoded as a COMPACT_STRING.
                 children:
                   - title: Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      Compact string length (actual length + 1). Value of 0x16 means 21 characters.
+                      The length of the string + 1, encoded as a varint. Here, it is 0x05 (4), meaning the string length is 4.
                   - title: Contents
                     length_in_bytes: 4
                     explanation_markdown: |
-                      The topic name "pear" encoded in UTF-8.
+                      The content of the string: "pear".
               - title: Partition Responses Array
                 length_in_bytes: 34
                 explanation_markdown: |
-                  Array of partition responses for this topic. Compact array length of 0x02 means 1 partition response.
+                  An array of partitions for this topic.
                 children:
                   - title: Partition Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      Compact array length (actual length + 1). Value of 0x02 means 1 partition response.
+                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (3), meaning the array length is 1.
                   - title: "Partition Response #1"
                     length_in_bytes: 33
                     explanation_markdown: |
-                      Response for partition 0, which failed because the topic doesn't exist.
+                      Information about the first partition.
                     children:
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          Partition index as a 4-byte integer. Value is 0x00000000 (0), indicating this response is for partition 0.
+                          The index of this partition, encoded as a 4-byte integer.
+
+                          Here, it is 0x00000000 (0), indicating the index for this partition is 0.
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
                           Error code indicating the result of the produce request for this partition.
 
-                          Value is 0x0003 (3), which corresponds to UNKNOWN_TOPIC_OR_PARTITION error, indicating the topic or partition doesn't exist.
+                          Here, it is is 0x0003 (3), which corresponds to `UNKNOWN_TOPIC_OR_PARTITION` error, indicating the topic or partition doesn't exist.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Base offset where the message batch would have been written if successful. For errors, this is typically -1.
+                          Base offset where the message batch would have been written if successful. For errors, this is -1.
 
-                          Value is 0xffffffffffffffff (-1), indicating the offset is invalid due to the error.
+                          Here, it is 0xffffffffffffffff (-1), indicating the offset is invalid due to the error.
                       - title: Log Append Time
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Timestamp when the message was appended to the log. For LogAppendTime timestamp type, this overrides the producer timestamp. For errors, this is typically -1.
+                          Timestamp when the message was appended to the log. For errors, this is -1.
 
-                          Value is 0xffffffffffffffff (-1), indicating no timestamp due to the error.
+                          Here, it is 0xffffffffffffffff (-1), indicating no timestamp due to the error.
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          The earliest offset available in this partition's log. This helps producers understand the valid offset range for the partition.
+                          The earliest offset available in this partition's log.
 
-                          Value is 0xffffffffffffffff (-1), indicating this information is unavailable due to the error.
+                          Here, it is 0xffffffffffffffff (-1), indicating this information is unavailable due to the error.
                       - title: Record Errors Array
                         length_in_bytes: 1
                         explanation_markdown: |
-                          Array of per-record errors within the batch. The batch indices of records that caused the batch to be dropped. Compact array with length encoding.
+                          The array of per-record errors within the batch.
                         children:
                           - title: Record Errors Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              Compact array length (actual length + 1). Value of 0x01 means 0 record errors.
+                              The length of the array of record errors, encoded as a `COMPACT_ARRAY_LENGTH`.
+
+                              Here, it is, 0x01 means that the length of the array is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
-                          Optional error message providing additional context about the error.
-                          Value is 0x00, indicating null (no additional error message provided).
+                          An optional error message providing additional context about the error.
+                          Here, it is 0x00, indicating null (no additional error message provided).
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -195,9 +201,9 @@ segments:
       - title: Throttle Time
         length_in_bytes: 4
         explanation_markdown: |
-          Duration in milliseconds for which the request was throttled due to quota violations. This helps clients implement backoff strategies.
+          Duration in milliseconds encoded as a 4 byte integer. It helps clients implement backoff strategies.
 
-          Value is 0x00000000 (0), indicating no throttling was applied.
+          Here, it is 0x00000000 (0), indicating no throttling was applied.
       - title: Response Tag Buffer
         length_in_bytes: 1
         explanation_markdown: |
