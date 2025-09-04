@@ -111,7 +111,7 @@ segments:
             explanation_markdown: |
               The array of topics described in the response.
 
-              The aray is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
+              The aray is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + `1`, followed by each element.
           - title: "Topic #1"
             length_in_bytes: 40
             explanation_markdown: |
@@ -120,12 +120,12 @@ segments:
               - title: Topic Name
                 length_in_bytes: 5
                 explanation_markdown: |
-                  The name of the topic, encoded as a COMPACT_STRING.
+                  The name of the topic, encoded as a `COMPACT_STRING`.
                 children:
                   - title: Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x05 (4), meaning the string length is 4.
+                      The length of the string + `1`, encoded as a varint. Here, it is `0x05` (`4`), meaning the string length is `4`.
                   - title: Contents
                     length_in_bytes: 4
                     explanation_markdown: |
@@ -133,12 +133,12 @@ segments:
               - title: Partition Responses Array
                 length_in_bytes: 34
                 explanation_markdown: |
-                  An array of partitions for this topic.
+                  The array of partitions for this topic.
                 children:
                   - title: Partition Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (3), meaning the array length is 1.
+                      The length of the partitions array + `1`, encoded as a varint. Here, it is `0x02` (`3`), meaning the array length is `1`.
                   - title: "Partition Response #1"
                     length_in_bytes: 33
                     explanation_markdown: |
@@ -147,33 +147,33 @@ segments:
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          The index of this partition, encoded as a 4-byte integer.
+                          The index of this partition, encoded as a `4`-byte big endian integer.
 
-                          Here, it is 0x00000000 (0), indicating the index for this partition is 0.
+                          Here, it is `0x00000000` (`0`), indicating the index for this partition is `0`.
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
                           Error code indicating the result of the produce request for this partition.
 
-                          Here, it is is 0x0003 (3), which corresponds to `UNKNOWN_TOPIC_OR_PARTITION` error, indicating the topic or partition doesn't exist.
+                          Here, it is is `0x0003` (`3`), which corresponds to `UNKNOWN_TOPIC_OR_PARTITION` error, indicating the topic or partition doesn't exist.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Base offset where the message batch would have been written if successful. For errors, this is -1.
+                          Base offset of this partition. Its value is `0` for the first partition, `1` for the second, and so on. For errors, this is `-1`.
 
-                          Here, it is 0xffffffffffffffff (-1), indicating the offset is invalid due to the error.
+                          Here, it is `0xffffffffffffffff` (`-1`), indicating the offset is invalid due to the error.
                       - title: Log Append Time
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Timestamp when the message was appended to the log. For errors, this is -1.
+                          Timestamp when the message was appended to the log. For errors, this is `-1`.
 
-                          Here, it is 0xffffffffffffffff (-1), indicating no timestamp due to the error.
+                          Here, it is `0xffffffffffffffff` (`-1`), indicating no timestamp due to the error.
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          The earliest offset available in this partition's log.
+                          The earliest offset available in this partition's log. For errors, this is `-1`.
 
-                          Here, it is 0xffffffffffffffff (-1), indicating this information is unavailable due to the error.
+                          Here, it is `0xffffffffffffffff` (`-1`), indicating this information is unavailable due to the error.
                       - title: Record Errors Array
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -184,28 +184,28 @@ segments:
                             explanation_markdown: |
                               The length of the array of record errors, encoded as a `COMPACT_ARRAY_LENGTH`.
 
-                              Here, it is, 0x01 means that the length of the array is 0.
+                              Here, it is, `0x01` means that the length of the array is `0`.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
                           An optional error message providing additional context about the error.
-                          Here, it is 0x00, indicating null (no additional error message provided).
+                          Here, it is `0x00`, indicating null (no additional error message provided).
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
-                          Tag buffer for the partition response. Value is 0x00 (empty).
+                          Tag buffer for the partition response. Value is `0x00` (empty).
               - title: Tag Buffer
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Tag buffer for the topic. Value is 0x00 (empty).
+                  Tag buffer for the topic. Value is `0x00` (empty).
       - title: Throttle Time
         length_in_bytes: 4
         explanation_markdown: |
-          Duration in milliseconds encoded as a 4 byte integer. It helps clients implement backoff strategies.
+          Duration in milliseconds encoded as a 4-byte big endian integer. It helps clients implement backoff strategies.
 
-          Here, it is 0x00000000 (0), indicating no throttling was applied.
+          Here, it is `0x00000000` (`0`), indicating no throttling was applied.
       - title: Response Tag Buffer
         length_in_bytes: 1
         explanation_markdown: |
-          Tag buffer for the entire response body. Value is 0x00 (empty).
+          Tag buffer for the entire response body. Value is `0x00` (empty).
 
