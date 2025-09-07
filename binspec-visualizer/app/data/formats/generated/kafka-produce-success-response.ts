@@ -141,7 +141,7 @@ const generated: GeneratedData = {
     {
       "title": "Response Header (v1)",
       "length_in_bytes": 5,
-      "explanation_markdown": "The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.\n",
+      "explanation_markdown": "The Response Header structure is common across all Kafka responses.\n\nProduce request uses the newer version of Response Headers (v1).\n\nYou can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24).\n\nv0 headers and v1 headers are nearly identical, the only difference is that v0 does not contain an additional `tag_buffer` field at the end.\n",
       "children": [
         {
           "title": "Correlation ID",
@@ -215,22 +215,22 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset assigned to the produced records.\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIts value is 0 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating that the timestamp is not set.\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the start offset of the log.\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within that partition's log\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -269,22 +269,22 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset assigned to the produced records.\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIts value is 0 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating that the timestamp is not set.\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the start offset of the log.\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within that partition's log\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -364,22 +364,22 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset assigned to the produced records.\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIts value is 0 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating that the timestamp is not set.\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the start offset of the log.\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within that partition's log\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
