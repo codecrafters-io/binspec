@@ -97,7 +97,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
             },
             {
               "title": "Topic #1",
@@ -112,7 +112,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x05 (5), meaning the string length is 4.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x05 (5), indicating that the string length is 4.\n"
                     },
                     {
                       "title": "String Content",
@@ -129,7 +129,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
                     },
                     {
                       "title": "Partition Response #1",
@@ -164,7 +164,14 @@ const generated: GeneratedData = {
                         {
                           "title": "Record Errors Array",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "An array of per-record errors within the batch, encoded as a varint.\n\nHere, it is 0x01 (-1 in decimal after varint decoding), indicating a NULL array.\n"
+                          "explanation_markdown": "An array of per-record errors within the batch.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the record errors array + 1, encoded as a unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.\n"
+                            }
+                          ]
                         },
                         {
                           "title": "Error Message",
