@@ -137,7 +137,7 @@ data:
   - 0x6c # l
   - 0x6f # o
   - 0x6e # n
-  - 0x00 # Record Headers Count (zig-zag varint, 0x00 in hex, No array follows)
+  - 0x00 # Record Headers Count (signed varint, 0x00 in hex, No array follows)
   - 0x00 # Tag Buffer for the partition
   - 0x00 # Tag Buffer for the topic
   - 0x04 # Topic Name: Topic name length + 1 (unsigned varint, 0x04 in hex, 4 in decimal)
@@ -211,12 +211,12 @@ data:
   - 0x00
   - 0x00
   - 0x01
-  - 0x2c # Record[0]: Size: (zig-zag varint, 0x2c in hex, 22 in decimal)
+  - 0x2c # Record[0]: Size: (signed varint, 0x2c in hex, 22 in decimal)
   - 0x00 # Attributes: (1 byte, 0x00 in hex, 0 in decimal)
-  - 0x00 # Timestamp Delta (zig-zag varint, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (signed varint, 0x00 in hex, 0 in decimal)
   - 0x00 # Offset: 0
-  - 0x01 # Key Length (zig-zag varint, 0x01 in hex, -1 in decimal -> NULL (no key follows))
-  - 0x20 # Value length (zig-zag varint, 0x20 in hex -> 16 after decoding)
+  - 0x01 # Key Length (signed varint, 0x01 in hex, -1 in decimal -> NULL (no key follows))
+  - 0x20 # Value length (signed varint, 0x20 in hex -> 16 after decoding)
   - 0x6d # m: Value: ("msg-quz-0-hellon" in UTF-8)
   - 0x73 # s
   - 0x67 # g
@@ -301,12 +301,12 @@ data:
   - 0x00
   - 0x00
   - 0x01
-  - 0x2c # Record[0]: Size: (zig-zag varint, 0x2c in hex, 22 in decimal)
+  - 0x2c # Record[0]: Size: (signed varint, 0x2c in hex, 22 in decimal)
   - 0x00 # Attributes: (1 byte, 0x00 in hex, 0 in decimal)
-  - 0x00 # Timestamp Delta (zig-zag varint, 0x00 in hex, 0 in decimal)
+  - 0x00 # Timestamp Delta (signed varint, 0x00 in hex, 0 in decimal)
   - 0x00 # Offset: 0
-  - 0x01 # Key Length (zig-zag varint, 0x01 in hex, -1 in decimal -> NULL (no key follows))
-  - 0x20 # Value length (zig-zag varint, 0x20 in hex -> 16 after decoding)
+  - 0x01 # Key Length (signed varint, 0x01 in hex, -1 in decimal -> NULL (no key follows))
+  - 0x20 # Value length (signed varint, 0x20 in hex -> 16 after decoding)
   - 0x6d # m: Value: ("msg-quz-0-hellon" in UTF-8)
   - 0x73 # s
   - 0x67 # g
@@ -407,7 +407,7 @@ segments:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array + 1, encoded as a unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.
+              The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.
           - title: "Topic #1"
             length_in_bytes: 96
             explanation_markdown: |
@@ -421,7 +421,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.
+                      The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -434,7 +434,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.
+                      The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.
                   - title: Partition 0
                     length_in_bytes: 90
                     explanation_markdown: |
@@ -453,7 +453,7 @@ segments:
                           - title: Record Batch Size
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the record batch + 1, encoded as a unsigned varint. Here, it is 0x55 (85), meaning the batch length is 84.
+                              The length of the record batch + 1, encoded as an unsigned varint. Here, it is 0x55 (85), meaning the batch length is 84.
                           - title: Record Batch 1
                             length_in_bytes: 84
                             explanation_markdown: |
@@ -536,7 +536,7 @@ segments:
                                       - title: Record Size
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Record Size is a varint indicating the size of the record.
+                                          Record Size is a signed varint indicating the size of the record.
                                           Here, it is 0x2c (22 in decimal).
                                       - title: Attributes
                                         length_in_bytes: 1
@@ -546,22 +546,22 @@ segments:
                                       - title: Timestamp Delta
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Timestamp Delta is a varint indicating the difference between this record's timestamp and the base timestamp.
+                                          Timestamp Delta is a signed varint indicating the difference between this record's timestamp and the base timestamp.
                                           Here, it is 0x00 (0 in decimal).
                                       - title: Offset Delta
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Offset Delta is a varint indicating the difference between this record's offset and the base offset.
+                                          Offset Delta is a signed varint indicating the difference between this record's offset and the base offset.
                                           Here, it is 0x00 (0 in decimal).
                                       - title: Key Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          The length of the key, encoded as a varint.
+                                          The length of the key, encoded as a signed varint.
                                           Here, it is 0x01, indicating no key follows.
                                       - title: Value Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          The length of the value, encoded as a varint.
+                                          The length of the value, encoded as a signed varint.
                                           Here, it is 0x20 (16 in decimal after decoding).
                                       - title: Value
                                         length_in_bytes: 16
@@ -570,7 +570,7 @@ segments:
                                       - title: Headers Count
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Headers Count is a varint indicating the number of headers.
+                                          Headers Count is a signed varint indicating the number of headers.
                                           Here, it is 0x00 (0 in decimal), indicating no headers.
                       - title: Tag Buffer
                         length_in_bytes: 1
@@ -593,7 +593,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.
+                      The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -606,7 +606,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.
+                      The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.
                   - title: Partition 0
                     length_in_bytes: 90
                     explanation_markdown: |
@@ -625,7 +625,7 @@ segments:
                           - title: Record Batch Size
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The total size of record batches that follow + 1, encoded as a unsigned varint. Here it is 0x55, which means 85.
+                              The total size of record batches that follow + 1, encoded as an unsigned varint. Here it is 0x55, which means 85.
                           - title: Record Batch 1
                             length_in_bytes: 84
                             explanation_markdown: |
@@ -708,7 +708,7 @@ segments:
                                       - title: Record Size
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Record Size is a varint indicating the size of the record.
+                                          Record Size is a signed varint indicating the size of the record.
                                           Here, it is 0x2c (22 in decimal).
                                       - title: Attributes
                                         length_in_bytes: 1
@@ -718,22 +718,22 @@ segments:
                                       - title: Timestamp Delta
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Timestamp Delta is a varint indicating the difference between this record's timestamp and the base timestamp.
+                                          Timestamp Delta is a signed varint indicating the difference between this record's timestamp and the base timestamp.
                                           Here, it is 0x00 (0 in decimal).
                                       - title: Offset Delta
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Offset Delta is a varint indicating the difference between this record's offset and the base offset.
+                                          Offset Delta is a signed varint indicating the difference between this record's offset and the base offset.
                                           Here, it is 0x00 (0 in decimal).
                                       - title: Key Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          The length of the key, encoded as a varint.
+                                          The length of the key, encoded as a signed varint.
                                           Here, it is 0x01, indicating no key.
                                       - title: Value Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          The length of the value, encoded as a varint.
+                                          The length of the value, encoded as a signed varint.
                                           Here, it is 0x20 (16 in decimal after decoding).
                                       - title: Value
                                         length_in_bytes: 16
@@ -742,7 +742,7 @@ segments:
                                       - title: Headers Count
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Headers Count is a varint indicating the number of headers.
+                                          Headers Count is a signed varint indicating the number of headers.
                                           Here, it is 0x00 (0 in decimal), indicating no headers.
                       - title: Tag Buffer
                         length_in_bytes: 1
@@ -849,7 +849,7 @@ segments:
                                       - title: Record Size
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Record Size is a varint indicating the size of the record.
+                                          Record Size is a signed varint indicating the size of the record.
                                           Here, it is 0x2c (22 in decimal).
                                       - title: Attributes
                                         length_in_bytes: 1
@@ -859,22 +859,22 @@ segments:
                                       - title: Timestamp Delta
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Timestamp Delta is a varint indicating the difference between this record's timestamp and the base timestamp.
+                                          Timestamp Delta is a signed varint indicating the difference between this record's timestamp and the base timestamp.
                                           Here, it is 0x00 (0 in decimal).
                                       - title: Offset Delta
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Offset Delta is a varint indicating the difference between this record's offset and the base offset.
+                                          Offset Delta is a signed varint indicating the difference between this record's offset and the base offset.
                                           Here, it is 0x00 (0 in decimal).
                                       - title: Key Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          The length of the key, encoded as a varint.
+                                          The length of the key, encoded as a signed varint.
                                           Here, it is 0x01, indicating no key.
                                       - title: Value Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          The length of the value, encoded as a varint.
+                                          The length of the value, encoded as a signed varint.
                                           Here, it is 0x20 (16 in decimal after decoding).
                                       - title: Value
                                         length_in_bytes: 16
@@ -883,7 +883,7 @@ segments:
                                       - title: Headers Count
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Headers Count is a varint indicating the number of headers.
+                                          Headers Count is a signed varint indicating the number of headers.
                                           Here, it is 0x00 (0 in decimal), indicating no headers.
                       - title: Tag Buffer
                         length_in_bytes: 1
