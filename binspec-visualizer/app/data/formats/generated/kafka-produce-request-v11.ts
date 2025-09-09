@@ -400,7 +400,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
             },
             {
               "title": "Topic #1",
@@ -415,7 +415,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -432,7 +432,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -452,7 +452,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Record Batch Size",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the record batch + 1, encoded as a unsigned varint. Here, it is 0x55 (85), meaning the batch length is 84.\n"
+                              "explanation_markdown": "The length of the record batch + 1, encoded as an unsigned varint. Here, it is 0x55 (85), meaning the batch length is 84.\n"
                             },
                             {
                               "title": "Record Batch 1",
@@ -537,7 +537,7 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Record Size",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Record Size is a varint indicating the size of the record.\nHere, it is 0x2c (22 in decimal).\n"
+                                          "explanation_markdown": "Record Size is a signed varint indicating the size of the record.\nHere, it is 0x2c (22 in decimal).\n"
                                         },
                                         {
                                           "title": "Attributes",
@@ -547,22 +547,22 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Timestamp Delta",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Timestamp Delta is a varint indicating the difference between this record's timestamp and the base timestamp.\nHere, it is 0x00 (0 in decimal).\n"
+                                          "explanation_markdown": "Timestamp Delta is a signed varint indicating the difference between this record's timestamp and the base timestamp.\nHere, it is 0x00 (0 in decimal).\n"
                                         },
                                         {
                                           "title": "Offset Delta",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Offset Delta is a varint indicating the difference between this record's offset and the base offset.\nHere, it is 0x00 (0 in decimal).\n"
+                                          "explanation_markdown": "Offset Delta is a signed varint indicating the difference between this record's offset and the base offset.\nHere, it is 0x00 (0 in decimal).\n"
                                         },
                                         {
                                           "title": "Key Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "The length of the key, encoded as a varint.\nHere, it is 0x01, indicating no key follows.\n"
+                                          "explanation_markdown": "The length of the key, encoded as a signed varint.\nHere, it is 0x01, indicating no key follows.\n"
                                         },
                                         {
                                           "title": "Value Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "The length of the value, encoded as a varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
+                                          "explanation_markdown": "The length of the value, encoded as a signed varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
                                         },
                                         {
                                           "title": "Value",
@@ -572,7 +572,7 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Headers Count",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Headers Count is a varint indicating the number of headers.\nHere, it is 0x00 (0 in decimal), indicating no headers.\n"
+                                          "explanation_markdown": "Headers Count is a signed varint indicating the number of headers.\nHere, it is 0x00 (0 in decimal), indicating no headers.\n"
                                         }
                                       ]
                                     }
@@ -611,7 +611,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -628,7 +628,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -648,7 +648,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Record Batch Size",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The total size of record batches that follow + 1, encoded as a unsigned varint. Here it is 0x55, which means 85.\n"
+                              "explanation_markdown": "The total size of record batches that follow + 1, encoded as an unsigned varint. Here it is 0x55, which means 85.\n"
                             },
                             {
                               "title": "Record Batch 1",
@@ -733,7 +733,7 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Record Size",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Record Size is a varint indicating the size of the record.\nHere, it is 0x2c (22 in decimal).\n"
+                                          "explanation_markdown": "Record Size is a signed varint indicating the size of the record.\nHere, it is 0x2c (22 in decimal).\n"
                                         },
                                         {
                                           "title": "Attributes",
@@ -743,22 +743,22 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Timestamp Delta",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Timestamp Delta is a varint indicating the difference between this record's timestamp and the base timestamp.\nHere, it is 0x00 (0 in decimal).\n"
+                                          "explanation_markdown": "Timestamp Delta is a signed varint indicating the difference between this record's timestamp and the base timestamp.\nHere, it is 0x00 (0 in decimal).\n"
                                         },
                                         {
                                           "title": "Offset Delta",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Offset Delta is a varint indicating the difference between this record's offset and the base offset.\nHere, it is 0x00 (0 in decimal).\n"
+                                          "explanation_markdown": "Offset Delta is a signed varint indicating the difference between this record's offset and the base offset.\nHere, it is 0x00 (0 in decimal).\n"
                                         },
                                         {
                                           "title": "Key Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "The length of the key, encoded as a varint.\nHere, it is 0x01, indicating no key.\n"
+                                          "explanation_markdown": "The length of the key, encoded as a signed varint.\nHere, it is 0x01, indicating no key.\n"
                                         },
                                         {
                                           "title": "Value Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "The length of the value, encoded as a varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
+                                          "explanation_markdown": "The length of the value, encoded as a signed varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
                                         },
                                         {
                                           "title": "Value",
@@ -768,7 +768,7 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Headers Count",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Headers Count is a varint indicating the number of headers.\nHere, it is 0x00 (0 in decimal), indicating no headers.\n"
+                                          "explanation_markdown": "Headers Count is a signed varint indicating the number of headers.\nHere, it is 0x00 (0 in decimal), indicating no headers.\n"
                                         }
                                       ]
                                     }
@@ -888,7 +888,7 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Record Size",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Record Size is a varint indicating the size of the record.\nHere, it is 0x2c (22 in decimal).\n"
+                                          "explanation_markdown": "Record Size is a signed varint indicating the size of the record.\nHere, it is 0x2c (22 in decimal).\n"
                                         },
                                         {
                                           "title": "Attributes",
@@ -898,22 +898,22 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Timestamp Delta",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Timestamp Delta is a varint indicating the difference between this record's timestamp and the base timestamp.\nHere, it is 0x00 (0 in decimal).\n"
+                                          "explanation_markdown": "Timestamp Delta is a signed varint indicating the difference between this record's timestamp and the base timestamp.\nHere, it is 0x00 (0 in decimal).\n"
                                         },
                                         {
                                           "title": "Offset Delta",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Offset Delta is a varint indicating the difference between this record's offset and the base offset.\nHere, it is 0x00 (0 in decimal).\n"
+                                          "explanation_markdown": "Offset Delta is a signed varint indicating the difference between this record's offset and the base offset.\nHere, it is 0x00 (0 in decimal).\n"
                                         },
                                         {
                                           "title": "Key Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "The length of the key, encoded as a varint.\nHere, it is 0x01, indicating no key.\n"
+                                          "explanation_markdown": "The length of the key, encoded as a signed varint.\nHere, it is 0x01, indicating no key.\n"
                                         },
                                         {
                                           "title": "Value Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "The length of the value, encoded as a varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
+                                          "explanation_markdown": "The length of the value, encoded as a signed varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
                                         },
                                         {
                                           "title": "Value",
@@ -923,7 +923,7 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Headers Count",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Headers Count is a varint indicating the number of headers.\nHere, it is 0x00 (0 in decimal), indicating no headers.\n"
+                                          "explanation_markdown": "Headers Count is a signed varint indicating the number of headers.\nHere, it is 0x00 (0 in decimal), indicating no headers.\n"
                                         }
                                       ]
                                     }
