@@ -557,12 +557,12 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Key Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Key Length is a varint indicating the length of the key.\nHere, it is 0x01, indicating no key.\n"
+                                          "explanation_markdown": "The length of the key, encoded as a varint.\nHere, it is 0x01, indicating no key follows.\n"
                                         },
                                         {
                                           "title": "Value Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Value Length is a varint indicating the length of the value.\nHere, it is 0x20 (16 in decimal after decoding).\n"
+                                          "explanation_markdown": "The length of the value, encoded as a varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
                                         },
                                         {
                                           "title": "Value",
@@ -753,12 +753,12 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Key Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Key Length is a varint indicating the length of the key.\nHere, it is 0x01, indicating no key.\n"
+                                          "explanation_markdown": "The length of the key, encoded as a varint.\nHere, it is 0x01, indicating no key.\n"
                                         },
                                         {
                                           "title": "Value Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Value Length is a varint indicating the length of the value.\nHere, it is 0x20 (16 in decimal after decoding).\n"
+                                          "explanation_markdown": "The length of the value, encoded as a varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
                                         },
                                         {
                                           "title": "Value",
@@ -908,12 +908,12 @@ const generated: GeneratedData = {
                                         {
                                           "title": "Key Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Key Length is a varint indicating the length of the key.\nHere, it is 0x01, indicating no key.\n"
+                                          "explanation_markdown": "The length of the key, encoded as a varint.\nHere, it is 0x01, indicating no key.\n"
                                         },
                                         {
                                           "title": "Value Length",
                                           "length_in_bytes": 1,
-                                          "explanation_markdown": "Value Length is a varint indicating the length of the value.\nHere, it is 0x20 (16 in decimal after decoding).\n"
+                                          "explanation_markdown": "The length of the value, encoded as a varint.\nHere, it is 0x20 (16 in decimal after decoding).\n"
                                         },
                                         {
                                           "title": "Value",

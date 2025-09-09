@@ -556,12 +556,12 @@ segments:
                                       - title: Key Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Key Length is a varint indicating the length of the key.
-                                          Here, it is 0x01, indicating no key.
+                                          The length of the key, encoded as a varint.
+                                          Here, it is 0x01, indicating no key follows.
                                       - title: Value Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Value Length is a varint indicating the length of the value.
+                                          The length of the value, encoded as a varint.
                                           Here, it is 0x20 (16 in decimal after decoding).
                                       - title: Value
                                         length_in_bytes: 16
@@ -728,12 +728,12 @@ segments:
                                       - title: Key Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Key Length is a varint indicating the length of the key.
+                                          The length of the key, encoded as a varint.
                                           Here, it is 0x01, indicating no key.
                                       - title: Value Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Value Length is a varint indicating the length of the value.
+                                          The length of the value, encoded as a varint.
                                           Here, it is 0x20 (16 in decimal after decoding).
                                       - title: Value
                                         length_in_bytes: 16
@@ -869,12 +869,12 @@ segments:
                                       - title: Key Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Key Length is a varint indicating the length of the key.
+                                          The length of the key, encoded as a varint.
                                           Here, it is 0x01, indicating no key.
                                       - title: Value Length
                                         length_in_bytes: 1
                                         explanation_markdown: |
-                                          Value Length is a varint indicating the length of the value.
+                                          The length of the value, encoded as a varint.
                                           Here, it is 0x20 (16 in decimal after decoding).
                                       - title: Value
                                         length_in_bytes: 16
