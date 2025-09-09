@@ -81,7 +81,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal)
+  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal -> EMPTY ARRAY)
   - 0x00 # Error Message (COMPACT_STRING, 0x00 in hex, 0 in decimal, NULL value)
   - 0x00 # Empty tag buffer at the end of the partition
   - 0x00 # Empty tag buffer at the end of topic
@@ -120,7 +120,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal -> NULL array)
+  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal -> EMPTY array)
   - 0x00 # Error Message (COMPACT_NULLABLE_STRING, 0x00 in hex, 0 in decimal, NULL value)
   - 0x00 # Empty tag buffer at the end of the partition
   - 0x00 # Empty tag buffer at the end of the topic
@@ -230,9 +230,12 @@ segments:
                       - title: Record Errors Array
                         length_in_bytes: 1
                         explanation_markdown: |
-                          An array of record-level errors, encoded as a varint.
-
-                          Here, it is 0x01 (1 in decimal), indicating that the array length is 0.
+                          An array of record-level errors.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -279,9 +282,12 @@ segments:
                       - title: Record Errors Array
                         length_in_bytes: 1
                         explanation_markdown: |
-                          An array of record-level errors, encoded as a varint.
-
-                          Here, it is 0x01 (1 in decimal), indicating that the array length is 0.
+                          An array of record-level errors.
+                        children:
+                          - title: Array Length
+                            length_in_bytes: 1
+                            explanation_markdown: |
+                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
