@@ -225,7 +225,7 @@ const generated: GeneratedData = {
     101,
     108,
     108,
-    127,
+    111,
     110,
     0,
     0,
@@ -315,7 +315,7 @@ const generated: GeneratedData = {
     101,
     108,
     108,
-    127,
+    111,
     110,
     0,
     0,
@@ -531,7 +531,7 @@ const generated: GeneratedData = {
                                     },
                                     {
                                       "title": "Record 1",
-                                      "length_in_markdown": 23,
+                                      "length_in_bytes": 23,
                                       "explanation_markdown": "The first record in the batch.\n",
                                       "children": [
                                         {

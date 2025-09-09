@@ -231,7 +231,7 @@ data:
   - 0x65 # e
   - 0x6c # l
   - 0x6c # l
-  - 0x7f # o
+  - 0x6f # o
   - 0x6e # n
   - 0x00 # Headers
   - 0x00 # Tag Buffer for Partition
@@ -321,7 +321,7 @@ data:
   - 0x65 # e
   - 0x6c # l
   - 0x6c # l
-  - 0x7f # o
+  - 0x6f # o
   - 0x6e # n
   - 0x00 # Headers
   - 0x00 # Tag Buffer for Partition
@@ -529,7 +529,7 @@ segments:
                                     explanation_markdown: |
                                       The length of records array. Here, it is 0x00000001, which means 1.
                                   - title: Record 1
-                                    length_in_markdown: 23
+                                    length_in_bytes: 23
                                     explanation_markdown: |
                                       The first record in the batch.
                                     children:
