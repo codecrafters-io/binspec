@@ -12,13 +12,12 @@ data:
   - 0x00
   - 0x07
   - 0x00 # Empty tag buffer after correlation ID
-# This is the body part
-  - 0x03 # Topics array length + 1 (varint, 0x03 in hex, 3 in decimal)
-  - 0x04 # Topic name length + 1 (varint, 0x04 in hex, 4 in decimal)
+  - 0x03 # Topics array length + 1 (unsigned varint, 0x03 in hex, 3 in decimal)
+  - 0x04 # Topic name length + 1 (unsigned varint, 0x04 in hex, 4 in decimal)
   - 0x71 # q (topic name)
   - 0x75 # u (topic name)
   - 0x78 # x (topic name)
-  - 0x03 # Partitions array length + 1 (varint, 0x03 in hex, 3 in decimal)
+  - 0x03 # Partitions array length + 1 (unsigned varint, 0x03 in hex, 3 in decimal)
   - 0x00 # Partitions[0].ID (4 bytes, 0x00000000 in hex, 0 in decimal)
   - 0x00
   - 0x00
@@ -49,7 +48,7 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record errors array length + 1 (varint, 0x01 in hex, 1 in decimal)
+  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal)
   - 0x00 # Error Message (COMPACT_STRING, 0x00 in hex, 0 in decimal, NULL value)
   - 0x00 # Empty tag buffer at the end of the partition
   - 0x00 # Partitions[1].ID (4 bytes, 0x00000001 in hex, 1 in decimal)
@@ -82,15 +81,15 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record errors array length + 1 (varint, 0x01 in hex, 1 in decimal)
+  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal)
   - 0x00 # Error Message (COMPACT_STRING, 0x00 in hex, 0 in decimal, NULL value)
   - 0x00 # Empty tag buffer at the end of the partition
   - 0x00 # Empty tag buffer at the end of topic
-  - 0x04 # Topic name length + 1 (varint, 0x04 in hex, 4 in decimal)
+  - 0x04 # Topic name length + 1 (unsigned varint, 0x04 in hex, 4 in decimal)
   - 0x70 # p (topic name)
   - 0x61 # a (topic name)
   - 0x78 # x (topic name)
-  - 0x02 # Partitions array length + 1 (varint, 0x02 in hex, 2 in decimal)
+  - 0x02 # Partitions array length + 1 (unsigned varint, 0x02 in hex, 2 in decimal)
   - 0x00 # Partitions[0].ID (4 bytes, 0x00000000 in hex, 0 in decimal)
   - 0x00
   - 0x00
@@ -121,8 +120,8 @@ data:
   - 0x00
   - 0x00
   - 0x00
-  - 0x01 # Record errors array length + 1 (varint, 0x01 in hex, 1 in decimal)
-  - 0x00 # Error Message (COMPACT_STRING, 0x00 in hex, 0 in decimal, NULL value)
+  - 0x01 # Record errors array length + 1 (unsigned varint, 0x01 in hex, 1 in decimal -> NULL array)
+  - 0x00 # Error Message (COMPACT_NULLABLE_STRING, 0x00 in hex, 0 in decimal, NULL value)
   - 0x00 # Empty tag buffer at the end of the partition
   - 0x00 # Empty tag buffer at the end of the topic
   - 0x00 # Throttle Time (4 bytes, 0x00000000 in hex, 0 in decimal)
@@ -136,26 +135,19 @@ segments:
     explanation_markdown: |
       Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.
 
-      In this case, the value is 0x7a (122 in decimal) indicating that the rest of the message is 122 bytes long.
+      In this case, the value is 0x0000007a (122 in decimal) indicating that the rest of the message is 122 bytes long.
   - title: Response Header (v1)
     length_in_bytes: 5
     explanation_markdown: |
-      The Response Header structure is common across all Kafka responses.
-
-      Produce request uses the newer version of Response Headers (v1).
-
-      You can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24).
-
-      v0 headers and v1 headers are nearly identical, the only difference is that v0 does not contain an additional `tag_buffer` field at the end.
-
+      The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.
     children:
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
           The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
 
-          Here, it is 0x07 (7).
-      - title: Tag Buffer
+          Here, it is 0x00000007 (7 in decimal).
+      - title: Tag buffer
         length_in_bytes: 1
         explanation_markdown: |
           An empty tagged field array, represented by a single byte of value 0x00.
@@ -174,7 +166,7 @@ segments:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array + 1, encoded as a varint. Here, it is 0x03 (3), meaning that the array length is 2.
+              The length of the topics array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.
           - title: "Topic #1"
             length_in_bytes: 72
             explanation_markdown: |
@@ -188,7 +180,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.
+                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -201,7 +193,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), meaning the array length is 2.
+                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.
                   - title: Partition 0
                     length_in_bytes: 33
                     explanation_markdown: |
@@ -216,13 +208,11 @@ segments:
                         length_in_bytes: 2
                         explanation_markdown: |
                           A 2-byte integer representing the error code for this partition.
-                          Here, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.
+                          Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
-
-                          Its value is 0 in produce reuqest.
+                          An 8-byte integer representing the base offset of the first record in this partition.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Log Append Time
@@ -230,31 +220,25 @@ segments:
                         explanation_markdown: |
                           An 8-byte integer representing the timestamp when the records were appended to the log.
 
-                          Its value is -1 in produce reuqest.
-
                           Here, it is 0xffffffffffffffff (-1 in decimal).
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the earliest available offset within that partition's log
-
-                          Its value is -1 in produce reuqest.
+                          An 8-byte integer representing the earliest available offset within this partition's log.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Record Errors Array
                         length_in_bytes: 1
                         explanation_markdown: |
-                          An array of record-level errors.
-                        children:
-                          - title: Array Length
-                            length_in_bytes: 1
-                            explanation_markdown: |
-                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                          An array of record-level errors, encoded as a varint.
+
+                          Here, it is 0x01 (1 in decimal), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
-                          A nullable string containing an error message.
-                          Here, it is 0x00, indicating a null value.
+                          An optional error message providing additional context about the error, encoded as a `COMPACT_NULLABLE_STRING`.
+
+                          Here, it is 0x00, indicating a NULL string.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -273,13 +257,11 @@ segments:
                         length_in_bytes: 2
                         explanation_markdown: |
                           A 2-byte integer representing the error code for this partition.
-                          Here, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.
+                          Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
-
-                          Its value is 0 in produce reuqest.
+                          An 8-byte integer representing the base offset of the first record in this partition.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Log Append Time
@@ -287,31 +269,25 @@ segments:
                         explanation_markdown: |
                           An 8-byte integer representing the timestamp when the records were appended to the log.
 
-                          Its value is -1 in produce reuqest.
-
                           Here, it is 0xffffffffffffffff (-1 in decimal).
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the earliest available offset within that partition's log
-
-                          Its value is -1 in produce reuqest.
+                          An 8-byte integer representing the earliest available offset within this partition's log.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Record Errors Array
                         length_in_bytes: 1
                         explanation_markdown: |
-                          An array of record-level errors.
-                        children:
-                          - title: Array Length
-                            length_in_bytes: 1
-                            explanation_markdown: |
-                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                          An array of record-level errors, encoded as a varint.
+
+                          Here, it is 0x01 (1 in decimal), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
-                          A nullable string containing an error message.
-                          Here, it is 0x00, indicating a null value.
+                          An optional error message providing additional context about the error, encoded as a `COMPACT_NULLABLE_STRING`.
+
+                          Here, it is 0x00, indicating a NULL string.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -328,12 +304,12 @@ segments:
               - title: Topic Name
                 length_in_bytes: 4
                 explanation_markdown: |
-                  The name of the topic, encoded as a COMPACT_STRING.
+                  The name of the topic, encoded as a `COMPACT_STRING`.
                 children:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.
+                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -346,7 +322,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.
                   - title: Partition 0
                     length_in_bytes: 33
                     explanation_markdown: |
@@ -361,13 +337,11 @@ segments:
                         length_in_bytes: 2
                         explanation_markdown: |
                           A 2-byte integer representing the error code for this partition.
-                          Here, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.
+                          Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.
-
-                          Its value is 0 in produce reuqest.
+                          An 8-byte integer representing the base offset of the first record in this partition.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Log Append Time
@@ -375,15 +349,11 @@ segments:
                         explanation_markdown: |
                           An 8-byte integer representing the timestamp when the records were appended to the log.
 
-                          Its value is -1 in produce reuqest.
-
                           Here, it is 0xffffffffffffffff (-1 in decimal).
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the earliest available offset within that partition's log
-
-                          Its value is -1 in produce reuqest.
+                          An 8-byte integer representing the earliest available offset within this partition's log.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Record Errors Array
@@ -394,7 +364,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |

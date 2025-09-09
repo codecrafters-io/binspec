@@ -136,20 +136,20 @@ const generated: GeneratedData = {
     {
       "title": "Message Size",
       "length_in_bytes": 4,
-      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.\n\nIn this case, the value is 0x7a (122 in decimal) indicating that the rest of the message is 122 bytes long.\n"
+      "explanation_markdown": "Message Size is a 4-byte big-endian integer indicating the size of the rest of the message. All Kafka responses start with this field.\n\nIn this case, the value is 0x0000007a (122 in decimal) indicating that the rest of the message is 122 bytes long.\n"
     },
     {
       "title": "Response Header (v1)",
       "length_in_bytes": 5,
-      "explanation_markdown": "The Response Header structure is common across all Kafka responses.\n\nProduce request uses the newer version of Response Headers (v1).\n\nYou can read more about this [here](https://github.com/apache/kafka/blob/654ebe10f4a5c31e449b2a2ef6c284254ed7dceb/clients/src/main/resources/common/message/ApiVersionsResponse.json#L24).\n\nv0 headers and v1 headers are nearly identical, the only difference is that v0 does not contain an additional `tag_buffer` field at the end.\n",
+      "explanation_markdown": "The Response Header structure is common across all Kafka responses. It contains the Correlation ID that matches the request.\n",
       "children": [
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x00000007 (7 in decimal).\n"
         },
         {
-          "title": "Tag Buffer",
+          "title": "Tag buffer",
           "length_in_bytes": 1,
           "explanation_markdown": "An empty tagged field array, represented by a single byte of value 0x00.\n"
         }
@@ -168,7 +168,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x03 (3), meaning that the array length is 2.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.\n"
             },
             {
               "title": "Topic #1",
@@ -183,7 +183,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -200,7 +200,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -215,39 +215,32 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIts value is 0 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within that partition's log\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "An array of record-level errors.\n",
-                          "children": [
-                            {
-                              "title": "Array Length",
-                              "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            }
-                          ]
+                          "explanation_markdown": "An array of record-level errors, encoded as a varint.\n\nHere, it is 0x01 (1 in decimal), indicating that the array length is 0.\n"
                         },
                         {
                           "title": "Error Message",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "A nullable string containing an error message.\nHere, it is 0x00, indicating a null value.\n"
+                          "explanation_markdown": "An optional error message providing additional context about the error, encoded as a `COMPACT_NULLABLE_STRING`.\n\nHere, it is 0x00, indicating a NULL string.\n"
                         },
                         {
                           "title": "Tag Buffer",
@@ -269,39 +262,32 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIts value is 0 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within that partition's log\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "An array of record-level errors.\n",
-                          "children": [
-                            {
-                              "title": "Array Length",
-                              "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
-                            }
-                          ]
+                          "explanation_markdown": "An array of record-level errors, encoded as a varint.\n\nHere, it is 0x01 (1 in decimal), indicating that the array length is 0.\n"
                         },
                         {
                           "title": "Error Message",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "A nullable string containing an error message.\nHere, it is 0x00, indicating a null value.\n"
+                          "explanation_markdown": "An optional error message providing additional context about the error, encoded as a `COMPACT_NULLABLE_STRING`.\n\nHere, it is 0x00, indicating a NULL string.\n"
                         },
                         {
                           "title": "Tag Buffer",
@@ -327,12 +313,12 @@ const generated: GeneratedData = {
                 {
                   "title": "Topic Name",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "The name of the topic, encoded as a COMPACT_STRING.\n",
+                  "explanation_markdown": "The name of the topic, encoded as a `COMPACT_STRING`.\n",
                   "children": [
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -349,7 +335,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -364,22 +350,22 @@ const generated: GeneratedData = {
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating `NO_ERROR`.\n"
+                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "Base Offset is a 8-byte big-endian integer indicating the offset of the first record in this batch.\n\nIts value is 0 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within that partition's log\n\nIts value is -1 in produce reuqest.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -389,7 +375,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.\n"
                             }
                           ]
                         },
