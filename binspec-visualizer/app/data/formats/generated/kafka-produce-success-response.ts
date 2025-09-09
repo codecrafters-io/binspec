@@ -163,12 +163,12 @@ const generated: GeneratedData = {
         {
           "title": "Topics Array",
           "length_in_bytes": 112,
-          "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
+          "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with an unsigned varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), indicating that the array length is 2.\n"
             },
             {
               "title": "Topic #1",
@@ -183,7 +183,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), indicating that the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -200,7 +200,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), indicating that the array length is 2.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -235,7 +235,14 @@ const generated: GeneratedData = {
                         {
                           "title": "Record Errors Array",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "An array of record-level errors, encoded as a varint.\n\nHere, it is 0x01 (1 in decimal), indicating that the array length is 0.\n"
+                          "explanation_markdown": "An array of record-level errors.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.\n"
+                            }
+                          ]
                         },
                         {
                           "title": "Error Message",
@@ -282,7 +289,14 @@ const generated: GeneratedData = {
                         {
                           "title": "Record Errors Array",
                           "length_in_bytes": 1,
-                          "explanation_markdown": "An array of record-level errors, encoded as a varint.\n\nHere, it is 0x01 (1 in decimal), indicating that the array length is 0.\n"
+                          "explanation_markdown": "An array of record-level errors.\n",
+                          "children": [
+                            {
+                              "title": "Array Length",
+                              "length_in_bytes": 1,
+                              "explanation_markdown": "The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.\n"
+                            }
+                          ]
                         },
                         {
                           "title": "Error Message",
@@ -318,7 +332,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), indicating that the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -335,7 +349,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -375,7 +389,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.\n"
+                              "explanation_markdown": "The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.\n"
                             }
                           ]
                         },

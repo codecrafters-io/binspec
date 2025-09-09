@@ -161,12 +161,12 @@ segments:
         explanation_markdown: |
           An array of topics described in the response.
 
-          This array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.
+          This array is encoded as a `COMPACT_ARRAY`, which starts with an unsigned varint corresponding to the length of the array + 1, followed by each element.
         children:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.
+              The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), indicating that the array length is 2.
           - title: "Topic #1"
             length_in_bytes: 72
             explanation_markdown: |
@@ -180,7 +180,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.
+                      The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), indicating that the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -193,7 +193,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), indicating that the array length is 2.
+                      The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), indicating that the array length is 2.
                   - title: Partition 0
                     length_in_bytes: 33
                     explanation_markdown: |
@@ -235,7 +235,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.
+                              The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -287,7 +287,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.
+                              The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -315,7 +315,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), indicating that the string length is 3.
+                      The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), indicating that the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -328,7 +328,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.
+                      The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), indicating that the array length is 1.
                   - title: Partition 0
                     length_in_bytes: 33
                     explanation_markdown: |
@@ -370,7 +370,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the record errors array + 1, encoded as a varint. Here, it is 0x01 (1), indicating that the array length is 0.
+                              The length of the record errors array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), indicating that the array length is 0.
                       - title: Error Message
                         length_in_bytes: 1
                         explanation_markdown: |
