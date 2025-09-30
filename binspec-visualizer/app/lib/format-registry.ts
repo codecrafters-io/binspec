@@ -8,6 +8,7 @@ import kafkaDescribeTopicPartitionsResponseV0 from 'binspec-visualizer/data/form
 import kafkaDescribeTopicPartitionsResponseV0UnknownTopic from 'binspec-visualizer/data/formats/generated/kafka-describe-topic-partitions-response-v0-unknown-topic';
 import kafkaClusterMetadata from 'binspec-visualizer/data/formats/generated/kafka-cluster-metadata';
 import bittorentHandshake from 'binspec-visualizer/data/formats/generated/bittorrent-handshake';
+import kafkaProduceValidResponseV11 from 'binspec-visualizer/data/formats/generated/kafka-produce-success-response';
 
 export default class FormatRegistry {
   static getBySlug(slug: string): Format | undefined {
@@ -27,6 +28,7 @@ export default class FormatRegistry {
       Format.fromGeneratedData(bittorentHandshake),
       Format.fromGeneratedData(kafkaApiVersionsErrorResponse),
       Format.fromGeneratedData(kafkaApiVersionsResponseV4),
+      Format.fromGeneratedData(kafkaProduceValidResponseV11),
     ];
 
     return unsortedFormats.sort((a, b) => a.name.localeCompare(b.name));
