@@ -76,7 +76,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the API Versions array + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the array length is 3.\n"
+              "explanation_markdown": "The length of the API Versions array + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning that the array length is 3.\n"
             },
             {
               "title": "API Version #1",
