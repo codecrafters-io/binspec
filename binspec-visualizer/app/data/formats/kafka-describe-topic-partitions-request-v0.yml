@@ -101,7 +101,7 @@ segments:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+              The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
           - title: Topic
             length_in_bytes: 5
             explanation_markdown: |
@@ -112,7 +112,7 @@ segments:
               - title: Topic Name Length
                 length_in_bytes: 1
                 explanation_markdown: |
-                  The length of the topic name + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.
+                  The length of the topic name + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.
               - title: Topic Name
                 length_in_bytes: 3
                 explanation_markdown: |

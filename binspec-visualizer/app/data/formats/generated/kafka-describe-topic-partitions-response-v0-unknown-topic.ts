@@ -89,7 +89,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
               "title": "Topic #1",
@@ -108,7 +108,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the topic name + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.\n"
+                      "explanation_markdown": "The length of the topic name + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.\n"
                     },
                     {
                       "title": "Contents",
@@ -130,7 +130,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Partitions Array",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "A `COMPACT_ARRAY` of partitions for this topic, which contains the length + 1 encoded as a varint, followed by the contents.\n\nHere, the length is 0x01 (1), indicating an empty array.\n"
+                  "explanation_markdown": "A `COMPACT_ARRAY` of partitions for this topic, which contains the length + 1 encoded as an unsigned varint, followed by the contents.\n\nHere, the length is 0x01 (1), indicating an empty array.\n"
                 },
                 {
                   "title": "Topic Authorized Operations",

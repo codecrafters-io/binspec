@@ -145,7 +145,7 @@ const generated: GeneratedData = {
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.\n"
             },
             {
               "title": "Topic #1",
@@ -163,7 +163,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning the string length is 3.\n"
                     },
                     {
                       "title": "String Content",
@@ -189,7 +189,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.\n"
                     },
                     {
                       "title": "Partition 0",
@@ -222,7 +222,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                              "explanation_markdown": "The length of the replica nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
                             },
                             {
                               "title": "Replica Node",
@@ -238,7 +238,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                              "explanation_markdown": "The length of the ISR nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
                             },
                             {
                               "title": "ISR Node",
@@ -254,7 +254,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the Eligible Leader Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
                             }
                           ]
                         },
@@ -265,7 +265,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the Last Known ELR nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
                             }
                           ]
                         },
@@ -276,7 +276,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the Offline Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
                             }
                           ]
                         },
@@ -318,7 +318,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                              "explanation_markdown": "The length of the replica nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
                             },
                             {
                               "title": "Replica Node",
@@ -334,7 +334,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
+                              "explanation_markdown": "The length of the ISR nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.\n"
                             },
                             {
                               "title": "ISR Node",
@@ -350,7 +350,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the Eligible Leader Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
                             }
                           ]
                         },
@@ -361,7 +361,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the Last Known ELR nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
                             }
                           ]
                         },
@@ -372,7 +372,7 @@ const generated: GeneratedData = {
                             {
                               "title": "Array Length",
                               "length_in_bytes": 1,
-                              "explanation_markdown": "The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
+                              "explanation_markdown": "The length of the Offline Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.\n"
                             }
                           ]
                         },
