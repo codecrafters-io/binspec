@@ -13,25 +13,25 @@ data:
   - 0x00
   - 0x04 # Number of APIVersions Keys (1 byte, 0x04 in hex, 4 in decimal)
   - 0x00 # API Key (2 bytes, 0x0001 in hex, 1 in decimal (Fetch API))
-  - 0x01 
+  - 0x01
   - 0x00 # Min supported APIVersion (2 bytes, 0x0000 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Max supported APIVersion (2 bytes, 0x0011 in hex, 17 in decimal)
-  - 0x11 
+  - 0x11
   - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
   - 0x00 # API Key (2 bytes, 0x0012 in hex, 18 in decimal (APIVersions API))
-  - 0x12 
+  - 0x12
   - 0x00 # Min supported APIVersion (2 bytes, 0x0000 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Max supported APIVersion (2 bytes, 0x0004 in hex, 4 in decimal)
-  - 0x04 
+  - 0x04
   - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
   - 0x00 # API Key (2 bytes, 0x004b in hex, 75 in decimal (DescribeTopicPartitions API))
-  - 0x4b 
+  - 0x4b
   - 0x00 # Min supported APIVersion (2 bytes, 0x0000 in hex, 0 in decimal)
   - 0x00
   - 0x00 # Max supported APIVersion (2 bytes, 0x0000 in hex, 0 in decimal)
-  - 0x00 
+  - 0x00
   - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
   - 0x00 # Throttle time (4 bytes, 0x00000000 in hex, 0 in decimal)
   - 0x00
@@ -81,7 +81,7 @@ segments:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the API Versions array + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the array length is 3.
+              The length of the API Versions array + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning that the array length is 3.
           - title: "API Version #1"
             explanation_markdown: |
               A single API Version in the array.
