@@ -1,11 +1,11 @@
-name: Kafka API Versions Request (v4)
+name: Kafka ApiVersions Request (v4)
 slug: kafka-api-versions-request-v4
 data:
   - 0x00 # Message length (4 bytes, 0x23 in hex, 35 in decimal)
   - 0x00
   - 0x00
   - 0x23
-  - 0x00 # API key (2 bytes, 0x12 in hex, 18 in decimal => GetAPIVersions)
+  - 0x00 # API key (2 bytes, 0x12 in hex, 18 in decimal => ApiVersions)
   - 0x12
   - 0x00 # API version (2 bytes, 0x04 in hex, 4 in decimal)
   - 0x04
@@ -57,7 +57,7 @@ segments:
         explanation_markdown: |
           The API key is a 2-byte integer that identifies the API Key that this request is for.
 
-          Here it is 0x12 (18), which corresponds to GetAPIVersions.
+          Here it is 0x12 (18), which corresponds to ApiVersions.
       - title: API Version
         length_in_bytes: 2
         explanation_markdown: |
