@@ -2,7 +2,7 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka API Versions Error Response (v0)",
+  "name": "Kafka ApiVersions Error Response (v0)",
   "slug": "kafka-api-versions-response-unsupported-version",
   "data": [
     0,
@@ -44,8 +44,8 @@ const generated: GeneratedData = {
       ]
     },
     {
-      "title": "API Versions Response Body (v0)",
-      "explanation_markdown": "The response body contains fields specific to the API Versions response.\n",
+      "title": "ApiVersions Response Body (v0)",
+      "explanation_markdown": "The response body contains fields specific to the ApiVersions response.\n",
       "children": [
         {
           "title": "Error Code",
@@ -68,17 +68,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this API Version.\n\nHere, it is 0x0012 (18), which corresponds to the API Versions API.\n"
+                  "explanation_markdown": "A 2-byte integer representing the API Key for this API Version.\n\nHere, it is 0x0012 (18), which corresponds to the ApiVersions API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API.\nHere, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API.\nHere, it is 0x0000 (0), which means that the ApiVersions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this API.\nHere, it is 0x0004 (4), which means that the API Versions API supports versions upto 4.\n"
+                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this API.\nHere, it is 0x0004 (4), which means that the ApiVersions API supports versions upto 4.\n"
                 }
               ]
             }

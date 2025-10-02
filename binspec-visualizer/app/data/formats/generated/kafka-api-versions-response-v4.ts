@@ -2,7 +2,7 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka API Versions Response (v4)",
+  "name": "Kafka ApiVersions Response (v4)",
   "slug": "kafka-api-versions-Response-v4",
   "data": [
     0,
@@ -61,8 +61,8 @@ const generated: GeneratedData = {
       ]
     },
     {
-      "title": "API Versions Response Body (v4)",
-      "explanation_markdown": "The response body contains fields specific to the API Versions response.\n",
+      "title": "ApiVersions Response Body (v4)",
+      "explanation_markdown": "The response body contains fields specific to the ApiVersions response.\n",
       "children": [
         {
           "title": "Error Code",

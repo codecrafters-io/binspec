@@ -1,4 +1,4 @@
-name: Kafka API Versions Response (v4)
+name: Kafka ApiVersions Response (v4)
 slug: kafka-api-versions-Response-v4
 data:
   - 0x00 # Message length (4 bytes, 0x21 in hex, 33 in decimal)
@@ -62,9 +62,9 @@ segments:
           The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x07 (7).
-  - title: API Versions Response Body (v4)
+  - title: ApiVersions Response Body (v4)
     explanation_markdown: |
-      The response body contains fields specific to the API Versions response.
+      The response body contains fields specific to the ApiVersions response.
     children:
       - title: Error Code
         length_in_bytes: 2

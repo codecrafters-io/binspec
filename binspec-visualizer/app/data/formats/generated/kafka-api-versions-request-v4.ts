@@ -2,7 +2,7 @@
 import type { GeneratedData } from "binspec-visualizer/lib/format";
 
 const generated: GeneratedData = {
-  "name": "Kafka API Versions Request (v4)",
+  "name": "Kafka ApiVersions Request (v4)",
   "slug": "kafka-api-versions-request-v4",
   "data": [
     0,
@@ -59,7 +59,7 @@ const generated: GeneratedData = {
         {
           "title": "API Key",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x12 (18), which corresponds to GetAPIVersions.\n"
+          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x12 (18), which corresponds to ApiVersions.\n"
         },
         {
           "title": "API Version",
