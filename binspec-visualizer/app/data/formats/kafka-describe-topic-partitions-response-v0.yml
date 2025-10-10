@@ -164,7 +164,7 @@ segments:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+              The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
           - title: "Topic #1"
             explanation_markdown: |
               A single topic in the array.
@@ -181,7 +181,7 @@ segments:
                   - title: String Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the string + 1, encoded as a varint. Here, it is 0x04 (4), meaning the string length is 3.
+                      The length of the string + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning the string length is 3.
                   - title: String Content
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -203,7 +203,7 @@ segments:
                   - title: Array Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the partitions array + 1, encoded as a varint. Here, it is 0x03 (3), meaning the array length is 2.
+                      The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x03 (3), meaning the array length is 2.
                   - title: Partition 0
                     explanation_markdown: |
                       Information about the first partition.
@@ -235,7 +235,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                              The length of the replica nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.
                           - title: Replica Node
                             length_in_bytes: 4
                             explanation_markdown: |
@@ -248,7 +248,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                              The length of the ISR nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.
                           - title: ISR Node
                             length_in_bytes: 4
                             explanation_markdown: |
@@ -261,7 +261,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the Eligible Leader Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Last Known ELR
                         explanation_markdown: |
                           An array of last known eligible leader replica node IDs (int32) for this partition.
@@ -269,7 +269,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the Last Known ELR nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Offline Replicas
                         explanation_markdown: |
                           An array of offline replica node IDs (int32) for this partition.
@@ -277,7 +277,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the Offline Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |
@@ -313,7 +313,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the replica nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                              The length of the replica nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.
                           - title: Replica Node
                             length_in_bytes: 4
                             explanation_markdown: |
@@ -326,7 +326,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the ISR nodes array + 1, encoded as a varint. Here, it is 0x02 (2), meaning the array length is 1.
+                              The length of the ISR nodes array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning the array length is 1.
                           - title: ISR Node
                             length_in_bytes: 4
                             explanation_markdown: |
@@ -339,7 +339,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the Eligible Leader Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the Eligible Leader Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Last Known ELR
                         explanation_markdown: |
                           An array of last known eligible leader replica node IDs (int32) for this partition.
@@ -347,7 +347,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the Last Known ELR nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the Last Known ELR nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Offline Replicas
                         explanation_markdown: |
                           An array of offline replica node IDs (int32) for this partition.
@@ -355,7 +355,7 @@ segments:
                           - title: Array Length
                             length_in_bytes: 1
                             explanation_markdown: |
-                              The length of the Offline Replicas nodes array + 1, encoded as a varint. Here, it is 0x01 (1), meaning the array length is 0.
+                              The length of the Offline Replicas nodes array + 1, encoded as an unsigned varint. Here, it is 0x01 (1), meaning the array length is 0.
                       - title: Tag Buffer
                         length_in_bytes: 1
                         explanation_markdown: |

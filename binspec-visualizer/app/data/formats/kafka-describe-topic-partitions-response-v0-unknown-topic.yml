@@ -108,7 +108,7 @@ segments:
           - title: Array Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), meaning that the array length is 1.
+              The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), meaning that the array length is 1.
           - title: "Topic #1"
             explanation_markdown: |
               A single topic in the array.
@@ -127,7 +127,7 @@ segments:
                   - title: Length
                     length_in_bytes: 1
                     explanation_markdown: |
-                      The length of the topic name + 1, encoded as a varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.
+                      The length of the topic name + 1, encoded as an unsigned varint. Here, it is 0x04 (4), meaning that the topic name is 3 bytes long.
                   - title: Contents
                     length_in_bytes: 3
                     explanation_markdown: |
@@ -147,7 +147,7 @@ segments:
               - title: Partitions Array
                 length_in_bytes: 1
                 explanation_markdown: |
-                  A `COMPACT_ARRAY` of partitions for this topic, which contains the length + 1 encoded as a varint, followed by the contents.
+                  A `COMPACT_ARRAY` of partitions for this topic, which contains the length + 1 encoded as an unsigned varint, followed by the contents.
 
                   Here, the length is 0x01 (1), indicating an empty array.
               - title: Topic Authorized Operations
