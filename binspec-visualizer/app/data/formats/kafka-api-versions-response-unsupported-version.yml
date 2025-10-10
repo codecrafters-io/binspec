@@ -1,4 +1,4 @@
-name: Kafka API Versions Error Response (v0)
+name: Kafka ApiVersions Error Response (v0)
 slug: kafka-api-versions-response-unsupported-version
 data:
   - 0x00 # Message length (4 bytes, 0x10 in hex, 16 in decimal)
@@ -45,9 +45,9 @@ segments:
           The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x07 (7).
-  - title: API Versions Response Body (v0)
+  - title: ApiVersions Response Body (v0)
     explanation_markdown: |
-      The response body contains fields specific to the API Versions response.
+      The response body contains fields specific to the ApiVersions response.
     children:
       - title: Error Code
         length_in_bytes: 2
@@ -77,14 +77,14 @@ segments:
                 explanation_markdown: |
                   A 2-byte integer representing the API Key for this API Version.
 
-                  Here, it is 0x0012 (18), which corresponds to the API Versions API.
+                  Here, it is 0x0012 (18), which corresponds to the ApiVersions API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
                   A 2-byte integer representing the minimum supported API Version for this API.
-                  Here, it is 0x0000 (0), which means that the API Versions API supports versions 0 and up.
+                  Here, it is 0x0000 (0), which means that the ApiVersions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
                   A 2-byte integer representing the maximum supported API Version for this API.
-                  Here, it is 0x0004 (4), which means that the API Versions API supports versions upto 4.
+                  Here, it is 0x0004 (4), which means that the ApiVersions API supports versions upto 4.

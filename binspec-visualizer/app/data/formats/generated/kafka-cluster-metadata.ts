@@ -464,7 +464,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the feature level record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the feature level record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                 },
                 {
                   "title": "Name length",
@@ -716,7 +716,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Partition ID",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Partition ID is a 4-byte big-endian integer indicating the ID of the partition.\n\nIn this case, the value is `0x01`, which is `1` in decimal. Indicating that this Partition record is for partition `1`.\n"
+                  "explanation_markdown": "Partition ID is a 4-byte big-endian integer indicating the ID of the partition.\n\nIn this case, the value is `0x00`, which is `0` in decimal. Indicating that this Partition record is for partition `0`.\n"
                 },
                 {
                   "title": "Topic UUID",
@@ -854,7 +854,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Partition ID",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "Partition ID is a 4-byte big-endian integer indicating the ID of the partition.\n\nIn this case, the value is `0x00000000`, which is `0` in decimal. Indicating that this Partition record is for partition `0`.\n"
+                  "explanation_markdown": "Partition ID is a 4-byte big-endian integer indicating the ID of the partition.\n\nIn this case, the value is `0x01`, which is `1` in decimal. Indicating that this Partition record is for partition `1`.\n"
                 },
                 {
                   "title": "Topic UUID",
