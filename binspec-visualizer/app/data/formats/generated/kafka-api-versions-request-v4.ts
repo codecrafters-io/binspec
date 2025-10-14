@@ -59,17 +59,17 @@ const generated: GeneratedData = {
         {
           "title": "API Key",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x12 (18), which corresponds to ApiVersions.\n"
+          "explanation_markdown": "The API key is a 2-byte big-endian integer that identifies the API Key that this request is for.\n\nHere it is 0x12 (18), which corresponds to ApiVersions.\n"
         },
         {
           "title": "API Version",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API version is a 2-byte integer indicating the version of the API being used.\n\nHere, it is 0x04 (4) which corresponds to v4 of the APIVersions API.\n"
+          "explanation_markdown": "The API version is a 2-byte big-endian integer indicating the version of the API being used.\n\nHere, it is 0x04 (4) which corresponds to v4 of the APIVersions API.\n"
         },
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x07 (7).\n"
         },
         {
           "title": "Client ID",
@@ -79,7 +79,7 @@ const generated: GeneratedData = {
             {
               "title": "Length",
               "length_in_bytes": 2,
-              "explanation_markdown": "The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0009 (9).\n"
+              "explanation_markdown": "The Client ID length is a 2-byte big-endian integer indicating the length of the Client ID string. Here, it is 0x0009 (9).\n"
             },
             {
               "title": "Contents",

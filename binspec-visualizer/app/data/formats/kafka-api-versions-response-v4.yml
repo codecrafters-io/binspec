@@ -59,7 +59,7 @@ segments:
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
-          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+          The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x07 (7).
   - title: ApiVersions Response Body (v4)
@@ -69,7 +69,7 @@ segments:
       - title: Error Code
         length_in_bytes: 2
         explanation_markdown: |
-          A 2-byte integer representing the error code for this response.
+          A 2-byte big-endian integer representing the error code for this response.
 
           Here, it is 0x0000 (0), which corresponds to NO_ERROR.
       - title: API Versions Array
@@ -89,18 +89,18 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this entry.
+                  A 2-byte big-endian integer representing the API Key for this entry.
 
                   Here, it is 0x0001 (1), which corresponds to the Fetch API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this entry. 
+                  A 2-byte big-endian integer representing the minimum supported API Version for this entry. 
                   Here, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this entry.
+                  A 2-byte big-endian integer representing the maximum supported API Version for this entry.
                   Here, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.
               - title: Tag Buffer
                 length_in_bytes: 1
@@ -113,18 +113,18 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this entry.
+                  A 2-byte big-endian integer representing the API Key for this entry.
 
                   Here, it is 0x0012 (18), which corresponds to the APIVersions API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this entry. 
+                  A 2-byte big-endian integer representing the minimum supported API Version for this entry. 
                   Here, it is 0x0000 (0), which means that the APIVersions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this entry.
+                  A 2-byte big-endian integer representing the maximum supported API Version for this entry.
                   Here, it is 0x0004 (4), which means that the APIVersions API supports versions upto 4.
               - title: Tag Buffer
                 length_in_bytes: 1
@@ -137,18 +137,18 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this entry.
+                  A 2-byte big-endian integer representing the API Key for this entry.
 
                   Here, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this entry. 
+                  A 2-byte big-endian integer representing the minimum supported API Version for this entry. 
                   Here, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this entry.
+                  A 2-byte big-endian integer representing the maximum supported API Version for this entry.
                   Here, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.
               - title: Tag Buffer
                 length_in_bytes: 1
@@ -157,7 +157,7 @@ segments:
       - title: Throttle Time
         length_in_bytes: 4
         explanation_markdown: |
-          A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
+          A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
 
           Here, it is 0x00000000 (0 in decimal), indicating no throttling.
       - title: Tag Buffer

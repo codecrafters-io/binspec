@@ -64,7 +64,7 @@ const generated: GeneratedData = {
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
         },
         {
           "title": "Tag buffer",
@@ -80,7 +80,7 @@ const generated: GeneratedData = {
         {
           "title": "Throttle Time",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
+          "explanation_markdown": "A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
         },
         {
           "title": "Topics Array",
@@ -98,7 +98,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Error Code",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the error code for this topic.\n\nHere, it is 0x0003 (3), which corresponds to UNKNOWN_TOPIC.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the error code for this topic.\n\nHere, it is 0x0003 (3), which corresponds to UNKNOWN_TOPIC.\n"
                 },
                 {
                   "title": "Topic Name",
@@ -135,7 +135,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Topic Authorized Operations",
                   "length_in_bytes": 4,
-                  "explanation_markdown": "A 4-byte integer (bitfield) representing the authorized operations for this topic.\n\nHere, the value is 0x00000df8, which is the following in binary:\n\n```\n0000 1101 1111 1000\n```\n\nThis corresponds to the following operations:\n\n- READ (bit index 3 from the right)\n- WRITE (bit index 4 from the right)\n- CREATE (bit index 5 from the right)\n- DELETE (bit index 6 from the right)\n- ALTER (bit index 7 from the right)\n- DESCRIBE (bit index 8 from the right)\n- DESCRIBE_CONFIGS (bit index 10 from the right)\n- ALTER_CONFIGS (bit index 11 from the right)\n\nThe full list of operations can be found [here](https://github.com/apache/kafka/blob/1962917436f463541f9bb63791b7ed55c23ce8c1/clients/src/main/java/org/apache/kafka/common/acl/AclOperation.java#L44).\n"
+                  "explanation_markdown": "A 4-byte big-endian integer (bitfield) representing the authorized operations for this topic.\n\nHere, the value is 0x00000df8, which is the following in binary:\n\n```\n0000 1101 1111 1000\n```\n\nThis corresponds to the following operations:\n\n- READ (bit index 3 from the right)\n- WRITE (bit index 4 from the right)\n- CREATE (bit index 5 from the right)\n- DELETE (bit index 6 from the right)\n- ALTER (bit index 7 from the right)\n- DESCRIBE (bit index 8 from the right)\n- DESCRIBE_CONFIGS (bit index 10 from the right)\n- ALTER_CONFIGS (bit index 11 from the right)\n\nThe full list of operations can be found [here](https://github.com/apache/kafka/blob/1962917436f463541f9bb63791b7ed55c23ce8c1/clients/src/main/java/org/apache/kafka/common/acl/AclOperation.java#L44).\n"
                 },
                 {
                   "title": "Tag Buffer",

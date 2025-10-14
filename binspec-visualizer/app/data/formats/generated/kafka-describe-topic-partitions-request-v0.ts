@@ -56,17 +56,17 @@ const generated: GeneratedData = {
         {
           "title": "API Key",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x4b (75), which corresponds to DescribeTopicPartitions.\n"
+          "explanation_markdown": "The API key is a 2-byte big-endian integer that identifies the API Key that this request is for.\n\nHere it is 0x4b (75), which corresponds to DescribeTopicPartitions.\n"
         },
         {
           "title": "API Version",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API version is a 2-byte integer indicating the version of the API being used.\n\nHere, it is 0x00 (0) which corresponds to v0 of the DescribeTopicPartitions API.\n"
+          "explanation_markdown": "The API version is a 2-byte big-endian integer indicating the version of the API being used.\n\nHere, it is 0x00 (0) which corresponds to v0 of the DescribeTopicPartitions API.\n"
         },
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x07 (7).\n"
         },
         {
           "title": "Client ID",
@@ -76,7 +76,7 @@ const generated: GeneratedData = {
             {
               "title": "Length",
               "length_in_bytes": 2,
-              "explanation_markdown": "The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x0009 (9).\n"
+              "explanation_markdown": "The Client ID length is a 2-byte big-endian integer indicating the length of the Client ID string. Here, it is 0x0009 (9).\n"
             },
             {
               "title": "Contents",
@@ -134,7 +134,7 @@ const generated: GeneratedData = {
         {
           "title": "Response Partition Limit",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that limits the number of partitions to be returned in the response.\n\nHere, it is 0x00000064 (100 in decimal).\n"
+          "explanation_markdown": "A 4-byte big-endian integer that limits the number of partitions to be returned in the response.\n\nHere, it is 0x00000064 (100 in decimal).\n"
         },
         {
           "title": "Cursor",

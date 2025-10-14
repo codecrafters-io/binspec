@@ -122,7 +122,7 @@ data:
   - 0x0d
   - 0xf8
   - 0x00 # Empty tag buffer after topic
-  - 0xff # Next cursor: Null (-1 as a 1 byte integer)
+  - 0xff # Next cursor: Null (-1 as a 1 byte big-endian integer)
   - 0x00 # Empty tag buffer
 segments:
   - title: Message Size
@@ -138,7 +138,7 @@ segments:
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
-          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+          The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x07 (7).
       - title: Tag buffer
@@ -152,7 +152,7 @@ segments:
       - title: Throttle Time
         length_in_bytes: 4
         explanation_markdown: |
-          A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
+          A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
 
           Here, it is 0x00000000 (0 in decimal), indicating no throttling.
       - title: Topics Array
@@ -172,7 +172,7 @@ segments:
               - title: Error Code
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the error code for this topic.
+                  A 2-byte big-endian integer representing the error code for this topic.
                   Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
               - title: Topic Name
                 explanation_markdown: |
@@ -211,22 +211,22 @@ segments:
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
-                          A 2-byte integer representing the error code for this partition.
+                          A 2-byte big-endian integer representing the error code for this partition.
                           Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the index of this partition.
+                          A 4-byte big-endian integer representing the index of this partition.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Leader ID
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the ID of the leader for this partition.
+                          A 4-byte big-endian integer representing the ID of the leader for this partition.
                           Here, it is 0x00000001 (1 in decimal).
                       - title: Leader Epoch
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the epoch of the leader.
+                          A 4-byte big-endian integer representing the epoch of the leader.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Replica Nodes
                         explanation_markdown: |
@@ -239,7 +239,7 @@ segments:
                           - title: Replica Node
                             length_in_bytes: 4
                             explanation_markdown: |
-                              A 4-byte integer representing a replica node ID.
+                              A 4-byte big-endian integer representing a replica node ID.
                               Here, it is 0x00000001 (1 in decimal).
                       - title: ISR Nodes
                         explanation_markdown: |
@@ -252,7 +252,7 @@ segments:
                           - title: ISR Node
                             length_in_bytes: 4
                             explanation_markdown: |
-                              A 4-byte integer representing an in-sync replica node ID.
+                              A 4-byte big-endian integer representing an in-sync replica node ID.
                               Here, it is 0x00000001 (1 in decimal).
                       - title: Eligible Leader Replicas
                         explanation_markdown: |
@@ -289,22 +289,22 @@ segments:
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
-                          A 2-byte integer representing the error code for this partition.
+                          A 2-byte big-endian integer representing the error code for this partition.
                           Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the index of this partition.
+                          A 4-byte big-endian integer representing the index of this partition.
                           Here, it is 0x00000001 (1 in decimal).
                       - title: Leader ID
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the ID of the leader for this partition.
+                          A 4-byte big-endian integer representing the ID of the leader for this partition.
                           Here, it is 0x00000001 (1 in decimal).
                       - title: Leader Epoch
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the epoch of the leader.
+                          A 4-byte big-endian integer representing the epoch of the leader.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Replica Nodes
                         explanation_markdown: |
@@ -317,7 +317,7 @@ segments:
                           - title: Replica Node
                             length_in_bytes: 4
                             explanation_markdown: |
-                              A 4-byte integer representing a replica node ID.
+                              A 4-byte big-endian integer representing a replica node ID.
                               Here, it is 0x00000001 (1 in decimal).
                       - title: ISR Nodes
                         explanation_markdown: |
@@ -330,7 +330,7 @@ segments:
                           - title: ISR Node
                             length_in_bytes: 4
                             explanation_markdown: |
-                              A 4-byte integer representing an in-sync replica node ID.
+                              A 4-byte big-endian integer representing an in-sync replica node ID.
                               Here, it is 0x00000001 (1 in decimal).
                       - title: Eligible Leader Replicas
                         explanation_markdown: |
@@ -363,7 +363,7 @@ segments:
               - title: Topic Authorized Operations
                 length_in_bytes: 4
                 explanation_markdown: |
-                  A 4-byte integer representing the authorized operations for this topic.
+                  A 4-byte big-endian integer representing the authorized operations for this topic.
                   Here, it is 0x00000df8.
               - title: Tag Buffer
                 length_in_bytes: 1

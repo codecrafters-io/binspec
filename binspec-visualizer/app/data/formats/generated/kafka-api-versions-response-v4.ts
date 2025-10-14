@@ -56,7 +56,7 @@ const generated: GeneratedData = {
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
         }
       ]
     },
@@ -67,7 +67,7 @@ const generated: GeneratedData = {
         {
           "title": "Error Code",
           "length_in_bytes": 2,
-          "explanation_markdown": "A 2-byte integer representing the error code for this response.\n\nHere, it is 0x0000 (0), which corresponds to NO_ERROR.\n"
+          "explanation_markdown": "A 2-byte big-endian integer representing the error code for this response.\n\nHere, it is 0x0000 (0), which corresponds to NO_ERROR.\n"
         },
         {
           "title": "API Versions Array",
@@ -85,17 +85,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this entry.\n\nHere, it is 0x0001 (1), which corresponds to the Fetch API.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the API Key for this entry.\n\nHere, it is 0x0001 (1), which corresponds to the Fetch API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the Fetch API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this entry.\nHere, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the maximum supported API Version for this entry.\nHere, it is 0x0011 (17), which means that the Fetch API supports versions upto 17.\n"
                 },
                 {
                   "title": "Tag Buffer",
@@ -111,17 +111,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this entry.\n\nHere, it is 0x0012 (18), which corresponds to the APIVersions API.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the API Key for this entry.\n\nHere, it is 0x0012 (18), which corresponds to the APIVersions API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the APIVersions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the APIVersions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this entry.\nHere, it is 0x0004 (4), which means that the APIVersions API supports versions upto 4.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the maximum supported API Version for this entry.\nHere, it is 0x0004 (4), which means that the APIVersions API supports versions upto 4.\n"
                 },
                 {
                   "title": "Tag Buffer",
@@ -137,17 +137,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this entry.\n\nHere, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the API Key for this entry.\n\nHere, it is 0x004b (75), which corresponds to the DescribeTopicPartitions API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the minimum supported API Version for this entry. \nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this entry.\nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the maximum supported API Version for this entry.\nHere, it is 0x0000 (0), which means that the DescribeTopicPartitions API supports versions upto 0.\n"
                 },
                 {
                   "title": "Tag Buffer",
@@ -161,7 +161,7 @@ const generated: GeneratedData = {
         {
           "title": "Throttle Time",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
+          "explanation_markdown": "A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
         },
         {
           "title": "Tag Buffer",

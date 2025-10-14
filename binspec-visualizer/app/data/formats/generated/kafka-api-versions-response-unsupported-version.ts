@@ -39,7 +39,7 @@ const generated: GeneratedData = {
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x07 (7).\n"
         }
       ]
     },
@@ -50,7 +50,7 @@ const generated: GeneratedData = {
         {
           "title": "Error Code",
           "length_in_bytes": 2,
-          "explanation_markdown": "A 2-byte integer representing the error code for this response.\n\nHere, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.\nYou can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)\n"
+          "explanation_markdown": "A 2-byte big-endian integer representing the error code for this response.\n\nHere, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.\nYou can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)\n"
         },
         {
           "title": "API Keys Array",
@@ -68,17 +68,17 @@ const generated: GeneratedData = {
                 {
                   "title": "API Key",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the API Key for this API Version.\n\nHere, it is 0x0012 (18), which corresponds to the ApiVersions API.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the API Key for this API Version.\n\nHere, it is 0x0012 (18), which corresponds to the ApiVersions API.\n"
                 },
                 {
                   "title": "Min Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the minimum supported API Version for this API.\nHere, it is 0x0000 (0), which means that the ApiVersions API supports versions 0 and up.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the minimum supported API Version for this API.\nHere, it is 0x0000 (0), which means that the ApiVersions API supports versions 0 and up.\n"
                 },
                 {
                   "title": "Max Supported API Version",
                   "length_in_bytes": 2,
-                  "explanation_markdown": "A 2-byte integer representing the maximum supported API Version for this API.\nHere, it is 0x0004 (4), which means that the ApiVersions API supports versions upto 4.\n"
+                  "explanation_markdown": "A 2-byte big-endian integer representing the maximum supported API Version for this API.\nHere, it is 0x0004 (4), which means that the ApiVersions API supports versions upto 4.\n"
                 }
               ]
             }

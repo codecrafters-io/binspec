@@ -146,7 +146,7 @@ const generated: GeneratedData = {
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x00000007 (7 in decimal).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x00000007 (7 in decimal).\n"
         },
         {
           "title": "Tag buffer",
@@ -210,27 +210,27 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition ID",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the ID of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the ID of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                          "explanation_markdown": "A 2-byte big-endian integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -264,27 +264,27 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition ID",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the ID of this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the ID of this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
                         },
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                          "explanation_markdown": "A 2-byte big-endian integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -359,27 +359,27 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition ID",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the ID of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the ID of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
+                          "explanation_markdown": "A 2-byte big-endian integer representing the error code for this partition.\nHere, it is 0x0000 (0 in decimal), indicating NO_ERROR.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the base offset of the first record in this partition.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the timestamp when the records were appended to the log.\n\nHere, it is 0xffffffffffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the earliest available offset within this partition's log.\n\nHere, it is 0x0000000000000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -419,7 +419,7 @@ const generated: GeneratedData = {
         {
           "title": "Throttle Time",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
+          "explanation_markdown": "A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
         },
         {
           "title": "Tag Buffer",

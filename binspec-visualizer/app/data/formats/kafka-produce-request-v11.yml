@@ -116,7 +116,7 @@ data:
   - 0x00
   - 0x01
   - 0x2c # Record Size: (zig-zag varint, 0x2c in hex, 22 in decimal)
-  - 0x00 # Record Atrributes [1 byte integer]
+  - 0x00 # Record Atrributes [1 byte big-endian integer]
   - 0x00 # Timestamp delta (zig-zag varint, 0x00 in hex, 0 in decimal)
   - 0x00 # Record Offset (zig-zag varint, 0x00 in hex, 0 in decimal)
   - 0x01 # Record Key Length (zig-zag varint, 0x01 in hex, -1 in decimal -> NO key follows)
@@ -342,19 +342,19 @@ segments:
       - title: API Key
         length_in_bytes: 2
         explanation_markdown: |
-          The API key is a 2-byte integer that identifies the API Key that this request is for.
+          The API key is a 2-byte big-endian integer that identifies the API Key that this request is for.
 
           Here it is 0x0000 (0), which corresponds to Produce.
       - title: API Version
         length_in_bytes: 2
         explanation_markdown: |
-          The API version is a 2-byte integer indicating the version of the API being used.
+          The API version is a 2-byte big-endian integer indicating the version of the API being used.
 
           Here, it is 0x000b (11) which corresponds to v11 of the Produce API.
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
-          The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.
+          The Correlation ID is a 4-byte big-endian integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.
 
           Here, it is 0x00000006 (6).
       - title: Client ID
@@ -367,7 +367,7 @@ segments:
           - title: Length
             length_in_bytes: 2
             explanation_markdown: |
-              The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x000a (10).
+              The Client ID length is a 2-byte big-endian integer indicating the length of the Client ID string. Here, it is 0x000a (10).
           - title: Contents
             length_in_bytes: 10
             explanation_markdown: |
@@ -390,13 +390,13 @@ segments:
       - title: Required ACKs
         length_in_bytes: 2
         explanation_markdown: |
-          A 2-byte integer representing the number of acknowledgments the producer requires the leader to have received before considering a request complete.
+          A 2-byte big-endian integer representing the number of acknowledgments the producer requires the leader to have received before considering a request complete.
 
           Here, it is 0xffff (-1 in decimal), meaning all in-sync replicas must acknowledge.
       - title: Timeout
         length_in_bytes: 4
         explanation_markdown: |
-          A 4-byte integer representing the time to await a response in milliseconds.
+          A 4-byte big-endian integer representing the time to await a response in milliseconds.
 
           Here, it is 0x00007530 (30000 in decimal), meaning 30 seconds.
       - title: Topics Array
@@ -443,7 +443,7 @@ segments:
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the index of this partition.
+                          A 4-byte big-endian integer representing the index of this partition.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Record Batch Array
                         length_in_bytes: 85
@@ -615,7 +615,7 @@ segments:
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the index of this partition.
+                          A 4-byte big-endian integer representing the index of this partition.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Record Batch Array
                         length_in_bytes: 85
@@ -756,7 +756,7 @@ segments:
                       - title: Partition Index
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the index of this partition.
+                          A 4-byte big-endian integer representing the index of this partition.
                           Here, it is 0x00000001 (1 in decimal).
                       - title: Record Batch Array
                         length_in_bytes: 85

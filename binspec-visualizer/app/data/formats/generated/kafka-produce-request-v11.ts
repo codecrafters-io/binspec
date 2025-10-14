@@ -336,17 +336,17 @@ const generated: GeneratedData = {
         {
           "title": "API Key",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API key is a 2-byte integer that identifies the API Key that this request is for.\n\nHere it is 0x0000 (0), which corresponds to Produce.\n"
+          "explanation_markdown": "The API key is a 2-byte big-endian integer that identifies the API Key that this request is for.\n\nHere it is 0x0000 (0), which corresponds to Produce.\n"
         },
         {
           "title": "API Version",
           "length_in_bytes": 2,
-          "explanation_markdown": "The API version is a 2-byte integer indicating the version of the API being used.\n\nHere, it is 0x000b (11) which corresponds to v11 of the Produce API.\n"
+          "explanation_markdown": "The API version is a 2-byte big-endian integer indicating the version of the API being used.\n\nHere, it is 0x000b (11) which corresponds to v11 of the Produce API.\n"
         },
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x00000006 (6).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that will be echo-ed back in the response. When multiple requests are in-flight, this ID can be used to match responses with their corresponding requests.\n\nHere, it is 0x00000006 (6).\n"
         },
         {
           "title": "Client ID",
@@ -356,7 +356,7 @@ const generated: GeneratedData = {
             {
               "title": "Length",
               "length_in_bytes": 2,
-              "explanation_markdown": "The Client ID length is a 2-byte integer indicating the length of the Client ID string. Here, it is 0x000a (10).\n"
+              "explanation_markdown": "The Client ID length is a 2-byte big-endian integer indicating the length of the Client ID string. Here, it is 0x000a (10).\n"
             },
             {
               "title": "Contents",
@@ -385,12 +385,12 @@ const generated: GeneratedData = {
         {
           "title": "Required ACKs",
           "length_in_bytes": 2,
-          "explanation_markdown": "A 2-byte integer representing the number of acknowledgments the producer requires the leader to have received before considering a request complete.\n\nHere, it is 0xffff (-1 in decimal), meaning all in-sync replicas must acknowledge.\n"
+          "explanation_markdown": "A 2-byte big-endian integer representing the number of acknowledgments the producer requires the leader to have received before considering a request complete.\n\nHere, it is 0xffff (-1 in decimal), meaning all in-sync replicas must acknowledge.\n"
         },
         {
           "title": "Timeout",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer representing the time to await a response in milliseconds.\n\nHere, it is 0x00007530 (30000 in decimal), meaning 30 seconds.\n"
+          "explanation_markdown": "A 4-byte big-endian integer representing the time to await a response in milliseconds.\n\nHere, it is 0x00007530 (30000 in decimal), meaning 30 seconds.\n"
         },
         {
           "title": "Topics Array",
@@ -442,7 +442,7 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition Index",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the index of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the index of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Batch Array",
@@ -638,7 +638,7 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition Index",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the index of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the index of this partition.\nHere, it is 0x00000000 (0 in decimal).\n"
                         },
                         {
                           "title": "Record Batch Array",
@@ -793,7 +793,7 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition Index",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the index of this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the index of this partition.\nHere, it is 0x00000001 (1 in decimal).\n"
                         },
                         {
                           "title": "Record Batch Array",
