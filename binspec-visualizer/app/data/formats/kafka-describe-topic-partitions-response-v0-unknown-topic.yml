@@ -66,7 +66,7 @@ data:
   - 0x0d
   - 0xf8
   - 0x00 # Empty tag buffer after topic
-  - 0xff # Next cursor: Null (-1 as a 1 byte integer)
+  - 0xff # Next cursor: Null (-1 as a 1 byte big-endian integer)
   - 0x00 # Empty tag buffer
 segments:
   - title: Message Size
@@ -82,7 +82,7 @@ segments:
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
-          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+          The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x07 (7).
       - title: Tag buffer
@@ -96,7 +96,7 @@ segments:
       - title: Throttle Time
         length_in_bytes: 4
         explanation_markdown: |
-          A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
+          A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
 
           Here, it is 0x00000000 (0 in decimal), indicating no throttling.
       - title: Topics Array
@@ -116,7 +116,7 @@ segments:
               - title: Error Code
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the error code for this topic.
+                  A 2-byte big-endian integer representing the error code for this topic.
 
                   Here, it is 0x0003 (3), which corresponds to UNKNOWN_TOPIC.
               - title: Topic Name
@@ -153,7 +153,7 @@ segments:
               - title: Topic Authorized Operations
                 length_in_bytes: 4
                 explanation_markdown: |
-                  A 4-byte integer (bitfield) representing the authorized operations for this topic.
+                  A 4-byte big-endian integer (bitfield) representing the authorized operations for this topic.
 
                   Here, the value is 0x00000df8, which is the following in binary:
 

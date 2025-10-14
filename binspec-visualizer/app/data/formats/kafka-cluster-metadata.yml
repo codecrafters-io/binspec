@@ -384,7 +384,7 @@ segments:
       - title: Magic Byte
         length_in_bytes: 1
         explanation_markdown: |
-          Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.
+          Magic Byte is a 1-byte integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.
 
           In this case, the value is `0x02`, which is `2` in decimal.
       - title: CRC
@@ -474,7 +474,7 @@ segments:
           - title: Attributes
             length_in_bytes: 1
             explanation_markdown: |
-              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Attributes is a 1-byte integer indicating the attributes of the record.
               Currently, this field is unused in the protocol.
 
               In this case, the value is `0x00`, which is `0` in decimal after parsing.
@@ -519,19 +519,19 @@ segments:
               - title: Frame Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+                  Frame Version is a 1-byte integer indicating the version of the format of the record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Type
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Type is a 1-byte big-endian integer indicating the type of the record.
+                  Type is a 1-byte integer indicating the type of the record.
 
                   In this case, the value is `0x0c`, which is `12` in decimal, indicating that this is a Feature Level Record.
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the feature level record.
+                  Version is a 1-byte integer indicating the version of the feature level record.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
               - title: Name length
@@ -597,7 +597,7 @@ segments:
       - title: Magic Byte
         length_in_bytes: 1
         explanation_markdown: |
-          Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.
+          Magic Byte is a 1-byte integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.
 
           In this case, the value is `0x02`, which is `2` in decimal.
       - title: CRC
@@ -685,7 +685,7 @@ segments:
           - title: Attributes
             length_in_bytes: 1
             explanation_markdown: |
-              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Attributes is a 1-byte integer indicating the attributes of the record.
               Currently, this field is unused in the protocol.
 
               In this case, the value is `0x00`, which is `0` in decimal after parsing.
@@ -730,19 +730,19 @@ segments:
               - title: Frame Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+                  Frame Version is a 1-byte integer indicating the version of the format of the record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Type
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Type is a 1-byte big-endian integer indicating the type of the record.
+                  Type is a 1-byte integer indicating the type of the record.
 
                   In this case, the value is `0x02`, which is `2` in decimal, indicating that this is a Topic Record.
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the topic record.
+                  Version is a 1-byte integer indicating the version of the topic record.
 
                   In this case, the value is `0x00`, which is `0` in decimal.
               - title: Name length
@@ -790,7 +790,7 @@ segments:
           - title: Attributes
             length_in_bytes: 1
             explanation_markdown: |
-              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Attributes is a 1-byte integer indicating the attributes of the record.
               Currently, this field is unused in the protocol.
 
               In this case, the value is `0x00`, which is `0` in decimal after parsing.
@@ -835,19 +835,19 @@ segments:
               - title: Frame Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+                  Frame Version is a 1-byte integer indicating the version of the format of the record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Type
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Type is a 1-byte big-endian integer indicating the type of the record.
+                  Type is a 1-byte integer indicating the type of the record.
 
                   In this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the partition record.
+                  Version is a 1-byte integer indicating the version of the partition record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Partition ID
@@ -958,7 +958,7 @@ segments:
           - title: Attributes
             length_in_bytes: 1
             explanation_markdown: |
-              Attributes is a 1-byte big-endian integer indicating the attributes of the record.
+              Attributes is a 1-byte integer indicating the attributes of the record.
               Currently, this field is unused in the protocol.
 
               In this case, the value is `0x00`, which is `0` in decimal after parsing.
@@ -1003,19 +1003,19 @@ segments:
               - title: Frame Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.
+                  Frame Version is a 1-byte integer indicating the version of the format of the record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Type
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Type is a 1-byte big-endian integer indicating the type of the record.
+                  Type is a 1-byte integer indicating the type of the record.
 
                   In this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.
               - title: Version
                 length_in_bytes: 1
                 explanation_markdown: |
-                  Version is a 1-byte big-endian integer indicating the version of the partition record.
+                  Version is a 1-byte integer indicating the version of the partition record.
 
                   In this case, the value is `0x01`, which is `1` in decimal.
               - title: Partition ID

@@ -2,7 +2,7 @@ name: Kafka Produce Success Response (v11)
 slug: kafka-produce-success-response
 
 data:
-# This is the header part
+  # This is the header part
   - 0x00 # Message length (4 bytes, 0x7a in hdex, 122 in decimal)
   - 0x00
   - 0x00
@@ -144,7 +144,7 @@ segments:
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
-          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+          The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x00000007 (7 in decimal).
       - title: Tag buffer
@@ -202,29 +202,29 @@ segments:
                       - title: Partition ID
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the ID of this partition.
+                          A 4-byte big-endian integer representing the ID of this partition.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
-                          A 2-byte integer representing the error code for this partition.
+                          A 2-byte big-endian integer representing the error code for this partition.
                           Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the base offset of the first record in this partition.
+                          An 8-byte big-endian integer representing the base offset of the first record in this partition.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Log Append Time
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the timestamp when the records were appended to the log.
+                          An 8-byte big-endian integer representing the timestamp when the records were appended to the log.
 
                           Here, it is 0xffffffffffffffff (-1 in decimal).
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the earliest available offset within this partition's log.
+                          An 8-byte big-endian integer representing the earliest available offset within this partition's log.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Record Errors Array
@@ -254,29 +254,29 @@ segments:
                       - title: Partition ID
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the ID of this partition.
+                          A 4-byte big-endian integer representing the ID of this partition.
                           Here, it is 0x00000001 (1 in decimal).
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
-                          A 2-byte integer representing the error code for this partition.
+                          A 2-byte big-endian integer representing the error code for this partition.
                           Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the base offset of the first record in this partition.
+                          An 8-byte big-endian integer representing the base offset of the first record in this partition.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Log Append Time
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the timestamp when the records were appended to the log.
+                          An 8-byte big-endian integer representing the timestamp when the records were appended to the log.
 
                           Here, it is 0xffffffffffffffff (-1 in decimal).
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the earliest available offset within this partition's log.
+                          An 8-byte big-endian integer representing the earliest available offset within this partition's log.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Record Errors Array
@@ -337,29 +337,29 @@ segments:
                       - title: Partition ID
                         length_in_bytes: 4
                         explanation_markdown: |
-                          A 4-byte integer representing the ID of this partition.
+                          A 4-byte big-endian integer representing the ID of this partition.
                           Here, it is 0x00000000 (0 in decimal).
                       - title: Error Code
                         length_in_bytes: 2
                         explanation_markdown: |
-                          A 2-byte integer representing the error code for this partition.
+                          A 2-byte big-endian integer representing the error code for this partition.
                           Here, it is 0x0000 (0 in decimal), indicating NO_ERROR.
                       - title: Base Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the base offset of the first record in this partition.
+                          An 8-byte big-endian integer representing the base offset of the first record in this partition.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Log Append Time
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the timestamp when the records were appended to the log.
+                          An 8-byte big-endian integer representing the timestamp when the records were appended to the log.
 
                           Here, it is 0xffffffffffffffff (-1 in decimal).
                       - title: Log Start Offset
                         length_in_bytes: 8
                         explanation_markdown: |
-                          An 8-byte integer representing the earliest available offset within this partition's log.
+                          An 8-byte big-endian integer representing the earliest available offset within this partition's log.
 
                           Here, it is 0x0000000000000000 (0 in decimal).
                       - title: Record Errors Array
@@ -387,7 +387,7 @@ segments:
       - title: Throttle Time
         length_in_bytes: 4
         explanation_markdown: |
-          A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
+          A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.
 
           Here, it is 0x00000000 (0 in decimal), indicating no throttling.
       - title: Tag Buffer

@@ -42,7 +42,7 @@ segments:
       - title: Correlation ID
         length_in_bytes: 4
         explanation_markdown: |
-          The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.
+          The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.
 
           Here, it is 0x07 (7).
   - title: ApiVersions Response Body (v0)
@@ -52,7 +52,7 @@ segments:
       - title: Error Code
         length_in_bytes: 2
         explanation_markdown: |
-          A 2-byte integer representing the error code for this response.
+          A 2-byte big-endian integer representing the error code for this response.
 
           Here, it is 0x0023 (35), which corresponds to UNSUPPORTED_VERSION.
           You can find all the error codes [here](https://kafka.apache.org/protocol.html#protocol_error_codes)
@@ -75,16 +75,16 @@ segments:
               - title: API Key
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the API Key for this API Version.
+                  A 2-byte big-endian integer representing the API Key for this API Version.
 
                   Here, it is 0x0012 (18), which corresponds to the ApiVersions API.
               - title: Min Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the minimum supported API Version for this API.
+                  A 2-byte big-endian integer representing the minimum supported API Version for this API.
                   Here, it is 0x0000 (0), which means that the ApiVersions API supports versions 0 and up.
               - title: Max Supported API Version
                 length_in_bytes: 2
                 explanation_markdown: |
-                  A 2-byte integer representing the maximum supported API Version for this API.
+                  A 2-byte big-endian integer representing the maximum supported API Version for this API.
                   Here, it is 0x0004 (4), which means that the ApiVersions API supports versions upto 4.

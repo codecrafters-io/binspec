@@ -360,7 +360,7 @@ const generated: GeneratedData = {
         {
           "title": "Magic Byte",
           "length_in_bytes": 1,
-          "explanation_markdown": "Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
+          "explanation_markdown": "Magic Byte is a 1-byte integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
         },
         {
           "title": "CRC",
@@ -419,7 +419,7 @@ const generated: GeneratedData = {
             {
               "title": "Attributes",
               "length_in_bytes": 1,
-              "explanation_markdown": "Attributes is a 1-byte big-endian integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
+              "explanation_markdown": "Attributes is a 1-byte integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
             },
             {
               "title": "Timestamp Delta",
@@ -454,17 +454,17 @@ const generated: GeneratedData = {
                 {
                   "title": "Frame Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Frame Version is a 1-byte integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Type",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Type is a 1-byte big-endian integer indicating the type of the record.\n\nIn this case, the value is `0x0c`, which is `12` in decimal, indicating that this is a Feature Level Record.\n"
+                  "explanation_markdown": "Type is a 1-byte integer indicating the type of the record.\n\nIn this case, the value is `0x0c`, which is `12` in decimal, indicating that this is a Feature Level Record.\n"
                 },
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the feature level record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte integer indicating the version of the feature level record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                 },
                 {
                   "title": "Name length",
@@ -519,7 +519,7 @@ const generated: GeneratedData = {
         {
           "title": "Magic Byte",
           "length_in_bytes": 1,
-          "explanation_markdown": "Magic Byte is a 1-byte big-endian integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
+          "explanation_markdown": "Magic Byte is a 1-byte integer indicating the version of the record batch format. This value is used to evolve the record batch format in a backward-compatible way.\n\nIn this case, the value is `0x02`, which is `2` in decimal.\n"
         },
         {
           "title": "CRC",
@@ -578,7 +578,7 @@ const generated: GeneratedData = {
             {
               "title": "Attributes",
               "length_in_bytes": 1,
-              "explanation_markdown": "Attributes is a 1-byte big-endian integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
+              "explanation_markdown": "Attributes is a 1-byte integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
             },
             {
               "title": "Timestamp Delta",
@@ -613,17 +613,17 @@ const generated: GeneratedData = {
                 {
                   "title": "Frame Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Frame Version is a 1-byte integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Type",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Type is a 1-byte big-endian integer indicating the type of the record.\n\nIn this case, the value is `0x02`, which is `2` in decimal, indicating that this is a Topic Record.\n"
+                  "explanation_markdown": "Type is a 1-byte integer indicating the type of the record.\n\nIn this case, the value is `0x02`, which is `2` in decimal, indicating that this is a Topic Record.\n"
                 },
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the topic record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte integer indicating the version of the topic record.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\n"
                 },
                 {
                   "title": "Name length",
@@ -666,7 +666,7 @@ const generated: GeneratedData = {
             {
               "title": "Attributes",
               "length_in_bytes": 1,
-              "explanation_markdown": "Attributes is a 1-byte big-endian integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
+              "explanation_markdown": "Attributes is a 1-byte integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
             },
             {
               "title": "Timestamp Delta",
@@ -701,17 +701,17 @@ const generated: GeneratedData = {
                 {
                   "title": "Frame Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Frame Version is a 1-byte integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Type",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Type is a 1-byte big-endian integer indicating the type of the record.\n\nIn this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.\n"
+                  "explanation_markdown": "Type is a 1-byte integer indicating the type of the record.\n\nIn this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.\n"
                 },
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the partition record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte integer indicating the version of the partition record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Partition ID",
@@ -804,7 +804,7 @@ const generated: GeneratedData = {
             {
               "title": "Attributes",
               "length_in_bytes": 1,
-              "explanation_markdown": "Attributes is a 1-byte big-endian integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
+              "explanation_markdown": "Attributes is a 1-byte integer indicating the attributes of the record.\nCurrently, this field is unused in the protocol.\n\nIn this case, the value is `0x00`, which is `0` in decimal after parsing.\n"
             },
             {
               "title": "Timestamp Delta",
@@ -839,17 +839,17 @@ const generated: GeneratedData = {
                 {
                   "title": "Frame Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Frame Version is a 1-byte big-endian integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Frame Version is a 1-byte integer indicating the version of the format of the record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Type",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Type is a 1-byte big-endian integer indicating the type of the record.\n\nIn this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.\n"
+                  "explanation_markdown": "Type is a 1-byte integer indicating the type of the record.\n\nIn this case, the value is `0x03`, which is `3` in decimal, indicating that this is a Partition Record.\n"
                 },
                 {
                   "title": "Version",
                   "length_in_bytes": 1,
-                  "explanation_markdown": "Version is a 1-byte big-endian integer indicating the version of the partition record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
+                  "explanation_markdown": "Version is a 1-byte integer indicating the version of the partition record.\n\nIn this case, the value is `0x01`, which is `1` in decimal.\n"
                 },
                 {
                   "title": "Partition ID",

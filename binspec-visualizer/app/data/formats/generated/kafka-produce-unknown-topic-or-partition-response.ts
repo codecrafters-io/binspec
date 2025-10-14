@@ -75,7 +75,7 @@ const generated: GeneratedData = {
         {
           "title": "Correlation ID",
           "length_in_bytes": 4,
-          "explanation_markdown": "The Correlation ID is a 4-byte integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x00000007 (7 in decimal).\n"
+          "explanation_markdown": "The Correlation ID is a 4-byte big-endian integer that matches the ID sent in the corresponding request.\n\nHere, it is 0x00000007 (7 in decimal).\n"
         },
         {
           "title": "Tag buffer",
@@ -92,12 +92,12 @@ const generated: GeneratedData = {
         {
           "title": "Topic Responses Array",
           "length_in_bytes": 41,
-          "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
+          "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with an unsigned varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
             },
             {
               "title": "Topic #1",
@@ -112,7 +112,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x05 (5), indicating that the string length is 4.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x05 (5), indicating that the string length is 4.\n"
                     },
                     {
                       "title": "String Content",
@@ -129,7 +129,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
                     },
                     {
                       "title": "Partition Response #1",
@@ -139,27 +139,27 @@ const generated: GeneratedData = {
                         {
                           "title": "Partition Index",
                           "length_in_bytes": 4,
-                          "explanation_markdown": "A 4-byte integer representing the index of this partition.\n\nHere, it is 0xffffffff (-1 in decimal).\n"
+                          "explanation_markdown": "A 4-byte big-endian integer representing the index of this partition.\n\nHere, it is 0xffffffff (-1 in decimal).\n"
                         },
                         {
                           "title": "Error Code",
                           "length_in_bytes": 2,
-                          "explanation_markdown": "A 2-byte integer representing the error code for this partition.\n\nHere, it is 0x0003 (3 in decimal), which corresponds to UNKNOWN_TOPIC_OR_PARTITION, indicating the topic or partition doesn't exist.\n"
+                          "explanation_markdown": "A 2-byte big-endian integer representing the error code for this partition.\n\nHere, it is 0x0003 (3 in decimal), which corresponds to UNKNOWN_TOPIC_OR_PARTITION, indicating the topic or partition doesn't exist.\n"
                         },
                         {
                           "title": "Base Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the base offset of this partition. For errors, this is -1.\n\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating the offset is invalid due to the error.\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the base offset of this partition. For errors, this is -1.\n\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating the offset is invalid due to the error.\n"
                         },
                         {
                           "title": "Log Append Time",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the timestamp when the message was appended to the log. For errors, this is -1.\n\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating no timestamp due to the error.\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the timestamp when the message was appended to the log. For errors, this is -1.\n\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating no timestamp due to the error.\n"
                         },
                         {
                           "title": "Log Start Offset",
                           "length_in_bytes": 8,
-                          "explanation_markdown": "An 8-byte integer representing the earliest offset available in this partition's log. For errors, this is -1.\n\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating this information is unavailable due to the error.\n"
+                          "explanation_markdown": "An 8-byte big-endian integer representing the earliest offset available in this partition's log. For errors, this is -1.\n\nHere, it is 0xffffffffffffffff (-1 in decimal), indicating this information is unavailable due to the error.\n"
                         },
                         {
                           "title": "Record Errors Array",
@@ -199,7 +199,7 @@ const generated: GeneratedData = {
         {
           "title": "Throttle Time",
           "length_in_bytes": 4,
-          "explanation_markdown": "A 4-byte integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
+          "explanation_markdown": "A 4-byte big-endian integer that represents the duration in milliseconds for which the request was throttled due to quota violation.\n\nHere, it is 0x00000000 (0 in decimal), indicating no throttling.\n"
         },
         {
           "title": "Tag Buffer",
