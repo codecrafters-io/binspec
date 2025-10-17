@@ -25,8 +25,8 @@ data:
   - 0x6c
   - 0x69
   - 0x00 # Empty tagged field array (1 byte, 0x00 in hex, 0 in decimal)
-  - 0x0a # Client ID (Compact string) length (INT16, 2 bytes, 0x0a in hex, 10 in decimal)
-  - 0x6b # Client ID (variable length, "kafka-cli" in UTF-8)
+  - 0x0a # Client Software Name (Compact string) length (INT16, 2 bytes, 0x0a in hex, 10 in decimal)
+  - 0x6b # Client Software Name (variable length, "kafka-cli" in UTF-8)
   - 0x61
   - 0x66
   - 0x6b
@@ -94,19 +94,19 @@ segments:
     explanation_markdown: |
       The request body contains fields specific to the APIVersions request.
     children:
-      - title: Client ID
+      - title: Client Software Name
         length_in_bytes: 10
         explanation_markdown: |
-          The Client ID in the body, represented as a compact string.
+          The Client Software Name, represented as a compact string.
         children:
           - title: Length
             length_in_bytes: 1
             explanation_markdown: |
-              The length of the Client ID compact string, represented as a single byte. Here, it is 0x0A (10).
+              The length of the Client Software Name compact string, represented as a single byte. Here, it is 0x0A (10).
           - title: Contents
             length_in_bytes: 9
             explanation_markdown: |
-              The actual Client ID string. In this case, it is "kafka-cli" encoded in UTF-8.
+              Client Software Name string. In this case, it is "kafka-cli" encoded in UTF-8.
       - title: Client Software Version
         length_in_bytes: 4
         explanation_markdown: |
