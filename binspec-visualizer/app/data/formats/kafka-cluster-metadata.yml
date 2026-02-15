@@ -930,7 +930,7 @@ segments:
                 explanation_markdown: |
                   Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.
 
-                  In this case, the value is `0x00000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
+                  In this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
