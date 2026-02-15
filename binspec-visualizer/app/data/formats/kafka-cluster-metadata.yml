@@ -931,15 +931,6 @@ segments:
                   Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.
 
                   In this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
-
-                  This UUID value corresponds to the log directory, because the file `[log-directory]/meta.properties` contains a `directory.id` property with the same value (Base64-encoded):
-
-                  ```
-                  directory.id=EAAAAAAAQACAAAAAAAAAAQ==
-                  ```
-
-                  The value `EAAAAAAAQACAAAAAAAAAAQ==` is the Base64-encoded form of the UUID. You can verify this by decoding it. For example in Python: `uuid.UUID(bytes=base64.b64decode("EAAAAAAAQACAAAAAAAAAAQ=="))`.
-
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
@@ -1108,14 +1099,6 @@ segments:
                   Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.
 
                   In this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
-
-                  This UUID value corresponds to the log directory, because the file `[log-directory]/meta.properties` contains a `directory.id` property with the same value (Base64-encoded):
-
-                  ```
-                  directory.id=EAAAAAAAQACAAAAAAAAAAQ==
-                  ```
-
-                  The value `EAAAAAAAQACAAAAAAAAAAQ==` is the Base64-encoded form of the UUID. You can verify this by decoding it. For example in Python: `uuid.UUID(bytes=base64.b64decode("EAAAAAAAQACAAAAAAAAAAQ=="))`.
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
