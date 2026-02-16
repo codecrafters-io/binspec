@@ -932,14 +932,13 @@ segments:
 
                   In this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
 
-                  This UUID value matches the log directory, because the file `[log-directory]/meta.properties` contains a `directory.id` property with the same value (Base64-encoded):
+                  This UUID value matches the log directory's ID present in the `<log-directory>/meta.properties` file:
 
                   ```
                   directory.id=EAAAAAAAQACAAAAAAAAAAQ==
                   ```
 
-                  The directory ID `EAAAAAAAQACAAAAAAAAAAQ==` is the Base64-encoded form of the UUID. You can verify this by decoding it, for example in Python: `uuid.UUID(bytes=base64.b64decode("EAAAAAAAQACAAAAAAAAAAQ=="))`.
-
+                  The `directory.id` value in the file is the 16-byte UUID encoded using Base64.
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
@@ -1109,13 +1108,13 @@ segments:
 
                   In this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.
 
-                  This UUID value matches the log directory, because the file `[log-directory]/meta.properties` contains a `directory.id` property with the same value (Base64-encoded):
+                  This UUID value matches the log directory's ID present in the `<log-directory>/meta.properties` file:
 
                   ```
                   directory.id=EAAAAAAAQACAAAAAAAAAAQ==
                   ```
 
-                  The directory ID `EAAAAAAAQACAAAAAAAAAAQ==` is the Base64-encoded form of the UUID. You can verify this by decoding it, for example in Python: `uuid.UUID(bytes=base64.b64decode("EAAAAAAAQACAAAAAAAAAAQ=="))`.
+                  The `directory.id` value in the file is the 16-byte UUID encoded using Base64.
               - title: Tagged Fields Count
                 length_in_bytes: 1
                 explanation_markdown: |
