@@ -776,7 +776,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Directories Array",
                   "length_in_bytes": 16,
-                  "explanation_markdown": "Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.\n\nIn this case, the value is `0x00000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.\n"
+                  "explanation_markdown": "Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.\n\nIn this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.\n\nThis UUID value matches the log directory's ID present in the `<log-directory>/meta.properties` file:\n\n```\ndirectory.id=EAAAAAAAQACAAAAAAAAAAQ==\n```\n\nThe `directory.id` value in the file is the 16-byte UUID encoded using Base64.\n"
                 },
                 {
                   "title": "Tagged Fields Count",
@@ -914,7 +914,7 @@ const generated: GeneratedData = {
                 {
                   "title": "Directories Array",
                   "length_in_bytes": 16,
-                  "explanation_markdown": "Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.\n\nIn this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.\n"
+                  "explanation_markdown": "Directories Array is a compact array of 16-byte raw byte arrays, containing the UUID of the directories.\n\nIn this case, the value is `0x10000000-0000-4000-8000-000000000001`, which needs to be parsed as a UUID.\n\nThis UUID value matches the log directory's ID present in the `<log-directory>/meta.properties` file:\n\n```\ndirectory.id=EAAAAAAAQACAAAAAAAAAAQ==\n```\n\nThe `directory.id` value in the file is the 16-byte UUID encoded using Base64.\n"
                 },
                 {
                   "title": "Tagged Fields Count",

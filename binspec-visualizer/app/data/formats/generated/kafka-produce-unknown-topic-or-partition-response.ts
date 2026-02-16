@@ -92,12 +92,12 @@ const generated: GeneratedData = {
         {
           "title": "Topic Responses Array",
           "length_in_bytes": 41,
-          "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with a varint corresponding to the length of the array + 1, followed by each element.\n",
+          "explanation_markdown": "An array of topics described in the response.\n\nThis array is encoded as a `COMPACT_ARRAY`, which starts with an unsigned varint corresponding to the length of the array + 1, followed by each element.\n",
           "children": [
             {
               "title": "Array Length",
               "length_in_bytes": 1,
-              "explanation_markdown": "The length of the topics array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
+              "explanation_markdown": "The length of the topics array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
             },
             {
               "title": "Topic #1",
@@ -112,7 +112,7 @@ const generated: GeneratedData = {
                     {
                       "title": "String Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the string + 1, encoded as a varint. Here, it is 0x05 (5), indicating that the string length is 4.\n"
+                      "explanation_markdown": "The length of the string + 1, encoded as an unsigned varint. Here, it is 0x05 (5), indicating that the string length is 4.\n"
                     },
                     {
                       "title": "String Content",
@@ -129,7 +129,7 @@ const generated: GeneratedData = {
                     {
                       "title": "Array Length",
                       "length_in_bytes": 1,
-                      "explanation_markdown": "The length of the partitions array + 1, encoded as a varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
+                      "explanation_markdown": "The length of the partitions array + 1, encoded as an unsigned varint. Here, it is 0x02 (2), indicating that the array length is 1.\n"
                     },
                     {
                       "title": "Partition Response #1",
