@@ -491,7 +491,7 @@ const generated: GeneratedData = {
             {
               "title": "Headers Array Count",
               "length_in_bytes": 1,
-              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
+              "explanation_markdown": "Header array count is an signed variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         }
@@ -650,7 +650,7 @@ const generated: GeneratedData = {
             {
               "title": "Headers Array Count",
               "length_in_bytes": 1,
-              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
+              "explanation_markdown": "Header array count is an signed variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         },
@@ -788,7 +788,7 @@ const generated: GeneratedData = {
             {
               "title": "Headers Array Count",
               "length_in_bytes": 1,
-              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
+              "explanation_markdown": "Header array count is an signed variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         },
@@ -926,7 +926,7 @@ const generated: GeneratedData = {
             {
               "title": "Headers Array Count",
               "length_in_bytes": 1,
-              "explanation_markdown": "Header array count is an unsigned variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
+              "explanation_markdown": "Header array count is an signed variable size integer indicating the number of headers present.\n\nIn this case, the value is `0x00`, which is `0` in decimal.\nSo, we can skip parsing the headers.\n"
             }
           ]
         }
